@@ -21,6 +21,9 @@
 示意图：
 ![](https://github.com/zhxhcoder/codeProj/blob/master/screenshots/Sorting_quicksort_anim.gif)
 
+很多实际的项目中使用了快排算法。但通常对算法都进行了调整（tuning），比如Java.util.Arrays类中的sort函数就使用了快排算法，但使用了双参考值（Dual-Pivot Quicksort）等一些改进措施。由于快排算法为递归算法，可以用循环代替递归函数调用，改进性能。
+
+
 2，冒泡排序
 
 
