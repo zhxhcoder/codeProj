@@ -3,7 +3,7 @@ package com.cy.android.codeproj.sortcode;
 public class QuickSortTest {
 
     public static void main(String[] args) {
-        int[] arr = {0, 0, 0, 4, 5, 1, 5, 1, 5, 1, 5, 1};
+        int[] arr = {0,3, 0, 4, 5, 1, 5, 1, 5, 1, 5, 1};
         quickSort(arr, 0, arr.length - 1);
         for (int a : arr) {
             System.out.println(a);
