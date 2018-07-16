@@ -1,4 +1,4 @@
-package com.cy.android.codeproj.multithread;
+package com.zhxh.codeproj.multithread;
 
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;

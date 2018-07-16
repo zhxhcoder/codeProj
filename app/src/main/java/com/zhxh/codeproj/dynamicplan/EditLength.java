@@ -1,4 +1,4 @@
-package com.cy.android.codeproj.dynamicplan;
+package com.zhxh.codeproj.dynamicplan;
 
 import java.util.Scanner;
 

@@ -1,4 +1,4 @@
-package com.cy.android.codeproj.dynamicplan;
+package com.zhxh.codeproj.dynamicplan;
 
 /**
  * 12阶的楼梯 一次走一阶或两阶 共有多少种走法

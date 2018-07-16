@@ -1,4 +1,4 @@
-package com.cy.android.codeproj.multithread;
+package com.zhxh.codeproj.multithread;
 
 public class AlterThread {
     public static void main(String[] args) {
