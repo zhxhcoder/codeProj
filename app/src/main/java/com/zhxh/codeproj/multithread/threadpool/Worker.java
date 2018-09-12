@@ -37,7 +37,7 @@ public class Worker implements Runnable {
 
     @Override
     public void run() {
-        System.out.println(Thread.currentThread().getName() + "{} processing {}" + task.toString());
+        System.out.println(Thread.currentThread().getName() + "  processing  " + task.toString());
         try {
             Thread.sleep(task.getTimeMs());
         } catch (InterruptedException e) {
