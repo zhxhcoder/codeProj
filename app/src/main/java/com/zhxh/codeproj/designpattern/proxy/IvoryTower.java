@@ -28,7 +28,6 @@ package com.zhxh.codeproj.designpattern.proxy;
 public class IvoryTower implements WizardTower {
 
     public void enter(Wizard wizard) {
-        System.out.println(wizard + " enters the tower.");
+        System.out.println(wizard + " 进入该塔");
     }
-
 }

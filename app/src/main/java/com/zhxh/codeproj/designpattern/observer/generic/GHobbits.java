@@ -20,30 +20,32 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.zhxh.codeproj.designpattern.proxy;
+package com.zhxh.codeproj.designpattern.observer.generic;
+
+import com.zhxh.codeproj.designpattern.observer.WeatherType;
 
 /**
- * The proxy controlling access to the {@link IvoryTower}.
+ * GHobbits
  */
-public class WizardTowerProxy implements WizardTower {
-
-    private static final int NUM_WIZARDS_ALLOWED = 3;
-
-    private int numWizards;
-
-    private final WizardTower tower;
-
-    public WizardTowerProxy(WizardTower tower) {
-        this.tower = tower;
-    }
+public class GHobbits implements Race {
 
     @Override
-    public void enter(Wizard wizard) {
-        if (numWizards < NUM_WIZARDS_ALLOWED) {
-            tower.enter(wizard);
-            numWizards++;
-        } else {
-            System.out.println(wizard + " 不允许进入!");
+    public void update(GWeather weather, WeatherType weatherType) {
+        switch (weatherType) {
+            case COLD:
+                System.out.println("The hobbits are shivering in the cold weather.");
+                break;
+            case RAINY:
+                System.out.println("The hobbits look for cover from the rain.");
+                break;
+            case SUNNY:
+                System.out.println("The happy hobbits bade in the warm sun.");
+                break;
+            case WINDY:
+                System.out.println("The hobbits hold their hats tightly in the windy weather.");
+                break;
+            default:
+                break;
         }
     }
 }

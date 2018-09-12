@@ -20,30 +20,28 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.zhxh.codeproj.designpattern.proxy;
+package com.zhxh.codeproj.designpattern.observer.generic;
+
+import com.zhxh.codeproj.designpattern.observer.WeatherType;
 
 /**
- * The proxy controlling access to the {@link IvoryTower}.
+ * GWeather
  */
-public class WizardTowerProxy implements WizardTower {
+public class GWeather extends Observable<GWeather, Race, WeatherType> {
 
-    private static final int NUM_WIZARDS_ALLOWED = 3;
+    private WeatherType currentWeather;
 
-    private int numWizards;
-
-    private final WizardTower tower;
-
-    public WizardTowerProxy(WizardTower tower) {
-        this.tower = tower;
+    public GWeather() {
+        currentWeather = WeatherType.SUNNY;
     }
 
-    @Override
-    public void enter(Wizard wizard) {
-        if (numWizards < NUM_WIZARDS_ALLOWED) {
-            tower.enter(wizard);
-            numWizards++;
-        } else {
-            System.out.println(wizard + " 不允许进入!");
-        }
+    /**
+     * Makes time pass for weather
+     */
+    public void timePasses() {
+        WeatherType[] enumValues = WeatherType.values();
+        currentWeather = enumValues[(currentWeather.ordinal() + 1) % enumValues.length];
+        System.out.println("The weather changed to {}." + currentWeather);
+        notifyObservers(currentWeather);
     }
 }

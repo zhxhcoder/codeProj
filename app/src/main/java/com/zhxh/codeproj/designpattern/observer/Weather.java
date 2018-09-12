@@ -20,30 +20,46 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.zhxh.codeproj.designpattern.proxy;
+package com.zhxh.codeproj.designpattern.observer;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- * The proxy controlling access to the {@link IvoryTower}.
+ * Weather can be observed by implementing {@link WeatherObserver} interface and registering as
+ * listener.
  */
-public class WizardTowerProxy implements WizardTower {
+public class Weather {
 
-    private static final int NUM_WIZARDS_ALLOWED = 3;
+    private WeatherType currentWeather;
+    private List<WeatherObserver> observers;
 
-    private int numWizards;
-
-    private final WizardTower tower;
-
-    public WizardTowerProxy(WizardTower tower) {
-        this.tower = tower;
+    public Weather() {
+        observers = new ArrayList<>();
+        currentWeather = WeatherType.SUNNY;
     }
 
-    @Override
-    public void enter(Wizard wizard) {
-        if (numWizards < NUM_WIZARDS_ALLOWED) {
-            tower.enter(wizard);
-            numWizards++;
-        } else {
-            System.out.println(wizard + " 不允许进入!");
+    public void addObserver(WeatherObserver obs) {
+        observers.add(obs);
+    }
+
+    public void removeObserver(WeatherObserver obs) {
+        observers.remove(obs);
+    }
+
+    /**
+     * Makes time pass for weather
+     */
+    public void timePasses() {
+        WeatherType[] enumValues = WeatherType.values();
+        currentWeather = enumValues[(currentWeather.ordinal() + 1) % enumValues.length];
+        System.out.println("The weather changed to {}." + currentWeather);
+        notifyObservers();
+    }
+
+    private void notifyObservers() {
+        for (WeatherObserver obs : observers) {
+            obs.update(currentWeather);
         }
     }
 }

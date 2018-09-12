@@ -20,30 +20,41 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.zhxh.codeproj.designpattern.proxy;
+package com.zhxh.codeproj.designpattern.observer.generic;
+
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
- * The proxy controlling access to the {@link IvoryTower}.
+ * Generic observer inspired by Java Generics and Collection by {@literal Naftalin & Wadler}
+ *
+ * @param <S> Subject
+ * @param <O> Observer
+ * @param <A> Argument type
  */
-public class WizardTowerProxy implements WizardTower {
+public abstract class Observable<S extends Observable<S, O, A>, O extends Observer<S, O, A>, A> {
 
-    private static final int NUM_WIZARDS_ALLOWED = 3;
+    protected List<O> observers;
 
-    private int numWizards;
-
-    private final WizardTower tower;
-
-    public WizardTowerProxy(WizardTower tower) {
-        this.tower = tower;
+    public Observable() {
+        this.observers = new CopyOnWriteArrayList<>();
     }
 
-    @Override
-    public void enter(Wizard wizard) {
-        if (numWizards < NUM_WIZARDS_ALLOWED) {
-            tower.enter(wizard);
-            numWizards++;
-        } else {
-            System.out.println(wizard + " 不允许进入!");
+    public void addObserver(O observer) {
+        this.observers.add(observer);
+    }
+
+    public void removeObserver(O observer) {
+        this.observers.remove(observer);
+    }
+
+    /**
+     * Notify observers
+     */
+    @SuppressWarnings("unchecked")
+    public void notifyObservers(A argument) {
+        for (O observer : observers) {
+            observer.update((S) this, argument);
         }
     }
 }

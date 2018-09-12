@@ -20,30 +20,15 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.zhxh.codeproj.designpattern.proxy;
+package com.zhxh.codeproj.designpattern.observer.generic;
 
 /**
- * The proxy controlling access to the {@link IvoryTower}.
+ * Observer
+ * @param <S> Observable
+ * @param <O> Observer
+ * @param <A> Action
  */
-public class WizardTowerProxy implements WizardTower {
+public interface Observer<S extends Observable<S, O, A>, O extends Observer<S, O, A>, A> {
 
-    private static final int NUM_WIZARDS_ALLOWED = 3;
-
-    private int numWizards;
-
-    private final WizardTower tower;
-
-    public WizardTowerProxy(WizardTower tower) {
-        this.tower = tower;
-    }
-
-    @Override
-    public void enter(Wizard wizard) {
-        if (numWizards < NUM_WIZARDS_ALLOWED) {
-            tower.enter(wizard);
-            numWizards++;
-        } else {
-            System.out.println(wizard + " 不允许进入!");
-        }
-    }
+    void update(S subject, A argument);
 }
