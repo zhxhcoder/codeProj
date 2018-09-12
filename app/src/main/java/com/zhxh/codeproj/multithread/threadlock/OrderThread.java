@@ -1,4 +1,4 @@
-package com.zhxh.codeproj.multithread;
+package com.zhxh.codeproj.multithread.threadlock;
 
 public class OrderThread {
     public static void main(String[] args) {

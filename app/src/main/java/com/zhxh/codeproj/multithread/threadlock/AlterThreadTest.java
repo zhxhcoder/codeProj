@@ -1,4 +1,4 @@
-package com.zhxh.codeproj.multithread;
+package com.zhxh.codeproj.multithread.threadlock;
 
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
