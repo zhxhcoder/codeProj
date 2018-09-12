@@ -1,45 +1,44 @@
-/**
- * The MIT License
+/*
+ * The MIT License (MIT)
+ * 
  * Copyright (c) 2014-2016
- * <p>
+ * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * <p>
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- * <p>
+ * 
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ * 
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
  * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
  */
-package com.zhxh.codeproj.designpattern.builder;
+
+package com.zhxh.codeproj.designpattern.retry;
 
 /**
+ * Performs some business operation.
  *
- * HairType enumeration
- *
+ * @author George Aristy (george.aristy@gmail.com)
+ * @param <T> the return type
  */
-public enum HairType {
-
-    BALD("bald"), SHORT("short"), CURLY("curly"), LONG_STRAIGHT("long straight"), LONG_CURLY(
-            "long curly");
-
-    private String title;
-
-    HairType(String title) {
-        this.title = title;
-    }
-
-    @Override
-    public String toString() {
-        return title;
-    }
+@FunctionalInterface
+public interface BusinessOperation<T> {
+  /**
+   * Performs some business operation, returning a value {@code T} if successful, otherwise throwing
+   * an exception if an error occurs.
+   * 
+   * @return the return value
+   * @throws BusinessException if the operation fails. Implementations are allowed to throw more
+   *     specific subtypes depending on the error conditions
+   */
+  T perform() throws BusinessException;
 }
