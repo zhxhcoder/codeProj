@@ -23,9 +23,7 @@
 package com.zhxh.codeproj.designpattern.builder;
 
 /**
- *
  * Profession enumeration
- *
  */
 public enum Profession {
 

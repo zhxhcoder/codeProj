@@ -23,9 +23,7 @@
 package com.zhxh.codeproj.designpattern.builder;
 
 /**
- *
  * Weapon enumeration
- *
  */
 public enum Weapon {
 

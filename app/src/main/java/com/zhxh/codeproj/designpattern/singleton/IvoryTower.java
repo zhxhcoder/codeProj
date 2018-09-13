@@ -20,23 +20,30 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.zhxh.codeproj.designpattern.builder;
+package com.zhxh.codeproj.designpattern.singleton;
 
 /**
- * Armor enumeration
+ * Singleton class. Eagerly initialized static instance guarantees thread safety.
  */
-public enum Armor {
+public final class IvoryTower {
 
-    CLOTHES("布衣"), LEATHER("皮革"), CHAIN_MAIL("锁子甲"), PLATE_MAIL("板甲");
+    /**
+     * Static to class instance of the class.
+     */
+    private static final IvoryTower INSTANCE = new IvoryTower();
 
-    private String title;
-
-    Armor(String title) {
-        this.title = title;
+    /**
+     * Private constructor so nobody can instantiate the class.
+     */
+    private IvoryTower() {
     }
 
-    @Override
-    public String toString() {
-        return title;
+    /**
+     * To be called by user to obtain instance of the class.
+     *
+     * @return instance of the singleton.
+     */
+    public static IvoryTower getInstance() {
+        return INSTANCE;
     }
 }

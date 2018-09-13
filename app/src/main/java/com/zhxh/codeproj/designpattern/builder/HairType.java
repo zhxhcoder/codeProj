@@ -23,9 +23,7 @@
 package com.zhxh.codeproj.designpattern.builder;
 
 /**
- *
  * HairType enumeration
- *
  */
 public enum HairType {
 

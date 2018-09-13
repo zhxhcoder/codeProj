@@ -7,6 +7,7 @@ public class RoundGraph extends Graph {
         radius = i;
         System.out.println("RoundGraph().radius=" + radius);
     }
+
     @Override
     void draw() {
         System.out.println("RoundGraph().draw() radius=" + radius);

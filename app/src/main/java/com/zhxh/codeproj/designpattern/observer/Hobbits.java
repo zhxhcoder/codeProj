@@ -23,9 +23,7 @@
 package com.zhxh.codeproj.designpattern.observer;
 
 /**
- *
  * Hobbits
- *
  */
 public class Hobbits implements WeatherObserver {
 

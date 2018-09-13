@@ -23,9 +23,7 @@
 package com.zhxh.codeproj.designpattern.observer;
 
 /**
- *
  * Observer interface.
- *
  */
 public interface WeatherObserver {
 

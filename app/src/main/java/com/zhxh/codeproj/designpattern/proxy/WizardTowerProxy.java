@@ -28,10 +28,8 @@ package com.zhxh.codeproj.designpattern.proxy;
 public class WizardTowerProxy implements WizardTower {
 
     private static final int NUM_WIZARDS_ALLOWED = 3;
-
-    private int numWizards;
-
     private final WizardTower tower;
+    private int numWizards;
 
     public WizardTowerProxy(WizardTower tower) {
         this.tower = tower;

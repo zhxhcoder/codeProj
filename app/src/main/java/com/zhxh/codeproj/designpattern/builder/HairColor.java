@@ -23,9 +23,7 @@
 package com.zhxh.codeproj.designpattern.builder;
 
 /**
- *
  * HairColor enumeration
- *
  */
 public enum HairColor {
 

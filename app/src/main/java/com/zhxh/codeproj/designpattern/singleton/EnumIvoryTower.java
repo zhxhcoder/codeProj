@@ -20,23 +20,20 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.zhxh.codeproj.designpattern.builder;
+package com.zhxh.codeproj.designpattern.singleton;
 
 /**
- * Armor enumeration
+ * Enum based singleton implementation. Effective Java 2nd Edition (Joshua Bloch) p. 18
+ *
+ * This implementation is thread safe, however adding any other method and its thread safety
+ * is developers responsibility.
  */
-public enum Armor {
+public enum EnumIvoryTower {
 
-    CLOTHES("布衣"), LEATHER("皮革"), CHAIN_MAIL("锁子甲"), PLATE_MAIL("板甲");
-
-    private String title;
-
-    Armor(String title) {
-        this.title = title;
-    }
+    INSTANCE;
 
     @Override
     public String toString() {
-        return title;
+        return getDeclaringClass().getCanonicalName() + "@" + hashCode();
     }
 }

@@ -24,6 +24,7 @@ package com.zhxh.codeproj.designpattern.observer.generic;
 
 /**
  * Observer
+ *
  * @param <S> Observable
  * @param <O> Observer
  * @param <A> Action
