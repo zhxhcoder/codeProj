@@ -21,7 +21,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-
 package com.zhxh.codeproj.designpattern.retry;
 
 import java.util.ArrayList;
@@ -94,11 +93,9 @@ public final class Retry<T> implements BusinessOperation<T> {
                 return this.op.perform();
             } catch (BusinessException e) {
                 this.errors.add(e);
-
                 if (this.attempts.incrementAndGet() >= this.maxAttempts || !this.test.test(e)) {
                     throw e;
                 }
-
                 try {
                     Thread.sleep(this.delay);
                 } catch (InterruptedException f) {

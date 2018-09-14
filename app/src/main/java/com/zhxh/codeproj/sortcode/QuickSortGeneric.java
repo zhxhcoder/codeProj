@@ -144,7 +144,6 @@ public class QuickSortGeneric {
             System.out.print(i + " ");
         }
         System.out.println();
-
         //生成一个字符串数组，用来测试
         String[] s = new String[]{"b", "a", "e", "d", "f", "c"};
         System.out.print("String[] before sorting: ");
@@ -158,7 +157,6 @@ public class QuickSortGeneric {
             System.out.print(s[i] + " ");
         }
         System.out.println();
-
         //生成一个字符串列表，用来测试
         List<String> l = new LinkedList<String>();
         s = new String[]{"b", "a", "e", "d", "f", "c"};

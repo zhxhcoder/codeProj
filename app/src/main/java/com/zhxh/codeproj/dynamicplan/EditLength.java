@@ -18,13 +18,11 @@ import java.util.Scanner;
  * 当Fi,j-1！=Fi-1,j时，Fi,j=min{Fi-1,j-1,Fi,j-1,Fi-1,j}+1.
  */
 public class EditLength {
-
     public static void main(String[] args) {
         System.out.println("输入第一个字符串并回车");
         Scanner in = new Scanner(System.in);
         String aStr = in.nextLine();
         System.out.println("输入第二个字符串并回车");
-
         String bStr = in.nextLine();
         int aLen = aStr.length();
         int bLen = bStr.length();

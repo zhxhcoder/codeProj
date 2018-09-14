@@ -10,20 +10,17 @@ public class AlterThreadTest {
 
     public static void main(String[] args) {
         AlterThreadTest test = new AlterThreadTest();
-
         test.new AOutput().start();
         test.new BOutput().start();
     }
 
     class AOutput extends Thread {
-
         @Override
         public void run() {
             while (true) {
                 try {
                     lock.lock();
                     System.out.println("A");
-
                     bCondition.signal();
                     aCondition.await();
                 } catch (InterruptedException e) {
@@ -36,7 +33,6 @@ public class AlterThreadTest {
     }
 
     class BOutput extends Thread {
-
         @Override
         public void run() {
             while (true) {

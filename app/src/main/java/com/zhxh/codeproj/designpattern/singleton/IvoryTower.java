@@ -26,7 +26,6 @@ package com.zhxh.codeproj.designpattern.singleton;
  * Singleton class. Eagerly initialized static instance guarantees thread safety.
  */
 public final class IvoryTower {
-
     /**
      * Static to class instance of the class.
      */

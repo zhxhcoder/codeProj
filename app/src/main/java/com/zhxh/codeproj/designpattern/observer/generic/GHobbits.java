@@ -28,7 +28,6 @@ import com.zhxh.codeproj.designpattern.observer.WeatherType;
  * GHobbits
  */
 public class GHobbits implements Race {
-
     @Override
     public void update(GWeather weather, WeatherType weatherType) {
         switch (weatherType) {

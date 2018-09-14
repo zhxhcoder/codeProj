@@ -22,14 +22,10 @@
  */
 package com.zhxh.codeproj.designpattern.bridge;
 
-
 /**
- *
  * Sword
- *
  */
 public class Sword implements Weapon {
-
 
     private final Enchantment enchantment;
 

@@ -23,14 +23,10 @@
 package com.zhxh.codeproj.designpattern.factory.method;
 
 /**
- *
  * WeaponType enumeration
- *
  */
 public enum WeaponType {
-
     SHORT_SWORD("short sword"), SPEAR("spear"), AXE("axe"), UNDEFINED("");
-
     private String title;
 
     WeaponType(String title) {

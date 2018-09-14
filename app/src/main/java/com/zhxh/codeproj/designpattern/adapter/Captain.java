@@ -27,7 +27,6 @@ package com.zhxh.codeproj.designpattern.adapter;
  * This is the client in the pattern.
  */
 public class Captain {
-
     private RowingBoat rowingBoat;
 
     public Captain() {
@@ -44,5 +43,4 @@ public class Captain {
     public void row() {
         rowingBoat.row();
     }
-
 }

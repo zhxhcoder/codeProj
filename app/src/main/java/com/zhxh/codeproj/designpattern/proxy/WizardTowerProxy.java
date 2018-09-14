@@ -26,7 +26,6 @@ package com.zhxh.codeproj.designpattern.proxy;
  * The proxy controlling access to the {@link IvoryTower}.
  */
 public class WizardTowerProxy implements WizardTower {
-
     private static final int NUM_WIZARDS_ALLOWED = 3;
     private final WizardTower tower;
     private int numWizards;

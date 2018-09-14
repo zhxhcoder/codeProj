@@ -23,12 +23,9 @@
 package com.zhxh.codeproj.designpattern.bridge;
 
 /**
- *
  * Weapon
- *
  */
 public interface Weapon {
-
     void wield();
 
     void swing();

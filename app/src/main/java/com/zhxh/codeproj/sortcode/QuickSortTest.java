@@ -1,7 +1,6 @@
 package com.zhxh.codeproj.sortcode;
 
 public class QuickSortTest {
-
     public static void main(String[] args) {
         int[] arr = {0, 3, 0, 4, 5, 1, 5, 1, 5, 1, 5, 1};
         quickSort(arr, 0, arr.length - 1);
@@ -12,7 +11,6 @@ public class QuickSortTest {
 
     private static void quickSort(int[] arr, int begin, int end) {
         if (begin == end || begin == (end - 1)) return;
-
         if (begin < end) {
             int pivot = partition(arr, begin, end);              //将数组分为两部分
             quickSort(arr, begin, pivot - 1);                   //递归排序左子数组

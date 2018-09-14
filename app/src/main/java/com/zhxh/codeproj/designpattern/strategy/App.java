@@ -23,7 +23,6 @@
 package com.zhxh.codeproj.designpattern.strategy;
 
 /**
- *
  * The Strategy pattern (also known as the policy pattern) is a software design pattern that enables
  * an algorithm's behavior to be selected at runtime.
  * <p>
@@ -33,10 +32,8 @@ package com.zhxh.codeproj.designpattern.strategy;
  * <p>
  * In this example ({@link DragonSlayingStrategy}) encapsulates an algorithm. The containing object
  * ({@link DragonSlayer}) can alter its behavior by changing its strategy.
- *
  */
 public class App {
-
     /**
      * Program entry point
      *
@@ -53,7 +50,6 @@ public class App {
         System.out.println("Black dragon lands before you.");
         dragonSlayer.changeStrategy(new SpellStrategy());
         dragonSlayer.goToBattle();
-
         // Java 8 Strategy pattern
         System.out.println("Green dragon spotted ahead!");
         dragonSlayer = new DragonSlayer(

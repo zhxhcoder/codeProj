@@ -26,7 +26,6 @@ package com.zhxh.codeproj.designpattern.builder;
  * Weapon enumeration
  */
 public enum Weapon {
-
     DAGGER, SWORD, AXE, WARHAMMER, BOW;
 
     @Override

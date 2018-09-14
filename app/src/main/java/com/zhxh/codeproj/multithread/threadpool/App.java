@@ -41,16 +41,13 @@ import java.util.concurrent.Executors;
  * {@link Worker}s.
  */
 public class App {
-
     /**
      * Program entry point
      *
      * @param args command line args
      */
     public static void main(String[] args) {
-
         System.out.println("Program started");
-
         // Create a list of tasks to be executed
         List<Task> tasks = new ArrayList<>();
         tasks.add(new PotatoPeelingTask(3));
@@ -68,13 +65,11 @@ public class App {
         tasks.add(new CoffeeMakingTask(7));
         tasks.add(new PotatoPeelingTask(4));
         tasks.add(new PotatoPeelingTask(5));
-
         // Creates a thread pool that reuses a fixed number of threads operating off a shared
         // unbounded queue. At any point, at most nThreads threads will be active processing
         // tasks. If additional tasks are submitted when all threads are active, they will wait
         // in the queue until a thread is available.
         ExecutorService executor = Executors.newFixedThreadPool(3);
-
         // Allocate new worker for each task
         // The worker is executed when a thread becomes
         // available in the thread pool

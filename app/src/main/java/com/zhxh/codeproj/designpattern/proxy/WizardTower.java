@@ -26,6 +26,5 @@ package com.zhxh.codeproj.designpattern.proxy;
  * WizardTower interface
  */
 public interface WizardTower {
-
     void enter(Wizard wizard);
 }

@@ -26,7 +26,6 @@ package com.zhxh.codeproj.designpattern.factory.method;
  * ElfWeapon.
  */
 public class ElfWeapon implements Weapon {
-
     private WeaponType weaponType;
 
     public ElfWeapon(WeaponType weaponType) {

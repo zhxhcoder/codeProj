@@ -21,12 +21,11 @@ package com.zhxh.codeproj.designpattern.singleton;
 /**
  * Thread-safe Singleton class. The instance is lazily initialized and thus needs synchronization
  * mechanism.
- *
+ * <p>
  * Note: if created by reflection then a singleton will not be created but multiple options in the
  * same classloader
  */
 public final class ThreadSafeLazyLoadedIvoryTower {
-
     private static ThreadSafeLazyLoadedIvoryTower instance;
 
     private ThreadSafeLazyLoadedIvoryTower() {
@@ -45,7 +44,6 @@ public final class ThreadSafeLazyLoadedIvoryTower {
         if (instance == null) {
             instance = new ThreadSafeLazyLoadedIvoryTower();
         }
-
         return instance;
     }
 }

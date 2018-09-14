@@ -22,14 +22,10 @@
  */
 package com.zhxh.codeproj.designpattern.bridge;
 
-
 /**
- *
  * SoulEatingEnchantment
- *
  */
 public class SoulEatingEnchantment implements Enchantment {
-
 
     @Override
     public void onActivate() {

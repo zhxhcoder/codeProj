@@ -21,7 +21,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-
 package com.zhxh.codeproj.designpattern.retry;
 
 import java.util.ArrayDeque;
@@ -57,7 +56,6 @@ public final class FindCustomer implements BusinessOperation<String> {
         if (!this.errors.isEmpty()) {
             throw this.errors.pop();
         }
-
         return this.customerId;
     }
 }

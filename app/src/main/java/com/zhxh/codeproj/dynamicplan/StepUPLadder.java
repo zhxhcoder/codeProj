@@ -12,7 +12,6 @@ package com.zhxh.codeproj.dynamicplan;
  * F(n) = F(n-1)+F(n-2)（n>=3）
  */
 public class StepUPLadder {
-
     public static void main(String[] args) {
         System.out.println(getStepWays(12));
     }

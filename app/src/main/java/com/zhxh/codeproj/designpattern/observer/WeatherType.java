@@ -26,7 +26,6 @@ package com.zhxh.codeproj.designpattern.observer;
  * WeatherType enumeration
  */
 public enum WeatherType {
-
     SUNNY, RAINY, WINDY, COLD;
 
     @Override

@@ -30,7 +30,6 @@ import java.util.List;
  * listener.
  */
 public class Weather {
-
     private WeatherType currentWeather;
     private List<WeatherObserver> observers;
 

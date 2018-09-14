@@ -32,7 +32,6 @@ package com.zhxh.codeproj.designpattern.singleton;
  * @author mortezaadi@gmail.com
  */
 public final class ThreadSafeDoubleCheckLocking {
-
     private static volatile ThreadSafeDoubleCheckLocking instance;
 
     /**
@@ -53,7 +52,6 @@ public final class ThreadSafeDoubleCheckLocking {
     public static ThreadSafeDoubleCheckLocking getInstance() {
         // local variable increases performance by 25 percent
         // Joshua Bloch "Effective Java, Second Edition", p. 283-284
-
         ThreadSafeDoubleCheckLocking result = instance;
         // Check if singleton instance is initialized. If it is initialized then we can return the instance.
         if (result == null) {

@@ -26,7 +26,5 @@ package com.zhxh.codeproj.designpattern.factory.method;
  * Weapon interface.
  */
 public interface Weapon {
-
     WeaponType getWeaponType();
-
 }

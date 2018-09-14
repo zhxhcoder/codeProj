@@ -26,7 +26,6 @@ package com.zhxh.codeproj.designpattern.proxy;
  * Wizard
  */
 public class Wizard {
-
     private final String name;
 
     Wizard(String name) {

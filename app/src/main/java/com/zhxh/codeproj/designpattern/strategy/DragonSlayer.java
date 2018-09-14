@@ -23,12 +23,9 @@
 package com.zhxh.codeproj.designpattern.strategy;
 
 /**
- *
  * DragonSlayer uses different strategies to slay the dragon.
- *
  */
 public class DragonSlayer {
-
     private DragonSlayingStrategy strategy;
 
     public DragonSlayer(DragonSlayingStrategy strategy) {

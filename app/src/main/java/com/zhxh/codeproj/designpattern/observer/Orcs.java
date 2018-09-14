@@ -26,7 +26,6 @@ package com.zhxh.codeproj.designpattern.observer;
  * Orcs
  */
 public class Orcs implements WeatherObserver {
-
     @Override
     public void update(WeatherType currentWeather) {
         switch (currentWeather) {

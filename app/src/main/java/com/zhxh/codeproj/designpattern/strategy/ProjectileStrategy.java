@@ -22,14 +22,10 @@
  */
 package com.zhxh.codeproj.designpattern.strategy;
 
-
 /**
- *
  * Projectile strategy.
- *
  */
 public class ProjectileStrategy implements DragonSlayingStrategy {
-
 
     @Override
     public void execute() {

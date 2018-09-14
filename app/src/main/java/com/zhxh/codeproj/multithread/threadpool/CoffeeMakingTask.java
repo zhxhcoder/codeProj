@@ -23,12 +23,9 @@
 package com.zhxh.codeproj.multithread.threadpool;
 
 /**
- *
  * CoffeeMakingTask is a concrete task
- *
  */
 public class CoffeeMakingTask extends Task {
-
     private static final int TIME_PER_CUP = 100;
 
     public CoffeeMakingTask(int numCups) {

@@ -33,7 +33,6 @@ import java.util.concurrent.CopyOnWriteArrayList;
  * @param <A> Argument type
  */
 public abstract class Observable<S extends Observable<S, O, A>, O extends Observer<S, O, A>, A> {
-
     protected List<O> observers;
 
     public Observable() {

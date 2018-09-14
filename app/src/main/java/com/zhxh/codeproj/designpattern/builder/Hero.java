@@ -26,7 +26,6 @@ package com.zhxh.codeproj.designpattern.builder;
  * Hero, the class with many parameters.
  */
 public final class Hero {
-
     private final Profession profession;
     private final String name;
     private final HairType hairType;
@@ -69,7 +68,6 @@ public final class Hero {
 
     @Override
     public String toString() {
-
         StringBuilder sb = new StringBuilder();
         sb.append("职业 ")
                 .append(profession)
@@ -99,7 +97,6 @@ public final class Hero {
      * The builder class.
      */
     public static class Builder {
-
         private final Profession profession;
         private final String name;
         private HairType hairType;

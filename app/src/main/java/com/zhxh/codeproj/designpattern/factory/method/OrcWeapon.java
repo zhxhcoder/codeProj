@@ -26,7 +26,6 @@ package com.zhxh.codeproj.designpattern.factory.method;
  * OrcWeapon.
  */
 public class OrcWeapon implements Weapon {
-
     private WeaponType weaponType;
 
     public OrcWeapon(WeaponType weaponType) {

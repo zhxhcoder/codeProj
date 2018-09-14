@@ -19,9 +19,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-
 package com.zhxh.codeproj.designpattern.retry;
-
 
 /**
  * The <em>Retry</em> pattern enables applications to handle potentially recoverable failures from

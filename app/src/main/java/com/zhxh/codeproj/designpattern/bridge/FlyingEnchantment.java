@@ -22,14 +22,10 @@
  */
 package com.zhxh.codeproj.designpattern.bridge;
 
-
 /**
- *
  * FlyingEnchantment
- *
  */
 public class FlyingEnchantment implements Enchantment {
-
 
     @Override
     public void onActivate() {

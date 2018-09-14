@@ -1,7 +1,6 @@
 package com.zhxh.codeproj.abstractclass;
 
 public class AbstractTest {
-
     /**
      * 按照普通类的继承方式 应该是先走完父类构造方法中的操作再走子类中的。
      * 抽象的触发父类draw()方法也连带着子类中的一同触发。并且是在子类并没有为

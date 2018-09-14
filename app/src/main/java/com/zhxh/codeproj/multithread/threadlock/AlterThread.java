@@ -3,9 +3,7 @@ package com.zhxh.codeproj.multithread.threadlock;
 public class AlterThread {
     public static void main(String[] args) {
         AlterThread test = new AlterThread();
-
         Object lock = new Object();
-
         test.new Output(lock, "A").start();
         test.new Output(lock, "B").start();
     }

@@ -26,7 +26,6 @@ package com.zhxh.codeproj.designpattern.observer;
  * Hobbits
  */
 public class Hobbits implements WeatherObserver {
-
     @Override
     public void update(WeatherType currentWeather) {
         switch (currentWeather) {

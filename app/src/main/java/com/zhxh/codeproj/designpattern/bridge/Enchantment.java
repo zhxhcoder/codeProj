@@ -23,12 +23,9 @@
 package com.zhxh.codeproj.designpattern.bridge;
 
 /**
- *
  * Enchantment
- *
  */
 public interface Enchantment {
-
     void onActivate();
 
     void apply();

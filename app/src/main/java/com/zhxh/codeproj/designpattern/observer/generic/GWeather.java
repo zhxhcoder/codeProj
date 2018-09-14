@@ -28,7 +28,6 @@ import com.zhxh.codeproj.designpattern.observer.WeatherType;
  * GWeather
  */
 public class GWeather extends Observable<GWeather, Race, WeatherType> {
-
     private WeatherType currentWeather;
 
     public GWeather() {

@@ -22,14 +22,10 @@
  */
 package com.zhxh.codeproj.designpattern.bridge;
 
-
 /**
- *
  * Hammer
- *
  */
 public class Hammer implements Weapon {
-
 
     private final Enchantment enchantment;
 

@@ -22,9 +22,7 @@
  */
 package com.zhxh.codeproj.designpattern.bridge;
 
-
 /**
- *
  * Composition over inheritance. The Bridge pattern can also be thought of as two layers of abstraction.
  * With Bridge, you can decouple an abstraction from its implementation so that the two can vary independently.
  * <p>
@@ -34,10 +32,8 @@ package com.zhxh.codeproj.designpattern.bridge;
  * <p>
  * In this example we have two class hierarchies. One of weapons and another one of enchantments. We can easily
  * combine any weapon with any enchantment using composition instead of creating deep class hierarchy.
- *
  */
 public class App {
-
     /**
      * Program entry point
      *
@@ -49,7 +45,6 @@ public class App {
         enchantedSword.wield();
         enchantedSword.swing();
         enchantedSword.unwield();
-
         System.out.println("The valkyrie receives an enchanted hammer.");
         Hammer hammer = new Hammer(new FlyingEnchantment());
         hammer.wield();

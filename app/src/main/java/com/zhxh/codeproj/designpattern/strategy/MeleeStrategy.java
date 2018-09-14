@@ -22,14 +22,10 @@
  */
 package com.zhxh.codeproj.designpattern.strategy;
 
-
 /**
- *
  * Melee strategy.
- *
  */
 public class MeleeStrategy implements DragonSlayingStrategy {
-
 
     @Override
     public void execute() {

@@ -26,9 +26,7 @@ package com.zhxh.codeproj.designpattern.builder;
  * Armor enumeration
  */
 public enum Armor {
-
     CLOTHES("布衣"), LEATHER("皮革"), CHAIN_MAIL("锁子甲"), PLATE_MAIL("板甲");
-
     private String title;
 
     Armor(String title) {
