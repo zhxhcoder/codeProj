@@ -1,18 +1,5 @@
 package com.zhxh.codeproj.dynamicproxy;
 
-import com.squareup.javapoet.FieldSpec;
-import com.squareup.javapoet.JavaFile;
-import com.squareup.javapoet.MethodSpec;
-import com.squareup.javapoet.TypeSpec;
-
-import java.io.File;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Method;
-import java.net.URL;
-import java.net.URLClassLoader;
-
-import javax.lang.model.element.Modifier;
-
 /**
  * Proxy
  *
@@ -21,7 +8,7 @@ import javax.lang.model.element.Modifier;
 public class Proxy {
 
     public static Object newProxyInstance(Class inf, InvocationHandler handler) throws Exception {
-        TypeSpec.Builder typeSpecBuilder = TypeSpec.classBuilder("TimeProxy")
+/*        TypeSpec.Builder typeSpecBuilder = TypeSpec.classBuilder("TimeProxy")
                 .addModifiers(Modifier.PUBLIC)
                 .addSuperinterface(inf);
 
@@ -68,7 +55,9 @@ public class Proxy {
         Constructor constructor = clazz.getConstructor(InvocationHandler.class);
         Object obj = constructor.newInstance(handler);
 
-        return obj;
+        return obj;*/
+
+        return null;
     }
 
 }
