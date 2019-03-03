@@ -27,14 +27,20 @@ public class ReverseLinkedList {
         if (head == null)
             return head;
         Node dummy = new Node(-1);
-        dummy.next = head;
-        Node prev = dummy.next;
-        Node pCur = prev.next;
+        dummy.next = head;//加到链表head
+
+        Node prev = dummy.next;//prev为1
+        Node pCur = prev.next; //pCur为需要反转的结点 第一次为2
+
         while (pCur != null) {
-            prev.next = pCur.next;
-            pCur.next = dummy.next;
-            dummy.next = pCur;
-            pCur = prev.next;
+            prev.next = pCur.next;//prev连接下一次需要反转的节点
+
+            pCur.next = dummy.next;//反转节点pCur
+
+            dummy.next = pCur;//纠正头结点dummy的指向
+
+            pCur = prev.next;//pCur指向下一次要反转的节点
+
         }
         return dummy.next;
     }
