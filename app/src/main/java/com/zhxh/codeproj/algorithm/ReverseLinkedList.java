@@ -23,7 +23,7 @@ public class ReverseLinkedList {
      dummy->4>-3->2->1->5
      dummy->5->4->3->2->1
      */
-    public Node reverseList1(Node head) {
+    public Node reverseList(Node head) {
         if (head == null)
             return head;
         Node dummy = new Node(-1);
@@ -41,20 +41,6 @@ public class ReverseLinkedList {
 
             pCur = prev.next;//pCur指向下一次要反转的节点
 
-        }
-        return dummy.next;
-    }
-
-    // 2.新建链表,头节点插入法
-    //新建一个头结点，遍历原链表，把每个节点用头结点插入到新建链表中。最后，新建的链表就是反转后的链表。
-    public Node reverseList2(Node head) {
-        Node dummy = new Node(-1);
-        Node pCur = head;
-        while (pCur != null) {
-            Node pNex = pCur.next;
-            pCur.next = dummy.next;
-            dummy.next = pCur;
-            pCur = pNex;
         }
         return dummy.next;
     }
