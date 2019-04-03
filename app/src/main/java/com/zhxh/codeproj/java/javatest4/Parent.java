@@ -18,6 +18,6 @@ public class Parent {
     }
 
     public Parent(){
-        System.out.println("create_parent");
+        System.out.println("p_create_parent");
     }
 }

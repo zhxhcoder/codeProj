@@ -35,7 +35,7 @@ public class Child extends Parent {
     }
 
     public Child() {
-        System.out.println("create_child");
+        System.out.println("c_create_child");
     }
 
     public static void main(String[] args){
