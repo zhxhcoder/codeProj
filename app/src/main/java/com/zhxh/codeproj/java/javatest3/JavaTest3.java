@@ -2,7 +2,7 @@ package com.zhxh.codeproj.java.javatest3;
 
 /**
  * Created by zhxh on 2019/4/3
- *
+ * <p>
  * Man10
  * Man
  * Man20
@@ -18,5 +18,6 @@ public class JavaTest3 {
         Person person = man;
         person.print(20);
         System.out.println(person.name);
+        System.out.println(((Man) person).name);
     }
 }
