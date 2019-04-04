@@ -12,6 +12,13 @@ package com.zhxh.codeproj.java.javatest4;
  c_field
  c_field_over
  c_create_child
+
+
+ c_static_field
+ c_static_field_over
+ c_field
+ c_field_over
+ c_create_child
  */
 public class Child extends Parent {
     public static String c_static_field = "c_static_field";
