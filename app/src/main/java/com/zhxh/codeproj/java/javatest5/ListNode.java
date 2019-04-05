@@ -6,6 +6,11 @@ package com.zhxh.codeproj.java.javatest5;
 public class ListNode {
     int val;
     ListNode next;
+
+    boolean hasNext() {
+        return next != null;
+    }
+
     ListNode(int x) {
         val = x;
     }

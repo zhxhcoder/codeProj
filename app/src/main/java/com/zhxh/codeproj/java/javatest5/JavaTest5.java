@@ -21,6 +21,18 @@ public class JavaTest5 {
 
     }
 
+    public static void printNodeList(ListNode node) {
+        if (node != null) {
+            System.out.println(node.val);
+            while (node.hasNext()) {
+                System.out.println(node.next.val);
+                node=node.next;
+            }
+        }
+        System.out.println("---------------------");
+
+    }
+
     public static void main(String[] args) {
 
         ListNode node1 = new ListNode(1);
@@ -30,18 +42,24 @@ public class JavaTest5 {
         node1.next = node3;
         node3.next = node4;
 
+
+        printNodeList(node1);
+
         ListNode node2 = new ListNode(2);
         ListNode node5 = new ListNode(5);
 
         node2.next = node5;
 
+        printNodeList(node2);
+
         ListNode node = mergeTwoLists(node1, node2);
 
-        if (node != null) {
-            System.out.println(node.val);
-            while (node.next != null) {
-                System.out.println(node.next.val);
-            }
-        }
+        printNodeList(node);
+
+
+
+
     }
+
+
 }
