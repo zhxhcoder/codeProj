@@ -1,4 +1,4 @@
-package com.zhxh.codeproj.java.javatest5;
+package com.zhxh.codeproj.javatest.javatest5;
 
 /**
  * Created by zhxh on 2019/4/4

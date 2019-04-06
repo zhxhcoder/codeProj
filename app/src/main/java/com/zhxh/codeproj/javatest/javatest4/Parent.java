@@ -1,4 +1,4 @@
-package com.zhxh.codeproj.java.javatest4;
+package com.zhxh.codeproj.javatest.javatest4;
 
 /**
  * Created by zhxh on 2019/4/3
@@ -17,7 +17,7 @@ public class Parent {
         System.out.println("p_field_over");
     }
 
-    public Parent(){
+    public Parent() {
         System.out.println("p_create_parent");
     }
 }

@@ -1,4 +1,4 @@
-package com.zhxh.codeproj.java.javatest3;
+package com.zhxh.codeproj.javatest.javatest3;
 
 /**
  * Created by zhxh on 2019/4/3
