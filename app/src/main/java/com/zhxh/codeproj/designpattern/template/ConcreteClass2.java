@@ -1,0 +1,16 @@
+package com.zhxh.codeproj.designpattern.template;
+
+/**
+ * Created by zhxh on 2019/4/7
+ */
+public class ConcreteClass2 extends Abstractclass {
+    @Override
+    protected void doSomething() {
+        //todo something
+    }
+
+    @Override
+    protected void doAnything() {
+        //todo something
+    }
+}
