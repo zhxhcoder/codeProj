@@ -3,7 +3,7 @@ package com.zhxh.codeproj.designpattern.template;
 /**
  * Created by zhxh on 2019/4/7
  */
-public abstract class Abstractclass {
+public abstract class AbstractClass {
     //base method
     protected abstract void doSomething();
     //base method

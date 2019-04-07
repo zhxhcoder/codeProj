@@ -5,8 +5,8 @@ package com.zhxh.codeproj.designpattern.template;
  */
 public class Client {
     public static void main(String[] args){
-        Abstractclass  class1=new ConcreteClass1();
-        Abstractclass  class2=new ConcreteClass2();
+        AbstractClass class1=new ConcreteClass1();
+        AbstractClass class2=new ConcreteClass2();
 
         //invoke template method
         class1.templateMethod();
