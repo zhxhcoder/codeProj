@@ -12,6 +12,6 @@ public class Client {
         //observer
         observable.addObserver(observer);
         //do something
-        observable.doSomething();
+        observable.doSomething("haha");
     }
 }

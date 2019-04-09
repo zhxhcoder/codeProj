@@ -5,5 +5,5 @@ package com.zhxh.codeproj.designpattern.observer;
  */
 public interface Observer {
     //update
-    public void update();
+    public void update(String msg);
 }

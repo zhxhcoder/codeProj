@@ -20,12 +20,9 @@ public abstract class Observable {
         this.observers.remove(o);
     }
 
-    public void notifyObservers() {
-        for (Observer observer : this.observers
-                ) {
-
-            observer.update();
-
+    public void notifyObservers(String msg) {
+        for (Observer observer : this.observers) {
+            observer.update(msg);
         }
     }
 }
