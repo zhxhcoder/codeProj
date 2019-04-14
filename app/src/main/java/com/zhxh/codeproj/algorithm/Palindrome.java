@@ -18,10 +18,10 @@ public class Palindrome {
      */
     @Test
     public void test1() {
-        Assert.assertTrue(isPaindrome("a b dd b a"));
+        Assert.assertTrue(isPalindrome("a b dd b a"));
     }
 
-    public boolean isPaindrome(String s) {
+    public boolean isPalindrome(String s) {
         int i = 0;
         int j = s.length() - 1;
         while (i < j) {
