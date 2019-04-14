@@ -1,16 +1,12 @@
 package com.zhxh.codeproj.designpattern.bridge;
 
 /**
- * Created by zhxh on 2019/4/9
- * 场景类测试
+ * Created by zhxh on 2019/4/14
  */
 public class Client {
-    public static void main(String[] args) {
-        //原有的逻辑
-        Target target1 = new ConcreteTarget();
-        target1.request();
-        //现在增加了适配器角色后的业务逻辑
-        Target target2 = new Adapter();
-        target2.request();
+    public static void main(String[] args){
+        Implementor imp=new ConcreteImplementor1();
+        Abstraction abs=new RefinedAbstraction(imp);
+        abs.request();
     }
 }
