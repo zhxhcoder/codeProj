@@ -24,6 +24,8 @@ object KRegexp {
             println(it.range.endInclusive)
         }
         println(s3?.groupValues)
+        println(s3?.range)
+        println(s3?.next()?.value)
         
         println("************matches************")
         //输入的字符串全部匹配“正则表达式”返回 true，否则返回 false。
