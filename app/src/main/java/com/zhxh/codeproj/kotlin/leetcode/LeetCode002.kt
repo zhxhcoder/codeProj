@@ -1,4 +1,4 @@
-package com.zhxh.codeproj.leetcode
+package com.zhxh.codeproj.kotlin.leetcode
 
 /**
  * Created by zhxh on 2019/05/19
