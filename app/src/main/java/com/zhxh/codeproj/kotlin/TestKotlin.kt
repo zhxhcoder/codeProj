@@ -8,26 +8,27 @@ object TestKotlin {
 
 
     fun print1() {
-        val maxElement = emptyElements()?.let { it.max() } ?: return
-        println("#1#最大值 $maxElement")
+        val list: List<Int>? = initElements()
+        val maxElement = list?.let { it.max() } ?: -1
+        return println("返回 $maxElement")
     }
 
     fun print2() {
-        val list: List<Int>? = emptyElements()
-        val maxElement = if (list != null) list.max() else return
-        println("#2#最大值 $maxElement")
+        val list: List<Int>? = initElements()
+        val maxElement = if (list != null) list.max() else -1
+        return println("返回 $maxElement")
     }
 
-    fun emptyElements(): List<Int>? = emptyList()
+    fun initElements(): List<Int>? = emptyList()
 
     @JvmStatic
     fun main(args: Array<String>) {
 
-        println("*****************let ?:p*******************")
+        println("*****************let-?: 判空*******************")
 
         print1()
 
-        println("***************if else 判空*********************")
+        println("*****************if-else 判空*********************")
 
         print2()
     }
