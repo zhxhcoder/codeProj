@@ -22,17 +22,8 @@ object TestKotlin {
 
     @JvmStatic
     fun main(args: Array<String>) {
-        val list1: List<Int>? = createElements()
-        val maxElement1 = list1?.let { it.max() } ?: return
-        println("#1#最大值 $maxElement1")
 
-        println("************************************")
-
-        val list2: List<Int>? = createElements()
-        val maxElement2 = if (list2 != null) list2.max() else return
-        println("#2#最大值 $maxElement2")
-
-        println("*****************let ?:判空*******************")
+        println("*****************let ?:p*******************")
 
         print1()
 
