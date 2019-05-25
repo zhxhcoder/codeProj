@@ -1,4 +1,4 @@
-package cnife.datastructure.utils
+package com.zhxh.codeproj.kotlin.datastructure.utils
 
 /**
  * 通用的比较器

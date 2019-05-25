@@ -1,6 +1,6 @@
-package cnife.datastructure.tree
+package com.zhxh.codeproj.kotlin.datastructure.tree
 
-import cnife.datastructure.utils.UniComparable
+import com.zhxh.codeproj.kotlin.datastructure.utils.UniComparable
 
 /**
  * 二叉搜索树

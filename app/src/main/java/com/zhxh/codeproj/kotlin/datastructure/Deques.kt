@@ -1,6 +1,6 @@
-package cnife.datastructure
+package com.zhxh.codeproj.kotlin.datastructure
 
-import cnife.datastructure.utils.Result
+import com.zhxh.codeproj.kotlin.datastructure.utils.Result
 
 interface Queue<E> : MutableIterable<E> {
     fun enqueue(element: E)

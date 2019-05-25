@@ -1,6 +1,6 @@
-package cnife.datastructure.tree
+package com.zhxh.codeproj.kotlin.datastructure.tree
 
-import cnife.datastructure.tree.BinarySortedTree.Node
+import com.zhxh.codeproj.kotlin.datastructure.tree.BinarySortedTree.Node
 
 /**
  * 获得指定节点的最小子节点

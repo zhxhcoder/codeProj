@@ -1,6 +1,6 @@
-package cnife.datastructure
+package com.zhxh.codeproj.kotlin.datastructure
 
-import cnife.datastructure.utils.Result
+import com.zhxh.codeproj.kotlin.datastructure.utils.Result
 
 interface Collection<out E> : Iterable<E> {
     val size: Int

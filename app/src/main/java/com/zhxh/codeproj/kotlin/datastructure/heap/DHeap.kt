@@ -1,6 +1,6 @@
-package cnife.datastructure.heap
+package com.zhxh.codeproj.kotlin.datastructure.heap
 
-import cnife.datastructure.heap.BinaryHeap.Companion.DEFAULT_INITIAL_CAPACITY
+import com.zhxh.codeproj.kotlin.datastructure.heap.BinaryHeap.Companion.DEFAULT_INITIAL_CAPACITY
 import java.util.ConcurrentModificationException
 
 /**

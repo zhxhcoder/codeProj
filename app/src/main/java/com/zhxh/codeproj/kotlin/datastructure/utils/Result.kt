@@ -1,4 +1,4 @@
-package cnife.datastructure.utils
+package com.zhxh.codeproj.kotlin.datastructure.utils
 
 sealed class Result<out T> {
     abstract val value: T

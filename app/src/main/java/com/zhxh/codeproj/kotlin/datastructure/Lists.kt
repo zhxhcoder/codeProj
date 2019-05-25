@@ -1,4 +1,4 @@
-package cnife.datastructure
+package com.zhxh.codeproj.kotlin.datastructure
 
 interface List<out E> : Collection<E> {
     operator fun get(index: Int): E
