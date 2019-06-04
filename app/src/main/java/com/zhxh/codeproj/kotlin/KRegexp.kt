@@ -9,10 +9,10 @@ object KRegexp {
 
 
         println("************多行************")
-        val s0 = Regex("""@\d{2}""".trimMargin()).findAll("@6732eed3\n@66662eed3".trimMargin()).toList()
+        val s0 = Regex("""^@\d{2}|(?<=\n)@\d{2}""".trimMargin()).findAll("@6132e\\n@62ed3\n@63662eed3".trimMargin()).toList()
 
         s0.forEach {
-            println("多行匹配值 " + it.value)
+            println("多行匹配值-> " + it.value)
             println(it.range.start)
             println(it.range.endInclusive)
         }
