@@ -7,9 +7,10 @@ object KRegexp {
     @JvmStatic
     fun main(args: Array<String>) {
 
+        val strT="*海清：科学家不要把自己的道德底线抛弃\n*小亮：科虚假不要把急急急科虚假不要把急急急\n*吴玉回复@海清：说得好"
 
         println("************多行************")
-        val s0 = Regex("""^@\d{2}|(?<=\n)@\d{2}""".trimMargin()).findAll("@6132e\\n@62ed3\n@63662eed3".trimMargin()).toList()
+        val s0 = Regex("""^\*.+：|(?<=\n)\*.+：""".trimMargin()).findAll(strT.trimMargin()).toList()
 
         s0.forEach {
             println("多行匹配值-> " + it.value)
