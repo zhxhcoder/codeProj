@@ -17,5 +17,6 @@ public class JavaTest1 {
         System.out.println(str1);
         System.out.println(5/2);
         System.out.println(5>>1);
+        System.out.println(5<<1);
     }
 }
