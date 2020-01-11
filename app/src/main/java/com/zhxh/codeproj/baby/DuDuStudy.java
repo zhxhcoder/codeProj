@@ -10,5 +10,4 @@ public class DuDuStudy {
             System.out.println(a);
         }
     }
-
 }
