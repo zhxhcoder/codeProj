@@ -1,10 +1,5 @@
 package com.zhxh.codeproj.leetcode;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 //给定一个链表: 1->2->3->4->5, 和 n = 2.
 public class LeetCode19 {
     public static void main(String[] args) {
@@ -22,7 +17,7 @@ public class LeetCode19 {
         Solution solution = new Solution();
         ListNode ans = solution.removeNthFromEnd(n1, 3);
 
-        while (ans!= null) {
+        while (ans != null) {
             System.out.println(ans.val);
             ans = ans.next;
         }
