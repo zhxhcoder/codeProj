@@ -11,10 +11,11 @@ import java.util.List;
  * 遍历排序后数组：
  * 若 nums[i]>0nums[i]>0：因为已经排序好，所以后面不可能有三个数加和等于 00，直接返回结果。
  * 对于重复元素：跳过，避免出现重复解
- * 令左指针 L=i+1L=i+1，右指针 R=n-1R=n−1，当 L<RL<R 时，执行循环：
- * 当 nums[i]+nums[L]+nums[R]==0nums[i]+nums[L]+nums[R]==0，执行循环，判断左界和右界是否和下一位置重复，去除重复解。并同时将 L,RL,R 移到下一位置，寻找新的解
- * 若和大于 00，说明 nums[R]nums[R] 太大，RR 左移
- * 若和小于 00，说明 nums[L]nums[L] 太小，LL 右移
+ * 令左指针 L=i+1，右指针 R=R=n−1，当 L<R时，执行循环：
+ *
+ * 当 nums[i]+nums[L]+nums[R]==0，执行循环，判断左界和右界是否和下一位置重复，去除重复解。并同时将 L,R移到下一位置，寻找新的解
+ * 若和大于 00，说明 nums[R] 太大，RR 左移
+ * 若和小于 00，说明 nums[L] 太小，LL 右移
  */
 public class LeetCode15 {
     public static void main(String[] args) {
