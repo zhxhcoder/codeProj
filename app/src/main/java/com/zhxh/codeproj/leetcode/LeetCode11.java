@@ -2,13 +2,9 @@ package com.zhxh.codeproj.leetcode;
 
 public class LeetCode11 {
     public static void main(String[] args) {
-
         int[] height = {1, 8, 6, 2, 5, 4, 8, 3, 7};
-
         Solution solution = new Solution();
-
         int maxArea = solution.maxArea(height);
-
         System.out.println("maxArea:" + maxArea);
     }
 
