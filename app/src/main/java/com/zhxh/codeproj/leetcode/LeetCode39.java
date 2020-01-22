@@ -8,7 +8,7 @@ import java.util.Stack;
 public class LeetCode39 {
 
     public static void main(String[] args) {
-        int[] candidates = {3, 2, 4, 6, 7};
+        int[] candidates = {3, 2, 4, 6, 1, 7};
         int target = 7;
         Solution solution = new Solution();
         List<List<Integer>> combinationSum = solution.combinationSum(candidates, target);
