@@ -1,7 +1,20 @@
 package com.zhxh.codeproj.leetcode;
 
 public class LeetCode64 {
-    public class Solution {
+    public static void main(String[] args) {
+
+        Solution solution = new Solution();
+        int[][] grid = {
+                {1, 3, 1},
+                {1, 5, 1},
+                {4, 2, 1}
+        };
+
+        System.out.println(solution.minPathSum(grid));
+    }
+
+
+    static class Solution {
         public int minPathSum(int[][] grid) {
             int[][] dp = new int[grid.length][grid[0].length];
             for (int i = grid.length - 1; i >= 0; i--) {
