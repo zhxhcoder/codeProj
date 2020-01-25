@@ -1,6 +1,5 @@
 package com.zhxh.codeproj.leetcode;
 
-
 public class LeetCode70 {
 
     public static void main(String[] args) {

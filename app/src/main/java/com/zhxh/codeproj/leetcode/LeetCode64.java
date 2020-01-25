@@ -2,7 +2,6 @@ package com.zhxh.codeproj.leetcode;
 
 public class LeetCode64 {
     public static void main(String[] args) {
-
         Solution solution = new Solution();
         int[][] grid = {
                 {1, 3, 1},
@@ -12,7 +11,6 @@ public class LeetCode64 {
 
         System.out.println(solution.minPathSum(grid));
     }
-
 
     static class Solution {
         public int minPathSum(int[][] grid) {
