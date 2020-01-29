@@ -4,7 +4,17 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class LeetCode141 {
-    class ListNode {
+
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+
+        ListNode node1 = new ListNode(3);
+
+    }
+
+
+    static class ListNode {
         int val;
         ListNode next;
 
@@ -14,7 +24,7 @@ public class LeetCode141 {
         }
     }
 
-    public class Solution {
+    static class Solution {
         public boolean hasCycle(ListNode head) {
             Set<ListNode> nodesSeen = new HashSet<>();
             while (head != null) {
