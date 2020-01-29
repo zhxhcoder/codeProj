@@ -2,7 +2,15 @@ package com.zhxh.codeproj.leetcode;
 
 public class LeetCode07 {
 
-    class Solution {
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+        int x = 619;
+        int y = solution.reverse(x);
+
+        System.out.print(y);
+    }
+
+    static class Solution {
         public int reverse(int x) {
             int rev = 0;
             while (x != 0) {
