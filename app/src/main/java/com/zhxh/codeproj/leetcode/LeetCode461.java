@@ -2,8 +2,12 @@ package com.zhxh.codeproj.leetcode;
 
 public class LeetCode461 {
 
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+        System.out.print(solution.hammingDistance(1, 4));
+    }
 
-    class Solution {
+    static class Solution {
         public int hammingDistance(int x, int y) {
             int i = x ^ y;
             int count = 0;
