@@ -1,15 +1,8 @@
 package com.zhxh.codeproj.leetcode;
 
+import com.zhxh.codeproj.leetcode.support.ListNode;
+
 public class LeetCode160 {
-
-    public class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-        }
-    }
 
     public class Solution {
         public ListNode getIntersectionNode(ListNode headA, ListNode headB) {

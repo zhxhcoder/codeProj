@@ -1,5 +1,7 @@
 package com.zhxh.codeproj.javatest.javatest5;
 
+import com.zhxh.codeproj.leetcode.support.ListNode;
+
 /**
  * Created by zhxh on 2019/4/4
  */
@@ -10,7 +12,7 @@ public class JavaTest5 {
         if (l2 == null) return l1;
 
         ListNode head;
-        if (l1.val <= l2.val) {
+        if (l1.value <= l2.value) {
             head = l1;
             head.next = mergeTwoLists(l1.next, l2);
         } else {
@@ -22,9 +24,9 @@ public class JavaTest5 {
 
     public static void printNodeList(ListNode node) {
         if (node != null) {
-            System.out.println(node.val);
+            System.out.println(node.value);
             while (node.hasNext()) {
-                System.out.println(node.next.val);
+                System.out.println(node.next.value);
                 node = node.next;
             }
         }
@@ -67,8 +69,8 @@ public class JavaTest5 {
         int carry = 0; // 初始进位
         int sum;
         while (p1 != null && p2 != null) {
-            sum = p1.val + p2.val + carry;
-            p1.val = sum % 10; // 本位的结果
+            sum = p1.value + p2.value + carry;
+            p1.value = sum % 10; // 本位的结果
             carry = sum / 10; // 本次进位
 
             r.next = p1;
@@ -87,8 +89,8 @@ public class JavaTest5 {
         if (carry == 1) {
             // 开始时r.next是第一个要相加的结点
             while (r.next != null) {
-                sum = r.next.val + carry;
-                r.next.val = sum % 10;
+                sum = r.next.value + carry;
+                r.next.value = sum % 10;
                 carry = sum / 10;
                 r = r.next;
             }

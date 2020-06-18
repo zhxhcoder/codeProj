@@ -1,5 +1,7 @@
 package com.zhxh.codeproj.leetcode;
 
+import com.zhxh.codeproj.leetcode.support.ListNode;
+
 //给定一个链表: 1->2->3->4->5, 和 n = 2.
 public class LeetCode19 {
     public static void main(String[] args) {
@@ -18,19 +20,11 @@ public class LeetCode19 {
         ListNode ans = solution.removeNthFromEnd(n1, 3);
 
         while (ans != null) {
-            System.out.println(ans.val);
+            System.out.println(ans.value);
             ans = ans.next;
         }
     }
 
-    static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-        }
-    }
 
     static class Solution {
         public ListNode removeNthFromEnd(ListNode head, int n) {

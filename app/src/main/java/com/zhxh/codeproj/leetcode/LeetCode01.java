@@ -27,17 +27,12 @@ public class LeetCode01 {
         }
 
         public int[] twoSumHash(int[] nums, int target) {
-
             Map<Integer, Integer> map = new HashMap<>();
-
             for (int i = 0; i < nums.length; i++) {
                 map.put(nums[i], i);
             }
-
             Iterator it = map.keySet().iterator();
-
             int key, value;
-
             while (it.hasNext()) {
                 key = (int) it.next();
                 value = map.get(key);
@@ -46,7 +41,6 @@ public class LeetCode01 {
                     return new int[]{value, map.get(left)};
                 }
             }
-
             throw new IllegalArgumentException("No two sum solution");
         }
 

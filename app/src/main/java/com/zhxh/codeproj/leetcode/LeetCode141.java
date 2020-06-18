@@ -1,5 +1,7 @@
 package com.zhxh.codeproj.leetcode;
 
+import com.zhxh.codeproj.leetcode.support.ListNode;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -8,16 +10,6 @@ public class LeetCode141 {
     public static void main(String[] args) {
         Solution solution = new Solution();
         ListNode node1 = new ListNode(3);
-    }
-
-    static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-            next = null;
-        }
     }
 
     static class Solution {

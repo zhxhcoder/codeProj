@@ -1,21 +1,13 @@
 package com.zhxh.codeproj.leetcode;
 
+import com.zhxh.codeproj.leetcode.support.ListNode;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class LeetCode234 {
     public static void main(String[] args) {
 
-    }
-
-
-    public class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-        }
     }
 
     class Solution {
@@ -25,7 +17,7 @@ public class LeetCode234 {
             // 转换 LinkedList 为 ArrayList.
             ListNode currentNode = head;
             while (currentNode != null) {
-                vals.add(currentNode.val);
+                vals.add(currentNode.value);
                 currentNode = currentNode.next;
             }
 

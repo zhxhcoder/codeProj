@@ -1,5 +1,7 @@
 package com.zhxh.codeproj.kotlin.leetcode
 
+import com.zhxh.codeproj.leetcode.support.ListNode
+
 /**
  * Created by zhxh on 2019/05/19
  */
@@ -27,15 +29,7 @@ object LeetCode002 {
         }
         return dummyHead.next!!
     }
-    
-    class ListNode internal constructor(internal var value: Int) {
-        internal var next: ListNode? = null
-        
-        internal operator fun hasNext(): Boolean {
-            return next != null
-        }
-    }
-    
+
     private fun printNodeList(valNode: ListNode) {
         var node = valNode
         println(node.value)
