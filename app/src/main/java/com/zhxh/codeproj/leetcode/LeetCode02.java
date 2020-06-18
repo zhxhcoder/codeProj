@@ -6,8 +6,14 @@ import com.zhxh.codeproj.leetcode.support.ListNode;
 public class LeetCode02 {
     public static void main(String[] args) {
         Solution solution = new Solution();
-        int[] nums = {2, 7, 11, 8, 15};
-        int target = 17;
+
+        ListNode node1 = ListNode.buildNode(new int[]{2, 4, 3});
+        ListNode node2 = ListNode.buildNode(new int[]{5, 6, 4});
+
+        ListNode.printNode(node1);
+        ListNode.printNode(node2);
+
+        ListNode.printNode(solution.addTwoNumbers(node1, node2));
     }
 
     static class Solution {
