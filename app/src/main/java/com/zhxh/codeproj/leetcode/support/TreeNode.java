@@ -1,5 +1,6 @@
 package com.zhxh.codeproj.leetcode.support;
 
+import java.util.ArrayList;
 import java.util.Deque;
 import java.util.LinkedList;
 
@@ -24,8 +25,21 @@ public class TreeNode {
     }
 
     public static void printTree(TreeNode root) {
-        System.out.print("->" + root.val);
-
+        ArrayList<TreeNode> treeList = new ArrayList<>();
+        if (root == null) {
+            return;
+        }
+        treeList.add(root);
+        while (treeList.size() > 0) {
+            TreeNode node = treeList.remove(0);
+            if (node.left != null) {
+                treeList.add(node.left);
+            }
+            if (node.right != null) {
+                treeList.add(node.right);
+            }
+            System.out.print("->" + node.val);
+        }
     }
 
     public static TreeNode buildTree(Integer[] nums) {
