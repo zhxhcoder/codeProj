@@ -20,7 +20,7 @@ public class LeetCode19 {
         ListNode ans = solution.removeNthFromEnd(n1, 3);
 
         while (ans != null) {
-            System.out.println(ans.value);
+            System.out.println(ans.val);
             ans = ans.next;
         }
     }

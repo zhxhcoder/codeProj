@@ -4,7 +4,7 @@ package com.zhxh.codeproj.leetcode.support;
  * Created by zhxh on 2020/6/18
  */
 public class ListNode {
-    public int value;
+    public int val;
     public ListNode next;
 
     public boolean hasNext() {
@@ -12,17 +12,16 @@ public class ListNode {
     }
 
     public ListNode(int x) {
-        value = x;
+        val = x;
         next = null;
     }
 
 
     //以下为静态方法
-
-    public static void printNode(ListNode node) {
-        System.out.print("->" + node.value);
-        if (node.hasNext()) {
-            printNode(node.next);
+    public static void printNode(ListNode head) {
+        System.out.print("->" + head.val);
+        if (head.hasNext()) {
+            printNode(head.next);
         } else {
             System.out.print("\n");
         }

@@ -22,8 +22,8 @@ public class LeetCode02 {
             ListNode curr = dummyHead;
             int carry = 0;
             while (p != null || q != null) {
-                int x = (p != null) ? p.value : 0;
-                int y = (q != null) ? q.value : 0;
+                int x = (p != null) ? p.val : 0;
+                int y = (q != null) ? q.val : 0;
                 int sum = carry + x + y;
                 carry = sum / 10;
                 curr.next = new ListNode(sum % 10);

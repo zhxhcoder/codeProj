@@ -17,7 +17,7 @@ public class LeetCode234 {
             // 转换 LinkedList 为 ArrayList.
             ListNode currentNode = head;
             while (currentNode != null) {
-                vals.add(currentNode.value);
+                vals.add(currentNode.val);
                 currentNode = currentNode.next;
             }
 
