@@ -1,6 +1,9 @@
 package com.zhxh.codeproj.leetcode;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 //两个数之和
 public class LeetCode01 {
@@ -8,17 +11,67 @@ public class LeetCode01 {
         Solution solution = new Solution();
         int[] nums = {2, 7, 11, 8, 15};
         int target = 17;
-        System.out.print(Arrays.toString(solution.twoSum(target, nums)));
+        System.out.print(Arrays.toString(solution.twoSum3(nums, target)));
     }
 
     static class Solution {
-        public int[] twoSum(int target, int[] nums) {
+        public int[] twoSum1(int[] nums, int target) {
             for (int i = 0; i < nums.length; i++) {
                 for (int j = i + 1; j < nums.length; j++) {
                     if (nums[j] == target - nums[i]) {
                         return new int[]{i, j};
                     }
                 }
+            }
+            throw new IllegalArgumentException("No two sum solution");
+        }
+
+        public int[] twoSumHash(int[] nums, int target) {
+
+            Map<Integer, Integer> map = new HashMap<>();
+
+            for (int i = 0; i < nums.length; i++) {
+                map.put(nums[i], i);
+            }
+
+            Iterator it = map.keySet().iterator();
+
+            int key, value;
+
+            while (it.hasNext()) {
+                key = (int) it.next();
+                value = map.get(key);
+                int left = target - key;
+                if (map.containsKey(left) && value != map.get(left)) {
+                    return new int[]{value, map.get(left)};
+                }
+            }
+
+            throw new IllegalArgumentException("No two sum solution");
+        }
+
+        public int[] twoSum2(int[] nums, int target) {
+            Map<Integer, Integer> map = new HashMap<>();
+            for (int i = 0; i < nums.length; i++) {
+                map.put(nums[i], i);
+            }
+            for (int i = 0; i < nums.length; i++) {
+                int left = target - nums[i];
+                if (map.containsKey(left) && map.get(left) != i) {
+                    return new int[]{i, map.get(left)};
+                }
+            }
+            throw new IllegalArgumentException("No two sum solution");
+        }
+
+        public int[] twoSum3(int[] nums, int target) {
+            Map<Integer, Integer> map = new HashMap<>();
+            for (int i = 0; i < nums.length; i++) {
+                int left = target - nums[i];
+                if (map.containsKey(left)) {
+                    return new int[]{map.get(left), i};
+                }
+                map.put(nums[i], i);
             }
             throw new IllegalArgumentException("No two sum solution");
         }
