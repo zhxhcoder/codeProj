@@ -24,6 +24,7 @@ public class TreeNode {
         return root == null ? 0 : (1 + Math.max(getTreeDepth(root.left), getTreeDepth(root.right)));
     }
 
+    //中序遍历树
     public static void printTree(TreeNode root) {
         ArrayList<TreeNode> treeList = new ArrayList<>();
         if (root == null) {
