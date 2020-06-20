@@ -1,30 +1,43 @@
 package com.zhxh.codeproj.leetcode;
 
+import com.zhxh.codeproj.leetcode.support.TreeNode;
+
+/*
+
+给定一个二叉树，检查它是否是镜像对称的。
+
+
+
+例如，二叉树 [1,2,2,3,4,4,3] 是对称的。
+
+    1
+   / \
+  2   2
+ / \ / \
+3  4 4  3
+
+
+但是下面这个 [1,2,2,null,3,null,3] 则不是镜像对称的:
+
+    1
+   / \
+  2   2
+   \   \
+   3    3
+
+
+进阶：
+
+你可以运用递归和迭代两种方法解决这个问题吗？
+ */
 public class LeetCode101 {
-    /**
-     * Definition for a binary tree node.
-     * public class TreeNode {
-     * int val;
-     * TreeNode left;
-     * TreeNode right;
-     * TreeNode(int x) { val = x; }
-     * }
-     */
     public static void main(String[] args) {
         Solution solution = new Solution();
 
-        Solution.TreeNode node1 = new Solution.TreeNode(1);
-        Solution.TreeNode node2 = new Solution.TreeNode(2);
-        Solution.TreeNode node3 = new Solution.TreeNode(3);
-        Solution.TreeNode node4 = new Solution.TreeNode(4);
-        Solution.TreeNode node5 = new Solution.TreeNode(5);
+        TreeNode node0 = TreeNode.buildTree(new Integer[]{1, 2, 2, null, 3, null, 3});
+        TreeNode node1 = TreeNode.buildTree(new Integer[]{1, 2, 2, 3, 4, 4, 3});
 
-        node1.left = node2;
-        node1.right = node3;
-        node2.left = node4;
-        node2.right = node5;
-
-
+        System.out.println(solution.isSymmetric(node0));
         System.out.println(solution.isSymmetric(node1));
 
     }
@@ -40,16 +53,6 @@ public class LeetCode101 {
             return (t1.val == t2.val)
                     && isMirror(t1.right, t2.left)
                     && isMirror(t1.left, t2.right);
-        }
-
-        static public class TreeNode {
-            int val;
-            TreeNode left;
-            TreeNode right;
-
-            TreeNode(int x) {
-                val = x;
-            }
         }
     }
 
