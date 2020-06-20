@@ -1,23 +1,17 @@
 package com.zhxh.codeproj.leetcode;
 
+import com.zhxh.codeproj.leetcode.support.TreeNode;
+
 public class LeetCode543 {
 
     public static void main(String[] args) {
         Solution solution = new Solution();
 
-        Solution.TreeNode node1 = new Solution.TreeNode(1);
-        Solution.TreeNode node2 = new Solution.TreeNode(2);
-        Solution.TreeNode node3 = new Solution.TreeNode(3);
-        Solution.TreeNode node4 = new Solution.TreeNode(4);
-        Solution.TreeNode node5 = new Solution.TreeNode(5);
+        TreeNode node0 = TreeNode.buildTree(new Integer[]{1, 2, 2, null, 3, null, 3});
 
-        node1.left = node2;
-        node1.right = node3;
-        node2.left = node4;
-        node2.right = node5;
 
-        System.out.println(solution.depth(node1));
-        System.out.println(solution.diameterOfBinaryTree(node1));
+        System.out.println(solution.depth(node0));
+        System.out.println(solution.diameterOfBinaryTree(node0));
     }
 
     static class Solution {
@@ -37,14 +31,5 @@ public class LeetCode543 {
             return Math.max(L, R) + 1;
         }
 
-        static class TreeNode {
-            int val;
-            TreeNode left;
-            TreeNode right;
-
-            TreeNode(int x) {
-                val = x;
-            }
-        }
     }
 }

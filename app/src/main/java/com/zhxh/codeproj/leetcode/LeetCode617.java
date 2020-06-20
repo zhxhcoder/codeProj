@@ -1,15 +1,8 @@
 package com.zhxh.codeproj.leetcode;
 
-public class LeetCode617 {
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
+import com.zhxh.codeproj.leetcode.support.TreeNode;
 
-        TreeNode(int x) {
-            val = x;
-        }
-    }
+public class LeetCode617 {
 
     public class Solution {
         public TreeNode mergeTrees(TreeNode t1, TreeNode t2) {

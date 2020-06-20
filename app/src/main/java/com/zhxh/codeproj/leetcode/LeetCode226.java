@@ -1,16 +1,10 @@
 package com.zhxh.codeproj.leetcode;
 
+import com.zhxh.codeproj.leetcode.support.TreeNode;
+
 public class LeetCode226 {
 
-    static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
 
-        TreeNode(int x) {
-            val = x;
-        }
-    }
 
     class Solution {
         public TreeNode invertTree(TreeNode root) {

@@ -1,15 +1,9 @@
 package com.zhxh.codeproj.leetcode;
 
-public class LeetCode538 {
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
+import com.zhxh.codeproj.leetcode.support.TreeNode;
 
-        TreeNode(int x) {
-            val = x;
-        }
-    }
+public class LeetCode538 {
+
 
     class Solution {
         private int sum = 0;
