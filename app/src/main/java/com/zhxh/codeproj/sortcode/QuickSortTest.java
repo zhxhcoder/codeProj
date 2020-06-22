@@ -1,7 +1,6 @@
 package com.zhxh.codeproj.sortcode;
 
 import java.util.Arrays;
-import java.util.Random;
 
 public class QuickSortTest {
     public static void main(String[] args) {
@@ -28,7 +27,7 @@ public class QuickSortTest {
     public static void quickSort(int[] arr, int L, int R) {
         if (L < R) {
             // 把数组中随机的一个元素与最后一个元素交换，这样以最后一个元素作为基准值实际上就是以数组中随机的一个元素作为基准值
-            swap(arr, new Random().nextInt(R - L + 1) + L, R);
+            swap(arr, L, R);
             int[] p = partition(arr, L, R);
             quickSort(arr, L, p[0] - 1);
             quickSort(arr, p[1] + 1, R);
