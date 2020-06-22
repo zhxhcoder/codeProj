@@ -1,12 +1,12 @@
 package com.zhxh.codeproj.sortcode;
 
+import java.util.Arrays;
+
 public class QuickSortTest {
     public static void main(String[] args) {
         int[] arr = {0, 3, 0, 4, 5, 1, 5, 1, 5, 1, 5, 1};
         quickSort(arr, 0, arr.length - 1);
-        for (int a : arr) {
-            System.out.println(a);
-        }
+        System.out.println(Arrays.toString(arr));
     }
 
     private static void quickSort(int[] arr, int begin, int end) {
