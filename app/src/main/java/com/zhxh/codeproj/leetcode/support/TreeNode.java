@@ -5,17 +5,23 @@ import java.util.ArrayList;
 import java.util.Deque;
 import java.util.LinkedList;
 
-/**
+/*
  * Created by zhxh on 2020/6/18
  * 特指二叉树
+ *
+ *
  */
 public class TreeNode {
 
     public static void main(String[] args) {
-//        TreeNode node1 = TreeNode.buildBinaryTree(new Integer[]{1, 2, 3, null, 4, null, 5, null, null, null, null, null, 6});
-        TreeNode node1 = TreeNode.buildBinaryTree(new Integer[]{1, 2, 3, null, 4, null, 5, null, 6});
-        System.out.println(getTreeDepth(node1));
-        printBinaryTree(node1);
+
+        TreeNode node1 = buildBinaryTree(new Integer[]{1, 2, 3, null, 4, null, 5, null, 6});
+
+        printTree(node1);
+
+        System.out.println("\n*************\n");
+
+        breakBinaryTree(node1);
     }
 
     public int val;
@@ -57,15 +63,20 @@ public class TreeNode {
         return true;
     }
 
-    public static void printBinaryTree(TreeNode root) {
+    /*
+    与buildBinaryTree相对应 相互生成 中序
+     */
+    public static void breakBinaryTree(TreeNode root) {
         if (root == null) {
+            return;
+        }
+        breakBinaryTree(root.left);
+        System.out.print("->" + root.val);
+        breakBinaryTree(root.right);
+        if (root.left == null && root.right == null) {
             System.out.print("->null");
             return;
         }
-        System.out.print("->" + root.val);
-
-        printBinaryTree(root.left);
-        printBinaryTree(root.right);
     }
 
     public static TreeNode buildBinaryTree(Integer[] nums) {

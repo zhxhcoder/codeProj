@@ -24,7 +24,15 @@ import java.util.Stack;
  */
 class LeetCode94 {
     public static void main(String[] args) {
+        TreeNode node1 = TreeNode.buildBinaryTree(new Integer[]{1, 2, 3, null, 4, null, 5, null, 6});
+        List<Integer> list = new Solution1().inorderTraversal(node1);
+        System.out.println(list);
 
+        TreeNode.printTree(node1);
+
+        System.out.println("\n*************\n");
+
+        TreeNode.breakBinaryTree(node1);
     }
 
     /*

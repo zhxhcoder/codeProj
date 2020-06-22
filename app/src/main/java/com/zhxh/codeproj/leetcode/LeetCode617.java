@@ -1,6 +1,7 @@
 package com.zhxh.codeproj.leetcode;
 
 import com.zhxh.codeproj.leetcode.support.TreeNode;
+
 /*
 
 给定两个二叉树，想象当你将它们中的一个覆盖到另一个上时，两个二叉树的一些节点便会重叠。
@@ -26,8 +27,16 @@ import com.zhxh.codeproj.leetcode.support.TreeNode;
 注意: 合并必须从两个树的根节点开始。
  */
 public class LeetCode617 {
+    public static void main(String[] args) {
+        TreeNode node1 = TreeNode.buildBinaryTree(new Integer[]{1, 3, 2, 5});
+        TreeNode node2 = TreeNode.buildBinaryTree(new Integer[]{2, 1, 3, null, 4, null, 7});
 
-    public class Solution {
+        TreeNode node = new Solution().mergeTrees(node1, node2);
+
+        TreeNode.printTree(node);
+    }
+
+    static class Solution {
         public TreeNode mergeTrees(TreeNode t1, TreeNode t2) {
             if (t1 == null)
                 return t2;
