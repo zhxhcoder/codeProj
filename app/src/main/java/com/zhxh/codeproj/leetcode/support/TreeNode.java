@@ -1,5 +1,6 @@
 package com.zhxh.codeproj.leetcode.support;
 
+
 import java.util.ArrayList;
 import java.util.Deque;
 import java.util.LinkedList;
@@ -9,6 +10,14 @@ import java.util.LinkedList;
  * 特指二叉树
  */
 public class TreeNode {
+
+    public static void main(String[] args) {
+//        TreeNode node1 = TreeNode.buildBinaryTree(new Integer[]{1, 2, 3, null, 4, null, 5, null, null, null, null, null, 6});
+        TreeNode node1 = TreeNode.buildBinaryTree(new Integer[]{1, 2, 3, null, 4, null, 5, null, 6});
+        System.out.println(getTreeDepth(node1));
+        printBinaryTree(node1);
+    }
+
     public int val;
     public TreeNode left;
     public TreeNode right;
@@ -43,7 +52,23 @@ public class TreeNode {
         }
     }
 
-    public static TreeNode buildTree(Integer[] nums) {
+
+    private static boolean isSameTree(TreeNode node1, TreeNode node2) {
+        return true;
+    }
+
+    public static void printBinaryTree(TreeNode root) {
+        if (root == null) {
+            System.out.print("->null");
+            return;
+        }
+        System.out.print("->" + root.val);
+
+        printBinaryTree(root.left);
+        printBinaryTree(root.right);
+    }
+
+    public static TreeNode buildBinaryTree(Integer[] nums) {
         if (nums.length == 0) return new TreeNode(0);
         Deque<TreeNode> nodeQueue = new LinkedList<>();
         // 创建一个根节点

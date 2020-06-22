@@ -24,7 +24,7 @@ public class LeetCode104 {
 
     public static void main(String[] args) {
         Solution solution = new Solution();
-        TreeNode node0 = TreeNode.buildTree(new Integer[]{1, 2, 2, null, 3, null, 3});
+        TreeNode node0 = TreeNode.buildBinaryTree(new Integer[]{1, 2, 2, null, 3, null, 3});
         System.out.println(solution.maxDepth(node0));
     }
 

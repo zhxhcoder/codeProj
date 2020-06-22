@@ -34,8 +34,8 @@ public class LeetCode101 {
     public static void main(String[] args) {
         Solution solution = new Solution();
 
-        TreeNode node0 = TreeNode.buildTree(new Integer[]{1, 2, 2, null, 3, null, 3});
-        TreeNode node1 = TreeNode.buildTree(new Integer[]{1, 2, 2, 3, 4, 4, 3});
+        TreeNode node0 = TreeNode.buildBinaryTree(new Integer[]{1, 2, 2, null, 3, null, 3});
+        TreeNode node1 = TreeNode.buildBinaryTree(new Integer[]{1, 2, 2, 3, 4, 4, 3});
 
         System.out.println(solution.isSymmetric(node0));
         System.out.println(solution.isSymmetric(node1));
