@@ -4,7 +4,8 @@ import java.util.Arrays;
 
 public class QuickSortTest {
     public static void main(String[] args) {
-        int[] arr = {0, 3, 0, 4, 5, 1, 5, 1, 5, 1, 5, 1};
+        int[] arr = {0, 3, -10, 4, 5, 1, -5, 1, 5, -1, 5, 1};
+        System.out.println(Arrays.toString(arr));
         quickSort(arr, 0, arr.length - 1);
         System.out.println(Arrays.toString(arr));
     }
@@ -21,10 +22,14 @@ public class QuickSortTest {
     private static int partition(int[] arr, int begin, int end) {
         int pivot = arr[begin];     //枢轴记录
         while (begin < end) {
-            while (begin < end && arr[end] >= pivot) --end;
-            arr[begin] = arr[end];             //交换比枢轴小的记录到左端
-            while (begin < end && arr[begin] <= pivot) ++begin;
-            arr[end] = arr[begin];           //交换比枢轴小的记录到右端
+            while (begin < end && arr[end] >= pivot) {
+                --end;
+            }
+            arr[begin] = arr[end]; //交换比枢轴小的记录到左端
+            while (begin < end && arr[begin] <= pivot) {
+                ++begin;
+            }
+            arr[end] = arr[begin];//交换比枢轴小的记录到右端
         }
         //扫描完成，枢轴到位
         arr[begin] = pivot;
