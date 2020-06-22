@@ -1,6 +1,6 @@
 package com.zhxh.codeproj.javatest.javatest5;
 
-import com.zhxh.codeproj.leetcode.support.ListNode;
+import com.zhxh.codeproj.leetcode._bean.ListNode;
 
 /**
  * Created by zhxh on 2019/4/4
