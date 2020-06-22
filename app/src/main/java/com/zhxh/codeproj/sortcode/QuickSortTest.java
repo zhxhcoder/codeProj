@@ -43,7 +43,6 @@ public class QuickSortTest {
      * 返回等于部分的第一个元素的下标和最后一个下标组成的整数数组
      */
     public static int[] partition(int[] arr, int L, int R) {
-
         int basic = arr[R];
         int less = L - 1;
         int more = R + 1;
@@ -56,9 +55,7 @@ public class QuickSortTest {
                 L++;
             }
         }
-
         return new int[]{less + 1, more - 1};
-
     }
 
     /*
