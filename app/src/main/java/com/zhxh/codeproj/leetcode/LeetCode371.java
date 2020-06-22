@@ -17,15 +17,15 @@ public class LeetCode371 {
 
     public static void main(String[] args) {
 
-        int a=32;
-        int b=4;
+        int a = 32;
+        int b = 4;
 
-        Solution solution=new Solution();
+        Solution solution = new Solution();
 
-        System.out.println(solution.getSum(a,b));
+        System.out.println(solution.getSum(a, b));
     }
 
-   static class Solution {
+    static class Solution {
         public int getSum(int a, int b) {
             while (b != 0) {
                 int temp = a ^ b;

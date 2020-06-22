@@ -7,8 +7,9 @@ public class ConcreteDecorator2 extends Decorator {
     public ConcreteDecorator2(Component component) {
         super(component);
     }
+
     //special method
-    private void method2(){
+    private void method2() {
         System.out.println("method2 decorator");
     }
 

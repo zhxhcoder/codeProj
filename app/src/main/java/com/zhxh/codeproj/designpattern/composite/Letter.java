@@ -23,9 +23,7 @@
 package com.zhxh.codeproj.designpattern.composite;
 
 /**
- *
  * Letter
- *
  */
 public class Letter extends LetterComposite {
     private char c;

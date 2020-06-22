@@ -21,7 +21,7 @@ interface Map<K, out V> {
     operator fun get(key: K): Result<V>
 
     fun getOrDefault(key: K, defaultValue: @UnsafeVariance V): V =
-        get(key).let { if (it === Failure) defaultValue else it.value }
+            get(key).let { if (it === Failure) defaultValue else it.value }
 
     val entries: Set<Entry<K, V>>
 

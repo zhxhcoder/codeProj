@@ -5,7 +5,7 @@ package com.zhxh.codeproj.designpattern.observer;
  */
 public class ConcreteObservable extends Observable {
     //do something
-    public void doSomething(String msg){
+    public void doSomething(String msg) {
         //todo something
         super.notifyObservers(msg);
     }

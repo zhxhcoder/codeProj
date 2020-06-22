@@ -4,7 +4,7 @@ import java.util.concurrent.locks.*
 import kotlin.coroutines.*
 
 fun <T> runBlocking(context: CoroutineContext, block: suspend () -> T): T =
-    BlockingCoroutine<T>(context).also { block.startCoroutine(it) }.getValue()
+        BlockingCoroutine<T>(context).also { block.startCoroutine(it) }.getValue()
 
 private class BlockingCoroutine<T>(override val context: CoroutineContext) : Continuation<T> {
     private val lock = ReentrantLock()

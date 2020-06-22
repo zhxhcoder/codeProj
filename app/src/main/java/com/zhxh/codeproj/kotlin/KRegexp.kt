@@ -7,7 +7,7 @@ object KRegexp {
     @JvmStatic
     fun main(args: Array<String>) {
 
-        val strT="*海清：科学家不要把自己的道德底线抛弃\n*小亮：科虚假不要把急急急科虚假不要把急急急\n*吴玉回复@海清：说得好"
+        val strT = "*海清：科学家不要把自己的道德底线抛弃\n*小亮：科虚假不要把急急急科虚假不要把急急急\n*吴玉回复@海清：说得好"
 
         println("************多行************")
         val s0 = Regex("""^\*.+：|(?<=\n)\*.+：""".trimMargin()).findAll(strT.trimMargin()).toList()

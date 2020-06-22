@@ -21,7 +21,7 @@ public class MyInvocationHandler implements InvocationHandler {
         long start = System.currentTimeMillis();
 
         try {
-            method.invoke(bird, new Object[] {});
+            method.invoke(bird, new Object[]{});
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (InvocationTargetException e) {

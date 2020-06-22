@@ -31,7 +31,7 @@ fun <T, R> generate(block: suspend GeneratorBuilder<T, R>.(R) -> Unit): Generato
 }
 
 // Generator coroutine implementation class
-internal class GeneratorCoroutine<T, R>: Generator<T, R>, GeneratorBuilder<T, R>, Continuation<Unit> {
+internal class GeneratorCoroutine<T, R> : Generator<T, R>, GeneratorBuilder<T, R>, Continuation<Unit> {
     lateinit var nextStep: (R) -> Unit
     private var lastValue: T? = null
     private var lastException: Throwable? = null
@@ -52,7 +52,7 @@ internal class GeneratorCoroutine<T, R>: Generator<T, R>, GeneratorBuilder<T, R>
         COROUTINE_SUSPENDED
     }
 
-    override suspend fun yieldAll(generator: Generator<T, R>, param: R): Unit = suspendCoroutineUninterceptedOrReturn sc@ { cont ->
+    override suspend fun yieldAll(generator: Generator<T, R>, param: R): Unit = suspendCoroutineUninterceptedOrReturn sc@{ cont ->
         lastValue = generator.next(param)
         if (lastValue == null) return@sc Unit // delegated coroutine does not generate anything -- resume
         nextStep = { param ->
@@ -68,7 +68,7 @@ internal class GeneratorCoroutine<T, R>: Generator<T, R>, GeneratorBuilder<T, R>
 
     override fun resumeWith(result: Result<Unit>) {
         result
-            .onSuccess { lastValue = null }
-            .onFailure { lastException = it }
+                .onSuccess { lastValue = null }
+                .onFailure { lastException = it }
     }
 }

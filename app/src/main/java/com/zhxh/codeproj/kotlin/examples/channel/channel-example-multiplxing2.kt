@@ -8,7 +8,7 @@ import com.zhxh.codeproj.kotlin.examples.channel.boring.*
 suspend fun fanIn(input1: ReceiveChannel<String>, input2: ReceiveChannel<String>): ReceiveChannel<String> {
     val c = Channel<String>()
     go {
-        while(true) {
+        while (true) {
             val s = select<String> {
                 input1.onReceive { it }
                 input2.onReceive { it }

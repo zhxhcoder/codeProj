@@ -25,9 +25,7 @@ package com.zhxh.codeproj.designpattern.composite;
 import java.util.List;
 
 /**
- *
  * Word
- *
  */
 public class Word extends LetterComposite {
     /**

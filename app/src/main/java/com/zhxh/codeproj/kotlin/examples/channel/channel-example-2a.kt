@@ -20,7 +20,7 @@ suspend fun sum(s: List<Int>, c: SendChannel<Int>) {
 fun main(args: Array<String>) = mainBlocking {
     val s = listOf(7, 2, 8, -9, 4, 0)
     val c = Channel<Int>()
-    go { sum(s.subList(s.size /2, s.size), c) }
+    go { sum(s.subList(s.size / 2, s.size), c) }
     go { sum(s.subList(0, s.size / 2), c) }
     val time = measureTimeMillis {
         val x = c.receive()

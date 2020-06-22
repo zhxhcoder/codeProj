@@ -23,10 +23,8 @@
 package com.zhxh.codeproj.architecture.lazyloading;
 
 /**
- *
  * Same as HolderNaive but with added synchronization. This implementation is thread safe, but each
  * {@link #getHeavy()} call costs additional synchronization overhead.
- *
  */
 public class HolderThreadSafe {
     private Heavy heavy;

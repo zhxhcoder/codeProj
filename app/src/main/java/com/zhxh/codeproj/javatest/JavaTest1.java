@@ -15,8 +15,8 @@ public class JavaTest1 {
         String str2 = new String("zhxh");
         append(str1, str2);
         System.out.println(str1);
-        System.out.println(5/2);
-        System.out.println(5>>1);
-        System.out.println(5<<1);
+        System.out.println(5 / 2);
+        System.out.println(5 >> 1);
+        System.out.println(5 << 1);
     }
 }

@@ -10,11 +10,13 @@ fun <T> sequence(block: suspend SequenceScope<T>.() -> Unit): Sequence<T> = Sequ
     }
 }
 
-class SequenceCoroutine<T>: AbstractIterator<T>(), SequenceScope<T>, Continuation<Unit> {
+class SequenceCoroutine<T> : AbstractIterator<T>(), SequenceScope<T>, Continuation<Unit> {
     lateinit var nextStep: Continuation<Unit>
 
     // AbstractIterator implementation
-    override fun computeNext() { nextStep.resume(Unit) }
+    override fun computeNext() {
+        nextStep.resume(Unit)
+    }
 
     // Completion continuation implementation
     override val context: CoroutineContext get() = EmptyCoroutineContext

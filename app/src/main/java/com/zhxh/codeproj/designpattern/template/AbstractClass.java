@@ -6,10 +6,12 @@ package com.zhxh.codeproj.designpattern.template;
 public abstract class AbstractClass {
     //base method
     protected abstract void doSomething();
+
     //base method
     protected abstract void doAnything();
+
     //template method
-    public void templateMethod(){
+    public void templateMethod() {
         //invoke method, do somethings
         this.doAnything();
         this.doSomething();

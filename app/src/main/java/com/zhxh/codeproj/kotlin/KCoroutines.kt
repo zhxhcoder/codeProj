@@ -72,7 +72,7 @@ object KCoroutines {
 
         job.cancel()
 
-        mainExample( arrayOf("1", "1", "1"))
+        mainExample(arrayOf("1", "1", "1"))
 
         Thread.sleep(9100L) // 主线程阻塞以JVM保持激活 如果时间小于协程延迟则不输入协程打印
     }

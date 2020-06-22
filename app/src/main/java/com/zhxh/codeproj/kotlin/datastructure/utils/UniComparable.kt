@@ -25,5 +25,5 @@ interface UniComparable<in E> {
      */
     @Suppress("UNCHECKED_CAST")
     infix fun E.cmp(that: E): Int =
-        comparator?.compare(this, that) ?: (this as Comparable<E>).compareTo(that)
+            comparator?.compare(this, that) ?: (this as Comparable<E>).compareTo(that)
 }

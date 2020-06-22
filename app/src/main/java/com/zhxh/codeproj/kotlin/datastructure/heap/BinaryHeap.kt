@@ -16,9 +16,9 @@ import java.util.ConcurrentModificationException
  * @throws IllegalArgumentException 如果 `initialCapacity < 0`
  */
 class BinaryHeap<E>(
-    initialCapacity: Int = DEFAULT_INITIAL_CAPACITY,
-    fromArray: Array<out E>? = null,
-    override val comparator: Comparator<in E>? = null
+        initialCapacity: Int = DEFAULT_INITIAL_CAPACITY,
+        fromArray: Array<out E>? = null,
+        override val comparator: Comparator<in E>? = null
 ) : Heap<E> {
 
     private var data: Array<Any?>
@@ -131,8 +131,7 @@ class BinaryHeap<E>(
     // 如果 `E !is Comparable<E>`，则抛出 ClassCastException
     @Suppress("UNCHECKED_CAST")
     private infix fun E.cmp(that: E): Int {
-        return comparator?.compare(this, that) ?:
-            (this as Comparable<E>).compareTo(that)
+        return comparator?.compare(this, that) ?: (this as Comparable<E>).compareTo(that)
     }
 
     private fun swap(indexA: Int, indexB: Int) {

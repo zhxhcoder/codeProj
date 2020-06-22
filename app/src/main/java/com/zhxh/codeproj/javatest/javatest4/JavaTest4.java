@@ -2,7 +2,7 @@ package com.zhxh.codeproj.javatest.javatest4;
 
 /**
  * Created by zhxh on 2019/4/6
- *
+ * <p>
  * p_static_field
  * p_static_field_over
  * c_static_field
@@ -13,10 +13,9 @@ package com.zhxh.codeproj.javatest.javatest4;
  * c_field
  * c_field_over
  * c_create_child
- *
- *
+ * <p>
+ * <p>
  * 和直接在Child中一样
- *
  */
 public class JavaTest4 {
     /**
@@ -30,6 +29,7 @@ public class JavaTest4 {
      * c_field
      * c_field_over
      * c_create_child
+     *
      * @param args
      */
     public static void main(String[] args) {

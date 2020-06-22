@@ -5,6 +5,7 @@ package com.zhxh.codeproj.designpattern.builder;
  */
 public abstract class Builder {
     public abstract void setPart();
+
     public abstract Product buildProduct();
 
 }

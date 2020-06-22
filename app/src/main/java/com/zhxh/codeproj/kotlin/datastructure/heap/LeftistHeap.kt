@@ -4,15 +4,15 @@ import java.util.ArrayDeque
 import java.util.Queue
 
 class LeftistHeap<E>(
-    fromIterable: Iterable<E> = emptyList(),
-    override val comparator: Comparator<in E>? = null
+        fromIterable: Iterable<E> = emptyList(),
+        override val comparator: Comparator<in E>? = null
 ) : Heap<E> {
 
     private class Node<E>(
-        @JvmField var element: E,
-        @JvmField var left: Node<E>? = null,
-        @JvmField var right: Node<E>? = null,
-        @JvmField var _npl: Int = 0
+            @JvmField var element: E,
+            @JvmField var left: Node<E>? = null,
+            @JvmField var right: Node<E>? = null,
+            @JvmField var _npl: Int = 0
     )
 
     private var Node<E>?.npl: Int
@@ -59,7 +59,7 @@ class LeftistHeap<E>(
 
     override fun iterator() = object : Iterator<E> {
         private val queue: Queue<Node<E>> =
-            ArrayDeque<Node<E>>().apply { root?.let(::add) }
+                ArrayDeque<Node<E>>().apply { root?.let(::add) }
 
         override fun hasNext() = queue.isNotEmpty()
 
@@ -93,7 +93,7 @@ class LeftistHeap<E>(
     }
 
     private fun merge1(
-        rootSmaller: Node<E>, rootLarger: Node<E>
+            rootSmaller: Node<E>, rootLarger: Node<E>
     ) = rootSmaller.apply {
         right = merge(right, rootLarger)
         if (left.npl < right.npl) swapChildren()
@@ -102,7 +102,6 @@ class LeftistHeap<E>(
 
     @Suppress("UNCHECKED_CAST")
     private infix fun E.cmp(that: E): Int {
-        return comparator?.compare(this, that) ?:
-            (this as Comparable<E>).compareTo(that)
+        return comparator?.compare(this, that) ?: (this as Comparable<E>).compareTo(that)
     }
 }

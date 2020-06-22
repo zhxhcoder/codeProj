@@ -27,12 +27,12 @@ class Success<out T>(override val value: T) : Result<T>() {
 
 
 inline infix fun <T> Result<T>?.ifSuccess(block: (T) -> Unit): Result<T>? =
-    (this as? Success)?.apply { block(value) }
+        (this as? Success)?.apply { block(value) }
 
 inline infix fun <T> Result<T>?.ifFailure(block: () -> Unit): Result<T>? =
-    (this as? Failure)?.apply { block() }
+        (this as? Failure)?.apply { block() }
 
 fun <T> Result<T>.takeIfSuccess(): T? = (this as? Success)?.value
 
 fun <T> Result<T>.toSuccess(valueIfFailure: T): Success<T> =
-    (this as? Success<T>) ?: Success(valueIfFailure)
+        (this as? Success<T>) ?: Success(valueIfFailure)

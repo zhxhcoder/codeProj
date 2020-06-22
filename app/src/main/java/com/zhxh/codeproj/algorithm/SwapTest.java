@@ -17,7 +17,7 @@ public class SwapTest {
 
         //swap(a,b);
         try {
-            swapField(a,b);
+            swapField(a, b);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -32,17 +32,17 @@ public class SwapTest {
     }
 
 
-    private static void swapField(Integer a,Integer b) throws Exception{
-        int temp=a;
-        Class<? extends Integer> aClass=a.getClass();
-        Field aValue=aClass.getDeclaredField("value");
+    private static void swapField(Integer a, Integer b) throws Exception {
+        int temp = a;
+        Class<? extends Integer> aClass = a.getClass();
+        Field aValue = aClass.getDeclaredField("value");
         aValue.setAccessible(true);
-        aValue.set(a,b);
+        aValue.set(a, b);
 
-        Class<? extends Integer> bClass=b.getClass();
-        Field bValue=bClass.getDeclaredField("value");
+        Class<? extends Integer> bClass = b.getClass();
+        Field bValue = bClass.getDeclaredField("value");
         bValue.setAccessible(true);
-        bValue.set(b,new Integer(temp));
+        bValue.set(b, new Integer(temp));
     }
 
 }

@@ -5,7 +5,7 @@ package com.zhxh.codeproj.designpattern.adapter;
  * 源角色
  */
 public class Adaptee {
-    public void doSomething(){
+    public void doSomething() {
         System.out.println("i am adaptee,let us do it ");
     }
 }

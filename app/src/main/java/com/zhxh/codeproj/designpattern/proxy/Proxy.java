@@ -5,13 +5,14 @@ package com.zhxh.codeproj.designpattern.proxy;
  */
 public class Proxy implements Subject {
     //proxy for some class
-    private Subject subject=null;
+    private Subject subject = null;
+
     //default proxy
-    public Proxy(){
-        this.subject=new Proxy();
+    public Proxy() {
+        this.subject = new Proxy();
     }
 
-    public Proxy(Object... objects){
+    public Proxy(Object... objects) {
 
     }
 
@@ -25,6 +26,7 @@ public class Proxy implements Subject {
     private void before() {
         //todo something
     }
+
     private void after() {
         //todo something
     }

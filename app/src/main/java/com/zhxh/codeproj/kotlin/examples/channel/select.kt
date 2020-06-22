@@ -3,7 +3,7 @@ package com.zhxh.codeproj.kotlin.examples.channel
 import kotlin.coroutines.*
 
 suspend inline fun <R> select(block: SelectorBuilder<R>.() -> Unit): R =
-    SelectorBuilder<R>().apply { block() }.doSelect()
+        SelectorBuilder<R>().apply { block() }.doSelect()
 
 class SelectorBuilder<R> {
     private val cases = mutableListOf<SelectCase<*, R>>()
@@ -33,6 +33,7 @@ class SelectorBuilder<R> {
 }
 
 suspend fun whileSelect(block: SelectorBuilder<Boolean>.() -> Unit) {
-    while(select(block)) { /*loop*/ }
+    while (select(block)) { /*loop*/
+    }
 }
 

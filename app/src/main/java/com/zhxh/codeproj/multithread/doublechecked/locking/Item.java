@@ -23,9 +23,7 @@
 package com.zhxh.codeproj.multithread.doublechecked.locking;
 
 /**
- *
  * Item
- *
  */
 public class Item {
 }

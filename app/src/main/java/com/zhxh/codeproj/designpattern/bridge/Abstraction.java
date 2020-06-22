@@ -9,11 +9,12 @@ public abstract class Abstraction {
     public Abstraction(Implementor imp) {
         this.imp = imp;
     }
-    public void request(){
+
+    public void request() {
         this.imp.doSomething();
     }
 
-    public Implementor getImp(){
+    public Implementor getImp() {
         return imp;
     }
 }

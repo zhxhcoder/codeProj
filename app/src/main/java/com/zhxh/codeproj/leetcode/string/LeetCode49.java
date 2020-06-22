@@ -1,4 +1,4 @@
-package com.zhxh.codeproj.leetcode.str;
+package com.zhxh.codeproj.leetcode.string;
 
 import java.util.ArrayList;
 import java.util.Arrays;

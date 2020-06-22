@@ -18,22 +18,22 @@ interface SuspendingIterator<out T> {
 
 @UseExperimental(ExperimentalTypeInference::class)
 fun <T> suspendingSequence(
-    context: CoroutineContext = EmptyCoroutineContext,
-    @BuilderInference block: suspend SuspendingSequenceScope<T>.() -> Unit
+        context: CoroutineContext = EmptyCoroutineContext,
+        @BuilderInference block: suspend SuspendingSequenceScope<T>.() -> Unit
 ): SuspendingSequence<T> = object : SuspendingSequence<T> {
     override fun iterator(): SuspendingIterator<T> = suspendingIterator(context, block)
 }
 
 fun <T> suspendingIterator(
-    context: CoroutineContext = EmptyCoroutineContext,
-    block: suspend SuspendingSequenceScope<T>.() -> Unit
+        context: CoroutineContext = EmptyCoroutineContext,
+        block: suspend SuspendingSequenceScope<T>.() -> Unit
 ): SuspendingIterator<T> =
-    SuspendingIteratorCoroutine<T>(context).apply {
-        nextStep = block.createCoroutine(receiver = this, completion = this)
-    }
+        SuspendingIteratorCoroutine<T>(context).apply {
+            nextStep = block.createCoroutine(receiver = this, completion = this)
+        }
 
 class SuspendingIteratorCoroutine<T>(
-    override val context: CoroutineContext
+        override val context: CoroutineContext
 ) : SuspendingIterator<T>, SuspendingSequenceScope<T>, Continuation<Unit> {
     enum class State { INITIAL, COMPUTING_HAS_NEXT, COMPUTING_NEXT, COMPUTED, DONE }
 
@@ -98,13 +98,13 @@ class SuspendingIteratorCoroutine<T>(
     override fun resumeWith(result: Result<Unit>) {
         nextStep = null
         result
-            .onSuccess {
-                resumeIterator(false)
-            }
-            .onFailure { exception ->
-                state = State.DONE
-                computeContinuation!!.resumeWithException(exception)
-            }
+                .onSuccess {
+                    resumeIterator(false)
+                }
+                .onFailure { exception ->
+                    state = State.DONE
+                    computeContinuation!!.resumeWithException(exception)
+                }
     }
 
     // Generator implementation

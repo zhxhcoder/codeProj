@@ -15,10 +15,10 @@ import java.util.ConcurrentModificationException
  * @throws IllegalArgumentException 如果 `D < 2 || initialCapacity < 0`
  */
 class DHeap<E>(
-    val D: Int,
-    initialCapacity: Int = DEFAULT_INITIAL_CAPACITY,
-    fromArray: Array<out E>? = null,
-    override val comparator: Comparator<in E>? = null
+        val D: Int,
+        initialCapacity: Int = DEFAULT_INITIAL_CAPACITY,
+        fromArray: Array<out E>? = null,
+        override val comparator: Comparator<in E>? = null
 ) : Heap<E> {
 
     private var data: Array<Any?>
@@ -129,8 +129,7 @@ class DHeap<E>(
 
     @Suppress("UNCHECKED_CAST")
     private infix fun E.cmp(that: E): Int {
-        return comparator?.compare(this, that) ?:
-            (this as Comparable<E>).compareTo(that)
+        return comparator?.compare(this, that) ?: (this as Comparable<E>).compareTo(that)
     }
 
     private fun swap(indexA: Int, indexB: Int) {

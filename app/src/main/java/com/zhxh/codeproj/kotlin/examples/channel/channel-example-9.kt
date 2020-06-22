@@ -15,14 +15,20 @@ class SafeCounter {
     @RequiresApi(Build.VERSION_CODES.N)
     suspend fun inc(key: String) {
         mux.lock()
-        try { v[key] = v.getOrDefault(key, 0) + 1 }
-        finally { mux.unlock() }
+        try {
+            v[key] = v.getOrDefault(key, 0) + 1
+        } finally {
+            mux.unlock()
+        }
     }
 
     suspend fun get(key: String): Int? {
         mux.lock()
-        return try { v[key] }
-        finally { mux.unlock() }
+        return try {
+            v[key]
+        } finally {
+            mux.unlock()
+        }
     }
 }
 

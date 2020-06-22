@@ -10,7 +10,7 @@ fun <T> future(context: CoroutineContext = CommonPool, block: suspend () -> T): 
 class CompletableFutureCoroutine<T>(override val context: CoroutineContext) : CompletableFuture<T>(), Continuation<T> {
     override fun resumeWith(result: Result<T>) {
         result
-            .onSuccess { complete(it) }
-            .onFailure { completeExceptionally(it) }
+                .onSuccess { complete(it) }
+                .onFailure { completeExceptionally(it) }
     }
 }

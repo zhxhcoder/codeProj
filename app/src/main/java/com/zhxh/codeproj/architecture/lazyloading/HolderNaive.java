@@ -23,9 +23,7 @@
 package com.zhxh.codeproj.architecture.lazyloading;
 
 /**
- *
  * Simple implementation of the lazy loading idiom. However, this is not thread safe.
- *
  */
 public class HolderNaive {
     private Heavy heavy;

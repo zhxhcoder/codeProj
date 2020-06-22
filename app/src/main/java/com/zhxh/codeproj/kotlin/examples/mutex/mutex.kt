@@ -14,6 +14,7 @@ class Mutex {
 
     // -1 == unlocked, >= 0 -> number of active waiters
     private val state = AtomicInteger(-1)
+
     // can have more waiters than registered in state (we add waiter first)
     private val waiters = ConcurrentLinkedQueue<Waiter>()
 
@@ -21,7 +22,7 @@ class Mutex {
         // fast path -- try lock uncontended
         if (state.compareAndSet(-1, 0)) return
         // slow path -- other cases
-        return suspendCoroutineUninterceptedOrReturn sc@ { uc ->
+        return suspendCoroutineUninterceptedOrReturn sc@{ uc ->
             // tentatively add a waiter before locking (and we can get resumed because of that!)
             val waiter = Waiter(uc.intercepted())
             waiters.add(waiter)

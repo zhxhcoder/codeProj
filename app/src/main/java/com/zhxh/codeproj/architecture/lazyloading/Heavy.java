@@ -23,9 +23,7 @@
 package com.zhxh.codeproj.architecture.lazyloading;
 
 /**
- *
  * Heavy objects are expensive to create.
- *
  */
 public class Heavy {
     /**
