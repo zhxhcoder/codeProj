@@ -1,7 +1,5 @@
 package com.zhxh.codeproj.leetcode.tree;
 
-import com.zhxh.codeproj.leetcode._bean.TreeNode;
-
 /*
 给定一个二叉树，判断其是否是一个有效的二叉搜索树。
 

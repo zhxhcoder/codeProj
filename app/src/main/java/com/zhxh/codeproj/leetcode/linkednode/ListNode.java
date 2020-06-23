@@ -1,4 +1,4 @@
-package com.zhxh.codeproj.leetcode._bean;
+package com.zhxh.codeproj.leetcode.linkednode;
 
 /**
  * Created by zhxh on 2020/6/18

@@ -1,7 +1,5 @@
 package com.zhxh.codeproj.leetcode.linkednode;
 
-import com.zhxh.codeproj.leetcode._bean.ListNode;
-
 /*
 在 O(n log n) 时间复杂度和常数级空间复杂度下，对链表进行排序。
 

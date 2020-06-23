@@ -1,7 +1,5 @@
 package com.zhxh.codeproj.leetcode.tree;
 
-import com.zhxh.codeproj.leetcode._bean.TreeNode;
-
 /*
 
 给定两个二叉树，想象当你将它们中的一个覆盖到另一个上时，两个二叉树的一些节点便会重叠。

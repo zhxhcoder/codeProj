@@ -1,4 +1,4 @@
-package com.zhxh.codeproj.leetcode._bean;
+package com.zhxh.codeproj.leetcode;
 
 import java.util.Arrays;
 import java.util.HashMap;

@@ -1,8 +1,6 @@
 package com.zhxh.codeproj.leetcode.tree;
 
 
-import com.zhxh.codeproj.leetcode._bean.TreeNode;
-
 /*
 将一个按照升序排列的有序数组，转换为一棵高度平衡二叉搜索树。
 

@@ -1,7 +1,5 @@
 package com.zhxh.codeproj.leetcode.tree;
 
-import com.zhxh.codeproj.leetcode._bean.TreeNode;
-
 import java.util.Stack;
 
 /*

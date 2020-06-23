@@ -1,7 +1,5 @@
 package com.zhxh.codeproj.leetcode.linkednode;
 
-import com.zhxh.codeproj.leetcode._bean.ListNode;
-
 import java.util.HashSet;
 import java.util.Set;
 

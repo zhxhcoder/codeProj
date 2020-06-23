@@ -1,7 +1,5 @@
 package com.zhxh.codeproj.leetcode.tree;
 
-import com.zhxh.codeproj.leetcode._bean.TreeNode;
-
 /*
 翻转一棵二叉树。
 
