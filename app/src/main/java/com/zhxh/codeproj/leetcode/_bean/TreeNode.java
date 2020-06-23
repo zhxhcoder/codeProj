@@ -63,8 +63,17 @@ public class TreeNode {
     }
 
 
-    private static boolean isSameTree(TreeNode node1, TreeNode node2) {
-        return true;
+    private static boolean isSameTree(TreeNode root1, TreeNode root2) {
+        if (root1 == null && root2 == null) {
+            return true;
+        }
+        if ((root1 == null && root2 != null) || (root1 != null && root2 == null)) {
+            return false;
+        }
+        if (root1.val != root2.val) {//判断每个节点的值是否相等，如果去除此判断，则判断两个二叉树是否结构相等
+            return false;
+        }
+        return isSameTree(root1.left, root2.left) && isSameTree(root1.right, root2.right);
     }
 
     /*
