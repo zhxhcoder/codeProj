@@ -22,10 +22,9 @@ import java.util.Stack;
  */
 class LeetCode94 {
     public static void main(String[] args) {
-        TreeNode node1 = TreeNode.buildBinaryTree(new Integer[]{1, null, 2, 3});
+        TreeNode node1 = TreeNode.buildBinaryTree(new Integer[]{1, 2, 3, null, 4, 7, 8, null, null, 5});
 
         TreeNode.printBinaryTree(node1);
-
 
         List<Integer> list = new Solution1().inOrderTraversal(node1);
         System.out.println(list);

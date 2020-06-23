@@ -187,6 +187,36 @@ public class TreeNode {
         System.out.print("\n***********end************\n");
     }
 
+    /*
+
+  关于如何解决
+
+   1
+   / \
+  4   2
+    /
+   3
+
+   1
+   / \
+  4   2
+  /
+ 3
+
+{1,4,2,3}
+
+此类问题
+
+精确表示
+
+经验值
+
+上面是  {1,4,2,null,null,3}
+下面是  {1,4,2,3}
+
+凡是root(4)不为null，所以孩子null，null，都要标记出来
+
+     */
 
     public static TreeNode buildBinaryTree(Integer[] nums) {
         if (nums.length == 0) return new TreeNode(0);
