@@ -25,7 +25,11 @@ import java.util.Stack;
 class LeetCode94 {
     public static void main(String[] args) {
         TreeNode node1 = TreeNode.buildBinaryTree(new Integer[]{1, null, 2, 3});
-        List<Integer> list = new Solution1().inorderTraversal(node1);
+
+        TreeNode.printBinaryTree(node1);
+
+
+        List<Integer> list = new Solution1().inOrderTraversal(node1);
         System.out.println(list);
 
         TreeNode.printBinaryTree(node1);
@@ -39,7 +43,7 @@ class LeetCode94 {
 
      */
     static class Solution1 {
-        public List<Integer> inorderTraversal(TreeNode root) {
+        public List<Integer> inOrderTraversal(TreeNode root) {
             List<Integer> res = new ArrayList<>();
             helper(root, res);
             return res;
@@ -62,7 +66,7 @@ class LeetCode94 {
     方法二：基于栈的遍历
      */
     static class Solution2 {
-        public List<Integer> inorderTraversal(TreeNode root) {
+        public List<Integer> inOrderTraversal(TreeNode root) {
             List<Integer> res = new ArrayList<>();
             Stack<TreeNode> stack = new Stack<>();
             TreeNode curr = root;
@@ -81,7 +85,7 @@ class LeetCode94 {
 
     // 莫里斯中序遍历 不破坏树结构
     static class Solution3 {
-        public List<Integer> inorderTraversal(TreeNode root) {
+        public List<Integer> inOrderTraversal(TreeNode root) {
             List<Integer> ldr = new ArrayList<Integer>();
             TreeNode cur = root;
             TreeNode pre = null;
