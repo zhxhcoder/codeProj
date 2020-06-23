@@ -20,11 +20,12 @@ public class TreeNode {
 
         TreeNode node1 = buildBinaryTree(new Integer[]{1, 2, 3, null, 4, null, 5, null, 6});
 
-        printTree(node1);
+        printBinaryTree(node1);
+
+        traverseBinaryTree(node1);
 
         System.out.println("\n*************\n");
 
-        breakBinaryTree(node1);
     }
 
     public int val;
@@ -43,7 +44,7 @@ public class TreeNode {
     }
 
     //中序遍历树
-    public static void printTree(TreeNode root) {
+    public static void printBinaryTree(TreeNode root) {
         ArrayList<TreeNode> treeList = new ArrayList<>();
         if (root == null) {
             return;
@@ -71,7 +72,6 @@ public class TreeNode {
      */
     public List<List<Integer>> levelOrder(TreeNode root) {
         List<List<Integer>> res = new ArrayList<>();
-
         Queue<TreeNode> queue = new ArrayDeque<>();
         if (root != null) {
             queue.add(root);
@@ -94,21 +94,20 @@ public class TreeNode {
         return res;
     }
 
-    /*
-    与buildBinaryTree相对应 相互生成 中序
-     */
-    public static void breakBinaryTree(TreeNode root) {
+
+    //后序遍历
+    public static void traverseBinaryTree(TreeNode root) {
         if (root == null) {
             return;
         }
-        breakBinaryTree(root.left);
-        System.out.print("->" + root.val);
-        breakBinaryTree(root.right);
-        if (root.left == null && root.right == null) {
-            System.out.print("->null");
-            return;
-        }
+        System.out.print("先序遍历");
+        preBinaryTree(root);
+        System.out.print("\n中序遍历");
+        ldrBinaryTree(root);
+        System.out.print("\n后序遍历");
+        lrdBinaryTree(root);
     }
+
 
     public static TreeNode buildBinaryTree(Integer[] nums) {
         if (nums.length == 0) return new TreeNode(0);
@@ -146,4 +145,37 @@ public class TreeNode {
         }
         return root;
     }
+
+    /*
+    与buildBinaryTree相对应 相互生成 中序
+     */
+    private static void ldrBinaryTree(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+        ldrBinaryTree(root.left);
+        System.out.print("->" + root.val);
+        ldrBinaryTree(root.right);
+    }
+
+    //先序遍历
+    private static void preBinaryTree(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+        System.out.print("->" + root.val);
+        preBinaryTree(root.left);
+        preBinaryTree(root.right);
+    }
+
+    //后序遍历
+    private static void lrdBinaryTree(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+        lrdBinaryTree(root.left);
+        lrdBinaryTree(root.right);
+        System.out.print("->" + root.val);
+    }
+
 }

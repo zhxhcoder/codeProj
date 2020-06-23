@@ -24,16 +24,17 @@ import java.util.Stack;
  */
 class LeetCode94 {
     public static void main(String[] args) {
-        TreeNode node1 = TreeNode.buildBinaryTree(new Integer[]{1, 2, 3, null, 4, null, 5, null, 6});
+        TreeNode node1 = TreeNode.buildBinaryTree(new Integer[]{1, null, 2, 3});
         List<Integer> list = new Solution1().inorderTraversal(node1);
         System.out.println(list);
 
-        TreeNode.printTree(node1);
+        TreeNode.printBinaryTree(node1);
 
         System.out.println("\n*************\n");
 
-        TreeNode.breakBinaryTree(node1);
+        TreeNode.traverseBinaryTree(node1);
     }
+
 
     /*
     第一种解决方法是使用递归。这是经典的方法，直截了当。我们可以定义一个辅助函数来实现递归。
