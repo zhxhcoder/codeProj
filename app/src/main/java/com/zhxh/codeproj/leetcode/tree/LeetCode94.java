@@ -30,9 +30,7 @@ class LeetCode94 {
 
         TreeNode.printBinaryTree(node1);
 
-        System.out.println("\n*************\n");
-
-        TreeNode.traverseBinaryTree(node1);
+        System.out.println(TreeNode.binaryTree2List(node1));
     }
 
 

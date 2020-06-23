@@ -22,10 +22,7 @@ public class TreeNode {
 
         printBinaryTree(node1);
 
-        traverseBinaryTree(node1);
-
         System.out.println("\n*************\n");
-
     }
 
     public int val;
@@ -37,49 +34,28 @@ public class TreeNode {
     }
 
 
-    //以下为静态方法
     //用于获得树的层数
-    public static int getTreeDepth(TreeNode root) {
-        return root == null ? 0 : (1 + Math.max(getTreeDepth(root.left), getTreeDepth(root.right)));
+    public static int getBinaryTreeDepth(TreeNode root) {
+        return root == null ? 0 : (1 + Math.max(getBinaryTreeDepth(root.left), getBinaryTreeDepth(root.right)));
     }
 
-    //中序遍历树
-    public static void printBinaryTree(TreeNode root) {
-        ArrayList<TreeNode> treeList = new ArrayList<>();
-        if (root == null) {
-            return;
-        }
-        treeList.add(root);
-        while (treeList.size() > 0) {
-            TreeNode node = treeList.remove(0);
-            if (node.left != null) {
-                treeList.add(node.left);
-            }
-            if (node.right != null) {
-                treeList.add(node.right);
-            }
-            System.out.print("->" + node.val);
-        }
-    }
-
-
-    private static boolean isSameTree(TreeNode root1, TreeNode root2) {
+    private static boolean isSameBinaryTree(TreeNode root1, TreeNode root2) {
         if (root1 == null && root2 == null) {
             return true;
         }
-        if ((root1 == null && root2 != null) || (root1 != null && root2 == null)) {
+        if (root1 == null || root2 == null) {
             return false;
         }
         if (root1.val != root2.val) {//判断每个节点的值是否相等，如果去除此判断，则判断两个二叉树是否结构相等
             return false;
         }
-        return isSameTree(root1.left, root2.left) && isSameTree(root1.right, root2.right);
+        return isSameBinaryTree(root1.left, root2.left) && isSameBinaryTree(root1.right, root2.right);
     }
 
     /*
     见LeetCode102
      */
-    public List<List<Integer>> levelOrder(TreeNode root) {
+    public static List<List<Integer>> binaryTree2List(TreeNode root) {
         List<List<Integer>> res = new ArrayList<>();
         Queue<TreeNode> queue = new ArrayDeque<>();
         if (root != null) {
@@ -104,17 +80,18 @@ public class TreeNode {
     }
 
 
-    //后序遍历
-    public static void traverseBinaryTree(TreeNode root) {
+    public static void printBinaryTree(TreeNode root) {
         if (root == null) {
             return;
         }
+        System.out.print("\n**********begin***********\n");
         System.out.print("先序遍历");
         preBinaryTree(root);
         System.out.print("\n中序遍历");
         ldrBinaryTree(root);
         System.out.print("\n后序遍历");
         lrdBinaryTree(root);
+        System.out.print("\n***********end************\n");
     }
 
 
