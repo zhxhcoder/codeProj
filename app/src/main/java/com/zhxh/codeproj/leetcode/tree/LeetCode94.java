@@ -22,18 +22,21 @@ import java.util.Stack;
  */
 class LeetCode94 {
     public static void main(String[] args) {
-        TreeNode node1 = TreeNode.buildBinaryTree(new Integer[]{1, 2, 3, null, 4, 7, 8, null, null, 5});
+        TreeNode node1 = TreeNode.buildBinaryTree(new Integer[]{6, 4, 9, 2, 5, 7, 10, 1, 3, null, null, null, 8});
 
         TreeNode.printBinaryTree(node1);
 
-        List<Integer> list = new Solution1().inOrderTraversal(node1);
-        System.out.println(list);
+        System.out.println(new Solution1().inOrderTraversal(node1));
 
-        TreeNode.printBinaryTree(node1);
+        System.out.println(new Solution2().inOrderTraversal(node1));
+        System.out.println(new Solution2().inOrderTraversal(node1));
 
-        System.out.println(TreeNode.binaryTree2List(node1));
+        System.out.println(new Solution1().inOrderTraversal(node1));
+
+        System.out.println(new Solution3().inOrderTraversal(node1));
+
+        //System.out.println(TreeNode.binaryTree2List(node1));
     }
-
 
     /*
     第一种解决方法是使用递归。这是经典的方法，直截了当。我们可以定义一个辅助函数来实现递归。
