@@ -45,9 +45,12 @@ for (int i = 0; i < len; i++) {
  */
 public class LeetCode26 {
     public static void main(String[] args) {
-        int[] nums = {5, 4, 4, 6, 1, 2, 2, 2};
-        System.out.println("长度：" + removeDuplicates(nums));
-        System.out.println(Arrays.toString(nums));
+        int[] nums1 = {0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
+        System.out.println("长度：" + removeDuplicates(nums1));
+        int[] nums2 = {0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
+        System.out.println("长度：" + removeDuplicates2(nums2));
+        System.out.println(Arrays.toString(nums1));
+        System.out.println(Arrays.toString(nums2));
     }
 
     public static int removeDuplicates(int[] nums) {
@@ -62,5 +65,17 @@ public class LeetCode26 {
             q++;
         }
         return p + 1;
+    }
+
+    public static int removeDuplicates2(int[] nums) {
+        if (nums.length == 0) return 0;
+        int i = 0;
+        for (int j = 1; j < nums.length; j++) {
+            if (nums[j] != nums[i]) {
+                i++;
+                nums[i] = nums[j];
+            }
+        }
+        return i + 1;
     }
 }
