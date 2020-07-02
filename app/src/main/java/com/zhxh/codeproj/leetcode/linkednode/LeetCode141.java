@@ -37,6 +37,8 @@ public class LeetCode141 {
     public static void main(String[] args) {
         Solution solution = new Solution();
         ListNode node1 = new ListNode(3);
+
+
     }
 
     /*
