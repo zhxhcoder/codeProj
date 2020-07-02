@@ -27,9 +27,21 @@ k 是一个正整数，它的值小于或等于链表的长度。
  */
 class LeetCode25 {
     public static void main(String[] args) {
-
+        int[] nums = {1, 2, 3, 4, 5, 6};
+        ListNode head = ListNode.buildNode(nums);
+        ListNode.printNode(new Solution().reverseKGroup(head, 3));
     }
 
+    /*
+    本题的目标非常清晰易懂，不涉及复杂的算法，但是实现过程中需要考虑的细节比较多，容易写出冗长的代码。主要考察面试者设计的能力。
+
+我们需要把链表结点按照 k 个一组分组，所以可以使用一个指针 head 依次指向每组的头结点。这个指针每次向前移动 k 步，直至链表结尾。
+对于每个分组，我们先判断它的长度是否大于等于 k。若是，我们就翻转这部分链表，否则不需要翻转。
+
+接下来的问题就是如何翻转一个分组内的子链表。翻转一个链表并不难，过程可以参考 206. 反转链表。但是对于一个子链表，除了翻转其本身之外，还需要将子链表的头部与上一个子链表连接，
+以及子链表的尾部与下一个子链表连接。如下图所示：
+
+     */
     static class Solution {
         public ListNode reverseKGroup(ListNode head, int k) {
             if (k == 1 || head == null)
