@@ -1,4 +1,4 @@
-package com.zhxh.codeproj.leetcode;
+package com.zhxh.codeproj.leetcode.union;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -22,7 +22,6 @@ import java.util.List;
 
  */
 public class LeetCode56 {
-
     public static void main(String[] args) {
         Solution solution = new Solution();
 
