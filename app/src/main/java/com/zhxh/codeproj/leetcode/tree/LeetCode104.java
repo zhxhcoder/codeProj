@@ -31,6 +31,7 @@ public class LeetCode104 {
         Solution solution = new Solution();
         TreeNode node0 = TreeNode.buildBinaryTree(new Integer[]{1, 2, 2, null, 3, null, 3});
         System.out.println(solution.maxDepth(node0));
+        System.out.println(new Solution2().maxDepth(node0));
     }
 
     static class Solution {
