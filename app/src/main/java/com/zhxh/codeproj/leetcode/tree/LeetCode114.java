@@ -31,7 +31,9 @@ import java.util.Stack;
  */
 class LeetCode114 {
     public static void main(String[] args) {
-
+        TreeNode node = TreeNode.buildBinaryTree(new Integer[]{1, 2, 5, 3, 4, null, 6});
+        flatten1(node);
+        TreeNode.printBinaryTree(node);
     }
 
     /*
@@ -42,7 +44,7 @@ class LeetCode114 {
 考虑新的右子树的根节点，一直重复上边的过程，直到新的右子树为 null
 
      */
-    public void flatten1(TreeNode root) {
+    static void flatten1(TreeNode root) {
         while (root != null) {
             //左子树为 null，直接考虑下一个节点
             if (root.left == null) {
@@ -71,7 +73,7 @@ class LeetCode114 {
 
      */
 
-    public void flatten2(TreeNode root) {
+    static void flatten2(TreeNode root) {
         Stack<TreeNode> toVisit = new Stack<>();
         TreeNode cur = root;
         TreeNode pre = null;
@@ -103,7 +105,7 @@ class LeetCode114 {
 为了更好的控制算法，所以我们用先序遍历迭代的形式，正常的先序遍历代码如下，
 
      */
-    public void flatten3(TreeNode root) {
+    static void flatten3(TreeNode root) {
         if (root == null) {
             return;
         }
@@ -129,6 +131,4 @@ class LeetCode114 {
             /********************************/
         }
     }
-
-
 }
