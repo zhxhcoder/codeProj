@@ -1,5 +1,12 @@
 package com.zhxh.codeproj.leetcode.tree;
 
+import android.util.Pair;
+
+import java.lang.Math;
+import java.util.LinkedList;
+import java.util.Queue;
+
+
 /*
 给定一个二叉树，找出其最大深度。
 
@@ -35,6 +42,29 @@ public class LeetCode104 {
                 int right_height = maxDepth(root.right);
                 return java.lang.Math.max(left_height, right_height) + 1;
             }
+        }
+    }
+
+
+    static class Solution2 {
+        public int maxDepth(TreeNode root) {
+            Queue<Pair<TreeNode, Integer>> stack = new LinkedList<>();
+            if (root != null) {
+                stack.add(new Pair(root, 1));
+            }
+
+            int depth = 0;
+            while (!stack.isEmpty()) {
+                Pair<TreeNode, Integer> current = stack.poll();
+                root = current.first;
+                int current_depth = current.second;
+                if (root != null) {
+                    depth = Math.max(depth, current_depth);
+                    stack.add(new Pair(root.left, current_depth + 1));
+                    stack.add(new Pair(root.right, current_depth + 1));
+                }
+            }
+            return depth;
         }
     }
 }
