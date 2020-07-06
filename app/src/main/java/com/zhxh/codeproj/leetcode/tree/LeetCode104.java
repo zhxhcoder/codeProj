@@ -1,6 +1,6 @@
 package com.zhxh.codeproj.leetcode.tree;
 
-import android.util.Pair;
+import com.zhxh.codeproj.leetcode.Pair;
 
 import java.lang.Math;
 import java.util.LinkedList;
