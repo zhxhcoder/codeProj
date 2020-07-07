@@ -1,5 +1,10 @@
 package com.zhxh.codeproj.leetcode.tree;
 
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
 /*
 给定一个二叉树, 找到该树中两个指定节点的最近公共祖先。
 
@@ -7,9 +12,6 @@ package com.zhxh.codeproj.leetcode.tree;
 
 例如，给定如下二叉树:  root = [3,5,1,6,2,0,8,null,null,7,4]
 
-
-
- 
 
 示例 1:
 
@@ -30,4 +32,71 @@ p、q 为不同节点且均存在于给定的二叉树中。
 
  */
 class LeetCode236 {
+    public static void main(String[] args) {
+        TreeNode root = TreeNode.buildBinaryTree(new Integer[]{3, 5, 1, 6, 2, 0, 8, null, null, 7, 4});
+        TreeNode p = TreeNode.buildBinaryTree(new Integer[]{6, 2, null, null, 7, 4});
+        TreeNode q = TreeNode.buildBinaryTree(new Integer[]{4});
+        System.out.println(new Solution().lowestCommonAncestor(root, p, q));
+    }
+
+    /*
+    递归
+     */
+    static class Solution {
+
+        private TreeNode ans;
+
+        public Solution() {
+            this.ans = null;
+        }
+
+        private boolean dfs(TreeNode root, TreeNode p, TreeNode q) {
+            if (root == null) return false;
+            boolean lson = dfs(root.left, p, q);
+            boolean rson = dfs(root.right, p, q);
+            if ((lson && rson) || ((root.val == p.val || root.val == q.val) && (lson || rson))) {
+                ans = root;
+            }
+            return lson || rson || (root.val == p.val || root.val == q.val);
+        }
+
+        public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+            this.dfs(root, p, q);
+            return this.ans;
+        }
+    }
+
+    /*
+    方法二：存储父节点
+     */
+    static class Solution2 {
+        Map<Integer, TreeNode> parent = new HashMap<Integer, TreeNode>();
+        Set<Integer> visited = new HashSet<Integer>();
+
+        public void dfs(TreeNode root) {
+            if (root.left != null) {
+                parent.put(root.left.val, root);
+                dfs(root.left);
+            }
+            if (root.right != null) {
+                parent.put(root.right.val, root);
+                dfs(root.right);
+            }
+        }
+
+        public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+            dfs(root);
+            while (p != null) {
+                visited.add(p.val);
+                p = parent.get(p.val);
+            }
+            while (q != null) {
+                if (visited.contains(q.val)) {
+                    return q;
+                }
+                q = parent.get(q.val);
+            }
+            return null;
+        }
+    }
 }
