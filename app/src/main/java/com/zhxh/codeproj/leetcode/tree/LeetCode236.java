@@ -36,7 +36,7 @@ class LeetCode236 {
         TreeNode root = TreeNode.buildBinaryTree(new Integer[]{3, 5, 1, 6, 2, 0, 8, null, null, 7, 4});
         TreeNode p = TreeNode.buildBinaryTree(new Integer[]{6, 2, null, null, 7, 4});
         TreeNode q = TreeNode.buildBinaryTree(new Integer[]{4});
-        System.out.println(new Solution().lowestCommonAncestor(root, p, q));
+        TreeNode.printBinaryTree((new Solution().lowestCommonAncestor(root, p, q)));
     }
 
     /*
