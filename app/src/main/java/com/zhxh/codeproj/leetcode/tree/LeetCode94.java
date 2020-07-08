@@ -24,7 +24,7 @@ class LeetCode94 {
     public static void main(String[] args) {
         TreeNode node1 = TreeNode.buildBinaryTree(new Integer[]{6, 4, 9, 2, 5, 7, 10, 1, 3, null, null, null, 8});
 
-        TreeNode.printBinaryTree(node1);
+        TreeNode.prettyPrintTree(node1);
 
         System.out.println(new Solution1().inOrderTraversal(node1));
 

@@ -33,7 +33,7 @@ class LeetCode114 {
     public static void main(String[] args) {
         TreeNode node = TreeNode.buildBinaryTree(new Integer[]{1, 2, 5, 3, 4, null, 6});
         flatten1(node);
-        TreeNode.printBinaryTree(node);
+        TreeNode.prettyPrintTree(node);
     }
 
     /*

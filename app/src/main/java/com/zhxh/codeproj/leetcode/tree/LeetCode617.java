@@ -31,7 +31,7 @@ public class LeetCode617 {
 
         TreeNode node = new Solution().mergeTrees(node1, node2);
 
-        TreeNode.printBinaryTree(node);
+        TreeNode.prettyPrintTree(node);
     }
 
     static class Solution {

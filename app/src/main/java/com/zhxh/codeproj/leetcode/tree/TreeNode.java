@@ -1,9 +1,5 @@
 package com.zhxh.codeproj.leetcode.tree;
 
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Deque;
@@ -28,81 +24,6 @@ public class TreeNode {
     }
 
     /**************************************************************************************************************************/
-    public static void main(String[] args) throws IOException {
-        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-        String line;
-        while ((line = in.readLine()) != null) {
-            TreeNode root = stringToTreeNode(line);
-            prettyPrintTree(root);
-        }
-    }
-
-    public static String treeNodeToString(TreeNode root) {
-        if (root == null) {
-            return "[]";
-        }
-
-        String output = "";
-        Queue<TreeNode> nodeQueue = new LinkedList<>();
-        nodeQueue.add(root);
-        while (!nodeQueue.isEmpty()) {
-            TreeNode node = nodeQueue.remove();
-
-            if (node == null) {
-                output += "null, ";
-                continue;
-            }
-
-            output += String.valueOf(node.val) + ", ";
-            nodeQueue.add(node.left);
-            nodeQueue.add(node.right);
-        }
-        return "[" + output.substring(0, output.length() - 2) + "]";
-    }
-
-    public static TreeNode stringToTreeNode(String input) {
-        input = input.trim();
-        input = input.substring(1, input.length() - 1);
-        if (input.length() == 0) {
-            return null;
-        }
-
-        String[] parts = input.split(",");
-        String item = parts[0];
-        TreeNode root = new TreeNode(Integer.parseInt(item));
-        Queue<TreeNode> nodeQueue = new LinkedList<>();
-        nodeQueue.add(root);
-
-        int index = 1;
-        while (!nodeQueue.isEmpty()) {
-            TreeNode node = nodeQueue.remove();
-
-            if (index == parts.length) {
-                break;
-            }
-
-            item = parts[index++];
-            item = item.trim();
-            if (!item.equals("null")) {
-                int leftNumber = Integer.parseInt(item);
-                node.left = new TreeNode(leftNumber);
-                nodeQueue.add(node.left);
-            }
-
-            if (index == parts.length) {
-                break;
-            }
-
-            item = parts[index++];
-            item = item.trim();
-            if (!item.equals("null")) {
-                int rightNumber = Integer.parseInt(item);
-                node.right = new TreeNode(rightNumber);
-                nodeQueue.add(node.right);
-            }
-        }
-        return root;
-    }
 
     public static void prettyPrintTree(TreeNode node, String prefix, boolean isLeft) {
         if (node == null) {
@@ -172,25 +93,8 @@ public class TreeNode {
         return res;
     }
 
-
-    public static void printBinaryTree(TreeNode root) {
-        if (root == null) {
-            return;
-        }
-        System.out.print("\n**********begin***********\n");
-        System.out.print("先序遍历");
-        preBinaryTree(root);
-        System.out.print("\n中序遍历");
-        ldrBinaryTree(root);
-        System.out.print("\n后序遍历");
-        lrdBinaryTree(root);
-        System.out.print("\n***********end************\n");
-    }
-
-    /*
-
+/*
   关于如何解决
-
    1
    / \
   4   2
@@ -203,20 +107,12 @@ public class TreeNode {
   /
  3
 
-{1,4,2,3}
-
-此类问题
-
-精确表示
-
-经验值
-
 上面是  {1,4,2,null,null,3}
 下面是  {1,4,2,3}
 
 凡是root(4)不为null，所以孩子null，null，都要标记出来
 
-     */
+*/
 
     public static TreeNode buildBinaryTree(Integer[] nums) {
         if (nums.length == 0) return new TreeNode(0);
@@ -254,39 +150,6 @@ public class TreeNode {
         }
         return root;
     }
-
-    /*
-    与buildBinaryTree相对应 相互生成 中序
-     */
-    private static void ldrBinaryTree(TreeNode root) {
-        if (root == null) {
-            return;
-        }
-        ldrBinaryTree(root.left);
-        System.out.print("->" + root.val);
-        ldrBinaryTree(root.right);
-    }
-
-    //先序遍历
-    private static void preBinaryTree(TreeNode root) {
-        if (root == null) {
-            return;
-        }
-        System.out.print("->" + root.val);
-        preBinaryTree(root.left);
-        preBinaryTree(root.right);
-    }
-
-    //后序遍历
-    private static void lrdBinaryTree(TreeNode root) {
-        if (root == null) {
-            return;
-        }
-        lrdBinaryTree(root.left);
-        lrdBinaryTree(root.right);
-        System.out.print("->" + root.val);
-    }
-
 
     public String serialize(TreeNode root) {
         StringBuilder res = new StringBuilder("[");
