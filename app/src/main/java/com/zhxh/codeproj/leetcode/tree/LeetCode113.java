@@ -29,7 +29,9 @@ import java.util.List;
 class LeetCode113 {
     public static void main(String[] args) {
         TreeNode node = TreeNode.buildBinaryTree(new Integer[]{5, 4, 8, 11, null, 13, 4, 7, 2, null, null, 5, 1});
+        TreeNode node1 = TreeNode.deserialize("[5,4,8,11,null,13,4,7,2,null,null,5,1]");
         System.out.println(new Solution().pathSum(node, 22));
+        System.out.println(new Solution().pathSum(node1, 22));
     }
 
     /*

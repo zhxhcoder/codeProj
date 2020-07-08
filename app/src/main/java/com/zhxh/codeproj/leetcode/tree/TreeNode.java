@@ -151,7 +151,7 @@ public class TreeNode {
         return root;
     }
 
-    public String serialize(TreeNode root) {
+    public static String serialize(TreeNode root) {
         StringBuilder res = new StringBuilder("[");
         Queue<TreeNode> queue = new LinkedList();
         queue.add(root);
@@ -175,7 +175,7 @@ public class TreeNode {
         return result;
     }
 
-    public TreeNode deserialize(String data) {
+    public static TreeNode deserialize(String data) {
         String[] nodes = data.substring(1, data.length() - 1).split(",");
         TreeNode root = getNode(nodes[0]);
         Queue<TreeNode> parents = new LinkedList();
@@ -199,7 +199,7 @@ public class TreeNode {
         return root;
     }
 
-    private TreeNode getNode(String val) {
+    private static TreeNode getNode(String val) {
         if (val.equals("null")) {
             return null;
         }
