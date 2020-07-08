@@ -28,6 +28,9 @@ import java.util.List;
 class LeetCode297 {
     public static void main(String[] args) {
 
+        TreeNode node = TreeNode.buildBinaryTree(new Integer[]{1, 2, 3, null, null, 4, 5});
+
+        System.out.println(new Solution().serialize(node));
     }
     /*
     方法一：深度优先搜索
@@ -40,10 +43,9 @@ DFS 可以从一个根开始，一直延伸到某个叶，然后回到根，到�
 先序遍历
 中序遍历
 后序遍历
-
      */
 
-    static class Codec {
+    static class Solution {
         public String rserialize(TreeNode root, String str) {
             if (root == null) {
                 str += "None,";
