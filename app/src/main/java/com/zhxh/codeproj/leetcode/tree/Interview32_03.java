@@ -6,7 +6,7 @@ import java.util.Stack;
 /*
 之字形打印二叉树
  */
-class Interview_zhi {
+class Interview32_03 {
 
     public static void main(String[] args) {
         TreeNode root = TreeNode.buildBinaryTree(new Integer[]{1, 3, 4, 5, 6,});
