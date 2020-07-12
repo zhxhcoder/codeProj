@@ -34,6 +34,9 @@ public class LeetCode104 {
         System.out.println(new Solution2().maxDepth(node0));
     }
 
+    /*
+    DFS 深度优先搜索策略
+     */
     static class Solution {
         public int maxDepth(TreeNode root) {
             if (root == null) {
