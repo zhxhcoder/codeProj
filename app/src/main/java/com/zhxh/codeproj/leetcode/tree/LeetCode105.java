@@ -27,7 +27,7 @@ class LeetCode105 {
         int[] preorder = {3, 9, 20, 15, 7};
         int[] inorder = {9, 3, 15, 20, 7};
 
-        TreeNode node = new Solution().buildTree(preorder, inorder);
+        TreeNode node = new Solution1().buildTree(preorder, inorder);
         TreeNode.prettyPrintTree(node);
         System.out.println(TreeNode.serialize(node));
     }
@@ -74,15 +74,7 @@ class LeetCode105 {
 
      */
 
-    /**
-     * Definition for a binary tree node.
-     * public class TreeNode {
-     * int val;
-     * TreeNode left;
-     * TreeNode right;
-     * TreeNode(int x) { val = x; }
-     * }
-     */
+
     static class Solution {
         private Map<Integer, Integer> indexMap;
 
@@ -93,7 +85,7 @@ class LeetCode105 {
 
             // 前序遍历中的第一个节点就是根节点
             int preorder_root = preorder_left;
-            // 在中序遍历中定位根节点
+            // 在中序遍历中定位根节点 就是pIndex值
             int inorder_root = indexMap.get(preorder[preorder_root]);
 
             // 先把根节点建立出来
@@ -117,6 +109,40 @@ class LeetCode105 {
                 indexMap.put(inorder[i], i);
             }
             return myBuildTree(preorder, 0, n - 1, 0, n - 1);
+        }
+    }
+
+    /*分而治之 -官方视频的 */
+    static class Solution1 {
+        public TreeNode buildTree(int[] preorder, int[] inorder) {
+            int preLen = preorder.length;
+            int inLen = inorder.length;
+
+            if (preLen != inLen) {
+                throw new RuntimeException("incorrect input data");
+            }
+            Map<Integer, Integer> map = new HashMap<>(inLen);
+            for (int i = 0; i < inLen; i++) {
+                map.put(inorder[i], i);
+            }
+            return buildTree(preorder, 0, preLen - 1, map, 0, inLen - 1);
+        }
+
+        private TreeNode buildTree(int[] preorder, int preLeft, int preRight, Map<Integer, Integer> map, int inLeft, int inRight) {
+            //递归终止条件
+            if (preLeft > preRight || inLeft > inRight) {
+                return null;
+            }
+            //构造根节点
+            int rootVal = preorder[preLeft];
+            TreeNode root = new TreeNode(rootVal);
+            int pIndex = map.get(rootVal);
+
+            //前序遍历  根(preLeft)   (preLeft+1)左子树(pIndex-inLeft+preLeft)   (pIndex-inLeft+preLeft+1)右子树(preRight)
+            //中序遍历  (inLeft)左子树(pIndex-1)   根(pIndex)    (pIndex+1)右子树(inRight)
+            root.left = buildTree(preorder, preLeft + 1, pIndex - inLeft + preLeft, map, inLeft, pIndex - 1);
+            root.right = buildTree(preorder, pIndex - inLeft + preLeft + 1, preRight, map, pIndex + 1, inRight);
+            return root;
         }
     }
 }
