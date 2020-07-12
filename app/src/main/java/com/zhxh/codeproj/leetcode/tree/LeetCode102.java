@@ -26,14 +26,16 @@ import java.util.Queue;
   [15,7]
 ]
 
+[[1], [4, 3], [5, 2, 6], [9]]
+
  */
 class LeetCode102 {
 
     public static void main(String[] args) {
 
-        TreeNode node0 = TreeNode.buildBinaryTree(new Integer[]{1, 2, 3, null, 4, null, 5, null, 6});
+        TreeNode root = TreeNode.buildBinaryTree(new Integer[]{1, 3, 4, 5, 2, 6, null, 9});
 
-        List<List<Integer>> arr = new Solution().levelOrder(node0);
+        List<List<Integer>> arr = new Solution().levelOrder(root);
 
         System.out.println(arr);
     }
