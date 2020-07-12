@@ -55,16 +55,17 @@ class LeetCode113 {
             if (root == null) {
                 return;
             }
+            //叶子节点 且 匹配
             if (root.left == null && root.right == null && temp + root.val == sum) {
-                path.add(root.val);
-                ans.add(new ArrayList<>(path));
-                path.remove(path.size() - 1);
+                path.add(root.val);/*添加该叶子节点*/
+                ans.add(new ArrayList<>(path));//加入结果数组
+                path.remove(path.size() - 1);//删除最后一项 相当与恢复到叶子节点上一层位置
                 return;
             }
-            path.add(root.val);
+            path.add(root.val);/*添加该节点*/
             pathSum(ans, path, root.left, temp + root.val, sum);
             pathSum(ans, path, root.right, temp + root.val, sum);
-            path.remove(path.size() - 1);
+            path.remove(path.size() - 1);/*回到该节点*/
         }
     }
 }
