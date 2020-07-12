@@ -2,6 +2,8 @@ package com.zhxh.codeproj.leetcode.tree;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ArrayDeque;
+import java.util.Deque;
 
 /*
 给定一个二叉树和一个目标和，找到所有从根节点到叶子节点路径总和等于给定目标和的路径。
@@ -31,7 +33,7 @@ class LeetCode113 {
         TreeNode node = TreeNode.buildBinaryTree(new Integer[]{5, 4, 8, 11, null, 13, 4, 7, 2, null, null, 5, 1});
         TreeNode node1 = TreeNode.deserialize("[5,4,8,11,null,13,4,7,2,null,null,5,1]");
         System.out.println(new Solution().pathSum(node, 22));
-        System.out.println(new Solution().pathSum(node1, 22));
+        System.out.println(new Solution1().dfs(node1, 22));
     }
 
     /*
@@ -68,4 +70,38 @@ class LeetCode113 {
             path.remove(path.size() - 1);/*回到该节点*/
         }
     }
+
+
+    static class Solution1 {
+
+        public List<List<Integer>> dfs(TreeNode root, int sum) {
+            List<List<Integer>> res = new ArrayList<>();
+            if (root == null) {
+                return res;
+            }
+
+            // Java 文档中 Stack 类建议使用 Deque 代替 Stack，注意：只使用栈的相关接口
+            Deque<Integer> path = new ArrayDeque<>();
+            dfs(root, sum, path, res);
+            return res;
+        }
+
+        private void dfs(TreeNode node, int sum, Deque<Integer> path, List<List<Integer>> res) {
+            if (node == null) {
+                return;
+            }
+            if (node.val == sum && node.left == null && node.right == null) {
+                path.addLast(node.val);
+                res.add(new ArrayList<>(path));
+                path.removeLast();
+                return;
+            }
+
+            path.addLast(node.val);
+            dfs(node.left, sum - node.val, path, res);
+            dfs(node.right, sum - node.val, path, res);
+            path.removeLast();
+        }
+    }
+
 }
