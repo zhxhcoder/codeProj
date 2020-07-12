@@ -56,19 +56,18 @@ class LeetCode102 {
                 int n = queue.size();
                 List<Integer> level = new ArrayList<>();
                 for (int i = 0; i < n; i++) {
-                    TreeNode node = queue.poll();
+                    TreeNode node = queue.poll(); //删除头部
                     level.add(node.val);
                     if (node.left != null) {
-                        queue.add(node.left);
+                        queue.add(node.left); //添加到队尾
                     }
                     if (node.right != null) {
-                        queue.add(node.right);
+                        queue.add(node.right); //添加到队尾
                     }
                 }
                 res.add(level);
             }
             return res;
         }
-
     }
 }
