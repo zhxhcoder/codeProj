@@ -24,7 +24,12 @@ import java.util.Map;
  */
 class LeetCode105 {
     public static void main(String[] args) {
+        int[] preorder = {3, 9, 20, 15, 7};
+        int[] inorder = {9, 3, 15, 20, 7};
 
+        TreeNode node = new Solution().buildTree(preorder, inorder);
+        TreeNode.prettyPrintTree(node);
+        System.out.println(TreeNode.serialize(node));
     }
 
     /*
@@ -68,8 +73,17 @@ class LeetCode105 {
 在中序遍历中对根节点进行定位时，一种简单的方法是直接扫描整个中序遍历的结果并找出根节点，但这样做的时间复杂度较高。我们可以考虑使用哈希映射（HashMap）来帮助我们快速地定位根节点。对于哈希映射中的每个键值对，键表示一个元素（节点的值），值表示其在中序遍历中的出现位置。在构造二叉树的过程之前，我们可以对中序遍历的列表进行一遍扫描，就可以构造出这个哈希映射。在此后构造二叉树的过程中，我们就只需要 O(1)O(1) 的时间对根节点进行定位了。
 
      */
-    static class Solution {
 
+    /**
+     * Definition for a binary tree node.
+     * public class TreeNode {
+     * int val;
+     * TreeNode left;
+     * TreeNode right;
+     * TreeNode(int x) { val = x; }
+     * }
+     */
+    static class Solution {
         private Map<Integer, Integer> indexMap;
 
         public TreeNode myBuildTree(int[] preorder, int[] inorder, int preorder_left, int preorder_right, int inorder_left, int inorder_right) {
@@ -105,5 +119,4 @@ class LeetCode105 {
             return myBuildTree(preorder, inorder, 0, n - 1, 0, n - 1);
         }
     }
-
 }
