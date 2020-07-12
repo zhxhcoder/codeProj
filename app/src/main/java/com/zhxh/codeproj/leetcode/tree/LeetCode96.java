@@ -46,13 +46,14 @@ F(i,n): 以i为根的不同二叉搜索树个数(1 <= i<=n)。
      */
     static class Solution {
         public int numTrees(int n) {
+            /*长度为n的序列的不同二叉搜索树的个数*/
             int[] G = new int[n + 1];
             G[0] = 1;
             G[1] = 1;
 
-            for (int i = 2; i <= n; ++i) {
-                for (int j = 1; j <= i; ++j) {
-                    G[i] += G[j - 1] * G[i - j];
+            for (int k = 2; k <= n; ++k) {
+                for (int i = 1; i <= k; ++i) {
+                    G[k] += G[i - 1] * G[k - i];
                 }
             }
             return G[n];
