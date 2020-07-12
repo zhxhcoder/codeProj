@@ -51,10 +51,12 @@ class LeetCode94 {
 
         public void helper(TreeNode root, List<Integer> res) {
             if (root != null) {
+                //先左子树
                 if (root.left != null) {
                     helper(root.left, res);
                 }
                 res.add(root.val);
+                //后右子树
                 if (root.right != null) {
                     helper(root.right, res);
                 }
@@ -71,13 +73,13 @@ class LeetCode94 {
             Stack<TreeNode> stack = new Stack<>();
             TreeNode curr = root;
             while (curr != null || !stack.isEmpty()) {
-                while (curr != null) {
-                    stack.push(curr);
-                    curr = curr.left;
+                while (curr != null) {//一直取左子树知道叶子节点
+                    stack.push(curr);//从根节点到最左叶节点依次入栈
+                    curr = curr.left;//一直移动指针到左子树
                 }
-                curr = stack.pop();
-                res.add(curr.val);
-                curr = curr.right;
+                curr = stack.pop();//子节点先出栈
+                res.add(curr.val);//值加入结果列表
+                curr = curr.right;//移动指针到右子树
             }
             return res;
         }
