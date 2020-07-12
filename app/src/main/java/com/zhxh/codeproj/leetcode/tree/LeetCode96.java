@@ -43,6 +43,7 @@ G(n): 长度为n的序列的不同二叉搜索树个数。
 
 F(i,n): 以i为根的不同二叉搜索树个数(1 <= i<=n)。
 
+G(n)= ∑G(i−1)⋅G(n−i)
      */
     static class Solution {
         public int numTrees(int n) {
