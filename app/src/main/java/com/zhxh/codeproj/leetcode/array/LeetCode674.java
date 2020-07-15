@@ -32,11 +32,11 @@ class LeetCode674 {
             if (nums.length == 1) {
                 return 1;
             }
-            int res = 1, end = 0;
+            int res = 1, start = 0;
             for (int i = 1; i < nums.length; i++) {
                 if (i > 0 && nums[i - 1] >= nums[i])
-                    end = i;
-                res = Math.max(res, i - end + 1);
+                    start = i;
+                res = Math.max(res, i - start + 1);
             }
             return res;
         }
