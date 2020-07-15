@@ -26,11 +26,17 @@ class LeetCode674 {
 
     static class Solution {
         public int findLengthOfLCIS(int[] nums) {
-            int res = 0, anchor = 0;
-            for (int i = 0; i < nums.length; i++) {
+            if (nums == null) {
+                return 0;
+            }
+            if (nums.length == 1) {
+                return 1;
+            }
+            int res = 1, end = 0;
+            for (int i = 1; i < nums.length; i++) {
                 if (i > 0 && nums[i - 1] >= nums[i])
-                    anchor = i;
-                res = Math.max(res, i - anchor + 1);
+                    end = i;
+                res = Math.max(res, i - end + 1);
             }
             return res;
         }
