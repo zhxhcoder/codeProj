@@ -19,11 +19,8 @@ package com.zhxh.codeproj.leetcode.tree;
           20     13
  */
 public class LeetCode538 {
-
-
     class Solution {
         private int sum = 0;
-
         public TreeNode convertBST(TreeNode root) {
             if (root != null) {
                 convertBST(root.right);
