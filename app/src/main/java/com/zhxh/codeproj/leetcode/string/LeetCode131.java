@@ -44,7 +44,7 @@ class LeetCode131 {
             return res;
         }
 
-        /**
+        /*
          * @param s
          * @param start 起始字符的索引
          * @param len   字符串 s 的长度，可以设置为全局变量
@@ -71,7 +71,7 @@ class LeetCode131 {
             }
         }
 
-        /**
+        /*
          * 这一步的时间复杂度是 O(N)，因此，可以采用动态规划先把回文子串的结果记录在一个表格里
          *
          * @param str

@@ -1,4 +1,4 @@
-package com.zhxh.codeproj.leetcode.array;
+package com.zhxh.codeproj.leetcode.string;
 
 /*
 编写一个函数来查找字符串数组中的最长公共前缀。
@@ -23,12 +23,10 @@ package com.zhxh.codeproj.leetcode.array;
  */
 
 public class LeetCode14 {
-
     public static void main(String[] args) {
         String[] strs = {"flowsad", "flosad", "flisad"};
         System.out.print(new Solution().longestCommonPrefix(strs));
     }
-
 
     /*
     方法一是横向扫描，依次遍历每个字符串，更新最长公共前缀。另一种方法是纵向扫描。

@@ -30,18 +30,6 @@ board 和 word 中只包含大写和小写英文字母。
  */
 public class LeetCode79 {
     public static void main(String[] args) {
-/*
-     char[][] board =
-             {
-                     {'A', 'B', 'C', 'E'},
-                     {'S', 'F', 'C', 'S'},
-                     {'A', 'D', 'E', 'E'}
-             };
-
-     String word = "ABCCED";
-
- */
-
         char[][] board = {{'a', 'b'}};
         String word = "ba";
         Solution solution = new Solution();
@@ -51,11 +39,9 @@ public class LeetCode79 {
 
     /*
     这是一个使用回溯算法解决的问题，涉及的知识点有 DFS 和状态重置。
-
      */
 
     static class Solution {
-
         private boolean[][] marked;
 
         //        x-1,y
@@ -108,11 +94,8 @@ public class LeetCode79 {
             }
             return false;
         }
-
         private boolean inArea(int x, int y) {
             return x >= 0 && x < m && y >= 0 && y < n;
         }
-
     }
-
 }
