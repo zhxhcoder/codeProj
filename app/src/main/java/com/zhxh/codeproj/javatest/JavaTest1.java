@@ -5,18 +5,17 @@ package com.zhxh.codeproj.javatest;
  * nice
  */
 public class JavaTest1 {
-    public static void append(String str1, String str2) {
-        str1 += str2;
-    }
-
     public static void main(String[] args) {
-        String str0 = new String("nice");
-        String str1 = "nice";
-        String str2 = new String("zhxh");
-        append(str1, str2);
-        System.out.println(str1);
-        System.out.println(5 / 2);
-        System.out.println(5 >> 1);
-        System.out.println(5 << 1);
+        String str = "abc";
+        String str1 = "abc";
+        String str2 = new String("abc");
+        System.out.println(str == str1);
+        System.out.println(str1 == "abc");
+        System.out.println(str2 == "abc");
+        System.out.println(str1 == str2);
+        System.out.println(str1.equals(str2));
+        System.out.println(str1 == str2.intern());
+        System.out.println(str2 == str2.intern());
+        System.out.println(str1.hashCode() == str2.hashCode());
     }
 }
