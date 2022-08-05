@@ -14,9 +14,9 @@ package com.zhxh.codeproj.leetcode;
 输出: true
 
 解释: 数组可以分割成 [1, 5, 5] 和 [11].
- 
 
-示例 2:
+
+示例2:
 
 输入: [1, 2, 3, 5]
 

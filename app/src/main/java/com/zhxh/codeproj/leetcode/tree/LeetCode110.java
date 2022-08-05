@@ -5,7 +5,7 @@ package com.zhxh.codeproj.leetcode.tree;
 
 本题中，一棵高度平衡二叉树定义为：
 
-一个二叉树每个节点 的左右两个子树的高度差的绝对值不超过1。
+一个二叉树每个节点的左右两个子树的高度差的绝对值不超过1。
 
 示例 1:
 
@@ -29,7 +29,7 @@ package com.zhxh.codeproj.leetcode.tree;
    3   3
   / \
  4   4
-返回 false 。
+返回false 。
 
  */
 class LeetCode110 {
