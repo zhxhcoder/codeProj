@@ -38,6 +38,7 @@ public class LeetCode344 {
         }
     }
 
+    //反向双指针
     static class Solution {
         public void reverseString(char[] s) {
             int left = 0, right = s.length - 1;

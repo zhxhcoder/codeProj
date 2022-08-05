@@ -53,20 +53,24 @@ public class LeetCode26 {
         System.out.println(Arrays.toString(nums2));
     }
 
+    //while 循环 同向双指针
     public static int removeDuplicates(int[] nums) {
+        //异常处理
         if (nums == null || nums.length == 0) return 0;
-        int p = 0;
-        int q = 1;
-        while (q < nums.length) {
-            if (nums[p] != nums[q]) {
-                nums[p + 1] = nums[q];
-                p++;
+        //初始化i 和j
+        int i = 0, j = 1;
+        while (j < nums.length) {
+            //如果没有重复，保留，否则忽略
+            if (nums[i] != nums[j]) {
+                nums[i + 1] = nums[j];
+                i++;
             }
-            q++;
+            j++;
         }
-        return p + 1;
+        return i + 1;
     }
 
+    // for 循环 同向双指针
     public static int removeDuplicates2(int[] nums) {
         if (nums.length == 0) return 0;
         int i = 0;
