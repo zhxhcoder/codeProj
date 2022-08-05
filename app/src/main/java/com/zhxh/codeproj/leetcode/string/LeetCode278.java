@@ -43,7 +43,7 @@ class LeetCode278 {
 2.将middle会落的地方分成两份
 3.内部 永远是 left = middle + 1 和 right = middle - 1
 如果答案落在left = middle + 1 的里面， 最终return right
-如果答案落在right=middle + 1 里面， 最终return left
+如果答案落在right= middle - 1 里面， 最终return left
 
      */
     static class Solution {
