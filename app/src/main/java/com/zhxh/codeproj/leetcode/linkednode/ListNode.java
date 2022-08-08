@@ -41,4 +41,15 @@ public class ListNode {
         }
         return nodes[0];
     }
+
+
+    public ListNode reverse(ListNode head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+        ListNode reverseHead = reverse(head.next);
+        head.next.next = head;
+        head.next = null;
+        return reverseHead;
+    }
 }
