@@ -50,6 +50,9 @@ public class LeetCode104 {
     }
 
 
+    /*
+    不用递归
+     */
     static class Solution2 {
         public int maxDepth(TreeNode root) {
             Queue<Pair<TreeNode, Integer>> stack = new LinkedList<>();
