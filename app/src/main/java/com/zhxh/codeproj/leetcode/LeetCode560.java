@@ -24,12 +24,32 @@ import java.util.HashMap;
 class LeetCode560 {
     public static void main(String[] args) {
         int[] nums = {1, 2, 3, 0, 2, 1, 3, 2, 4};
+        System.out.println(new Solution().subarraySum(nums, 3));
         System.out.println(new Solution().subarraySum1(nums, 3));
         System.out.println(new Solution().subarraySum2(nums, 3));
         System.out.println(new Solution().subarraySum3(nums, 3));
     }
 
     static class Solution {
+        /*
+        暴力法
+         */
+        public int subarraySum(int[] nums, int k) {
+            // 初始化，使用count储存结果
+            int count = 0;
+            //遍历nums考虑每个位置start作为子数组结尾的情况
+            for (int start = 0; start < nums.length; ++start) {
+                //记录当前子数组的和
+                int sum = 0;
+                for (int end = start; end >= 0; --end) {
+                    sum += nums[end];
+                    if (sum == k) {
+                        count++;
+                    }
+                }
+            }
+            return count;
+        }
 
         /*
         暴力法
