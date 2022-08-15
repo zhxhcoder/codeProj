@@ -20,13 +20,14 @@ public class LeetCode02 {
     public static void main(String[] args) {
         Solution solution = new Solution();
 
-        ListNode node1 = ListNode.buildNode(new int[]{2, 4, 3});
+        ListNode node1 = ListNode.buildNode(new int[]{2, 4, 5});
         ListNode node2 = ListNode.buildNode(new int[]{5, 6, 4});
 
         ListNode.printNode(node1);
         ListNode.printNode(node2);
 
         ListNode.printNode(solution.addTwoNumbers(node1, node2));
+        ListNode.printNode(solution.addTwoNumbers2(node1, node2));
     }
 
     /*
@@ -56,6 +57,42 @@ c. 最后可以直接返回res链表
             if (carry > 0) {
                 curr.next = new ListNode(carry);
             }
+            return dummyHead.next;
+        }
+
+        /**
+         * 用最常规的方法求解
+         * step1:遍历两个链表，两者之和为新的链表res，如果长度不一样，则默认为0
+         * step2：遍历新链表res，如果大于10则，下一个新加1
+         */
+        public ListNode addTwoNumbers2(ListNode p, ListNode q) {
+            ListNode dummyHead = new ListNode(0);
+            ListNode res = dummyHead;
+            while (p != null || q != null) {
+                int a = p != null ? p.val : 0;
+                int b = q != null ? q.val : 0;
+
+                res.next = new ListNode(a + b);
+                //移动到尾部结点
+                res = res.next;
+
+                if (p != null) p = p.next;
+                if (q != null) q = q.next;
+            }
+
+            int carry = 0;
+
+            while (res != null) {
+                //保存原来的值
+                int value = res.val;
+                //加上上个节点的carry
+                res.val = (carry + value) % 10;
+                //新的 carry
+                carry = (carry + value) / 10;
+
+                if (res != null) res = res.next;
+            }
+
             return dummyHead.next;
         }
     }

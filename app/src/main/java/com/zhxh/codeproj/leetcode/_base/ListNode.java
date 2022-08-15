@@ -52,4 +52,24 @@ public class ListNode {
         head.next = null;
         return reverseHead;
     }
+
+    //以下为静态方法 addNote
+
+    //插入curr后面
+    public static ListNode inertNode(ListNode curr, int val) {
+        ListNode last = new ListNode(val);
+        if (curr == null) {
+            return last;
+        }
+        //插入到尾部
+        if (curr.next == null) {
+            curr.next = last;
+            return curr;
+        } else {
+            curr.next = last;
+            last.next = curr.next;
+            return curr;
+        }
+    }
+
 }
