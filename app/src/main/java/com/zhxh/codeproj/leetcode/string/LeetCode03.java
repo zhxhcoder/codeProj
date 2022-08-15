@@ -76,6 +76,7 @@ public class LeetCode03 {
                 //比对当前无重复字段长度和存储的长度，选最大值并替换
                 //j-i+1是因为此时i，j索引扔处于不重复的位置，j还没有向后移动
                 ans = Math.max(ans, j - i + 1);
+                //j+1为下一个字符位置
                 map.put(s.charAt(j), j + 1);
             }
             return ans;
