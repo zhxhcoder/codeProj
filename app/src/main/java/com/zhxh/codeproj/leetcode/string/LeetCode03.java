@@ -29,7 +29,7 @@ s由英文字母、数字、符号和空格组成
  */
 public class LeetCode03 {
     public static void main(String[] args) {
-        String s = "abcabcbb";
+        String s = "abcabcccbbefghgk";
         System.out.println(new Solution().lengthOfLongestSubstring(s));
         System.out.println(new Solution().lengthOfLongestSubstring2(s));
     }
@@ -64,7 +64,7 @@ public class LeetCode03 {
         }
 
         public int lengthOfLongestSubstring2(String s) {
-            int n = s.length(), acc = 0;
+            int n = s.length(), ans = 0;
             //创建map窗口，i为左区间 j为右区间 ，右边界移动
             Map<Character, Integer> map = new HashMap<>();
             for (int j = 0, i = 0; j < n; j++) {
@@ -75,11 +75,10 @@ public class LeetCode03 {
                 }
                 //比对当前无重复字段长度和存储的长度，选最大值并替换
                 //j-i+1是因为此时i，j索引扔处于不重复的位置，j还没有向后移动
-                acc = Math.max(acc, j - i + 1);
+                ans = Math.max(ans, j - i + 1);
                 map.put(s.charAt(j), j + 1);
             }
-            return acc;
+            return ans;
         }
-
     }
 }
