@@ -32,7 +32,6 @@ public class LeetCode03 {
         String s = "abcabcbb";
         System.out.println(new Solution().lengthOfLongestSubstring(s));
         System.out.println(new Solution().lengthOfLongestSubstring2(s));
-        System.out.println(new Solution().lengthOfLongestSubstring3(s));
     }
 
     /*
@@ -82,17 +81,5 @@ public class LeetCode03 {
             return acc;
         }
 
-        public int lengthOfLongestSubstring3(String s) {
-            int n = s.length(), acc = 0;
-            Map<Character, Integer> map = new HashMap<>();
-            for (int j = 0, i = 0; j < n; j++) {
-                if (map.containsKey(s.charAt(j))) {
-                    i = Math.max(map.get(s.charAt(j)), i);
-                }
-                acc = Math.max(acc, j - i + 1);
-                map.put(s.charAt(j), j + 1);
-            }
-            return acc;
-        }
     }
 }
