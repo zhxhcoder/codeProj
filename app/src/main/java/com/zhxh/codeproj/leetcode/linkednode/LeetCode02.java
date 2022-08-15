@@ -67,6 +67,7 @@ c. 最后可以直接返回res链表
          */
         public ListNode addTwoNumbers2(ListNode p, ListNode q) {
             ListNode dummyHead = new ListNode(0);
+            //指针指到原来的位置
             ListNode res = dummyHead;
             while (p != null || q != null) {
                 int a = p != null ? p.val : 0;
@@ -80,8 +81,9 @@ c. 最后可以直接返回res链表
                 if (q != null) q = q.next;
             }
 
+            //上面res指针已经到了，所以重新指回原来的位置
+            res = dummyHead;
             int carry = 0;
-
             while (res != null) {
                 //保存原来的值
                 int value = res.val;
@@ -89,6 +91,13 @@ c. 最后可以直接返回res链表
                 res.val = (carry + value) % 10;
                 //新的 carry
                 carry = (carry + value) / 10;
+
+                //链表末尾时且 carry>0
+                if (res.next == null && carry > 0) {
+                    res.next = new ListNode(carry);
+                    //carry已经利用过了，重新初始化
+                    carry = 0;
+                }
 
                 if (res != null) res = res.next;
             }
