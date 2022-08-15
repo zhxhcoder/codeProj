@@ -1,4 +1,4 @@
-package com.zhxh.codeproj.leetcode;
+package com.zhxh.codeproj.leetcode._base;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;

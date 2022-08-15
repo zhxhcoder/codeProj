@@ -1,6 +1,6 @@
 package com.zhxh.codeproj.leetcode.tree;
 
-import com.zhxh.codeproj.leetcode.TreeNode;
+import com.zhxh.codeproj.leetcode._base.TreeNode;
 
 /*
 给定一个二叉树，判断它是否是高度平衡的二叉树。

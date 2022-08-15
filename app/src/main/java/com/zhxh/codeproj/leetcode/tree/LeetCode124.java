@@ -1,6 +1,6 @@
 package com.zhxh.codeproj.leetcode.tree;
 
-import com.zhxh.codeproj.leetcode.TreeNode;
+import com.zhxh.codeproj.leetcode._base.TreeNode;
 
 /*
 给定一个非空二叉树，返回其最大路径和。

@@ -1,4 +1,4 @@
-package com.zhxh.codeproj.leetcode;
+package com.zhxh.codeproj.leetcode._base;
 
 /**
  * Created by zhxh on 2020/6/18
