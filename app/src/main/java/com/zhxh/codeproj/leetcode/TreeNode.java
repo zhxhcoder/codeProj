@@ -1,4 +1,4 @@
-package com.zhxh.codeproj.leetcode.tree;
+package com.zhxh.codeproj.leetcode;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
