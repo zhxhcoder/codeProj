@@ -29,7 +29,7 @@ s由英文字母、数字、符号和空格组成
  */
 public class LeetCode03 {
     public static void main(String[] args) {
-        String s = "abcabcccbbefghgk";
+        String s = "abcccabkabcd";
         System.out.println(new Solution().lengthOfLongestSubstring(s));
         System.out.println(new Solution().lengthOfLongestSubstring2(s));
     }
@@ -71,13 +71,35 @@ public class LeetCode03 {
                 //如果窗口中包含当前字符
                 if (map.containsKey(s.charAt(j))) {
                     //左边界移动到 相同字符的下一个位置和i当前位置中更靠右的位置
-                    i = Math.max(map.get(s.charAt(j)), i);
+                    i = Math.max(map.get(s.charAt(j)) + 1, i);
                 }
                 //比对当前无重复字段长度和存储的长度，选最大值并替换
                 //j-i+1是因为此时i，j索引扔处于不重复的位置，j还没有向后移动
                 ans = Math.max(ans, j - i + 1);
-                //j+1为下一个字符位置
-                map.put(s.charAt(j), j + 1);
+                //这个字符位置
+                map.put(s.charAt(j), j);
+            }
+            return ans;
+        }
+
+        /*
+        根据set长度来计算
+         */
+        public int lengthOfLongestSubstring3(String s) {
+            int n = s.length(), ans = 0;
+            //创建map窗口，i为左区间 j为右区间 ，右边界移动
+            Map<Character, Integer> map = new HashMap<>();
+            for (int j = 0, i = 0; j < n; j++) {
+                //如果窗口中包含当前字符
+                if (map.containsKey(s.charAt(j))) {
+                    //左边界移动到 相同字符的下一个位置和i当前位置中更靠右的位置
+                    i = Math.max(map.get(s.charAt(j)) + 1, i);
+                }
+                //比对当前无重复字段长度和存储的长度，选最大值并替换
+                //j-i+1是因为此时i，j索引扔处于不重复的位置，j还没有向后移动
+                ans = Math.max(ans, j - i + 1);
+                //这个字符位置
+                map.put(s.charAt(j), j);
             }
             return ans;
         }
