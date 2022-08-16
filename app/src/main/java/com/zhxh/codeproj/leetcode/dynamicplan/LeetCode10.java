@@ -36,14 +36,50 @@ p只包含从a-z的小写字母，以及字符.和*。
  */
 public class LeetCode10 {
     public static void main(String[] args) {
-        System.out.println(new Solution().isMatch("aaabaaa", "a*"));
+        System.out.println(new Solution().isMatch("aaabaaacc", "a*ba*.."));
+        System.out.println(new Solution().isMatch1("aaabaaacc", "a*ba*.."));
     }
 
     static class Solution {
+
+        public boolean isMatch(String s, String p) {
+            int m = s.length();
+            int n = p.length();
+
+            boolean[][] f = new boolean[m + 1][n + 1];
+            f[0][0] = true;
+            for (int i = 0; i <= m; ++i) {
+                for (int j = 1; j <= n; ++j) {
+                    if (p.charAt(j - 1) == '*') {
+                        f[i][j] = f[i][j - 2];
+                        if (matches(s, p, i, j - 1)) {
+                            f[i][j] = f[i][j] || f[i - 1][j];
+                        }
+                    } else {
+                        if (matches(s, p, i, j)) {
+                            f[i][j] = f[i - 1][j - 1];
+                        }
+                    }
+                }
+            }
+            return f[m][n];
+        }
+
+        public boolean matches(String s, String p, int i, int j) {
+            if (i == 0) {
+                return false;
+            }
+            if (p.charAt(j - 1) == '.') {
+                return true;
+            }
+            return s.charAt(i - 1) == p.charAt(j - 1);
+        }
+
+
         /*
         动态规划
          */
-        public boolean isMatch(String text, String pattern) {
+        public boolean isMatch1(String text, String pattern) {
             boolean[][] dp = new boolean[text.length() + 1][pattern.length() + 1];
             dp[text.length()][pattern.length()] = true;
 
