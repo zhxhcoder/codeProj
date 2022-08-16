@@ -20,10 +20,7 @@ import java.util.List;
  */
 public class LeetCode22 {
     public static void main(String[] args) {
-        Solution solution = new Solution();
-        for (String item : solution.generateParenthesis(3)) {
-            System.out.println(item);
-        }
+        System.out.println(new Solution().generateParenthesis(3));
     }
 
     static class Solution {

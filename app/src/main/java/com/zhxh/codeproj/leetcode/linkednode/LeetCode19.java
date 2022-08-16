@@ -21,16 +21,8 @@ import com.zhxh.codeproj.leetcode._base.ListNode;
  */
 public class LeetCode19 {
     public static void main(String[] args) {
-
-        ListNode n1 = ListNode.buildNode(new int[]{1, 2, 3, 4, 5});
-
-        Solution solution = new Solution();
-        ListNode ans = solution.removeNthFromEnd(n1, 3);
-
-        while (ans != null) {
-            System.out.println(ans.val);
-            ans = ans.next;
-        }
+        ListNode.printNode(new Solution().removeNthFromEnd(ListNode.buildNode(new int[]{1, 2, 3, 4, 5}), 3));
+        ListNode.printNode(new Solution().removeNthFromEnd2(ListNode.buildNode(new int[]{1, 2, 3, 4, 5}), 3));
     }
 
     /*
@@ -59,6 +51,25 @@ public class LeetCode19 {
             }
             second.next = second.next.next;
             return dummy.next;
+        }
+
+        /*
+        回溯法后序遍历
+         */
+        public ListNode removeNthFromEnd2(ListNode head, int n) {
+            int traverse = traverse(head, n);
+            if (traverse == n)
+                return head.next;
+            return head;
+        }
+
+        private int traverse(ListNode node, int n) {
+            if (node == null)
+                return 0;
+            int num = traverse(node.next, n);
+            if (num == n)
+                node.next = node.next.next;
+            return num + 1;
         }
     }
 }
