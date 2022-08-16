@@ -15,8 +15,9 @@ s 仅由数字和英文字母组成
  */
 public class LeetCode05 {
     public static void main(String[] args) {
-        System.out.println(new Solution().longestPalindrome("babcbad"));
-        System.out.println(new Solution().longestPalindrome2("babcbad"));
+        System.out.println(new Solution().longestPalindrome("babbad"));
+        System.out.println(new Solution().longestPalindrome2("babbad"));
+        System.out.println(new Solution().longestPalindrome3("babbad"));
     }
 
     static class Solution {
@@ -87,6 +88,61 @@ public class LeetCode05 {
                 R++;
             }
             return R - L - 1;
+        }
+
+
+        /*
+        动态规划(回文的子串也是回文)
+        状态dp[i][j]表示子串s[i..j]是否为回文子串
+        得到状态转移方程：dp[i][j]=(s[i] == s[j]) and dp[i+1][j-1]
+        边界条件：j-1-(i+1)+1<2,整理得j-i<3 即 j-i+1<4  即s[i..j]长度为2或者3时，不用检查子串是否回文
+
+        动态规划，利用到了之前计算的值，所以相对快
+
+        初始化：dp[i][i] =true
+        输出：在得到一个状态的值为true的时候，记录起始位置和长度，填表完成以后再截取
+
+        状态规划就是填表，对角线肯定是true
+        状态转移方程：dp[i][j] = (s[i] == s[j]) and (j-i<3 or dp[i+1][j-1])
+        由于 dp[i][j]参考它左下方的值：
+        1，先升序填列
+        2，再升序填行
+
+         */
+        public String longestPalindrome3(String s) {
+            int len = s.length();
+            if (len < 2) {
+                return s;
+            }
+            int maxLen = 1;
+            int begin = 0;
+            //dp[i][j] 表示s[i..j]是否是回文串
+            boolean[][] dp = new boolean[len][len];
+            for (int i = 0; i < len; i++) {
+                dp[i][i] = true;
+            }
+
+            char[] charArray = s.toCharArray();
+            //注意：左下角先填
+            for (int j = 1; j < len; j++) {
+                for (int i = 0; i < j; i++) {
+                    if (charArray[i] != charArray[j]) {
+                        dp[i][j] = false;
+                    } else {
+                        if (j - i < 3) {
+                            dp[i][j] = true;
+                        } else {
+                            dp[i][j] = dp[i + 1][j - 1];
+                        }
+                    }
+                    //只要dp[i][j]==true成立，就表示子串s[i..j]是回文，此时记录回文长度和起始位置
+                    if (dp[i][j] && j - i + 1 > maxLen) {
+                        maxLen = j - i + 1;
+                        begin = i;
+                    }
+                }
+            }
+            return s.substring(begin, begin + maxLen);
         }
     }
 }
