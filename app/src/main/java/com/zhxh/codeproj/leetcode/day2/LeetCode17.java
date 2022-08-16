@@ -1,4 +1,4 @@
-package com.zhxh.codeproj.leetcode.backtrack;
+package com.zhxh.codeproj.leetcode.day2;
 
 import java.util.ArrayList;
 import java.util.HashMap;

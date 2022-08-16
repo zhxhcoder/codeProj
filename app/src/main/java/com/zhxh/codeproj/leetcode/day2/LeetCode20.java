@@ -1,4 +1,4 @@
-package com.zhxh.codeproj.leetcode;
+package com.zhxh.codeproj.leetcode.day2;
 
 import java.util.HashMap;
 import java.util.LinkedList;

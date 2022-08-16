@@ -1,4 +1,4 @@
-package com.zhxh.codeproj.leetcode;
+package com.zhxh.codeproj.leetcode.day2;
 
 import android.os.Build;
 import android.support.annotation.RequiresApi;

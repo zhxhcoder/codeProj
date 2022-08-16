@@ -1,4 +1,4 @@
-package com.zhxh.codeproj.leetcode.linkednode;
+package com.zhxh.codeproj.leetcode.day1;
 
 import com.zhxh.codeproj.leetcode._base.ListNode;
 
