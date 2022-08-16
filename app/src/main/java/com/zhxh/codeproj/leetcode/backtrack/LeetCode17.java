@@ -21,12 +21,7 @@ import java.util.Map;
  */
 public class LeetCode17 {
     public static void main(String[] args) {
-        String src = "23";
-        Solution solution = new Solution();
-
-        for (String item : solution.letterCombinations(src)) {
-            System.out.println(item);
-        }
+        System.out.println(new Solution().letterCombinations("23"));
     }
 
     /*

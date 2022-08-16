@@ -47,6 +47,11 @@ public class LeetCode11 {
 
         /*
         双指针
+        关键词：左右两边
+        模式识别：需要移动左右两头的问题，可以考虑双指针
+        难点：如何移动指针
+            相同情况下两边距离越远越好
+            区域受限于较短边
          */
         public int maxArea1(int[] height) {
             int maxarea = 0, l = 0, r = height.length - 1;
