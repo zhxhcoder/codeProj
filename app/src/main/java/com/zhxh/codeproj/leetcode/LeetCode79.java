@@ -1,4 +1,4 @@
-package com.zhxh.codeproj.leetcode.backtrack;
+package com.zhxh.codeproj.leetcode;
 
 /*
 给定一个二维网格和一个单词，找出该单词是否存在于网格中。

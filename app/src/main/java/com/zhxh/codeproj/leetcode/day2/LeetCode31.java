@@ -50,6 +50,9 @@ public class LeetCode31 {
     }
 
     static class Solution {
+        /*
+        两遍扫描
+         */
         public void nextPermutation(int[] nums) {
             int i = nums.length - 2;
             while (i >= 0 && nums[i + 1] <= nums[i]) {

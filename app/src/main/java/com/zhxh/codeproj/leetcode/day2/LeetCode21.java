@@ -32,6 +32,9 @@ public class LeetCode21 {
         ListNode.printNode(new Solution().mergeTwoLists2(ListNode.buildNode(new int[]{1, 2, 4}), ListNode.buildNode(new int[]{1, 3, 4})));
     }
 
+    /*
+    迭代
+     */
     static class Solution {
         public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
             //在返回节点之前保持对节点的不变引用。
