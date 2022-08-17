@@ -1,4 +1,4 @@
-package com.zhxh.codeproj.leetcode;
+package com.zhxh.codeproj.leetcode.day3;
 
 /*
 给定一个 n×n 的二维矩阵表示一个图像。

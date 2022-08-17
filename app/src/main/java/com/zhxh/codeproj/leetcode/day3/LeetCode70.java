@@ -1,4 +1,4 @@
-package com.zhxh.codeproj.leetcode.dynamicplan;
+package com.zhxh.codeproj.leetcode.day3;
 
 /*
 假设你正在爬楼梯。需要 n阶你才能到达楼顶。

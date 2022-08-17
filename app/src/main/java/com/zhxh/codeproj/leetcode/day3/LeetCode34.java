@@ -34,16 +34,39 @@ nums是一个非递减数组
 public class LeetCode34 {
     public static void main(String[] args) {
         System.out.println(Arrays.toString(new Solution().searchRange(new int[]{2, 3, 3, 3, 5, 6, 8}, 3)));
+        System.out.println(Arrays.toString(new Solution().searchRange(new int[]{2, 2}, 2)));
+        System.out.println(Arrays.toString(new Solution().searchRange(new int[]{}, 2)));
+
+        System.out.println("----------------");
+
+        System.out.println(Arrays.toString(new Solution().searchRange2(new int[]{2, 3, 3, 3, 5, 6, 8}, 3)));
+        System.out.println(Arrays.toString(new Solution().searchRange2(new int[]{2, 2}, 2)));
+        System.out.println(Arrays.toString(new Solution().searchRange2(new int[]{}, 2)));
+        System.out.println("----------------");
+
+        System.out.println(Arrays.toString(new Solution2().searchRange(new int[]{2, 3, 3, 3, 5, 6, 8}, 3)));
+        System.out.println(Arrays.toString(new Solution2().searchRange(new int[]{2, 2}, 2)));
+        System.out.println(Arrays.toString(new Solution2().searchRange(new int[]{}, 2)));
     }
 
     static class Solution {
         /*
         二分查找算法
+
+        - 二分查找的基本思想：在一个区间范围里看处在中间位置的元素的值nums[mid]与目标元素target大小关系，进而决定目标值落在哪一部分里
+        - 目标元素target在有序数组中很可能存在多个。
+        - 使用二分查找方法看到处在中间位置的元素的值nums[mid]恰好等于目标元素target的时候，还需要继续查找下去。
+        - 此时容易陷入误区的是线性查找，正确的做法是继续二分查找。
          */
         public int[] searchRange(int[] nums, int target) {
+            //第一个位置
             int leftIdx = binarySearch(nums, target, true);
+            //最后一个位置
             int rightIdx = binarySearch(nums, target, false) - 1;
-            if (leftIdx <= rightIdx && rightIdx < nums.length && nums[leftIdx] == target && nums[rightIdx] == target) {
+            if (leftIdx <= rightIdx &&
+                    rightIdx < nums.length &&
+                    nums[leftIdx] == target &&
+                    nums[rightIdx] == target) {
                 return new int[]{leftIdx, rightIdx};
             }
             return new int[]{-1, -1};
@@ -62,6 +85,67 @@ public class LeetCode34 {
             }
             return ans;
         }
-    }
 
+        /*
+        更简洁版本
+         */
+        public int[] searchRange2(int[] nums, int target) {
+            return new int[]{find(nums, target, true), find(nums, target, false)};
+        }
+
+        public int find(int[] nums, int target, boolean minType) {
+            int left = 0, right = nums.length - 1;
+            int ans = -1;
+            while (left <= right) {
+                int mid = left + (right - left) / 2;
+                if (nums[mid] == target) {
+                    ans = mid;
+                    if (minType) {
+                        right = mid - 1;
+                    } else {
+                        left = mid + 1;
+                    }
+                } else if (target < nums[mid]) {
+                    right = mid - 1;
+                } else {
+                    left = mid + 1;
+                }
+            }
+            return ans;
+        }
+    }
+    static class Solution2 {
+        private int extremeInsertionIndex(int[] nums, int target, boolean left) {
+            int lo = 0;
+            int hi = nums.length;
+
+            while (lo < hi) {
+                int mid = (lo + hi) / 2;
+                if (nums[mid] > target || (left && target == nums[mid])) {
+                    hi = mid;
+                } else {
+                    lo = mid + 1;
+                }
+            }
+
+            return lo;
+        }
+
+        public int[] searchRange(int[] nums, int target) {
+            int[] targetRange = {-1, -1};
+
+            int leftIdx = extremeInsertionIndex(nums, target, true);
+
+            // assert that `leftIdx` is within the array bounds and that `target`
+            // is actually in `nums`.
+            if (leftIdx == nums.length || nums[leftIdx] != target) {
+                return targetRange;
+            }
+
+            targetRange[0] = leftIdx;
+            targetRange[1] = extremeInsertionIndex(nums, target, false) - 1;
+
+            return targetRange;
+        }
+    }
 }

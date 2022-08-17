@@ -1,4 +1,4 @@
-package com.zhxh.codeproj.leetcode.dynamicplan;
+package com.zhxh.codeproj.leetcode.day3;
 
 import java.util.Arrays;
 
