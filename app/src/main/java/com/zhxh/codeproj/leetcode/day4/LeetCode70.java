@@ -25,14 +25,13 @@ package com.zhxh.codeproj.leetcode.day4;
 
  */
 public class LeetCode70 {
-
     public static void main(String[] args) {
-        Solution solution = new Solution();
-
-        System.out.println(solution.climbStairs(9));
+        System.out.println(new Solution().climbStairs(9));
     }
-
     static class Solution {
+        /*
+        动态规划
+         */
         public int climbStairs(int n) {
             if (n == 1) {
                 return 1;
