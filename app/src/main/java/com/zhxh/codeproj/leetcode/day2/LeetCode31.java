@@ -46,7 +46,7 @@ public class LeetCode31 {
     public static void main(String[] args) {
         int[] nums = new int[]{1, 2, 3};
         new Solution().nextPermutation(nums);
-        System.out.println(Arrays.stream(nums).boxed().collect(Collectors.toList()));
+        System.out.println(Arrays.toString(nums));
     }
 
     static class Solution {
