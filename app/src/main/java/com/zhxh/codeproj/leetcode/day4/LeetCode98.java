@@ -1,4 +1,4 @@
-package com.zhxh.codeproj.leetcode.day3;
+package com.zhxh.codeproj.leetcode.day4;
 
 import com.zhxh.codeproj.leetcode._base.TreeNode;
 
