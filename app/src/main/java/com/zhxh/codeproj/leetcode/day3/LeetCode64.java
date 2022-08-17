@@ -19,14 +19,11 @@ package com.zhxh.codeproj.leetcode.day3;
  */
 public class LeetCode64 {
     public static void main(String[] args) {
-        Solution solution = new Solution();
-        int[][] grid = {
+        System.out.println(new Solution().minPathSum(new int[][]{
                 {1, 3, 1},
                 {1, 5, 1},
                 {4, 2, 1}
-        };
-
-        System.out.println(solution.minPathSum(grid));
+        }));
     }
 
     static class Solution {

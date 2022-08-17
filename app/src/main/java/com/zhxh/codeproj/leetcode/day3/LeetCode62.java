@@ -71,9 +71,9 @@ def uniquePaths(self, m: int, n: int) -> int:
 class LeetCode62 {
     public static void main(String[] args) {
         System.out.println(new Solution().uniquePaths(9, 8));
-        System.out.println(new Solution2().uniquePaths(9, 8));
-        System.out.println(new Solution21().uniquePaths(9, 8));
-        System.out.println(new Solution22().uniquePaths(9, 8));
+        System.out.println(new Solution().uniquePaths2(9, 8));
+        System.out.println(new Solution().uniquePaths3(9, 8));
+        System.out.println(new Solution().uniquePaths4(9, 8));
     }
 
     static class Solution {
@@ -87,10 +87,11 @@ class LeetCode62 {
             }
             return cur[n - 1];
         }
-    }
 
-    static class Solution2 {
-        public int uniquePaths(int m, int n) {
+        /*
+        动态规划
+         */
+        public int uniquePaths2(int m, int n) {
             int[][] dp = new int[m][n];
             for (int i = 0; i < n; i++) dp[0][i] = 1;
             for (int i = 0; i < m; i++) dp[i][0] = 1;
@@ -101,10 +102,8 @@ class LeetCode62 {
             }
             return dp[m - 1][n - 1];
         }
-    }
 
-    static class Solution21 {
-        public int uniquePaths(int m, int n) {
+        public int uniquePaths3(int m, int n) {
             int[] pre = new int[n];
             int[] cur = new int[n];
             Arrays.fill(pre, 1);
@@ -117,10 +116,8 @@ class LeetCode62 {
             }
             return pre[n - 1];
         }
-    }
 
-    static class Solution22 {
-        public int uniquePaths(int m, int n) {
+        public int uniquePaths4(int m, int n) {
             int[] cur = new int[n];
             Arrays.fill(cur, 1);
             for (int i = 1; i < m; i++) {

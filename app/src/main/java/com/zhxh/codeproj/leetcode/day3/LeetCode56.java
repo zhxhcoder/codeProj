@@ -23,20 +23,12 @@ import java.util.List;
  */
 public class LeetCode56 {
     public static void main(String[] args) {
-        Solution solution = new Solution();
-
-        List<Solution.Interval> intervals = Arrays.asList(
+        System.out.println(new Solution().merge(Arrays.asList(
                 new Solution.Interval(1, 3)
                 , new Solution.Interval(2, 6)
                 , new Solution.Interval(8, 10)
                 , new Solution.Interval(15, 18)
-        );
-
-        List<Solution.Interval> results = solution.merge(intervals);
-
-        for (Solution.Interval interval : results) {
-            System.out.println(interval.toString());
-        }
+        )));
     }
 
     static class Solution {
@@ -52,18 +44,15 @@ public class LeetCode56 {
 
             LinkedList<Interval> merged = new LinkedList<Interval>();
             for (Interval interval : intervals) {
-                // if the list of merged intervals is empty or if the current
-                // interval does not overlap with the previous, simply append it.
+                // 如果合并区间列表为空，或者当前区间与前一个区间不重叠，则简单地追加它。
                 if (merged.isEmpty() || merged.getLast().end < interval.start) {
                     merged.add(interval);
                 }
-                // otherwise, there is overlap, so we merge the current and previous
-                // intervals.
+                // 否则，有重叠，所以我们合并当前和以前的间隔。
                 else {
                     merged.getLast().end = Math.max(merged.getLast().end, interval.end);
                 }
             }
-
             return merged;
         }
 
@@ -78,7 +67,7 @@ public class LeetCode56 {
 
             @Override
             public String toString() {
-                return "Interval{" +
+                return "{" +
                         "start=" + start +
                         ", end=" + end +
                         '}';
