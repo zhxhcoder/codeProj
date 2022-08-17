@@ -15,13 +15,14 @@ package com.zhxh.codeproj.leetcode.day3;
  */
 public class LeetCode53 {
     public static void main(String[] args) {
-        Solution solution = new Solution();
-        int[] nums = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
-        System.out.println(solution.maxSubArray(nums));
-        System.out.println(new Solution2().maxSubArray(nums));
+        System.out.println(new Solution().maxSubArray(new int[]{-2, 1, -3, 4, -1, 2, 1, -5, 4}));
+        System.out.println(new Solution2().maxSubArray(new int[]{-2, 1, -3, 4, -1, 2, 1, -5, 4}));
     }
 
     static class Solution {
+        /*
+        动态规划
+         */
         public int maxSubArray(int[] nums) {
             int n = nums.length;
             int currSum = nums[0], maxSum = nums[0];
@@ -32,8 +33,19 @@ public class LeetCode53 {
             }
             return maxSum;
         }
+
+        /*
+        快慢指针法
+         */
+        public int maxSubArray2(int[] nums) {
+
+            return 0;
+        }
     }
 
+    /*
+    分治
+     */
     static class Solution2 {
         public class Status {
             public int lSum, rSum, mSum, iSum;
@@ -66,6 +78,5 @@ public class LeetCode53 {
             return getInfo(nums, 0, nums.length - 1).mSum;
         }
     }
-
 }
 
