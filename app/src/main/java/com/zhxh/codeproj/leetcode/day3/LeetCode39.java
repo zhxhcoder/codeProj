@@ -1,9 +1,6 @@
 package com.zhxh.codeproj.leetcode.day3;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 /*
 给你一个 无重复元素 的整数数组candidates 和一个目标整数target，找出candidates中可以使数字和为目标数target 的 所有不同组合 ，并以列表形式返回。你可以按 任意顺序 返回这些组合。
@@ -43,6 +40,7 @@ public class LeetCode39 {
         System.out.println(new Solution().combinationSum(new int[]{2, 3, 5}, 8));
         System.out.println(new Solution2().combinationSum(new int[]{2, 3, 5}, 8));
         System.out.println(new Solution3().combinationSum(new int[]{2, 3, 5}, 8));
+        System.out.println(new Solution4().combinationSum(new int[]{2, 3, 5}, 8));
     }
 
     static class Solution {
@@ -152,4 +150,32 @@ public class LeetCode39 {
         }
     }
 
+    /*
+    深度优先 回溯
+     */
+    static class Solution4 {
+        private List<List<Integer>> pathList = new LinkedList<>();
+
+        public List<List<Integer>> combinationSum(int[] candidates, int target) {
+            backtracking(candidates, new LinkedList<>(), 0, target, 0);
+            return pathList;
+        }
+
+        private void backtracking(int[] candidates, List<Integer> path, int pathSum, int target, int startIndex) {
+            //递归终点
+            if (pathSum == target) {
+                //必需这样经过new LinkedList(path)
+                pathList.add(new LinkedList(path));
+                return;
+            }
+            for (int i = startIndex; i < candidates.length; i++) {
+                if (pathSum + candidates[i] <= target) {
+                    path.add(candidates[i]);
+                    backtracking(candidates, path, pathSum + candidates[i], target, i);
+                    //回退
+                    path.remove(path.size() - 1);
+                }
+            }
+        }
+    }
 }

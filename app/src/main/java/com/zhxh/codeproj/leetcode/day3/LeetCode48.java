@@ -1,5 +1,7 @@
 package com.zhxh.codeproj.leetcode.day3;
 
+import java.util.Arrays;
+
 /*
 给定一个 n×n 的二维矩阵表示一个图像。
 
@@ -45,37 +47,20 @@ package com.zhxh.codeproj.leetcode.day3;
  */
 public class LeetCode48 {
     public static void main(String[] args) {
-
-        Solution solution = new Solution();
         int[][] matrix = {
                 {1, 2, 3},
                 {4, 5, 6},
                 {7, 8, 9}
         };
-        for (int[] list : matrix) {
-            System.out.println("---------");
-
-            for (Integer item : list) {
-                System.out.println(item);
-            }
-        }
-
-        solution.rotate(matrix);
-
-        for (int[] list : matrix) {
-            System.out.println("********");
-
-            for (Integer item : list) {
-                System.out.println(item);
-            }
-        }
+        System.out.println(Arrays.deepToString(matrix));
+        new Solution().rotate(matrix);
+        System.out.println(Arrays.deepToString(matrix));
     }
 
     static class Solution {
         public void rotate(int[][] matrix) {
             int n = matrix.length;
-
-            // transpose matrix
+            // 转置矩阵
             for (int i = 0; i < n; i++) {
                 for (int j = i; j < n; j++) {
                     int tmp = matrix[j][i];
@@ -83,7 +68,7 @@ public class LeetCode48 {
                     matrix[i][j] = tmp;
                 }
             }
-            // reverse each row
+            // 反转每一行
             for (int i = 0; i < n; i++) {
                 for (int j = 0; j < n / 2; j++) {
                     int tmp = matrix[i][j];

@@ -24,39 +24,33 @@ import java.util.List;
  */
 public class LeetCode46 {
     public static void main(String[] args) {
-        int[] nums = {2, 3, 1};
-        Solution solution = new Solution();
-
-        for (List<Integer> list : solution.permute(nums)) {
-            System.out.println("*******");
-
-            for (Integer item : list) {
-                System.out.println(item);
-            }
-        }
+        System.out.println(new Solution().permute(new int[]{1, 2, 3}));
     }
 
+    /*
+     回溯
+     */
     static class Solution {
         public void backtrack(int n, ArrayList<Integer> nums, List<List<Integer>> output, int first) {
-            // if all integers are used up
+            // 如果所有整数都用完了
             if (first == n)
+                //拷贝进去
                 output.add(new ArrayList<Integer>(nums));
             for (int i = first; i < n; i++) {
-                // place i-th integer first
-                // in the current permutation
+                // 将第 i 个整数放在当前排列的首位
                 Collections.swap(nums, first, i);
-                // use next integers to complete the permutations
+                // 使用下一个整数来完成排列
                 backtrack(n, nums, output, first + 1);
-                // backtrack
+                // 回溯
                 Collections.swap(nums, first, i);
             }
         }
 
         public List<List<Integer>> permute(int[] nums) {
-            // init output list
+            // 初始化输出列表
             List<List<Integer>> output = new LinkedList();
 
-            // convert nums into list since the output is a list of lists
+            // 将 nums 转换为列表，因为输出是列表的列表
             ArrayList<Integer> nums_lst = new ArrayList<Integer>();
             for (int num : nums)
                 nums_lst.add(num);
