@@ -26,16 +26,20 @@ package com.zhxh.codeproj.leetcode.day4;
  */
 public class LeetCode70 {
     public static void main(String[] args) {
-        System.out.println(new Solution().climbStairs(9));
+        System.out.println(new Solution().climbStairs(30));
+        System.out.println(new Solution().climbStairs2(30));
+        System.out.println(new Solution().climbStairs3(30));
     }
+
     static class Solution {
         /*
-        动态规划
+        动态规划-空间换时间
          */
         public int climbStairs(int n) {
             if (n == 1) {
                 return 1;
             }
+            //长度为n会越界
             int[] dp = new int[n + 1];
             dp[1] = 1;
             dp[2] = 2;
@@ -43,6 +47,28 @@ public class LeetCode70 {
                 dp[i] = dp[i - 1] + dp[i - 2];
             }
             return dp[n];
+        }
+
+        /*
+         递归算法-超时
+         */
+        public int climbStairs2(int n) {
+            if (n == 1) return 1;
+            if (n == 2) return 2;
+            return climbStairs(n - 2) + climbStairs2(n - 1);
+        }
+
+        /*
+        循环的方式
+         */
+        public int climbStairs3(int n) {
+            int p = 0, q = 0, r = 1;
+            for (int i = 1; i <= n; ++i) {
+                p = q;
+                q = r;
+                r = p + q;
+            }
+            return r;
         }
     }
 }

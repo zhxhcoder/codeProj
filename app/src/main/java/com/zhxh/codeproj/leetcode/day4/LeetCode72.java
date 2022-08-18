@@ -38,6 +38,16 @@ public class LeetCode72 {
         System.out.println(new Solution().minDistance("horse", "ros"));
     }
 
+    /*
+     方法1：递归
+
+     模式识别：一旦涉及子问题，可以用自顶向下的递归和自底向上的动态规划
+
+     能否发现子问题
+     能否写出递归解
+     能否意识到递归解法的局限性
+     能否进行优化
+     */
     static class Solution {
         /*
         方法一：动态规划
@@ -70,6 +80,7 @@ public class LeetCode72 {
                     int left_down = D[i - 1][j - 1];
                     if (word1.charAt(i - 1) != word2.charAt(j - 1))
                         left_down += 1;
+                    //D[i][j]=
                     D[i][j] = Math.min(left, Math.min(down, left_down));
                 }
             }
