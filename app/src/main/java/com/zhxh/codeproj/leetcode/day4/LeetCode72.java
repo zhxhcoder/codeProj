@@ -76,9 +76,9 @@ public class LeetCode72 {
             // 计算所有 DP 值
             for (int i = 1; i < n + 1; i++) {
                 for (int j = 1; j < m + 1; j++) {
-                    int left = D[i - 1][j] + 1;
-                    int down = D[i][j - 1] + 1;
-                    int left_down = D[i - 1][j - 1];
+                    int left = D[i - 1][j] + 1;//删除操作
+                    int down = D[i][j - 1] + 1;//增加操作
+                    int left_down = D[i - 1][j - 1];//替换操作
                     if (word1.charAt(i - 1) != word2.charAt(j - 1))
                         left_down += 1;
                     //D[i][j]=
