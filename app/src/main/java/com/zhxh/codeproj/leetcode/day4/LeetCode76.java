@@ -169,5 +169,20 @@ public class LeetCode76 {
             //返回的为以记录的起始位置为起点，记录的最短长度为距离的指定字符串中截取的子串
             return s.substring(start, start + min);
         }
+
+        /*
+        暴力解法
+        如何判断S的子串中包含了T中所有的字符？
+        参考做法：分别统计S的子串和T中每个字符出现的次数，然后逐个比对
+        eg： S: abcab T aab 包含了T中所有的字符
+        eg： S：abcb  T aab 不包含T中所有的字符
+
+         */
+        static class Solution3 {
+
+        }
+
     }
+
+
 }

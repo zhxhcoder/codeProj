@@ -30,11 +30,7 @@ board 和 word 中只包含大写和小写英文字母。
  */
 public class LeetCode79 {
     public static void main(String[] args) {
-        char[][] board = {{'a', 'b'}};
-        String word = "ba";
-        Solution solution = new Solution();
-        boolean exist = solution.exist(board, word);
-        System.out.println(exist);
+        System.out.println(new Solution().exist(new char[][]{{'a', 'b'}}, "ba"));
     }
 
     /*
@@ -94,6 +90,7 @@ public class LeetCode79 {
             }
             return false;
         }
+
         private boolean inArea(int x, int y) {
             return x >= 0 && x < m && y >= 0 && y < n;
         }
