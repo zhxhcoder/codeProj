@@ -18,11 +18,11 @@ package com.zhxh.codeproj.leetcode.day4;
    2     1         2                 3
  */
 class LeetCode96 {
-
     public static void main(String[] args) {
         System.out.println(new Solution().numTrees(3));
+        System.out.println(new Solution1().numTrees(3));
+        System.out.println(new Solution2().numTrees(3));
     }
-
 
     /*
     直觉
@@ -85,7 +85,7 @@ G(n)= ∑G(i−1)⋅G(n−i)
     }
 
     /*
-    事实上 G(n)G(n)函数的值被称为 卡塔兰数
+    事实上G(n)函数的值被称为 卡塔兰数
  。卡塔兰数更便于计算的定义如下:
 
 证明过程可以参考上述文献，此处略去。
@@ -93,7 +93,7 @@ G(n)= ∑G(i−1)⋅G(n−i)
      */
     static class Solution2 {
         public int numTrees(int n) {
-            // Note: we should use long here instead of int, otherwise overflow
+            //注意：这里应该使用long而不是int，否则溢出
             long C = 1;
             for (int i = 0; i < n; ++i) {
                 C = C * 2 * (2 * i + 1) / (i + 2);

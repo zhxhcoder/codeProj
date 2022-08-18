@@ -34,9 +34,8 @@ import java.util.Stack;
  */
 class LeetCode98 {
     public static void main(String[] args) {
-        TreeNode node = TreeNode.buildBinaryTree(new Integer[]{2, 1, 5, null, 5});
-        System.out.println(new Solution().isValidBST(node));
-        System.out.println(new Solution1().isValidBST(node));
+        System.out.println(new Solution().isValidBST(TreeNode.buildBinaryTree(new Integer[]{2, 1, 5, null, 5})));
+        System.out.println(new Solution1().isValidBST(TreeNode.buildBinaryTree(new Integer[]{2, 1, 5, null, 5})));
     }
 
     /*
