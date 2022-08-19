@@ -30,9 +30,38 @@ import java.util.*;
  */
 class LeetCode102 {
     public static void main(String[] args) {
+        System.out.println(new Solution0().levelOrder(TreeNode.buildBinaryTree(new Integer[]{1, 3, 4, 5, 2, 6, null, 9})));
         System.out.println(new Solution().levelOrder(TreeNode.buildBinaryTree(new Integer[]{1, 3, 4, 5, 2, 6, null, 9})));
         System.out.println(new Solution2().levelOrder(TreeNode.buildBinaryTree(new Integer[]{1, 3, 4, 5, 2, 6, null, 9})));
         System.out.println(new Solution3().levelOrder(TreeNode.buildBinaryTree(new Integer[]{1, 3, 4, 5, 2, 6, null, 9})));
+    }
+
+    /*
+    自己手写
+     */
+    static class Solution0 {
+        public List<List<Integer>> levelOrder(TreeNode root) {
+            List<List<Integer>> res = new ArrayList<>();
+            if (root == null) return res;
+            Queue<TreeNode> queue = new LinkedList<>();
+            //一层一层的入列，这是第一层
+            queue.offer(root);
+            while (!queue.isEmpty()) {
+                //处理每一层前，先建一个列表，用来存储这一层的所有元素
+                List<Integer> level = new ArrayList<>();
+                int curLevelSize = queue.size();
+                for (int i = 0; i < curLevelSize; i++) {
+                    TreeNode node = queue.poll();
+                    level.add(node.val);
+                    //一层一层的入列，这是第n层
+                    if (node.left != null) queue.offer(node.left);
+                    if (node.right != null) queue.offer(node.right);
+                }
+                //这一层全部遍历完后，加入最终结果
+                res.add(level);
+            }
+            return res;
+        }
     }
 
     /*
