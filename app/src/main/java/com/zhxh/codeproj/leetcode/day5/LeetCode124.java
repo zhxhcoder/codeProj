@@ -60,7 +60,6 @@ class LeetCode124 {
 该节点的最大路径和取决于该节点的值与该节点的左右子节点的最大贡献值，如果子节点的最大贡献值为正，则计入该节点的最大路径和，否则不计入该节点的最大路径和。
 维护一个全局变量 maxSum 存储最大路径和，在递归过程中更新 maxSum 的值，最后得到的 maxSum 的值即为二叉树中的最大路径和。
 
-
      */
     static class Solution {
         int maxSum = Integer.MIN_VALUE;
