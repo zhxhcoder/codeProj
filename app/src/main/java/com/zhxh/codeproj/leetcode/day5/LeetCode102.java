@@ -2,10 +2,7 @@ package com.zhxh.codeproj.leetcode.day5;
 
 import com.zhxh.codeproj.leetcode._base.TreeNode;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 /*
 给你一个二叉树，请你返回其按 层序遍历 得到的节点值。 （即逐层地，从左到右访问所有节点）。
@@ -32,21 +29,56 @@ import java.util.Queue;
 
  */
 class LeetCode102 {
-
     public static void main(String[] args) {
-
-        TreeNode root = TreeNode.buildBinaryTree(new Integer[]{1, 3, 4, 5, 2, 6, null, 9});
-
-        List<List<Integer>> arr = new Solution().levelOrder(root);
-
-        System.out.println(arr);
+        System.out.println(new Solution().levelOrder(TreeNode.buildBinaryTree(new Integer[]{1, 3, 4, 5, 2, 6, null, 9})));
+        System.out.println(new Solution2().levelOrder(TreeNode.buildBinaryTree(new Integer[]{1, 3, 4, 5, 2, 6, null, 9})));
     }
 
     /*
-    https://leetcode-cn.com/problems/binary-tree-level-order-traversal/solution/bfs-de-shi-yong-chang-jing-zong-jie-ceng-xu-bian-l/
-
+    广度优先搜索
+    我们可以想到最朴素的方法是用一个二元组（node，level）来表示状态，它表示某个节点和它所在的层数。
+    考虑如何优化空间开销：如何不用哈希映射，并且只用一个变量node表示状态，实现这个功能？
+    我们可以用一种巧妙的方法修改广度优先搜索：
+    - 首先根元素入队
+    - 当队列不为空的时候
+     - 求当前队列的长度si
+     - 依次从队列中取si个元素进行拓展，然后进入下一次迭代
      */
     static class Solution {
+        public List<List<Integer>> levelOrder(TreeNode root) {
+            List<List<Integer>> ret = new ArrayList<List<Integer>>();
+            if (root == null) {
+                return ret;
+            }
+
+            Queue<TreeNode> queue = new LinkedList<TreeNode>();
+            queue.offer(root);
+            while (!queue.isEmpty()) {
+                List<Integer> level = new ArrayList<Integer>();
+                int currentLevelSize = queue.size();
+                for (int i = 1; i <= currentLevelSize; ++i) {
+                    TreeNode node = queue.poll();
+                    level.add(node.val);
+                    if (node.left != null) {
+                        queue.offer(node.left);
+                    }
+                    if (node.right != null) {
+                        queue.offer(node.right);
+                    }
+                }
+                ret.add(level);
+            }
+
+            return ret;
+        }
+    }
+
+    /*
+    BFS的使用场景总结：层序遍历、最短路径问题
+    本文将会讲解为什么这道题适合用广度优先搜索（BFS），以及BFS适用于什么样的场景。
+    https://leetcode-cn.com/problems/binary-tree-level-order-traversal/solution/bfs-de-shi-yong-chang-jing-zong-jie-ceng-xu-bian-l/
+     */
+    static class Solution2 {
         public List<List<Integer>> levelOrder(TreeNode root) {
             List<List<Integer>> res = new ArrayList<>();
 

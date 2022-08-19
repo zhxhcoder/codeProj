@@ -27,12 +27,9 @@ import java.util.Queue;
 
  */
 public class LeetCode104 {
-
     public static void main(String[] args) {
-        Solution solution = new Solution();
-        TreeNode node0 = TreeNode.buildBinaryTree(new Integer[]{1, 2, 2, null, 3, null, 3});
-        System.out.println(solution.maxDepth(node0));
-        System.out.println(new Solution2().maxDepth(node0));
+        System.out.println(new Solution().maxDepth(TreeNode.buildBinaryTree(new Integer[]{1, 2, 2, null, 3, null, 3})));
+        System.out.println(new Solution2().maxDepth(TreeNode.buildBinaryTree(new Integer[]{1, 2, 2, null, 3, null, 3})));
     }
 
     /*
@@ -49,7 +46,6 @@ public class LeetCode104 {
             }
         }
     }
-
 
     /*
     不用递归
