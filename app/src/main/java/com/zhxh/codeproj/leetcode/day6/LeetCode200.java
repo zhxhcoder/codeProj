@@ -1,4 +1,4 @@
-package com.zhxh.codeproj.leetcode.graph;
+package com.zhxh.codeproj.leetcode.day6;
 
 import java.util.LinkedList;
 import java.util.Queue;

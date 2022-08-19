@@ -1,4 +1,4 @@
-package com.zhxh.codeproj.leetcode.design;
+package com.zhxh.codeproj.leetcode.day6;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -34,6 +34,9 @@ LRUCache cache = new LRUCache( 2 ); //2为缓存容量
  */
 public class LeetCode146 {
 
+    /*
+    设计类
+     */
     public static void main(String[] args) {
 
     }

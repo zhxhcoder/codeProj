@@ -1,4 +1,4 @@
-package com.zhxh.codeproj.leetcode.stack;
+package com.zhxh.codeproj.leetcode.day6;
 
 import java.util.Stack;
 
