@@ -1,6 +1,7 @@
 package com.zhxh.codeproj.leetcode.day6;
 
 import com.zhxh.codeproj.leetcode._base.ListNode;
+import com.zhxh.codeproj.leetcode.day5.LeetCode142;
 
 /*
 在O(nlogn) 时间复杂度和常数级空间复杂度下，对链表进行排序。
@@ -17,7 +18,8 @@ import com.zhxh.codeproj.leetcode._base.ListNode;
  */
 class LeetCode148 {
     public static void main(String[] args) {
-
+        ListNode.printNode(new Solution1().sortList(ListNode.buildNode(new int[]{3, 2, 0, -4})));
+        ListNode.printNode(new Solution2().sortList(ListNode.buildNode(new int[]{3, 2, 0, -4})));
     }
 
     /*
@@ -60,7 +62,6 @@ class LeetCode148 {
             if (head == null || head.next == null) {
                 return head;
             }
-
             // 2、找到链表中间节点并断开链表 & 递归下探
             ListNode midNode = middleNode(head);
             ListNode rightHead = midNode.next;
@@ -102,14 +103,10 @@ class LeetCode148 {
                     curr.next = l2;
                     l2 = l2.next;
                 }
-
                 curr = curr.next;
             }
-
             curr.next = l1 != null ? l1 : l2;
             return sentry.next;
         }
-
     }
-
 }

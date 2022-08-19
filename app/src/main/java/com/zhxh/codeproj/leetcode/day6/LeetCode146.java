@@ -166,6 +166,4 @@ public class LeetCode146 {
             return res;
         }
     }
-
-
 }
