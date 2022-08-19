@@ -26,12 +26,18 @@ import java.util.Map;
  */
 class LeetCode105 {
     public static void main(String[] args) {
-        int[] preorder = {3, 9, 20, 15, 7};
-        int[] inorder = {9, 3, 15, 20, 7};
-
-        TreeNode node = new Solution1().buildTree(preorder, inorder);
+        TreeNode node = new Solution().buildTree(
+                new int[]{3, 9, 20, 15, 7},
+                new int[]{9, 3, 15, 20, 7});
         TreeNode.prettyPrintTree(node);
         System.out.println(TreeNode.serialize(node));
+
+
+        TreeNode node2 = new Solution2().buildTree(
+                new int[]{3, 9, 20, 15, 7},
+                new int[]{9, 3, 15, 20, 7});
+        TreeNode.prettyPrintTree(node2);
+        System.out.println(TreeNode.serialize(node2));
     }
 
     /*
@@ -115,7 +121,7 @@ class LeetCode105 {
     }
 
     /*分而治之 -官方视频的 */
-    static class Solution1 {
+    static class Solution2 {
         public TreeNode buildTree(int[] preorder, int[] inorder) {
             int preLen = preorder.length;
             int inLen = inorder.length;
