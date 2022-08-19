@@ -37,6 +37,7 @@ import java.util.Set;
 public class LeetCode141 {
     public static void main(String[] args) {
         System.out.println(new Solution().hasCycle(ListNode.buildNode(new int[]{3, 2, 0, -4})));
+        System.out.println(new Solution().hasCycle2(ListNode.buildNode(new int[]{3, 2, 0, -4})));
     }
 
     static class Solution {
