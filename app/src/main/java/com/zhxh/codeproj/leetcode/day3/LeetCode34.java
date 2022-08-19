@@ -114,6 +114,7 @@ public class LeetCode34 {
             return ans;
         }
     }
+
     static class Solution2 {
         private int extremeInsertionIndex(int[] nums, int target, boolean left) {
             int lo = 0;

@@ -120,6 +120,15 @@ class LeetCode105 {
             return buildTree(preorder, 0, preLen - 1, map, 0, inLen - 1);
         }
 
+        /**
+         * @param preorder 前序遍历序列
+         * @param preLeft  前序遍历序列子区间的左边界，可以取到
+         * @param preRight 前序遍历序列子区间的右边界，可以取到
+         * @param map      在中序遍历序列中，数值与下标的对应关系
+         * @param inLeft   中序遍历序列子区间的左边界，可以取到
+         * @param inRight  前序遍历序列子区间的右边界，可以取到
+         * @return
+         */
         private TreeNode buildTree(int[] preorder, int preLeft, int preRight, Map<Integer, Integer> map, int inLeft, int inRight) {
             //递归终止条件
             if (preLeft > preRight || inLeft > inRight) {

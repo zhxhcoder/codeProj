@@ -49,6 +49,7 @@ class LeetCode102 {
             while (!queue.isEmpty()) {
                 //处理每一层前，先建一个列表，用来存储这一层的所有元素
                 List<Integer> level = new ArrayList<>();
+                //很关键，因为queue大小一直是变化的，记录初始的大小（该层数量）
                 int curLevelSize = queue.size();
                 for (int i = 0; i < curLevelSize; i++) {
                     TreeNode node = queue.poll();
@@ -57,7 +58,7 @@ class LeetCode102 {
                     if (node.left != null) queue.offer(node.left);
                     if (node.right != null) queue.offer(node.right);
                 }
-                //这一层全部遍历完后，加入最终结果
+                //这一层全部遍历完后，加入最终结果（此时queue已经加入下一层的节点）
                 res.add(level);
             }
             return res;

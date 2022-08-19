@@ -45,6 +45,7 @@ public class LeetCode29 {
             int res = helper(dividend, divisor);
             return isNegative ? -res : res;
         }
+
         private int helper(int dividend, int divisor) {
             if (dividend > divisor) {
                 return 0;
