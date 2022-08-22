@@ -23,14 +23,15 @@ import java.util.Arrays;
  */
 class LeetCode322 {
     public static void main(String[] args) {
-
+        System.out.println(new Solution1().coinChange(new int[]{1, 2, 5}, 11));
+        System.out.println(new Solution2().coinChange(new int[]{1, 2, 5}, 11));
+        System.out.println(new Solution3().coinChange(new int[]{1, 2, 5}, 11));
     }
 
     /*
     方法一、搜索回溯 [超出时间限制]
      */
     static class Solution1 {
-
         public int coinChange(int[] coins, int amount) {
             return coinChange(0, coins, amount);
         }
@@ -58,7 +59,6 @@ class LeetCode322 {
     方法二、动态规划-自上而下 [通过]
      */
     static class Solution2 {
-
         public int coinChange(int[] coins, int amount) {
             if (amount < 1) return 0;
             return coinChange(coins, amount, new int[amount]);
@@ -98,5 +98,4 @@ class LeetCode322 {
             return dp[amount] > amount ? -1 : dp[amount];
         }
     }
-
 }
