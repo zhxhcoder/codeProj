@@ -53,7 +53,7 @@ public class LeetCode283 {
                         nums[j] = nums[i];
                         nums[i] = 0;
                         //这个不要忘记
-                        i--;
+                        zeroQueue.offer(i);
                     }
                 }
                 i++;
