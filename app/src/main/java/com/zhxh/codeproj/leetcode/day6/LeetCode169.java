@@ -24,6 +24,7 @@ public class LeetCode169 {
         System.out.println(new Solution().majorityElement(new int[]{1, 7, 7, 2, 7, 3, 7, 4, 7, 5, 7}));
         System.out.println(new Solution2().majorityElement(new int[]{1, 7, 7, 2, 7, 3, 7, 4, 7, 5, 7}));
         System.out.println(new Solution3().majorityElement(new int[]{1, 7, 7, 2, 7, 3, 7, 4, 7, 5, 7}));
+        System.out.println(new Solution4().majorityElement(new int[]{1, 7, 7, 2, 7, 3, 7, 4, 7, 5, 7}));
     }
 
     static class Solution {
@@ -61,6 +62,7 @@ public class LeetCode169 {
 
     /*
     投票法
+    如果我们把众数记为 +1，把其他数记为 −1，将它们全部加起来，显然和大于 0，从结果本身我们可以看出众数比其他数多。
     如果候选人不是maj 则 maj,会和其他非候选人一起反对 会反对候选人,所以候选人一定会下台(maj==0时发生换届选举)
     如果候选人是maj , 则maj 会支持自己，其他候选人会反对，同样因为maj 票数超过一半，所以maj 一定会成功当选
      */
@@ -69,10 +71,36 @@ public class LeetCode169 {
             int count = 0;
             Integer candidate = null;
             for (int num : nums) {
-                if (count == 0) {
+                if (count == 0) {//换届
                     candidate = num;
                 }
                 count += (num == candidate) ? 1 : -1;
+            }
+            return candidate;
+        }
+    }
+
+    static class Solution4 {
+        public int majorityElement(int[] nums) {
+            //假设第一个元素的票数
+            int count = 1;
+            //假设第一个元素为当选人
+            int candidate = nums[0];
+            for (int i = 0; i < nums.length; i++) {
+                //如果数组遍历过程中，有元素和当选人元素一样，就加一
+                if (nums[i] == candidate) {
+                    count++;
+                } else {
+                    //如果没有就减一
+                    count--;
+                }
+                //如果票数为0的话就更换当选人
+                if (count == 0) {
+                    //更换当选人
+                    candidate = nums[i];
+                    //票数重新置为1
+                    count = 1;
+                }
             }
             return candidate;
         }
