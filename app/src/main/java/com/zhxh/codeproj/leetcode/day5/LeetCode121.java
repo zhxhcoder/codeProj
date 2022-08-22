@@ -23,8 +23,9 @@ package com.zhxh.codeproj.leetcode.day5;
  */
 public class LeetCode121 {
     public static void main(String[] args) {
-        System.out.println(new Solution().maxProfit(new int[]{7, 1, 5, 3, 6, 4}));
-        System.out.println(new Solution().maxProfit2(new int[]{7, 1, 5, 3, 6, 4}));
+        System.out.println(new Solution().maxProfit(new int[]{8, 7, 13, 1, 5, 3, 6, 4}));
+        System.out.println(new Solution().maxProfit2(new int[]{8, 7, 13, 1, 5, 3, 6, 4}));
+        System.out.println(new Solution().maxProfit3(new int[]{8, 7, 13, 1, 5, 3, 6, 4}));
     }
 
     static class Solution {
@@ -33,8 +34,9 @@ public class LeetCode121 {
          */
         public int maxProfit(int[] prices) {
             int maxprofit = 0;
-            for (int i = 0; i < prices.length - 1; i++) {
-                for (int j = i + 1; j < prices.length; j++) {
+            //i取值到倒数第二个位置
+            for (int i = 0; i <= prices.length - 2; i++) {
+                for (int j = i + 1; j <= prices.length - 1; j++) {
                     int profit = prices[j] - prices[i];
                     if (profit > maxprofit) {
                         maxprofit = profit;
@@ -46,6 +48,7 @@ public class LeetCode121 {
 
         /*
         一次遍历
+        [7,12,1,5,3,6,4]
          */
         public int maxProfit2(int[] prices) {
             int minprice = Integer.MAX_VALUE;
@@ -56,6 +59,24 @@ public class LeetCode121 {
                 } else if (prices[i] - minprice > maxprofit) {
                     maxprofit = prices[i] - minprice;
                 }
+            }
+            return maxprofit;
+        }
+
+        /*
+        动态规划
+        一次遍历
+        [7,12,1,5,3,6,4]
+         */
+        public int maxProfit3(int[] prices) {
+            int minprice = Integer.MAX_VALUE;
+            int maxprofit = 0;
+            for (int i = 0; i < prices.length; i++) {
+                int p = prices[i];
+                //随着数组前移，如果当前价格，小于最小价格则采用最小的
+                minprice = Math.min(minprice, p);
+                //随着数组前移，如果有更大利润，则采用最大利润
+                maxprofit = Math.max(maxprofit, p - minprice);
             }
             return maxprofit;
         }

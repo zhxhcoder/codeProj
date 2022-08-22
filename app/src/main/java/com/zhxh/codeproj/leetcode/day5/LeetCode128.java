@@ -41,6 +41,7 @@ public class LeetCode128 {
             }
             int longestStreak = 0;
             for (int num : num_set) {
+                //我们考虑枚举数组中的每个数 x，考虑以其为起点，不断尝试匹配 x+1, x+2,⋯ 是否存在由于我们要枚举的数x一定是在数组中不存在前驱数x-1的，
                 if (!num_set.contains(num - 1)) {
                     int currentNum = num;
                     int currentStreak = 1;
