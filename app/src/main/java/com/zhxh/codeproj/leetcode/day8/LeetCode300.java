@@ -1,5 +1,7 @@
 package com.zhxh.codeproj.leetcode.day8;
 
+import java.util.Stack;
+
 /*
 给定一个无序的整数数组，找到其中最长上升子序列的长度。
 
@@ -17,9 +19,41 @@ package com.zhxh.codeproj.leetcode.day8;
  */
 class LeetCode300 {
     public static void main(String[] args) {
+        System.out.println(new Solution0().lengthOfLIS(new int[]{3, 5, 6, 2, 5, 4, 19, 5, 6, 7, 12}));
         System.out.println(new Solution1().lengthOfLIS(new int[]{3, 5, 6, 2, 5, 4, 19, 5, 6, 7, 12}));
         System.out.println(new Solution2().lengthOfLIS(new int[]{3, 5, 6, 2, 5, 4, 19, 5, 6, 7, 12}));
     }
+    /*
+     TODO 自己的解法，暴力解法
+     这个问题就是求，每个元素为root的决策树的最大深度
+     比root大，才能入树
+     */
+
+    static class Solution0 {
+        public int lengthOfLIS(int[] nums) {
+            if (nums == null) {
+                return -1;
+            }
+            int max = 1;
+            for (int i = 0; i < nums.length; i++) {
+                //辅助栈
+                Stack<Integer> maxStack = new Stack<>();
+                maxStack.push(nums[i]);
+
+                for (int j = i + 1; j < nums.length; j++) {
+                    int a = nums[j];
+                    int innerStart = maxStack.peek();
+                    //TODO 如果大于则自增
+                    if (a > innerStart) {
+
+                    }
+                }
+                max = Math.max(max, maxStack.size());
+            }
+            return max;
+        }
+    }
+
     /*
     方法一：动态规划
      */
