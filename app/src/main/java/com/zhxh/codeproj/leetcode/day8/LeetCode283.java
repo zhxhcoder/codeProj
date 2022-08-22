@@ -28,10 +28,13 @@ import java.util.Queue;
  */
 public class LeetCode283 {
     public static void main(String[] args) {
-        int[] nums = {0, 1, 0, 3, 12};
-//        new Solution().moveZeroes(nums);
-        new Solution().moveZeroes2(nums);
-        System.out.println(Arrays.toString(nums));
+        int[] nums1 = {0, 1, 0, 3, 12};
+        new Solution().moveZeroes(nums1);
+        System.out.println(Arrays.toString(nums1));
+
+        int[] nums2 = {0, 1, 0, 3, 12};
+        new Solution().moveZeroes2(nums2);
+        System.out.println(Arrays.toString(nums2));
     }
 
     static class Solution {
@@ -82,7 +85,6 @@ public class LeetCode283 {
                 }
                 right++;
             }
-
         }
 
         /*
