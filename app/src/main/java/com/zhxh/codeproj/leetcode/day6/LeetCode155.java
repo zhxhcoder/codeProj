@@ -38,16 +38,25 @@ pop、top 和 getMin 操作总是在 非空栈 上调用。
  */
 
 public class LeetCode155 {
+    public static void main(String[] args) {
+        MinStack minStack = new MinStack();
+        minStack.push(-2);
+        minStack.push(0);
+        minStack.push(-3);
+        minStack.getMin();
+        minStack.pop();
+        minStack.top();
+        minStack.getMin();
+    }
 
-    public class MinStack {
-
+    static class MinStack {
         // 数据栈
         private Stack<Integer> data;
         // 辅助栈
         private Stack<Integer> helper;
 
-        /**
-         * initialize your data structure here.
+        /*
+         在这里初始化你的数据结构。
          */
         public MinStack() {
             data = new Stack<>();
@@ -55,7 +64,6 @@ public class LeetCode155 {
         }
 
         // 思路 1：数据栈和辅助栈在任何时候都同步
-
         public void push(int x) {
             // 数据栈和辅助栈一定会增加元素
             data.add(x);

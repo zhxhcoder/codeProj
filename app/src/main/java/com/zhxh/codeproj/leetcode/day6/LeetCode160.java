@@ -2,6 +2,9 @@ package com.zhxh.codeproj.leetcode.day6;
 
 import com.zhxh.codeproj.leetcode._base.ListNode;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /*
 编写一个程序，找到两个单链表相交的起始节点。
 
@@ -49,9 +52,17 @@ import com.zhxh.codeproj.leetcode._base.ListNode;
 程序尽量满足 O(n) 时间复杂度，且仅用 O(1) 内存。
  */
 public class LeetCode160 {
+    public static void main(String[] args) {
+        ListNode.printNode(new Solution().getIntersectionNode(ListNode.buildNode(new int[]{4, 1, 8, 4, 5}), ListNode.buildNode(new int[]{5, 0, 1, 8, 4, 5})));
+        ListNode.printNode(new Solution2().getIntersectionNode(ListNode.buildNode(new int[]{4, 1, 8, 4, 5}), ListNode.buildNode(new int[]{5, 0, 1, 8, 4, 5})));
+    }
+
+    /*
+    双指针
+     */
     static class Solution {
         public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
-            /**
+            /*
              定义两个指针, 第一轮让两个到达末尾的节点指向另一个链表的头部, 最后如果相遇则为交点(在第一轮移动中恰好抹除了长度差)
              两个指针等于移动了相同的距离, 有交点就返回, 无交点就是各走了两条指针的长度
              **/
@@ -63,6 +74,28 @@ public class LeetCode160 {
                 pB = pB == null ? headA : pB.next;
             }
             return pA;
+        }
+    }
+
+    /*
+    哈希集合
+     */
+    static class Solution2 {
+        public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+            Set<ListNode> visited = new HashSet<ListNode>();
+            ListNode temp = headA;
+            while (temp != null) {
+                visited.add(temp);
+                temp = temp.next;
+            }
+            temp = headB;
+            while (temp != null) {
+                if (visited.contains(temp)) {
+                    return temp;
+                }
+                temp = temp.next;
+            }
+            return null;
         }
     }
 }

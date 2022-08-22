@@ -30,6 +30,47 @@ nums 的任何前缀或后缀的乘积都 保证是一个 32-位 整数
  */
 public class LeetCode152 {
     public static void main(String[] args) {
+        System.out.println(new Solution().maxProduct(new int[]{2, 3, -2, 4}));
+        System.out.println(new Solution2().maxProduct(new int[]{2, 3, -2, 4}));
+    }
 
+    /*
+    暴力解法
+     */
+    static class Solution {
+        public int maxProduct(int[] nums) {
+            //思路：暴力穷举所有子数组，然后得出最大值
+            int len = nums.length;
+            if (len == 0) {
+                return 0;
+            }
+            long max = Long.MIN_VALUE;
+            for (int i = 0; i < len; i++) {
+                int numCount = 1;
+                for (int j = i; j < len; j++) {
+                    numCount *= nums[j];
+                    max = Math.max(numCount, max);
+                }
+            }
+            return (int) max;
+        }
+    }
+    /*
+    动态规划
+     */
+    static class Solution2 {
+        public int maxProduct(int[] nums) {
+            int[] maxF = new int[nums.length];
+            int[] minF = new int[nums.length];
+            maxF[0] = nums[0];
+            minF[0] = nums[0];
+            int ans = nums[0];
+            for (int i = 1; i < nums.length; ++i) {
+                maxF[i] = Math.max(maxF[i - 1] * nums[i], Math.max(nums[i], minF[i - 1] * nums[i]));
+                minF[i] = Math.min(minF[i - 1] * nums[i], Math.min(nums[i], maxF[i - 1] * nums[i]));
+                ans = Math.max(ans, maxF[i]);
+            }
+            return ans;
+        }
     }
 }
