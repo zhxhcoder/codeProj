@@ -29,7 +29,8 @@ import java.util.Queue;
 public class LeetCode283 {
     public static void main(String[] args) {
         int[] nums = {0, 1, 0, 3, 12};
-        new Solution().moveZeroes(nums);
+//        new Solution().moveZeroes(nums);
+        new Solution().moveZeroes2(nums);
         System.out.println(Arrays.toString(nums));
     }
 
@@ -58,6 +59,39 @@ public class LeetCode283 {
                 }
                 i++;
             }
+        }
+
+
+        /*
+        双指针
+        左指针指向当前已经处理好的序列的尾部，右指针指向待处理序列的头部。
+        右指针不断向右移动，每次右指针指向非零数，则将左右指针对应的数交互，同时左指针右移。
+        注意以下性质；
+        1，左指针左边均为非零数
+        2，右指针左边直到左边指针均为0
+        因此每次交换，都是将左指针的0与右指针的非零数交换，且非零数的相对顺序并未改变。
+
+         */
+
+        public void moveZeroes2(int[] nums) {
+            int n = nums.length, left = 0, right = 0;
+            while (right < n) {
+                if (nums[right] != 0) {
+                    swap(nums, left, right);
+                    left++;
+                }
+                right++;
+            }
+
+        }
+
+        /*
+         * 交换数组 arr 中下标为 i 和下标为 j 位置的元素
+         */
+        public void swap(int[] arr, int i, int j) {
+            int temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
         }
     }
 }
