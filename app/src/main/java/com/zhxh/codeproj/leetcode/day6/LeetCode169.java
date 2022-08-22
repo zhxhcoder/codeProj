@@ -80,22 +80,26 @@ public class LeetCode169 {
         }
     }
 
+    /*
+    投票法
+    也可以用出栈入栈来解决
+     */
     static class Solution4 {
         public int majorityElement(int[] nums) {
             //假设第一个元素的票数
             int count = 1;
             //假设第一个元素为当选人
             int candidate = nums[0];
-            for (int i = 0; i < nums.length; i++) {
-                //如果数组遍历过程中，有元素和当选人元素一样，就加一
+            for (int i = 1; i < nums.length; i++) {
                 if (nums[i] == candidate) {
                     count++;
                 } else {
-                    //如果没有就减一
                     count--;
                 }
-                //如果票数为0的话就更换当选人
-                if (count == 0) {
+                //如果票数小于等于0的话就更换当选人
+                //如果候选人不是maj 则 maj,会和其他非候选人一起反对 会反对候选人,所以候选人一定会下台(maj==0时发生换届选举)
+                //如果候选人是maj , 则maj 会支持自己，其他候选人会反对，同样因为maj 票数超过一半，所以maj 一定会成功当选
+                if (count <= 0) {
                     //更换当选人
                     candidate = nums[i];
                     //票数重新置为1
