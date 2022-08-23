@@ -1,12 +1,6 @@
 package com.zhxh.codeproj.leetcode._base;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -20,6 +14,43 @@ public class DataCreate {
         int[] array0 = new int[]{1, 2, 3, 4, 5};
         int[] array1 = {1, 2, 3, 4, 5};
         int[] array3 = new int[5]; // 初始值为0
+
+        List<List<String>> listList0 = new LinkedList<List<String>>() {{
+            add(new LinkedList<String>() {{
+                add("a");
+                add("b");
+                add("c");
+            }});
+            add(new LinkedList<String>() {{
+                add("a");
+                add("b");
+                add("c");
+            }});
+            add(new LinkedList<String>() {{
+                add("a");
+                add("b");
+                add("c");
+            }});
+        }};
+
+        List<List<String>> listList1 = new ArrayList<List<String>>() {{
+            add(new LinkedList<String>() {{
+                add("a");
+                add("b");
+                add("c");
+            }});
+            add(new LinkedList<String>() {{
+                add("a");
+                add("b");
+                add("c");
+            }});
+            add(new LinkedList<String>() {{
+                add("a");
+                add("b");
+                add("c");
+            }});
+        }};
+
 
         //列表的舒初始化
         List<String> stringList1 = new LinkedList<>();
