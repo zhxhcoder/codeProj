@@ -24,7 +24,8 @@ import com.zhxh.codeproj.leetcode._base.TreeNode;
  */
 public class LeetCode543 {
     public static void main(String[] args) {
-        System.out.println(new Solution().diameterOfBinaryTree(TreeNode.buildBinaryTree(new Integer[]{1, 2, 2, null, 3, null, 3})));
+        System.out.println(new Solution().diameterOfBinaryTree(TreeNode.buildBinaryTree(new Integer[]{1, 2, 3, 4, 5, null, null})));
+        System.out.println(new Solution2().diameterOfBinaryTree(TreeNode.buildBinaryTree(new Integer[]{1, 2, 3, 4, 5, null, null})));
     }
 
     /*
@@ -39,13 +40,45 @@ public class LeetCode543 {
             return ans - 1;
         }
 
+        /*
+         递归函数三要素：
+         1. 子问题原问题做同样的事
+         2. 需要有一个让递归结束的出口
+         3. 递归表达式
+         */
         public int depth(TreeNode node) {
             if (node == null) {
                 return 0; // 访问到空节点了，返回0
             }
             int L = depth(node.left); // 左儿子为根的子树的深度
             int R = depth(node.right); // 右儿子为根的子树的深度
-            ans = Math.max(ans, L + R + 1); // 计算d_node即L+R+1 并更新ans
+            ans = Math.max(ans, L + R + 1); // 计算d_node 节点数 即L+R+1 并更新ans
+            return Math.max(L, R) + 1; // 返回该节点为根的子树的深度
+        }
+    }
+
+    static class Solution2 {
+        int ans;
+
+        public int diameterOfBinaryTree(TreeNode root) {
+            ans = 0;
+            depth(root);
+            return ans;
+        }
+
+        /*
+         递归函数三要素：
+         1. 子问题原问题做同样的事
+         2. 需要有一个让递归结束的出口
+         3. 递归表达式
+         */
+        public int depth(TreeNode node) {
+            if (node == null) {
+                return 0; // 访问到空节点了，返回0
+            }
+            int L = depth(node.left); // 左儿子为根的子树的深度
+            int R = depth(node.right); // 右儿子为根的子树的深度
+            ans = Math.max(ans, L + R); // 并更新ans
             return Math.max(L, R) + 1; // 返回该节点为根的子树的深度
         }
     }
