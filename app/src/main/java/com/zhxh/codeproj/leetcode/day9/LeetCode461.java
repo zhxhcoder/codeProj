@@ -23,10 +23,8 @@ package com.zhxh.codeproj.leetcode.day9;
 
  */
 public class LeetCode461 {
-
     public static void main(String[] args) {
-        Solution solution = new Solution();
-        System.out.print(solution.hammingDistance(1, 4));
+        System.out.print(new Solution().hammingDistance(1, 4));
     }
 
     static class Solution {
