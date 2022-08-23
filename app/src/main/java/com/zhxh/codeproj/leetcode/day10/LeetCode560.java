@@ -1,5 +1,7 @@
 package com.zhxh.codeproj.leetcode.day10;
 
+import android.annotation.SuppressLint;
+
 import java.util.HashMap;
 
 /*
@@ -31,17 +33,17 @@ class LeetCode560 {
 
     static class Solution {
         /*
-        暴力法
+        枚举法
          */
         public int subarraySum(int[] nums, int k) {
             // 初始化，使用count储存结果
             int count = 0;
-            //遍历nums考虑每个位置start作为子数组结尾的情况
-            for (int start = 0; start < nums.length; ++start) {
+            //遍历nums考虑每个位置end作为子数组结尾的情况
+            for (int end = 0; end < nums.length; ++end) {
                 //记录当前子数组的和
                 int sum = 0;
-                for (int end = start; end >= 0; --end) {
-                    sum += nums[end];
+                for (int begin = end; begin >= 0; --begin) {
+                    sum += nums[begin];
                     if (sum == k) {
                         count++;
                     }
@@ -52,9 +54,6 @@ class LeetCode560 {
     }
 
     static class Solution2 {
-        /*
-        暴力法
-         */
         public int subarraySum(int[] nums, int k) {
             int len = nums.length;
             int sum = 0;
@@ -75,6 +74,9 @@ class LeetCode560 {
         }
     }
 
+    /*
+    暴力法
+     */
     static class Solution3 {
         public int subarraySum(int[] nums, int k) {
             //前缀和数组
@@ -98,7 +100,11 @@ class LeetCode560 {
         }
     }
 
+    /*
+    前缀和+哈希表优化 枚举
+     */
     static class Solution4 {
+        @SuppressLint("NewApi")
         public int subarraySum(int[] nums, int k) {
             if (nums.length == 0) {
                 return 0;
