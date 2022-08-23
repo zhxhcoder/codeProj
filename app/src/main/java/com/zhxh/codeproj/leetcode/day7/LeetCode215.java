@@ -1,5 +1,8 @@
 package com.zhxh.codeproj.leetcode.day7;
 
+import java.util.PriorityQueue;
+import java.util.Random;
+
 /*
 给定整数数组 nums 和整数 k，请返回数组中第 k 个最大的元素。
 
@@ -27,11 +30,14 @@ package com.zhxh.codeproj.leetcode.day7;
  */
 class LeetCode215 {
     public static void main(String[] args) {
-        int[] nums = {3, 2, 1, 5, 6, 4};
-
-        System.out.println(new Solution().findKthLargest(nums, 3));
+        System.out.println(new Solution().findKthLargest(new int[]{3, 2, 1, 5, 6, 4}, 3));
+        System.out.println(new Solution2().findKthLargest(new int[]{3, 2, 1, 5, 6, 4}, 3));
+        System.out.println(new Solution3().findKthLargest(new int[]{3, 2, 1, 5, 6, 4}, 3));
     }
 
+    /*
+    基于堆排序的选择方法
+     */
     static class Solution {
         public int findKthLargest(int[] nums, int k) {
             int heapSize = nums.length;
@@ -62,6 +68,63 @@ class LeetCode215 {
                 swap(a, i, largest);
                 maxHeapify(a, largest, heapSize);
             }
+        }
+
+        public void swap(int[] a, int i, int j) {
+            int temp = a[i];
+            a[i] = a[j];
+            a[j] = temp;
+        }
+    }
+
+    static class Solution2 {
+        public int findKthLargest(int[] nums, int k) {
+            // 初始化最小元素优先堆
+            PriorityQueue<Integer> heap = new PriorityQueue<Integer>((n1, n2) -> n1 - n2);
+            //在堆中保留 k 个最大元素
+            for (int n : nums) {
+                heap.add(n);
+                if (heap.size() > k)
+                    heap.poll();
+            }
+            return heap.poll();
+        }
+    }
+
+    /*
+    基于快速排序的选择方法
+     */
+    static class Solution3 {
+        Random random = new Random();
+
+        public int findKthLargest(int[] nums, int k) {
+            return quickSelect(nums, 0, nums.length - 1, nums.length - k);
+        }
+
+        public int quickSelect(int[] a, int l, int r, int index) {
+            int q = randomPartition(a, l, r);
+            if (q == index) {
+                return a[q];
+            } else {
+                return q < index ? quickSelect(a, q + 1, r, index) : quickSelect(a, l, q - 1, index);
+            }
+        }
+
+        public int randomPartition(int[] a, int l, int r) {
+            int i = random.nextInt(r - l + 1) + l;
+            swap(a, i, r);
+            return partition(a, l, r);
+        }
+
+        public int partition(int[] a, int l, int r) {
+            int x = a[r], i = l - 1;
+            for (int j = l; j < r; ++j) {
+                if (a[j] <= x) {
+                    swap(a, ++i, j);
+                }
+            }
+            swap(a, i + 1, r);
+            return i + 1;
         }
 
         public void swap(int[] a, int i, int j) {
