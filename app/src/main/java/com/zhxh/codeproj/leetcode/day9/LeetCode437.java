@@ -31,6 +31,11 @@ root = [10,5,-3,3,2,null,11,3,-2,null,1], sum = 8
 3.  -3 -> 11
  */
 public class LeetCode437 {
+    public static void main(String[] args) {
+        System.out.println(new Solution().pathSum(TreeNode.buildBinaryTree(new Integer[]{10, 5, -3, 3, 2, null, 11, 3, -2, null, 1}), 8));
+        System.out.println(new Solution2().pathSum(TreeNode.buildBinaryTree(new Integer[]{10, 5, -3, 3, 2, null, 11, 3, -2, null, 1}), 8));
+    }
+
     static class Solution {
         public int pathSum(TreeNode root, int sum) {
             return pathSum(root, sum, new int[1000], 0);
