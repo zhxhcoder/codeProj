@@ -24,9 +24,9 @@ import java.util.HashMap;
 class LeetCode560 {
     public static void main(String[] args) {
         System.out.println(new Solution().subarraySum(new int[]{1, 2, 3, 0, 2, 1, 3, 2, 4}, 3));
-        System.out.println(new Solution().subarraySum1(new int[]{1, 2, 3, 0, 2, 1, 3, 2, 4}, 3));
-        System.out.println(new Solution().subarraySum2(new int[]{1, 2, 3, 0, 2, 1, 3, 2, 4}, 3));
-        System.out.println(new Solution().subarraySum3(new int[]{1, 2, 3, 0, 2, 1, 3, 2, 4}, 3));
+        System.out.println(new Solution2().subarraySum(new int[]{1, 2, 3, 0, 2, 1, 3, 2, 4}, 3));
+        System.out.println(new Solution3().subarraySum(new int[]{1, 2, 3, 0, 2, 1, 3, 2, 4}, 3));
+        System.out.println(new Solution4().subarraySum(new int[]{1, 2, 3, 0, 2, 1, 3, 2, 4}, 3));
     }
 
     static class Solution {
@@ -49,11 +49,13 @@ class LeetCode560 {
             }
             return count;
         }
+    }
 
+    static class Solution2 {
         /*
         暴力法
          */
-        public int subarraySum1(int[] nums, int k) {
+        public int subarraySum(int[] nums, int k) {
             int len = nums.length;
             int sum = 0;
             int count = 0;
@@ -71,8 +73,10 @@ class LeetCode560 {
             }
             return count;
         }
+    }
 
-        public int subarraySum2(int[] nums, int k) {
+    static class Solution3 {
+        public int subarraySum(int[] nums, int k) {
             //前缀和数组
             int[] presum = new int[nums.length + 1];
             for (int i = 0; i < nums.length; i++) {
@@ -92,8 +96,10 @@ class LeetCode560 {
             }
             return count;
         }
+    }
 
-        public int subarraySum3(int[] nums, int k) {
+    static class Solution4 {
+        public int subarraySum(int[] nums, int k) {
             if (nums.length == 0) {
                 return 0;
             }
