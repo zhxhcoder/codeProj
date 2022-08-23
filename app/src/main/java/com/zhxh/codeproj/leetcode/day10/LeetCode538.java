@@ -21,7 +21,11 @@ import com.zhxh.codeproj.leetcode._base.TreeNode;
           20     13
  */
 public class LeetCode538 {
-    class Solution {
+    public static void main(String[] args) {
+        TreeNode.prettyPrintTree(new Solution().convertBST(TreeNode.buildBinaryTree(new Integer[]{4, 1, 6, 0, 2, 5, 7, null, null, null, 3, null, null, null, 8})));
+    }
+
+    static class Solution {
         private int sum = 0;
 
         public TreeNode convertBST(TreeNode root) {

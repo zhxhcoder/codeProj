@@ -24,14 +24,12 @@ import com.zhxh.codeproj.leetcode._base.TreeNode;
  */
 public class LeetCode543 {
     public static void main(String[] args) {
-        Solution solution = new Solution();
-
-        TreeNode node0 = TreeNode.buildBinaryTree(new Integer[]{1, 2, 2, null, 3, null, 3});
-
-        System.out.println(solution.depth(node0));
-        System.out.println(solution.diameterOfBinaryTree(node0));
+        System.out.println(new Solution().diameterOfBinaryTree(TreeNode.buildBinaryTree(new Integer[]{1, 2, 2, null, 3, null, 3})));
     }
 
+    /*
+    深度优先搜索
+     */
     static class Solution {
         int ans;
 
@@ -42,12 +40,13 @@ public class LeetCode543 {
         }
 
         public int depth(TreeNode node) {
-            if (node == null) return 0;
-            int L = depth(node.left);
-            int R = depth(node.right);
-            ans = Math.max(ans, L + R + 1);
-            return Math.max(L, R) + 1;
+            if (node == null) {
+                return 0; // 访问到空节点了，返回0
+            }
+            int L = depth(node.left); // 左儿子为根的子树的深度
+            int R = depth(node.right); // 右儿子为根的子树的深度
+            ans = Math.max(ans, L + R + 1); // 计算d_node即L+R+1 并更新ans
+            return Math.max(L, R) + 1; // 返回该节点为根的子树的深度
         }
-
     }
 }
