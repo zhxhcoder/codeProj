@@ -23,11 +23,10 @@ import java.util.HashMap;
  */
 class LeetCode560 {
     public static void main(String[] args) {
-        int[] nums = {1, 2, 3, 0, 2, 1, 3, 2, 4};
-        System.out.println(new Solution().subarraySum(nums, 3));
-        System.out.println(new Solution().subarraySum1(nums, 3));
-        System.out.println(new Solution().subarraySum2(nums, 3));
-        System.out.println(new Solution().subarraySum3(nums, 3));
+        System.out.println(new Solution().subarraySum(new int[]{1, 2, 3, 0, 2, 1, 3, 2, 4}, 3));
+        System.out.println(new Solution().subarraySum1(new int[]{1, 2, 3, 0, 2, 1, 3, 2, 4}, 3));
+        System.out.println(new Solution().subarraySum2(new int[]{1, 2, 3, 0, 2, 1, 3, 2, 4}, 3));
+        System.out.println(new Solution().subarraySum3(new int[]{1, 2, 3, 0, 2, 1, 3, 2, 4}, 3));
     }
 
     static class Solution {
@@ -125,6 +124,5 @@ class LeetCode560 {
             }
             return count;
         }
-
     }
 }

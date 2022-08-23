@@ -27,8 +27,7 @@ n 的取值范围为 [0, 100]。
  */
 public class LeetCode621 {
     public static void main(String[] args) {
-        char[] tasks = {'A', 'A', 'A', 'B', 'B', 'B'};
-        System.out.println(new Solution().leastInterval(tasks, 3));
+        System.out.println(new Solution().leastInterval(new char[]{'A', 'A', 'A', 'B', 'B', 'B'}, 3));
     }
 
     static class Solution {

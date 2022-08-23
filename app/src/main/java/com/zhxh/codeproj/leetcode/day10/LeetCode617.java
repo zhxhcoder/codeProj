@@ -28,14 +28,14 @@ import com.zhxh.codeproj.leetcode._base.TreeNode;
  */
 public class LeetCode617 {
     public static void main(String[] args) {
-        TreeNode node1 = TreeNode.buildBinaryTree(new Integer[]{1, 3, 2, 5});
-        TreeNode node2 = TreeNode.buildBinaryTree(new Integer[]{2, 1, 3, null, 4, null, 7});
-
-        TreeNode node = new Solution().mergeTrees(node1, node2);
-
-        TreeNode.prettyPrintTree(node);
+        TreeNode.prettyPrintTree(new Solution().mergeTrees(
+                TreeNode.buildBinaryTree(new Integer[]{1, 3, 2, 5}),
+                TreeNode.buildBinaryTree(new Integer[]{2, 1, 3, null, 4, null, 7})));
     }
 
+    /*
+    递归
+     */
     static class Solution {
         public TreeNode mergeTrees(TreeNode t1, TreeNode t2) {
             if (t1 == null)
