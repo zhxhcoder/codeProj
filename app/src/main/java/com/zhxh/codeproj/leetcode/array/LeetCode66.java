@@ -23,10 +23,9 @@ import java.util.Arrays;
  */
 public class LeetCode66 {
     public static void main(String[] args) {
-
-        int[] digits = {1, 3, 1};
-
-        System.out.println(Arrays.toString(new Solution().plusOne(digits)));
+        System.out.println(Arrays.toString(new Solution().plusOne(new int[]{9, 9, 9})));
+        System.out.println(Arrays.toString(new Solution2().plusOne(new int[]{9, 9, 9})));
+        System.out.println(Arrays.toString(new Solution3().plusOne(new int[]{9, 9, 9})));
     }
 
     static class Solution {
@@ -37,6 +36,47 @@ public class LeetCode66 {
                 if (digits[i] != 0) return digits;
             }
             digits = new int[digits.length + 1];
+            digits[0] = 1;
+            return digits;
+        }
+    }
+
+    /*
+    官网答案
+     */
+    static class Solution2 {
+        public int[] plusOne(int[] digits) {
+            int n = digits.length;
+            for (int i = n - 1; i >= 0; --i) {
+                if (digits[i] != 9) {
+                    ++digits[i];
+                    for (int j = i + 1; j < n; ++j) {
+                        digits[j] = 0;
+                    }
+                    return digits;
+                }
+            }
+
+            // digits 中所有的元素均为 9
+            int[] ans = new int[n + 1];
+            ans[0] = 1;
+            return ans;
+        }
+    }
+
+    /*
+    不用纠结某一位是不是9，而应该去判断加1之后是不是0：
+    */
+    static class Solution3 {
+        public int[] plusOne(int[] digits) {
+            int len = digits.length;
+            for (int i = len - 1; i >= 0; i--) {
+                digits[i] = (digits[i] + 1) % 10;
+                if (digits[i] != 0) {
+                    return digits;
+                }
+            }
+            digits = new int[len + 1];
             digits[0] = 1;
             return digits;
         }

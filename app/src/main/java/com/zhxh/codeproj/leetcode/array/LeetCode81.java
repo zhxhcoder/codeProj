@@ -23,8 +23,7 @@ package com.zhxh.codeproj.leetcode.array;
  */
 class LeetCode81 {
     public static void main(String[] args) {
-        int[] nums = {2, 5, 6, 0, 0, 1, 2};
-        System.out.println(new Solution().search(nums, 0));
+        System.out.println(new Solution().search(new int[]{2, 5, 6, 0, 0, 1, 2}, 0));
     }
 
     static class Solution {
@@ -59,7 +58,6 @@ class LeetCode81 {
                         start = mid + 1;
                     } else {  //否则，去后半部分找
                         end = mid - 1;
-
                     }
                 }
             }

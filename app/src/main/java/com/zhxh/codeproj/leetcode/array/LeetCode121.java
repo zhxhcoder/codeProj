@@ -23,16 +23,9 @@ package com.zhxh.codeproj.leetcode.array;
 
  */
 public class LeetCode121 {
-
     public static void main(String[] args) {
-
-        int[] prices = {7, 1, 5, 3, 6, 4};
-
-        Solution1 solution1 = new Solution1();
-        Solution2 solution2 = new Solution2();
-
-        System.out.println(solution1.maxProfit(prices));
-        System.out.println(solution2.maxProfit(prices));
+        System.out.println(new Solution1().maxProfit(new int[]{7, 1, 5, 3, 6, 4}));
+        System.out.println(new Solution2().maxProfit(new int[]{7, 1, 5, 3, 6, 4}));
     }
 
     /*
@@ -68,10 +61,6 @@ public class LeetCode121 {
                     maxprofit = prices[i] - minprice;
             }
             return maxprofit;
-        }
-
-        public int maxDrawdown(int[] prices) {
-            return 0;
         }
     }
 }

@@ -25,8 +25,7 @@ import java.util.Arrays;
  */
 class LeetCode164 {
     public static void main(String[] args) {
-        int[] nums = {3, 6, 9, 1};
-        System.out.println(new Solution().maximumGap(nums));
+        System.out.println(new Solution().maximumGap(new int[]{3, 6, 9, 1}));
     }
 
     static class Solution {
@@ -111,6 +110,7 @@ class LeetCode164 {
             return maxGap;
         }
     }
+
 
     static class Bucket {
         int min = Integer.MAX_VALUE;

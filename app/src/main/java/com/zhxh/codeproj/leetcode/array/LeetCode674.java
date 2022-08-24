@@ -18,10 +18,8 @@ package com.zhxh.codeproj.leetcode.array;
 
  */
 class LeetCode674 {
-
     public static void main(String[] args) {
-        int[] nums = {1, 3, 5, 4, 7, 3, 4, 5, 6, 7, 8, 8, 2};
-        System.out.println(new Solution().findLengthOfLCIS(nums));
+        System.out.println(new Solution().findLengthOfLCIS(new int[]{1, 3, 5, 4, 7, 3, 4, 5, 6, 7, 8, 8, 2}));
     }
 
     static class Solution {

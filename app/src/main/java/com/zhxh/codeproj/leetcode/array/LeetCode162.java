@@ -29,10 +29,9 @@ package com.zhxh.codeproj.leetcode.array;
 class LeetCode162 {
 
     public static void main(String[] args) {
-        int[] nums = {1, 2, 1, 3, 5, 6, 4};
-        System.out.println(new Solution2().findPeakElement(nums));
-        System.out.println(new Solution().findPeakElement(nums));
-        System.out.println(new Solution3().findPeakElement(nums));
+        System.out.println(new Solution().findPeakElement(new int[]{1, 2, 1, 3, 5, 6, 4}));
+        System.out.println(new Solution2().findPeakElement(new int[]{1, 2, 1, 3, 5, 6, 4}));
+        System.out.println(new Solution3().findPeakElement(new int[]{1, 2, 1, 3, 5, 6, 4}));
     }
 
     //方法一: 线性扫描
@@ -76,5 +75,4 @@ class LeetCode162 {
             return l;
         }
     }
-
 }
