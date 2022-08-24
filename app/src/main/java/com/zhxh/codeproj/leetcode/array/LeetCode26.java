@@ -1,6 +1,8 @@
 package com.zhxh.codeproj.leetcode.array;
 
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 /*
 给定一个排序数组，你需要在 原地 删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。
@@ -52,6 +54,10 @@ public class LeetCode26 {
         int[] nums2 = {0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
         System.out.println("长度：" + new Solution2().removeDuplicates(nums2));
         System.out.println(Arrays.toString(nums2));
+
+        int[] nums3 = {0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
+        System.out.println("长度：" + new Solution3().removeDuplicates(nums3));
+        System.out.println(Arrays.toString(nums3));
     }
 
     static class Solution {
@@ -85,6 +91,21 @@ public class LeetCode26 {
                 }
             }
             return i + 1;
+        }
+    }
+
+    static class Solution3 {
+        public int removeDuplicates(int[] nums) {
+            //标记重复元素
+            Set<Integer> set = new HashSet<>();
+            int j = 0;
+            for (int i = 0; i < nums.length; i++) {
+                if (!set.contains(nums[i])) {
+                    nums[j++] = nums[i];
+                    set.add(nums[i]);
+                }
+            }
+            return set.size();
         }
     }
 }

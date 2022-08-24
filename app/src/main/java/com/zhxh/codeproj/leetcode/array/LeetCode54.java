@@ -1,6 +1,7 @@
 package com.zhxh.codeproj.leetcode.array;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /*
@@ -28,9 +29,23 @@ import java.util.List;
  */
 class LeetCode54 {
     public static void main(String[] args) {
-        System.out.println(new Solution().spiralOrder(new int[][]{{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}}));
+        System.out.println(new Solution().spiralOrder(new int[][]{
+                {1, 2, 3, 4},
+                {5, 6, 7, 8},
+                {9, 10, 11, 12}}));
+        System.out.println(new Solution2().spiralOrder(new int[][]{
+                {1, 2, 3, 4},
+                {5, 6, 7, 8},
+                {9, 10, 11, 12}}));
+        System.out.println(new Solution3().spiralOrder(new int[][]{
+                {1, 2, 3, 4},
+                {5, 6, 7, 8},
+                {9, 10, 11, 12}}));
     }
 
+    /*
+    模拟
+     */
     static class Solution {
         public List<Integer> spiralOrder(int[][] matrix) {
             List<Integer> order = new ArrayList<>();
@@ -54,6 +69,102 @@ class LeetCode54 {
                 column += directions[directionIndex][1];
             }
             return order;
+        }
+    }
+
+    /*
+    按层遍历
+     */
+    static class Solution2 {
+        public List<Integer> spiralOrder(int[][] matrix) {
+            List<Integer> order = new ArrayList<Integer>();
+            if (matrix == null || matrix.length == 0 || matrix[0].length == 0) {
+                return order;
+            }
+            int rows = matrix.length, columns = matrix[0].length;
+            int left = 0, right = columns - 1, top = 0, bottom = rows - 1;
+            while (left <= right && top <= bottom) {
+                for (int column = left; column <= right; column++) {
+                    order.add(matrix[top][column]);
+                }
+                for (int row = top + 1; row <= bottom; row++) {
+                    order.add(matrix[row][right]);
+                }
+                if (left < right && top < bottom) {
+                    for (int column = right - 1; column > left; column--) {
+                        order.add(matrix[bottom][column]);
+                    }
+                    for (int row = bottom; row > top; row--) {
+                        order.add(matrix[row][left]);
+                    }
+                }
+                left++;
+                right--;
+                top++;
+                bottom--;
+            }
+            return order;
+        }
+    }
+
+    /*
+    顺时针顺序
+    n++,m++,n--,m-- 这样循环的来
+     */
+    static class Solution3 {
+        public List<Integer> spiralOrder(int[][] matrix) {
+            List<Integer> ans = new ArrayList<>();
+
+            //总元素
+            int num = matrix.length * matrix[0].length;
+
+            int i = 0, j = 0;
+            int count = 0;
+
+            //0,1,2,4 右，下，左，上
+            int arrow = 0;
+            int mBottom = matrix.length;
+            int mTop = -1;
+            int nRight = matrix[0].length;
+            int nLeft = -1;
+            while (count < num) {
+                if (i < matrix.length && j < matrix[0].length) {
+                    ans.add(matrix[i][j]);
+                    count++;
+                }
+
+                if (arrow == 0) {//右
+                    j++;
+                } else if (arrow == 1) {//下
+                    i++;
+                } else if (arrow == 2) {//左
+                    j--;
+                } else if (arrow == 3) {//上
+                    i--;
+                }
+
+                if (j == nRight) {//撞到右墙
+                    arrow = 1;
+                    nRight--;
+                }
+
+                if (i == mBottom) {//撞到下墙
+                    arrow = 2;
+                    mBottom--;
+                }
+
+                if (i == nLeft) {//撞到左墙
+                    arrow = 3;
+                    mBottom++;
+                }
+
+                if (j == mTop) {//撞到上墙
+                    arrow = 0;
+                    nLeft++;
+                }
+            }
+
+            return ans;
         }
     }
 }

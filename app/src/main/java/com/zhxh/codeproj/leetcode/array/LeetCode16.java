@@ -21,11 +21,12 @@ import java.util.Arrays;
  */
 class LeetCode16 {
     public static void main(String[] args) {
-        int[] nums = {-1, 2, 1, -4};
-        int target = 1;
-        System.out.println(new Solution().threeSumClosest(nums, target));
+        System.out.println(new Solution().threeSumClosest(new int[]{-1, 2, 1, -4}, 1));
     }
 
+    /*
+    排序+双指针
+     */
     static class Solution {
         public int threeSumClosest(int[] nums, int target) {
             Arrays.sort(nums);
@@ -72,5 +73,4 @@ class LeetCode16 {
             return best;
         }
     }
-
 }
