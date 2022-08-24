@@ -57,23 +57,32 @@ public class LeetCode394 {
     static class Solution0 {
         public String decodeString(String s) {
             StringBuilder ans = new StringBuilder();
-            Stack<Integer> multiStack = new Stack<>();
-            Stack<StringBuilder> ansStack = new Stack<>();
             int multi = 0;
+            Stack<StringBuilder> ansStack = new Stack<>();
+            Stack<Integer> multiStack = new Stack<>();
             for (char c : s.toCharArray()) {
                 if (Character.isDigit(c)) {
+                    //ASCII码 字符可以直接相减 累计乘数
                     multi = multi * 10 + c - '0';
                 } else if (c == '[') {
+                    //两个数据入栈
                     ansStack.add(ans);
                     multiStack.add(multi);
+                    //入栈之后重新初始化
                     ans = new StringBuilder();
                     multi = 0;
                 } else if (c == ']') {
+                    //两个数据出栈
                     StringBuilder ansTmp = ansStack.pop();
-                    int tmp = multiStack.pop();
-                    for (int i = 0; i < tmp; i++) ansTmp.append(ans);
+                    int tmpMulti = multiStack.pop();
+                    //遍历乘数
+                    for (int i = 0; i < tmpMulti; i++) {
+                        ansTmp.append(ans);
+                    }
+                    //赋值给ans
                     ans = ansTmp;
                 } else {
+                    //累计字符串
                     ans.append(c);
                 }
             }
@@ -166,11 +175,9 @@ public class LeetCode394 {
                 // String -> EPS
                 return "";
             }
-
             char cur = src.charAt(ptr);
             int repTime = 1;
             String ret = "";
-
             if (Character.isDigit(cur)) {
                 // String -> Digits [ String ] String
                 // 解析 Digits
@@ -190,7 +197,6 @@ public class LeetCode394 {
                 // 解析 Char
                 ret = String.valueOf(src.charAt(ptr++));
             }
-
             return ret + getString();
         }
 
