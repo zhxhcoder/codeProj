@@ -2,6 +2,7 @@ package com.zhxh.codeproj.leetcode.day9;
 
 import java.util.Collections;
 import java.util.LinkedList;
+import java.util.Stack;
 
 /*
 给定一个经过编码的字符串，返回它解码后的字符串。
@@ -42,12 +43,49 @@ s中所有整数的取值范围为[1, 300]
  */
 public class LeetCode394 {
     public static void main(String[] args) {
+        System.out.println(new Solution0().decodeString("2[abc]3[cd]ef"));
         System.out.println(new Solution().decodeString("2[abc]3[cd]ef"));
         System.out.println(new Solution2().decodeString("2[abc]3[cd]ef"));
+        System.out.println(new Solution3().decodeString("2[abc]3[cd]ef"));
+    }
+
+
+    /*
+      数字存放在数字栈，字符串放在字符串栈，遇到右括号时候弹出一个数字栈，字母栈弹到左括号为止。
+      就是逆波兰那种题
+     */
+    static class Solution0 {
+        public String decodeString(String s) {
+            StringBuffer ans = new StringBuffer();
+            Stack<Integer> multiStack = new Stack<>();
+            Stack<StringBuffer> ansStack = new Stack<>();
+            int multi = 0;
+            for (char c : s.toCharArray()) {
+                if (Character.isDigit(c)) multi = multi * 10 + c - '0';
+                else if (c == '[') {
+                    ansStack.add(ans);
+                    multiStack.add(multi);
+                    ans = new StringBuffer();
+                    multi = 0;
+                } else if (Character.isAlphabetic(c)) {
+                    ans.append(c);
+                } else {
+                    StringBuffer ansTmp = ansStack.pop();
+                    int tmp = multiStack.pop();
+                    for (int i = 0; i < tmp; i++) ansTmp.append(ans);
+                    ans = ansTmp;
+                }
+            }
+            return ans.toString();
+        }
     }
 
     /*
     栈操作
+    - 如果说数字：将数字字符转化为整数，用于后续倍数计算
+    - 如果说字符：延长当前字符串
+    - 如果说左括号：当前状态入栈
+    - 如果说有括号：弹出状态，组合字符串
      */
     static class Solution {
         int ptr;
@@ -109,6 +147,8 @@ public class LeetCode394 {
 
     /*
     递归
+    - 每个左括号对应一个子问题
+    - 模式识别：一旦碰到结构和原问题一致的子问题，可以递归调用函数解决
      */
     static class Solution2 {
         String src;
@@ -159,6 +199,48 @@ public class LeetCode394 {
                 ret = ret * 10 + src.charAt(ptr++) - '0';
             }
             return ret;
+        }
+    }
+
+    /*
+    利用栈
+     */
+    static class Solution3 {
+        public String decodeString(String s) {
+            Stack<Character> stack = new Stack<>();
+            for (char c : s.toCharArray()) {
+                if (c != ']') {
+                    stack.push(c); // 把所有的字母push进去，除了]
+                } else {
+                    //step 1: 取出[] 内的字符串
+                    StringBuilder sb = new StringBuilder();
+                    while (!stack.isEmpty() && Character.isLetter(stack.peek()))
+                        sb.insert(0, stack.pop());
+
+                    String sub = sb.toString(); //[ ]内的字符串
+                    stack.pop(); // 去除[
+
+                    //step 2: 获取倍数数字
+                    sb = new StringBuilder();
+                    while (!stack.isEmpty() && Character.isDigit(stack.peek()))
+                        sb.insert(0, stack.pop());
+
+                    int count = Integer.valueOf(sb.toString()); //倍数
+
+                    //step 3: 根据倍数把字母再push回去
+                    while (count > 0) {
+                        for (char ch : sub.toCharArray())
+                            stack.push(ch);
+                        count--;
+                    }
+                }
+            }
+            //把栈里面所有的字母取出来，完事L('ω')┘三└('ω')｣
+            StringBuilder retv = new StringBuilder();
+            while (!stack.isEmpty())
+                retv.insert(0, stack.pop());
+
+            return retv.toString();
         }
     }
 }
