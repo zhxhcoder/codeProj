@@ -146,21 +146,25 @@ class LeetCode54 {
                 if (j == nRight) {//撞到右墙
                     arrow = 1;
                     nRight--;
+                    j--;
                 }
 
                 if (i == mBottom) {//撞到下墙
                     arrow = 2;
                     mBottom--;
+                    i--;
                 }
 
                 if (i == nLeft) {//撞到左墙
                     arrow = 3;
                     mBottom++;
+                    i++;
                 }
 
                 if (j == mTop) {//撞到上墙
                     arrow = 0;
                     nLeft++;
+                    j++;
                 }
             }
 
