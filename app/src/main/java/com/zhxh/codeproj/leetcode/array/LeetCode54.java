@@ -28,13 +28,7 @@ import java.util.List;
  */
 class LeetCode54 {
     public static void main(String[] args) {
-        int[] nums1 = {1, 2, 3, 4};
-        int[] nums2 = {5, 6, 7, 8};
-        int[] nums3 = {9, 10, 11, 12};
-
-        int[][] matrix = {nums1, nums2, nums3};
-
-        System.out.println(new Solution().spiralOrder(matrix));
+        System.out.println(new Solution().spiralOrder(new int[][]{{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}}));
     }
 
     static class Solution {

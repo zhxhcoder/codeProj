@@ -57,7 +57,7 @@ public class LeetCode399 {
                         add("b");
                         add("c");
                     }});
-                }}, new double[]{2.0,3.0},
+                }}, new double[]{2.0, 3.0},
                 new LinkedList<List<String>>() {{
                     add(new LinkedList<String>() {{
                         add("a");

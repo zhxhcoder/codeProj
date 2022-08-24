@@ -29,9 +29,9 @@ import java.util.Stack;
  */
 public class LeetCode226 {
     public static void main(String[] args) {
-        TreeNode.prettyPrintTree(new Solution().invertTree(TreeNode.buildBinaryTree(new Integer[]{4,2,7,1,3,6,9})));
-        TreeNode.prettyPrintTree(new Solution2().invertTree(TreeNode.buildBinaryTree(new Integer[]{4,2,7,1,3,6,9})));
-        TreeNode.prettyPrintTree(new Solution3().invertTree(TreeNode.buildBinaryTree(new Integer[]{4,2,7,1,3,6,9})));
+        TreeNode.prettyPrintTree(new Solution().invertTree(TreeNode.buildBinaryTree(new Integer[]{4, 2, 7, 1, 3, 6, 9})));
+        TreeNode.prettyPrintTree(new Solution2().invertTree(TreeNode.buildBinaryTree(new Integer[]{4, 2, 7, 1, 3, 6, 9})));
+        TreeNode.prettyPrintTree(new Solution3().invertTree(TreeNode.buildBinaryTree(new Integer[]{4, 2, 7, 1, 3, 6, 9})));
     }
 
     /*

@@ -33,8 +33,8 @@ import com.zhxh.codeproj.leetcode._base.ListNode;
  */
 public class LeetCode206 {
     public static void main(String[] args) {
-        ListNode.printNode(new Solution().reverseList(ListNode.buildNode(new int[]{1,2,3,4,5})));
-        ListNode.printNode(new Solution2().reverseList(ListNode.buildNode(new int[]{1,2,3,4,5})));
+        ListNode.printNode(new Solution().reverseList(ListNode.buildNode(new int[]{1, 2, 3, 4, 5})));
+        ListNode.printNode(new Solution2().reverseList(ListNode.buildNode(new int[]{1, 2, 3, 4, 5})));
     }
 
     /*

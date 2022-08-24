@@ -46,40 +46,45 @@ for (int i = 0; i < len; i++) {
 public class LeetCode26 {
     public static void main(String[] args) {
         int[] nums1 = {0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
-        System.out.println("长度：" + removeDuplicates(nums1));
-        int[] nums2 = {0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
-        System.out.println("长度：" + removeDuplicates2(nums2));
+        System.out.println("长度：" + new Solution().removeDuplicates(nums1));
         System.out.println(Arrays.toString(nums1));
+
+        int[] nums2 = {0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
+        System.out.println("长度：" + new Solution2().removeDuplicates(nums2));
         System.out.println(Arrays.toString(nums2));
     }
 
-    //while 循环 同向双指针
-    public static int removeDuplicates(int[] nums) {
-        //异常处理
-        if (nums == null || nums.length == 0) return 0;
-        //初始化i 和j
-        int i = 0, j = 1;
-        while (j < nums.length) {
-            //如果没有重复，保留，否则忽略
-            if (nums[i] != nums[j]) {
-                nums[i + 1] = nums[j];
-                i++;
+    static class Solution {
+        //while 循环 同向双指针
+        public int removeDuplicates(int[] nums) {
+            //异常处理
+            if (nums == null || nums.length == 0) return 0;
+            //初始化i 和j
+            int i = 0, j = 1;
+            while (j < nums.length) {
+                //如果没有重复，保留，否则忽略
+                if (nums[i] != nums[j]) {
+                    nums[i + 1] = nums[j];
+                    i++;
+                }
+                j++;
             }
-            j++;
+            return i + 1;
         }
-        return i + 1;
     }
 
-    // for 循环 同向双指针
-    public static int removeDuplicates2(int[] nums) {
-        if (nums.length == 0) return 0;
-        int i = 0;
-        for (int j = 1; j < nums.length; j++) {
-            if (nums[j] != nums[i]) {
-                i++;
-                nums[i] = nums[j];
+    static class Solution2 {
+        // for 循环 同向双指针
+        public int removeDuplicates(int[] nums) {
+            if (nums.length == 0) return 0;
+            int i = 0;
+            for (int j = 1; j < nums.length; j++) {
+                if (nums[j] != nums[i]) {
+                    i++;
+                    nums[i] = nums[j];
+                }
             }
+            return i + 1;
         }
-        return i + 1;
     }
 }

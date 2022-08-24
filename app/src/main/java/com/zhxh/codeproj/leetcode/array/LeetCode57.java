@@ -70,6 +70,4 @@ class LeetCode57 {
             return output.toArray(new int[output.size()][2]);
         }
     }
-
-
 }
