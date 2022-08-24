@@ -44,13 +44,15 @@ s中所有整数的取值范围为[1, 300]
 public class LeetCode394 {
     public static void main(String[] args) {
         System.out.println(new Solution0().decodeString("3[a2[c]]"));
-        System.out.println(new Solution().decodeString("3[a2[c]]"));
+        System.out.println(new Solution1().decodeString("3[a2[c]]"));
         System.out.println(new Solution2().decodeString("3[a2[c]]"));
         System.out.println(new Solution3().decodeString("3[a2[c]]"));
+        System.out.println(new Solution4().decodeString("3[a2[c]]"));
     }
 
 
     /*
+      辅助栈
       数字存放在数字栈，字符串放在字符串栈，遇到右括号时候弹出一个数字栈，字母栈弹到左括号为止。
       就是逆波兰那种题
      */
@@ -97,7 +99,7 @@ public class LeetCode394 {
     - 如果说左括号：当前状态入栈
     - 如果说有括号：弹出状态，组合字符串
      */
-    static class Solution {
+    static class Solution1 {
         int ptr;
 
         public String decodeString(String s) {
@@ -210,9 +212,42 @@ public class LeetCode394 {
     }
 
     /*
-    利用栈
+    递归
+    https://leetcode.cn/problems/decode-string/solution/decode-string-fu-zhu-zhan-fa-di-gui-fa-by-jyd/
+    总体思路与辅助栈法一致，不同点在于[ 和 ] 分别作为递归的开启和终止条件
      */
     static class Solution3 {
+        public String decodeString(String s) {
+            return dfs(s, 0)[0];
+        }
+
+        private String[] dfs(String s, int i) {
+            StringBuilder res = new StringBuilder();
+            int multi = 0;
+            while (i < s.length()) {
+                if (s.charAt(i) >= '0' && s.charAt(i) <= '9')
+                    multi = multi * 10 + Integer.parseInt(String.valueOf(s.charAt(i)));
+                else if (s.charAt(i) == '[') {
+                    String[] tmp = dfs(s, i + 1);
+                    i = Integer.parseInt(tmp[0]);
+                    while (multi > 0) {
+                        res.append(tmp[1]);
+                        multi--;
+                    }
+                } else if (s.charAt(i) == ']')
+                    return new String[]{String.valueOf(i), res.toString()};
+                else
+                    res.append(s.charAt(i));
+                i++;
+            }
+            return new String[]{res.toString()};
+        }
+    }
+
+    /*
+    利用栈
+     */
+    static class Solution4 {
         public String decodeString(String s) {
             Stack<Character> stack = new Stack<>();
             for (char c : s.toCharArray()) {
