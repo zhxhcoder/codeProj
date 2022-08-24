@@ -43,10 +43,10 @@ s中所有整数的取值范围为[1, 300]
  */
 public class LeetCode394 {
     public static void main(String[] args) {
-        System.out.println(new Solution0().decodeString("2[abc]3[cd]ef"));
-        System.out.println(new Solution().decodeString("2[abc]3[cd]ef"));
-        System.out.println(new Solution2().decodeString("2[abc]3[cd]ef"));
-        System.out.println(new Solution3().decodeString("2[abc]3[cd]ef"));
+        System.out.println(new Solution0().decodeString("3[a2[c]]"));
+        System.out.println(new Solution().decodeString("3[a2[c]]"));
+        System.out.println(new Solution2().decodeString("3[a2[c]]"));
+        System.out.println(new Solution3().decodeString("3[a2[c]]"));
     }
 
 
