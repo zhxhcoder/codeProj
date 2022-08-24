@@ -43,7 +43,7 @@ import java.util.Arrays;
 所以有 C_{m+n-2}^{m-1}C
 m+n−2
 m−1
-​
+
 
 
 Python

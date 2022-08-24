@@ -1,4 +1,4 @@
-package com.zhxh.codeproj.leetcode;
+package com.zhxh.codeproj.leetcode.array;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -21,15 +21,8 @@ import java.util.List;
 [5,6]
  */
 public class LeetCode448 {
-
     public static void main(String[] args) {
-        int[] nums = {1, 4, 3, 2, 6, 7};
-        Solution solution = new Solution();
-        List<Integer> results = solution.findDisappearedNumbers(nums);
-
-        for (Integer i : results) {
-            System.out.println(i);
-        }
+        System.out.println(new Solution().findDisappearedNumbers(new int[]{1, 4, 3, 2, 6, 7}));
     }
 
     static class Solution {
@@ -47,7 +40,6 @@ public class LeetCode448 {
                     result.add(i);
                 }
             }
-
             return result;
         }
     }

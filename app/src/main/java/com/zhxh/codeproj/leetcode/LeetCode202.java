@@ -10,8 +10,6 @@ import java.util.Set;
 
 如果 n 是快乐数就返回 True ；不是，则返回 False 。
 
-
-
 示例：
 
 输入：19
@@ -24,7 +22,13 @@ import java.util.Set;
 
  */
 public class LeetCode202 {
-    class Solution {
+    public static void main(String[] args) {
+        System.out.println(new Solution().isHappy(19));
+        System.out.println(new Solution2().isHappy(19));
+        System.out.println(new Solution3().isHappy(19));
+    }
+
+    static class Solution {
         public boolean isHappy(int n) {
             Set<Integer> set = new HashSet<>();
             int m = 0;
@@ -44,6 +48,55 @@ public class LeetCode202 {
                     m = 0;
                 }
             }
+        }
+    }
+
+    /*
+    方法一：用哈希集合检测循环
+     */
+    static class Solution2 {
+        private int getNext(int n) {
+            int totalSum = 0;
+            while (n > 0) {
+                int d = n % 10;
+                n = n / 10;
+                totalSum += d * d;
+            }
+            return totalSum;
+        }
+
+        public boolean isHappy(int n) {
+            Set<Integer> seen = new HashSet<>();
+            while (n != 1 && !seen.contains(n)) {
+                seen.add(n);
+                n = getNext(n);
+            }
+            return n == 1;
+        }
+    }
+
+    /*
+    方法二：快慢指针法
+     */
+    static class Solution3 {
+        public int getNext(int n) {
+            int totalSum = 0;
+            while (n > 0) {
+                int d = n % 10;
+                n = n / 10;
+                totalSum += d * d;
+            }
+            return totalSum;
+        }
+
+        public boolean isHappy(int n) {
+            int slowRunner = n;
+            int fastRunner = getNext(n);
+            while (fastRunner != 1 && slowRunner != fastRunner) {
+                slowRunner = getNext(slowRunner);
+                fastRunner = getNext(getNext(fastRunner));
+            }
+            return fastRunner == 1;
         }
     }
 }

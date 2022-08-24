@@ -31,7 +31,7 @@ package com.zhxh.codeproj.leetcode;
  */
 class LeetCode278 {
     public static void main(String[] args) {
-        System.out.println(new LeetCode278.Solution().firstBadVersion(5));
+        System.out.println(new Solution().firstBadVersion(5));
     }
 
     /*
@@ -61,5 +61,4 @@ class LeetCode278 {
             return middle == 3;
         }
     }
-
 }

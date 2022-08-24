@@ -36,13 +36,11 @@ ui != vi
 
  */
 class LeetCode743 {
-
     public static void main(String[] args) {
-        int[][] nums = {
+        System.out.println(new Solution().networkDelayTime(new int[][]{
                 {2, 1, 1},
                 {2, 3, 1},
-                {3, 4, 1}};
-        System.out.println(new Solution().networkDelayTime(nums, 4, 2));
+                {3, 4, 1}}, 4, 2));
     }
 
     static class Solution {
@@ -75,8 +73,7 @@ class LeetCode743 {
                     dist[i] = Math.min(dist[i], dist[cur] + graph[cur][i]);
                 }
             }
-
-            int result = 0;                      //题目要求，若dist中有未到达的节点，return-1；
+            int result = 0;     //题目要求，若dist中有未到达的节点，return-1；
             for (int i = 0; i < n; i++) {
                 if (dist[i] == Integer.MAX_VALUE / 2) {
                     return -1;
