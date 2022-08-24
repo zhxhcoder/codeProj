@@ -56,24 +56,25 @@ public class LeetCode394 {
      */
     static class Solution0 {
         public String decodeString(String s) {
-            StringBuffer ans = new StringBuffer();
+            StringBuilder ans = new StringBuilder();
             Stack<Integer> multiStack = new Stack<>();
-            Stack<StringBuffer> ansStack = new Stack<>();
+            Stack<StringBuilder> ansStack = new Stack<>();
             int multi = 0;
             for (char c : s.toCharArray()) {
-                if (Character.isDigit(c)) multi = multi * 10 + c - '0';
-                else if (c == '[') {
+                if (Character.isDigit(c)) {
+                    multi = multi * 10 + c - '0';
+                } else if (c == '[') {
                     ansStack.add(ans);
                     multiStack.add(multi);
-                    ans = new StringBuffer();
+                    ans = new StringBuilder();
                     multi = 0;
-                } else if (Character.isAlphabetic(c)) {
-                    ans.append(c);
-                } else {
-                    StringBuffer ansTmp = ansStack.pop();
+                } else if (c == ']') {
+                    StringBuilder ansTmp = ansStack.pop();
                     int tmp = multiStack.pop();
                     for (int i = 0; i < tmp; i++) ansTmp.append(ans);
                     ans = ansTmp;
+                } else {
+                    ans.append(c);
                 }
             }
             return ans.toString();
@@ -114,7 +115,7 @@ public class LeetCode394 {
                     stk.removeLast();
                     // 此时栈顶为当前 sub 对应的字符串应该出现的次数
                     int repTime = Integer.parseInt(stk.removeLast());
-                    StringBuffer t = new StringBuffer();
+                    StringBuilder t = new StringBuilder();
                     String o = getString(sub);
                     // 构造字符串
                     while (repTime-- > 0) {
@@ -129,7 +130,7 @@ public class LeetCode394 {
         }
 
         public String getDigits(String s) {
-            StringBuffer ret = new StringBuffer();
+            StringBuilder ret = new StringBuilder();
             while (Character.isDigit(s.charAt(ptr))) {
                 ret.append(s.charAt(ptr++));
             }
@@ -137,7 +138,7 @@ public class LeetCode394 {
         }
 
         public String getString(LinkedList<String> v) {
-            StringBuffer ret = new StringBuffer();
+            StringBuilder ret = new StringBuilder();
             for (String s : v) {
                 ret.append(s);
             }
