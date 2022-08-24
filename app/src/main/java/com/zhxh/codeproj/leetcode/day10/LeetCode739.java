@@ -62,20 +62,28 @@ class LeetCode739 {
         }
     }
     /*
+    输入: temperatures = [73,74,75,71,69,72,76,73]
     单调栈
+    可以维护一个存储下标的单调栈，从栈底到栈顶的下标对应的温度列表中的温度依次递减。
+    如果一个下标在单调栈里，则表示尚未找到下一次温度更高的下标。
      */
 
     static class Solution2 {
         public int[] dailyTemperatures(int[] temperatures) {
             int length = temperatures.length;
+            //存储结果
             int[] ans = new int[length];
+            //双端队列，作为队列时，add和remove方法，作为栈时，push和pop
             Deque<Integer> stack = new LinkedList<Integer>();
             for (int i = 0; i < length; i++) {
                 int temperature = temperatures[i];
+                //当栈不为空，且 当前温度大于栈顶温度
                 while (!stack.isEmpty() && temperature > temperatures[stack.peek()]) {
+                    //匹配成功，出栈并赋值
                     int prevIndex = stack.pop();
                     ans[prevIndex] = i - prevIndex;
                 }
+                //因为判断需要以后的元素，所以最后入栈
                 stack.push(i);
             }
             return ans;
