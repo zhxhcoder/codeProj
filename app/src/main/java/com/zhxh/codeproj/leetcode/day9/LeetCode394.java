@@ -2,6 +2,7 @@ package com.zhxh.codeproj.leetcode.day9;
 
 import java.util.Collections;
 import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 /*
@@ -221,23 +222,28 @@ public class LeetCode394 {
             return dfs(s, 0)[0];
         }
 
+        /*
+
+         */
         private String[] dfs(String s, int i) {
             StringBuilder res = new StringBuilder();
             int multi = 0;
             while (i < s.length()) {
-                if (s.charAt(i) >= '0' && s.charAt(i) <= '9')
+                if (s.charAt(i) >= '0' && s.charAt(i) <= '9') {
+                    // multi = multi * 10 + s.charAt(i) - '0';
                     multi = multi * 10 + Integer.parseInt(String.valueOf(s.charAt(i)));
-                else if (s.charAt(i) == '[') {
+                } else if (s.charAt(i) == '[') {
                     String[] tmp = dfs(s, i + 1);
                     i = Integer.parseInt(tmp[0]);
                     while (multi > 0) {
                         res.append(tmp[1]);
                         multi--;
                     }
-                } else if (s.charAt(i) == ']')
+                } else if (s.charAt(i) == ']') {
                     return new String[]{String.valueOf(i), res.toString()};
-                else
+                } else {
                     res.append(s.charAt(i));
+                }
                 i++;
             }
             return new String[]{res.toString()};
@@ -245,9 +251,46 @@ public class LeetCode394 {
     }
 
     /*
-    利用栈
+    队列辅助+递归
+    对于Solution3递归解法，可以预处理一下，将所有字符放到队列中，每处理一个字符就弹出。
+    这样做就不用返回索引，代码更简洁、可读性更好。
      */
     static class Solution4 {
+        public String decodeString(String s) {
+            Queue<Character> q = new LinkedList<>();
+            for (char c : s.toCharArray()) {
+                q.offer(c);
+            }
+            return decodeString(q);
+        }
+
+        public String decodeString(Queue<Character> q) {
+            StringBuilder res = new StringBuilder();
+            int num = 0;
+            while (!q.isEmpty()) {
+                char c = q.poll();
+                if (c >= '0' && c <= '9') {
+                    num = 10 * num + (c - '0');
+                } else if (c == '[') {
+                    String tmp = decodeString(q);
+                    while (num > 0) {
+                        res.append(tmp);
+                        num--;
+                    }
+                } else if (c == ']') {
+                    return res.toString();
+                } else {
+                    res.append(c);
+                }
+            }
+            return res.toString();
+        }
+    }
+
+    /*
+    利用栈
+     */
+    static class Solution5 {
         public String decodeString(String s) {
             Stack<Character> stack = new Stack<>();
             for (char c : s.toCharArray()) {
