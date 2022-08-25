@@ -32,4 +32,7 @@ struct Node {
 使用递归解题也符合要求，本题中递归程序占用的栈空间不算做额外的空间复杂度。
  */
 class LeetCode116 {
+    public static void main(String[] args) {
+
+    }
 }

@@ -31,4 +31,7 @@ package com.zhxh.codeproj.leetcode.tree;
 
  */
 class LeetCode230 {
+    public static void main(String[] args) {
+
+    }
 }

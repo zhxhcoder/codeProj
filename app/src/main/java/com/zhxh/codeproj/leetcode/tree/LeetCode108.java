@@ -52,6 +52,4 @@ class LeetCode108 {
             return helper(0, nums.length - 1);
         }
     }
-
-
 }
