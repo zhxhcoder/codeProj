@@ -23,41 +23,45 @@ import java.util.List;
 ]
  */
 public class LeetCode46 {
+    //todo 回溯-backtrack
     public static void main(String[] args) {
         System.out.println(new Solution().permute(new int[]{1, 2, 3}));
     }
 
     /*
      回溯
+
      */
     static class Solution {
-        public void backtrack(int n, ArrayList<Integer> nums, List<List<Integer>> output, int first) {
-            // 如果所有整数都用完了
-            if (first == n)
-                //拷贝进去
-                output.add(new ArrayList<Integer>(nums));
-            for (int i = first; i < n; i++) {
-                // 将第 i 个整数放在当前排列的首位
-                Collections.swap(nums, first, i);
-                // 使用下一个整数来完成排列
-                backtrack(n, nums, output, first + 1);
-                // 回溯
-                Collections.swap(nums, first, i);
-            }
-        }
-
         public List<List<Integer>> permute(int[] nums) {
             // 初始化输出列表
-            List<List<Integer>> output = new LinkedList();
+            List<List<Integer>> res = new LinkedList<>();
 
             // 将 nums 转换为列表，因为输出是列表的列表
-            ArrayList<Integer> nums_lst = new ArrayList<Integer>();
+            ArrayList<Integer> output = new ArrayList<Integer>();
             for (int num : nums)
-                nums_lst.add(num);
+                output.add(num);
 
             int n = nums.length;
-            backtrack(n, nums_lst, output, 0);
-            return output;
+            backtrack(n, output, res, 0);
+            return res;
+        }
+
+        public void backtrack(int n, ArrayList<Integer> output, List<List<Integer>> res, int first) {
+            // 如果所有整数都用完了
+            if (first == n) {
+                //拷贝进去
+                res.add(new ArrayList<Integer>(output));
+            }
+
+            for (int i = first; i < n; i++) {
+                // 维护动态数组  将第 i 个整数放在当前排列的首位
+                Collections.swap(output, first, i);
+                // 继续递归填下一个数 使用下一个整数来完成排列
+                backtrack(n, output, res, first + 1);
+                // 回溯
+                Collections.swap(output, first, i);
+            }
         }
     }
 }
