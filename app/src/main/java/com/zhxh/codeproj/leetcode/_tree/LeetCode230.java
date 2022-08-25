@@ -1,4 +1,4 @@
-package com.zhxh.codeproj.leetcode.tree;
+package com.zhxh.codeproj.leetcode._tree;
 
 /*
 给定一个二叉搜索树，编写一个函数kthSmallest来查找其中第k个最小的元素。

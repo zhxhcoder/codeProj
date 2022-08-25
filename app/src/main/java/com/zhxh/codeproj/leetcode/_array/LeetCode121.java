@@ -1,4 +1,4 @@
-package com.zhxh.codeproj.leetcode.array;
+package com.zhxh.codeproj.leetcode._array;
 
 /*
 给定一个数组，它的第i 个元素是一支给定股票第 i 天的价格。

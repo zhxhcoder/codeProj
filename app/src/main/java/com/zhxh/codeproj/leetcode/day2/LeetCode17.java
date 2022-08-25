@@ -32,6 +32,7 @@ public class LeetCode17 {
         System.out.println(new Solution().letterCombinations("234"));
         System.out.println(new Solution2().letterCombinations("234"));
         System.out.println(new Solution3().letterCombinations("234"));
+        System.out.println(new Solution4().letterCombinations("234"));
     }
 
     /*
@@ -166,6 +167,52 @@ public class LeetCode17 {
                 }
             }
             return res;
+        }
+    }
+
+    /*
+    方法一：回溯
+
+    方法1：深度优先搜索
+    - 关键词：所有组合
+    - 模式识别：搜索算法
+      -自顶向下的递归实现神搜
+      -定义子问题
+      -在当前递归层结合子问题结果解决原问题
+     */
+    static class Solution4 {
+        public List<String> letterCombinations(String digits) {
+            List<String> combinations = new ArrayList<String>();
+            if (digits.length() == 0) {
+                return combinations;
+            }
+            Map<Character, String> phoneMap = new HashMap<Character, String>() {{
+                put('2', "abc");
+                put('3', "def");
+                put('4', "ghi");
+                put('5', "jkl");
+                put('6', "mno");
+                put('7', "pqrs");
+                put('8', "tuv");
+                put('9', "wxyz");
+            }};
+            backtrack(combinations, phoneMap, digits, 0, new StringBuffer());
+            return combinations;
+        }
+
+        public void backtrack(List<String> combinations, Map<Character, String> phoneMap, String digits, int index, StringBuffer combination) {
+            if (index == digits.length()) {
+                combinations.add(combination.toString());
+            } else {
+                char digit = digits.charAt(index);
+                String letters = phoneMap.get(digit);
+                int lettersCount = letters.length();
+                for (int i = 0; i < lettersCount; i++) {
+                    combination.append(letters.charAt(i));
+                    backtrack(combinations, phoneMap, digits, index + 1, combination);
+                    combination.deleteCharAt(index);
+                }
+            }
         }
     }
 }

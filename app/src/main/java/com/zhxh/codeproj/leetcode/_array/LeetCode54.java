@@ -1,7 +1,6 @@
-package com.zhxh.codeproj.leetcode.array;
+package com.zhxh.codeproj.leetcode._array;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 /*

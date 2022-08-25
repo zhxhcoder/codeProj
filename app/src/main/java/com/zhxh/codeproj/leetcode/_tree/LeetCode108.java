@@ -1,4 +1,4 @@
-package com.zhxh.codeproj.leetcode.tree;
+package com.zhxh.codeproj.leetcode._tree;
 
 
 import com.zhxh.codeproj.leetcode.__base.TreeNode;
