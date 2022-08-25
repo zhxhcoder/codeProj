@@ -38,6 +38,7 @@ class LeetCode06 {
         System.out.println(new Solution().convert("LEETCODEISHIRING", 4));
         System.out.println(new Solution2().convert("LEETCODEISHIRING", 4));
         System.out.println(new Solution3().convert("LEETCODEISHIRING", 4));
+        System.out.println(new Solution4().convert("LEETCODEISHIRING", 4));
     }
 
     /*
@@ -158,6 +159,34 @@ class LeetCode06 {
                 result.append(matrix[i]);
             }
             return result.toString();
+        }
+    }
+
+    /*
+    flag使用
+    字符串s是以Z字形为顺序存储的字符串，目标是按行打印。
+    设numRows 行字符串分别为 s1,s2,...,sn,则容易发现：按顺序遍历字符串s时，每个字符c在Z字形中对应的行索引先从s1增大之sn,再从sn减小至s1...如此反复。
+    因此，解决方案为：模拟这个行索引的变化，在遍历s中把每个字符填到正确的行res[i]
+
+    算法流程：按顺序遍历字符串s;
+    1. res[i] += c  : 把每个字符c填入对应的si;
+    2. i += flag   : 更新当前字符c对应的行索引；
+    3. flag = -flag  : 在达到Z字形转折点时，执行反向；
+     */
+    static class Solution4 {
+        public String convert(String s, int numRows) {
+            if (numRows < 2) return s;
+            List<StringBuilder> rows = new ArrayList<StringBuilder>();
+            for (int i = 0; i < numRows; i++) rows.add(new StringBuilder());
+            int i = 0, flag = -1;
+            for (char c : s.toCharArray()) {
+                rows.get(i).append(c);
+                if (i == 0 || i == numRows - 1) flag = -flag;
+                i += flag;
+            }
+            StringBuilder res = new StringBuilder();
+            for (StringBuilder row : rows) res.append(row);
+            return res.toString();
         }
     }
 }
