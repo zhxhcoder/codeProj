@@ -35,32 +35,129 @@ T     S     G
  */
 class LeetCode06 {
     public static void main(String[] args) {
-        String s = "LEETCODEISHIRING";
-        System.out.println(new Solution().convert(s, 4));
+        System.out.println(new Solution().convert("LEETCODEISHIRING", 4));
+        System.out.println(new Solution2().convert("LEETCODEISHIRING", 4));
+        System.out.println(new Solution3().convert("LEETCODEISHIRING", 4));
     }
 
+    /*
+    利用二维矩阵模拟
+     */
     static class Solution {
         public String convert(String s, int numRows) {
-
-            if (numRows == 1) return s;
-
-            List<StringBuilder> rows = new ArrayList<>();
-            for (int i = 0; i < Math.min(numRows, s.length()); i++)
-                rows.add(new StringBuilder());
-
-            int curRow = 0;
-            boolean goingDown = false;
-
-            for (char c : s.toCharArray()) {
-                rows.get(curRow).append(c);
-                if (curRow == 0 || curRow == numRows - 1) goingDown = !goingDown;
-                curRow += goingDown ? 1 : -1;
+            int n = s.length(), r = numRows;
+            if (r == 1 || r >= n) {
+                return s;
             }
-
-            StringBuilder ret = new StringBuilder();
-            for (StringBuilder row : rows) ret.append(row);
-            return ret.toString();
+            int t = r * 2 - 2;
+            int c = (n + t - 1) / t * (r - 1);
+            char[][] mat = new char[r][c];
+            for (int i = 0, x = 0, y = 0; i < n; ++i) {
+                mat[x][y] = s.charAt(i);
+                if (i % t < r - 1) {
+                    ++x; // 向下移动
+                } else {
+                    --x;
+                    ++y; // 向右上移动
+                }
+            }
+            StringBuffer ans = new StringBuffer();
+            for (char[] row : mat) {
+                for (char ch : row) {
+                    if (ch != 0) {
+                        ans.append(ch);
+                    }
+                }
+            }
+            return ans.toString();
         }
     }
 
+    /*
+    方法二：压缩矩阵空间
+     */
+    static class Solution2 {
+        public String convert(String s, int numRows) {
+            int n = s.length(), r = numRows;
+            if (r == 1 || r >= n) {
+                return s;
+            }
+            StringBuffer[] mat = new StringBuffer[r];
+            for (int i = 0; i < r; ++i) {
+                mat[i] = new StringBuffer();
+            }
+            for (int i = 0, x = 0, t = r * 2 - 2; i < n; ++i) {
+                mat[x].append(s.charAt(i));
+                if (i % t < r - 1) {
+                    ++x;
+                } else {
+                    --x;
+                }
+            }
+            StringBuffer ans = new StringBuffer();
+            for (StringBuffer row : mat) {
+                ans.append(row);
+            }
+            return ans.toString();
+        }
+    }
+
+    static class Solution3 {
+        /*
+         * 官方方法3，直接构造
+         * 根据方法2可知，一个字符只要直到要放到哪一行即可
+         * 假设原字符串字符的下标为idx
+         * 周期t = r+(r -2) = 2r-2（解法一已有解释）
+         * 可以发现：
+         * 对于idx mod t < r的，就会放到第(idx mod t)行，
+         * 对于idx mod t > r(小于t)的，就会放到第t - (idx mod t)行
+         * 有了这个规律，就可以直接按公式算出要放的行，不用像方法2那样求行了，
+         * 只要从前往后依次计算该字符的行，然后直接加到每行的末尾，即可达到效果
+         */
+        public String convert(String s, int numRows) {
+            //特殊情况
+            //numRows为1，直接返回s
+            if (numRows == 1) {
+                return s;
+            }
+            //s长度 <= numRows，直接返回s
+            if (s.length() <= numRows) {
+                return s;
+            }
+
+            int n = s.length();
+            //行数为numRows，简写为r。计算所需的列数，为(n/t向上取整)⋅(r−1)
+            // Z 字形变换的周期 t=r+(r−2)=2r−2
+            int t = numRows + (numRows - 2);
+
+            //定义数组，每行用StringBuilder
+            StringBuilder[] matrix = new StringBuilder[numRows];
+            for (int i = 0; i < matrix.length; i++) {
+                matrix[i] = new StringBuilder();
+            }
+
+            //填入每个字符
+            for (int i = 0; i < n; i++) {
+                //计算要放的行
+                int targetRow;
+                int mod = i % t;
+                if (mod < numRows) {
+                    //对于idx mod t < r的，就会放到第(idx mod t)行
+                    targetRow = mod;
+                } else {
+                    //对于idx mod t >= r(小于t)的，就会放到第t - (idx mod t)行
+                    targetRow = t - mod;
+                }
+                //放到对应行
+                matrix[targetRow].append(s.charAt(i));
+            }
+
+            //输出结果字符串
+            StringBuilder result = new StringBuilder();
+            for (int i = 0; i < numRows; i++) {
+                result.append(matrix[i]);
+            }
+            return result.toString();
+        }
+    }
 }
