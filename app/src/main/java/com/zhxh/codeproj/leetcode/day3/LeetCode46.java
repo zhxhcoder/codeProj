@@ -36,29 +36,29 @@ public class LeetCode46 {
             List<List<Integer>> res = new LinkedList<>();
 
             // 将 nums 转换为列表，因为输出是列表的列表
-            ArrayList<Integer> output = new ArrayList<Integer>();
+            ArrayList<Integer> path = new ArrayList<Integer>();
             for (int num : nums)
-                output.add(num);
+                path.add(num);
 
             int n = nums.length;
-            backtrack(n, output, res, 0);
+            backtrack(n, path, res, 0);
             return res;
         }
 
-        public void backtrack(int n, ArrayList<Integer> output, List<List<Integer>> res, int first) {
+        public void backtrack(int n, ArrayList<Integer> path, List<List<Integer>> res, int depth) {
             // 如果所有整数都用完了
-            if (first == n) {
+            if (depth == n) {
                 //拷贝进去
-                res.add(new ArrayList<Integer>(output));
+                res.add(new ArrayList<Integer>(path));
             }
 
-            for (int i = first; i < n; i++) {
+            for (int i = depth; i < n; i++) {
                 // 维护动态数组  将第 i 个整数放在当前排列的首位
-                Collections.swap(output, first, i);
+                Collections.swap(path, depth, i);
                 // 继续递归填下一个数 使用下一个整数来完成排列
-                backtrack(n, output, res, first + 1);
+                backtrack(n, path, res, depth + 1);
                 // 回溯
-                Collections.swap(output, first, i);
+                Collections.swap(path, depth, i);
             }
         }
     }
@@ -80,23 +80,24 @@ public class LeetCode46 {
             //栈
             Deque<Integer> path = new ArrayDeque<>();
             boolean[] used = new boolean[len];
-            dfs(nums, len, 0, path, used, res);
+            dfs(nums, 0, path, used, res);
             return res;
         }
 
-        private void dfs(int[] nums, int len, int depth, Deque<Integer> path, boolean[] used, List<List<Integer>> res) {
-            if (depth == len) {
+        private void dfs(int[] nums, int depth, Deque<Integer> path, boolean[] used, List<List<Integer>> res) {
+            if (depth == nums.length) {
                 res.add(new ArrayList<>(path));
                 return;
             }
-            for (int i = 0; i < len; i++) {
+            for (int i = 0; i < nums.length; i++) {
                 if (used[i]) {
                     continue;
                 }
-                //栈
+                //入栈
                 path.addLast(nums[i]);
                 used[i] = true;
-                dfs(nums, len, depth + 1, path, used, res);
+                //继续递归
+                dfs(nums, depth + 1, path, used, res);
                 //回溯
                 path.removeLast();
                 used[i] = false;
