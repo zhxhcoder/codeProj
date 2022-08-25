@@ -22,14 +22,12 @@ import java.util.List;
 
  */
 class LeetCode131 {
-
     public static void main(String[] args) {
-
-
+        System.out.println(new Solution1().partition("aab"));
+        System.out.println(new Solution2().partition("aab"));
     }
 
     static class Solution1 {
-
         public List<List<String>> partition(String s) {
             int len = s.length();
             List<List<String>> res = new ArrayList<>();
@@ -141,5 +139,4 @@ class LeetCode131 {
             }
         }
     }
-
 }

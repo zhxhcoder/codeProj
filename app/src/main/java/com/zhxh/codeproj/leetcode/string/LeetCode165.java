@@ -48,9 +48,8 @@ import com.zhxh.codeproj.leetcode._base.Pair;
  */
 class LeetCode165 {
     public static void main(String[] args) {
-        String version1 = "1.01", version2 = "1.001";
-        System.out.println(new Solution().compareVersion(version1, version2));
-        System.out.println(new Solution2().compareVersion(version1, version2));
+        System.out.println(new Solution().compareVersion("1.01", "1.001"));
+        System.out.println(new Solution2().compareVersion("1.01", "1.001"));
     }
 
     //方法一：分割+解析，两次遍历，线性空间

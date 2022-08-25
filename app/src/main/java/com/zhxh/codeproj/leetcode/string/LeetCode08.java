@@ -185,6 +185,7 @@ class LeetCode08 {
 
     /*
     官网提供的自动机
+    这是确定有限状态机（deterministic finite automaton, DFA）
      */
     static class Solution4 {
         public int myAtoi(String str) {

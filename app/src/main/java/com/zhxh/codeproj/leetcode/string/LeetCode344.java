@@ -20,22 +20,10 @@ package com.zhxh.codeproj.leetcode.string;
 
  */
 public class LeetCode344 {
-
     public static void main(String[] args) {
-        Solution solution = new Solution();
-
         char[] s = {'h', 'e', 'l', 'l', 'o'};
-
-        for (char i : s) {
-            System.out.print(i);
-        }
-        solution.reverseString(s);
-
-        System.out.print("\n******\n");
-
-        for (char i : s) {
-            System.out.print(i);
-        }
+        new Solution().reverseString(s);
+        System.out.print(s);
     }
 
     //反向双指针

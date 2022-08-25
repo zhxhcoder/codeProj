@@ -24,8 +24,7 @@ package com.zhxh.codeproj.leetcode.string;
 
 public class LeetCode14 {
     public static void main(String[] args) {
-        String[] strs = {"flowsad", "flosad", "flisad"};
-        System.out.print(new Solution().longestCommonPrefix(strs));
+        System.out.print(new Solution().longestCommonPrefix(new String[]{"flowsad", "flosad", "flisad"}));
     }
 
     /*

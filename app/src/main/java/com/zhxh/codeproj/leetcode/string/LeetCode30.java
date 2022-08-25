@@ -28,13 +28,9 @@ import java.util.List;
 
  */
 class LeetCode30 {
-
     public static void main(String[] args) {
-        String s = "barfoothefoobarman";
-        String[] words = {"foo", "bar"};
-
-        System.out.println(new Solution().findSubstring(s, words));
-        System.out.println(new Solution2().findSubstring(s, words));
+        System.out.println(new Solution().findSubstring("barfoothefoobarman", new String[]{"foo", "bar"}));
+        System.out.println(new Solution2().findSubstring("barfoothefoobarman", new String[]{"foo", "bar"}));
     }
 
     /*
@@ -122,5 +118,4 @@ class LeetCode30 {
             return res;
         }
     }
-
 }
