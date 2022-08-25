@@ -54,11 +54,19 @@ import java.util.Map;
  */
 class LeetCode08 {
     public static void main(String[] args) {
-        String str = "  4193 with words";
-        System.out.println(new Solution().myAtoi(str));
-        System.out.println(new Solution2().myAtoi(str));
+        System.out.println(new Solution().myAtoi("  4193 with words"));
+        System.out.println(new Solution2().myAtoi("  4193 with words"));
+        System.out.println(new Solution3().myAtoi("  4193 with words"));
     }
 
+    /*
+    这是确定有限状态机（deterministic finite automaton, DFA）。
+    其实这题已经不算是容易写“出臃肿代码”的了。
+    考虑清楚边界（主要是溢出处理）和输入种类（+, -, 0-9以及其他），大概在20行内完成代码不难。
+    说实话LC官方题解里很少见给出标准DFA解法的，点个赞。
+    给两个更加需要DFA的题目吧：utf-8-validation ( 附dfa解法 ) 以及 valid-number。
+    顺便贴一下普通解法（那种臃肿的、易错的、可能会被test cases虐到骂娘的；但如果骂娘了，本质还是基本功不扎实）。
+     */
     static class Solution {
         public int myAtoi(String str) {
             str = str.trim();
@@ -84,8 +92,10 @@ class LeetCode08 {
         }
     }
 
+    /*
+    自动机
+     */
     static class Solution2 {
-
         static class Automaton {
             final String START = "start";
             final String SIGNED = "signed";
@@ -133,6 +143,42 @@ class LeetCode08 {
                 automaton.get(ch);
             }
             return automaton.sign * ((int) automaton.ans);
+        }
+    }
+
+    /*
+    直接写
+     */
+    static class Solution3 {
+        public int myAtoi(String s) {
+            int i = 0;
+            int len = s.length();
+            int sign = 1;
+            int res = 0;
+            while (i < len && s.charAt(i) == ' ') { //如果字符串前导位置为空格，循环到有数据的那一个位置
+                i++;
+            }
+            int start = i;  //记录一下当前之后所有数据开始的位置
+            for (; i < len; i++) {
+                int c = s.charAt(i);
+                if (i == start && c == '+') {   //判断是否是+，并且+要在初始位置
+                    sign = 1;
+                } else if (i == start && c == '-') {    //判断是-
+                    sign = -1;
+                } else if (Character.isDigit(c)) {  //判断是数字
+                    int num = c - '0';
+                    //如果是数字，其他不用考虑，只需要考虑两种超限的情况，这里不细说，具体去"https://leetcode-cn.com/problems/reverse-integer/"看
+                    if (res > Integer.MAX_VALUE / 10 || (res == Integer.MAX_VALUE / 10 && num > Integer.MAX_VALUE % 10)) {
+                        return Integer.MAX_VALUE;
+                    } else if (res < Integer.MIN_VALUE / 10 || (res == Integer.MIN_VALUE / 10 && -num < Integer.MIN_VALUE % 10)) {
+                        return Integer.MIN_VALUE;
+                    }
+                    res = res * 10 + sign * num;
+                } else {    //如果有一次循环既不是数字，又不是'+'和'-'，那么立即退出循环，并返回当前res中已经储存的值
+                    break;
+                }
+            }
+            return res;
         }
     }
 }
