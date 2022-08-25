@@ -1,9 +1,6 @@
 package com.zhxh.codeproj.leetcode.day3;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 /*
 
@@ -26,11 +23,12 @@ public class LeetCode46 {
     //todo 回溯-backtrack
     public static void main(String[] args) {
         System.out.println(new Solution().permute(new int[]{1, 2, 3}));
+        System.out.println(new Solution2().permute(new int[]{1, 2, 3}));
     }
 
     /*
      回溯
-
+     深度优先遍历+状态重置
      */
     static class Solution {
         public List<List<Integer>> permute(int[] nums) {
@@ -61,6 +59,47 @@ public class LeetCode46 {
                 backtrack(n, output, res, first + 1);
                 // 回溯
                 Collections.swap(output, first, i);
+            }
+        }
+    }
+
+    /*
+     回溯
+     深度优先遍历+状态重置
+     状态：每个结点表示求解问题的不同阶段
+     状态变量：
+     1，递归到第几层 depth
+     2，已经选了哪些数 path
+     3，布尔数组 used
+     */
+    static class Solution2 {
+        public List<List<Integer>> permute(int[] nums) {
+            int len = nums.length;
+            List<List<Integer>> res = new ArrayList<>();
+            if (len == 0) return res;
+            //栈
+            Deque<Integer> path = new ArrayDeque<>();
+            boolean[] used = new boolean[len];
+            dfs(nums, len, 0, path, used, res);
+            return res;
+        }
+
+        private void dfs(int[] nums, int len, int depth, Deque<Integer> path, boolean[] used, List<List<Integer>> res) {
+            if (depth == len) {
+                res.add(new ArrayList<>(path));
+                return;
+            }
+            for (int i = 0; i < len; i++) {
+                if (used[i]) {
+                    continue;
+                }
+                //栈
+                path.addLast(nums[i]);
+                used[i] = true;
+                dfs(nums, len, depth + 1, path, used, res);
+                //回溯
+                path.removeLast();
+                used[i] = false;
             }
         }
     }
