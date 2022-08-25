@@ -20,13 +20,9 @@ package com.zhxh.codeproj.leetcode.string;
 
  */
 public class LeetCode07 {
-
     public static void main(String[] args) {
-        Solution solution = new Solution();
-        int x = 619;
-        int y = solution.reverse(x);
-
-        System.out.print(y);
+        System.out.println(new Solution().reverse(619));
+        System.out.println(new Solution2().reverse(619));
     }
 
     /*
@@ -69,6 +65,24 @@ public class LeetCode07 {
                     return 0;
 
                 rev = rev * 10 + pop;//入栈
+            }
+            return rev;
+        }
+    }
+
+    /*
+    数学
+     */
+    static class Solution2 {
+        public int reverse(int x) {
+            int rev = 0;
+            while (x != 0) {
+                if (rev < Integer.MIN_VALUE / 10 || rev > Integer.MAX_VALUE / 10) {
+                    return 0;
+                }
+                int digit = x % 10;
+                x /= 10;
+                rev = rev * 10 + digit;
             }
             return rev;
         }
