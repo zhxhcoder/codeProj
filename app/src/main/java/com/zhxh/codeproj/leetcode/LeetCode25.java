@@ -1,6 +1,6 @@
 package com.zhxh.codeproj.leetcode;
 
-import com.zhxh.codeproj.leetcode._base.ListNode;
+import com.zhxh.codeproj.leetcode.__base.ListNode;
 
 /*
 25. K 个一组翻转链表

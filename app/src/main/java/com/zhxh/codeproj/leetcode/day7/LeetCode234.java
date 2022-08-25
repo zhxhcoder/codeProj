@@ -1,6 +1,6 @@
 package com.zhxh.codeproj.leetcode.day7;
 
-import com.zhxh.codeproj.leetcode._base.ListNode;
+import com.zhxh.codeproj.leetcode.__base.ListNode;
 
 import java.util.ArrayList;
 import java.util.List;

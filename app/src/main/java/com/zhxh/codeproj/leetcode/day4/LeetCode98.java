@@ -1,6 +1,6 @@
 package com.zhxh.codeproj.leetcode.day4;
 
-import com.zhxh.codeproj.leetcode._base.TreeNode;
+import com.zhxh.codeproj.leetcode.__base.TreeNode;
 
 import java.util.Stack;
 

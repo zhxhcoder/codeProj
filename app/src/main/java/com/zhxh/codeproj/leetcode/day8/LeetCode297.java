@@ -1,6 +1,6 @@
 package com.zhxh.codeproj.leetcode.day8;
 
-import com.zhxh.codeproj.leetcode._base.TreeNode;
+import com.zhxh.codeproj.leetcode.__base.TreeNode;
 
 import java.util.Arrays;
 import java.util.LinkedList;

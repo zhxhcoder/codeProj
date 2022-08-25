@@ -1,6 +1,6 @@
 package com.zhxh.codeproj.leetcode.string;
 
-import com.zhxh.codeproj.leetcode._base.Pair;
+import com.zhxh.codeproj.leetcode.__base.Pair;
 
 /*
 比较两个版本号 version1和 version2。

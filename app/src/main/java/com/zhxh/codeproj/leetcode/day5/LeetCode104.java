@@ -1,7 +1,7 @@
 package com.zhxh.codeproj.leetcode.day5;
 
-import com.zhxh.codeproj.leetcode._base.Pair;
-import com.zhxh.codeproj.leetcode._base.TreeNode;
+import com.zhxh.codeproj.leetcode.__base.Pair;
+import com.zhxh.codeproj.leetcode.__base.TreeNode;
 
 import java.lang.Math;
 import java.util.LinkedList;

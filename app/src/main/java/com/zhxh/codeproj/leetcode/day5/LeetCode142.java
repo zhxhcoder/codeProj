@@ -1,9 +1,8 @@
 package com.zhxh.codeproj.leetcode.day5;
 
-import com.zhxh.codeproj.leetcode._base.ListNode;
+import com.zhxh.codeproj.leetcode.__base.ListNode;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 /*

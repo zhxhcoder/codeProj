@@ -1,7 +1,6 @@
 package com.zhxh.codeproj.leetcode.day6;
 
-import com.zhxh.codeproj.leetcode._base.ListNode;
-import com.zhxh.codeproj.leetcode.day5.LeetCode142;
+import com.zhxh.codeproj.leetcode.__base.ListNode;
 
 /*
 在O(nlogn) 时间复杂度和常数级空间复杂度下，对链表进行排序。

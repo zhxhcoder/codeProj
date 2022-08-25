@@ -1,6 +1,6 @@
 package com.zhxh.codeproj.leetcode.day6;
 
-import com.zhxh.codeproj.leetcode._base.ListNode;
+import com.zhxh.codeproj.leetcode.__base.ListNode;
 
 /*
 给你单链表的头节点 head ，请你反转链表，并返回反转后的链表。

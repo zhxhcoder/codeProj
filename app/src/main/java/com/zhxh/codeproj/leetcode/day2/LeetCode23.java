@@ -1,6 +1,6 @@
 package com.zhxh.codeproj.leetcode.day2;
 
-import com.zhxh.codeproj.leetcode._base.ListNode;
+import com.zhxh.codeproj.leetcode.__base.ListNode;
 
 /*
 给你一个链表数组，每个链表都已经按升序排列。
