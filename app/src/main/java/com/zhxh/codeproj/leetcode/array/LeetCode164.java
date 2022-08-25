@@ -26,6 +26,8 @@ import java.util.Arrays;
 class LeetCode164 {
     public static void main(String[] args) {
         System.out.println(new Solution().maximumGap(new int[]{3, 6, 9, 1}));
+        System.out.println(new Solution2().maximumGap(new int[]{3, 6, 9, 1}));
+        System.out.println(new Solution3().maximumGap(new int[]{3, 6, 9, 1}));
     }
 
     static class Solution {
@@ -38,13 +40,15 @@ class LeetCode164 {
             }
             return ans;
         }
+    }
 
+    static class Solution2 {
         /*
         思路二：非比较排序
 想要时间复杂度稳定在线性，比较排序暂时是无能为力，所以就想到非比较排序的方法，例如 计数排序？先将所有元素统计，
 不需要完成排序，直接在计数器计算相邻元素之间的差值。
          */
-        public int maximumGap2(int[] nums) {
+        public int maximumGap(int[] nums) {
             //计数
             if (nums.length < 2) return 0;
             int max = nums[0], min = nums[0], bias = 0;
@@ -72,9 +76,11 @@ class LeetCode164 {
             }
             return ans;
         }
+    }
 
+    static class Solution3 {
         //思路三：桶排序
-        public int maximumGap3(int[] nums) {
+        public int maximumGap(int[] nums) {
             if (nums.length < 2) return 0;
             //找到最小值、最大值
             int max = 0, min = 0;
@@ -110,7 +116,6 @@ class LeetCode164 {
             return maxGap;
         }
     }
-
 
     static class Bucket {
         int min = Integer.MAX_VALUE;
