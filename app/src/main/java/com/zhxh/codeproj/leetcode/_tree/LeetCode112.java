@@ -11,6 +11,10 @@ import java.util.Queue;
 说明:叶子节点是指没有子节点的节点。
 
 示例:
+输入：root = [5,4,8,11,null,13,4,7,2,null,null,null,1], targetSum = 22
+输出：true
+解释：等于目标和的根节点到叶节点路径如上图所示。
+
 给定如下二叉树，以及目标和 sum = 22，
 
               5
@@ -24,15 +28,14 @@ import java.util.Queue;
 
  */
 class LeetCode112 {
-
     public static void main(String[] args) {
-
+        System.out.println(new Solution().hasPathSum(TreeNode.buildBinaryTree(new Integer[]{5, 4, 8, 11, null, 13, 4, 7, 2, null, null, null, 1}), 22));
+        System.out.println(new Solution2().hasPathSum(TreeNode.buildBinaryTree(new Integer[]{5, 4, 8, 11, null, 13, 4, 7, 2, null, null, null, 1}), 22));
     }
 
     /*
     方法一：广度优先搜索
     首先我们可以想到使用广度优先搜索的方式，记录从根节点到当前节点的路径和，以防止重复计算。
-
     这样我们使用两个队列，分别存储将要遍历的节点，以及根节点到这些节点的路径和即可。
      */
     static class Solution {
@@ -67,9 +70,9 @@ class LeetCode112 {
     }
 
     /*
-    递归
+    方法二：递归
      */
-    static class Solution1 {
+    static class Solution2 {
         public boolean hasPathSum(TreeNode root, int sum) {
             if (root == null) {
                 return false;
@@ -80,5 +83,4 @@ class LeetCode112 {
             return hasPathSum(root.left, sum - root.val) || hasPathSum(root.right, sum - root.val);
         }
     }
-
 }
