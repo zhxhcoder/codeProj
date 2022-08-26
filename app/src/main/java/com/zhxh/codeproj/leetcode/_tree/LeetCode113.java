@@ -2,10 +2,7 @@ package com.zhxh.codeproj.leetcode._tree;
 
 import com.zhxh.codeproj.leetcode.__base.TreeNode;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ArrayDeque;
-import java.util.Deque;
+import java.util.*;
 
 /*
 给定一个二叉树和一个目标和，找到所有从根节点到叶子节点路径总和等于给定目标和的路径。
@@ -32,20 +29,19 @@ import java.util.Deque;
  */
 class LeetCode113 {
     public static void main(String[] args) {
-        TreeNode node = TreeNode.buildBinaryTree(new Integer[]{5, 4, 8, 11, null, 13, 4, 7, 2, null, null, 5, 1});
-        TreeNode node1 = TreeNode.deserialize("[5,4,8,11,null,13,4,7,2,null,null,5,1]");
-        System.out.println(new Solution().pathSum(node, 22));
-        System.out.println(new Solution1().dfs(node1, 22));
+        System.out.println(new Solution().pathSum(TreeNode.buildBinaryTree(new Integer[]{5, 4, 8, 11, null, 13, 4, 7, 2, null, null, 5, 1}), 22));
+        System.out.println(new Solution2().dfs(TreeNode.deserialize("[5,4,8,11,null,13,4,7,2,null,null,5,1]"), 22));
+        System.out.println(new Solution3().pathSum(TreeNode.buildBinaryTree(new Integer[]{5, 4, 8, 11, null, 13, 4, 7, 2, null, null, 5, 1}), 22));
+        System.out.println(new Solution4().pathSum(TreeNode.buildBinaryTree(new Integer[]{5, 4, 8, 11, null, 13, 4, 7, 2, null, null, 5, 1}), 22));
     }
 
     /*
     这一题是很典型的回溯算法
-思路：
-从根节点出发，使用一个temp变量和List容器记录走过路径
-在走该条路径之前将节点的值加入List容器，走完之后（返回之后）将加入的值移除
-当节点为空时，返回继续查找
-当节点的左孩子和右孩子都为空并且temp变量等于sum时，说明这个节点是叶子节点且找到了一条路径，将List加入答案中
-
+    思路：
+    从根节点出发，使用一个temp变量和List容器记录走过路径
+    在走该条路径之前将节点的值加入List容器，走完之后（返回之后）将加入的值移除
+    当节点为空时，返回继续查找
+    当节点的左孩子和右孩子都为空并且temp变量等于sum时，说明这个节点是叶子节点且找到了一条路径，将List加入答案中
      */
     static class Solution {
         public List<List<Integer>> pathSum(TreeNode root, int sum) {
@@ -74,14 +70,12 @@ class LeetCode113 {
     }
 
 
-    static class Solution1 {
-
+    static class Solution2 {
         public List<List<Integer>> dfs(TreeNode root, int sum) {
             List<List<Integer>> res = new ArrayList<>();
             if (root == null) {
                 return res;
             }
-
             // Java 文档中 Stack 类建议使用 Deque 代替 Stack，注意：只使用栈的相关接口
             Deque<Integer> path = new ArrayDeque<>();
             dfs(root, sum, path, res);
@@ -98,7 +92,6 @@ class LeetCode113 {
                 path.removeLast();
                 return;
             }
-
             path.addLast(node.val);
             dfs(node.left, sum - node.val, path, res);
             dfs(node.right, sum - node.val, path, res);
@@ -106,4 +99,81 @@ class LeetCode113 {
         }
     }
 
+    /*
+    方法一：深度优先搜索
+     */
+    static class Solution3 {
+        List<List<Integer>> ret = new LinkedList<List<Integer>>();
+        Deque<Integer> path = new LinkedList<Integer>();
+
+        public List<List<Integer>> pathSum(TreeNode root, int targetSum) {
+            dfs(root, targetSum);
+            return ret;
+        }
+
+        public void dfs(TreeNode root, int targetSum) {
+            if (root == null) {
+                return;
+            }
+            path.offerLast(root.val);
+            targetSum -= root.val;
+            if (root.left == null && root.right == null && targetSum == 0) {
+                ret.add(new LinkedList<Integer>(path));
+            }
+            dfs(root.left, targetSum);
+            dfs(root.right, targetSum);
+            path.pollLast();
+        }
+    }
+    /*
+    方法二：广度优先搜索
+     */
+
+    static class Solution4 {
+        List<List<Integer>> ret = new LinkedList<List<Integer>>();
+        Map<TreeNode, TreeNode> map = new HashMap<TreeNode, TreeNode>();
+
+        public List<List<Integer>> pathSum(TreeNode root, int targetSum) {
+            if (root == null) {
+                return ret;
+            }
+            Queue<TreeNode> queueNode = new LinkedList<TreeNode>();
+            Queue<Integer> queueSum = new LinkedList<Integer>();
+            queueNode.offer(root);
+            queueSum.offer(0);
+
+            while (!queueNode.isEmpty()) {
+                TreeNode node = queueNode.poll();
+                int rec = queueSum.poll() + node.val;
+
+                if (node.left == null && node.right == null) {
+                    if (rec == targetSum) {
+                        getPath(node);
+                    }
+                } else {
+                    if (node.left != null) {
+                        map.put(node.left, node);
+                        queueNode.offer(node.left);
+                        queueSum.offer(rec);
+                    }
+                    if (node.right != null) {
+                        map.put(node.right, node);
+                        queueNode.offer(node.right);
+                        queueSum.offer(rec);
+                    }
+                }
+            }
+            return ret;
+        }
+
+        public void getPath(TreeNode node) {
+            List<Integer> temp = new LinkedList<Integer>();
+            while (node != null) {
+                temp.add(node.val);
+                node = map.get(node);
+            }
+            Collections.reverse(temp);
+            ret.add(new LinkedList<Integer>(temp));
+        }
+    }
 }
