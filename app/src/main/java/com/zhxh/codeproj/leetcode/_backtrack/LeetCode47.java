@@ -27,7 +27,7 @@ import java.util.Arrays;
 
  */
 public class LeetCode47 {
-    //todo 回溯-backtrack 参考17、46
+    //todo 回溯-backtrack 参考17、46、131
     public static void main(String[] args) {
         System.out.println(new Solution().permuteUnique(new int[]{1, 1, 2, 3}));
         System.out.println(new Solution2().permuteUnique(new int[]{1, 1, 2, 3}));

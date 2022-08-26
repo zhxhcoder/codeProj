@@ -23,6 +23,7 @@ import java.util.List;
  */
 class LeetCode131 {
     public static void main(String[] args) {
+        //todo 回溯-backtrack
         System.out.println(new Solution1().partition("aab"));
         System.out.println(new Solution2().partition("aab"));
     }
@@ -34,7 +35,6 @@ class LeetCode131 {
             if (len == 0) {
                 return res;
             }
-
             // Stack 这个类 Java 的文档里推荐写成 Deque<Integer> stack = new ArrayDeque<Integer>();
             // 注意：只使用 stack 相关的接口
             Deque<String> stack = new ArrayDeque<>();
@@ -91,7 +91,6 @@ class LeetCode131 {
     }
 
     static class Solution2 {
-
         public List<List<String>> partition(String s) {
             int len = s.length();
             List<List<String>> res = new ArrayList<>();
