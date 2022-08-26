@@ -23,20 +23,17 @@ package com.zhxh.codeproj.leetcode;
 public class LeetCode28 {
     public static void main(String[] args) {
         System.out.println(new Solution().strStr("hi|hello", "ll"));
+        System.out.println(new Solution2().strStr("hi|hello", "ll"));
     }
 
     /*
     这道题是要在 haystack 字符串中找到 needle 字符串。下面会给出的三种解法，这三种解法都基于滑动窗口。
+    子串逐一比较的解法最简单，将长度为 L 的滑动窗口沿着 haystack 字符串逐步移动，并将窗口内的子串与 needle 字符串相比较，时间复杂度为 O((N−L)L)
+    显示上面这个方法是可以优化的。双指针方法虽然也是线性时间复杂度，不过它可以避免比较所有的子串，因此最优情况下的时间复杂度为 O(N)，但最坏情况下的时间复杂度依然为O((N−L)L)。
 
-子串逐一比较的解法最简单，将长度为 L 的滑动窗口沿着 haystack 字符串逐步移动，并将窗口内的子串与 needle 字符串相比较，时间复杂度为 O((N - L)L)O((N−L)L)
-
-显示上面这个方法是可以优化的。双指针方法虽然也是线性时间复杂度，不过它可以避免比较所有的子串，因此最优情况下的时间复杂度为 O(N)O(N)，但最坏情况下的时间复杂度依然为 O((N - L)L)O((N−L)L)。
-
-有 O(N)O(N) 复杂度的解法嘛？答案是有的，有两种方法可以实现：
-
-Rabin-Karp，通过哈希算法实现常数时间窗口内字符串比较。
-
-比特位操作，通过比特掩码来实现常数时间窗口内字符串比较。
+    有 O(N)复杂度的解法嘛？答案是有的，有两种方法可以实现：
+    Rabin-Karp，通过哈希算法实现常数时间窗口内字符串比较。
+    比特位操作，通过比特掩码来实现常数时间窗口内字符串比较。
      */
     static class Solution {
 
@@ -76,6 +73,40 @@ Rabin-Karp，通过哈希算法实现常数时间窗口内字符串比较。
                 }
             }
             // 匹配失败，返回-1
+            return -1;
+        }
+    }
+
+    /*
+    方法二：Knuth-Morris-Pratt 简称 KMP 算法
+     */
+    static class Solution2 {
+        public int strStr(String haystack, String needle) {
+            int n = haystack.length(), m = needle.length();
+            if (m == 0) {
+                return 0;
+            }
+            int[] pi = new int[m];
+            for (int i = 1, j = 0; i < m; i++) {
+                while (j > 0 && needle.charAt(i) != needle.charAt(j)) {
+                    j = pi[j - 1];
+                }
+                if (needle.charAt(i) == needle.charAt(j)) {
+                    j++;
+                }
+                pi[i] = j;
+            }
+            for (int i = 0, j = 0; i < n; i++) {
+                while (j > 0 && haystack.charAt(i) != needle.charAt(j)) {
+                    j = pi[j - 1];
+                }
+                if (haystack.charAt(i) == needle.charAt(j)) {
+                    j++;
+                }
+                if (j == m) {
+                    return i - m + 1;
+                }
+            }
             return -1;
         }
     }

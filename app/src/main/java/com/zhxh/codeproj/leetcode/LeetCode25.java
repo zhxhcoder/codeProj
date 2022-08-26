@@ -29,9 +29,7 @@ k是一个正整数，它的值小于或等于链表的长度。
  */
 class LeetCode25 {
     public static void main(String[] args) {
-        int[] nums = {1, 2, 3, 4, 5, 6};
-        ListNode head = ListNode.buildNode(nums);
-        ListNode.printNode(new Solution().reverseKGroup(head, 3));
+        ListNode.printNode(new Solution().reverseKGroup( ListNode.buildNode(new int[]{1, 2, 3, 4, 5, 6}), 3));
     }
 
     /*
