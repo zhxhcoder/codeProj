@@ -36,31 +36,50 @@ import com.zhxh.codeproj.leetcode.__base.TreeNode;
  */
 class LeetCode110 {
     public static void main(String[] args) {
-
+        System.out.println(new Solution().isBalanced(TreeNode.buildBinaryTree(new Integer[]{3, 9, 20, null, null, 15, 7})));
+        System.out.println(new Solution2().isBalanced(TreeNode.buildBinaryTree(new Integer[]{3, 9, 20, null, null, 15, 7})));
     }
 
+    /*
+    方法一：自顶向下的递归
+     */
     static class Solution {
-        // Recursively obtain the height of a tree. An empty tree has -1 height
-        private int height(TreeNode root) {
-            // An empty tree has height -1
-            if (root == null) {
-                return -1;
-            }
-            return 1 + Math.max(height(root.left), height(root.right));
-        }
-
         public boolean isBalanced(TreeNode root) {
-            // An empty tree satisfies the definition of a balanced tree
             if (root == null) {
                 return true;
+            } else {
+                return Math.abs(height(root.left) - height(root.right)) <= 1 && isBalanced(root.left) && isBalanced(root.right);
             }
+        }
 
-            // Check if subtrees have height within 1. If they do, check if the
-            // subtrees are balanced
-            return Math.abs(height(root.left) - height(root.right)) < 2
-                    && isBalanced(root.left)
-                    && isBalanced(root.right);
+        public int height(TreeNode root) {
+            if (root == null) {
+                return 0;
+            } else {
+                return Math.max(height(root.left), height(root.right)) + 1;
+            }
         }
     }
 
+    /*
+    方法二：自底向上的递归
+     */
+    static class Solution2 {
+        public boolean isBalanced(TreeNode root) {
+            return height(root) >= 0;
+        }
+
+        public int height(TreeNode root) {
+            if (root == null) {
+                return 0;
+            }
+            int leftHeight = height(root.left);
+            int rightHeight = height(root.right);
+            if (leftHeight == -1 || rightHeight == -1 || Math.abs(leftHeight - rightHeight) > 1) {
+                return -1;
+            } else {
+                return Math.max(leftHeight, rightHeight) + 1;
+            }
+        }
+    }
 }
