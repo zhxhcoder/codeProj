@@ -21,6 +21,7 @@ package com.zhxh.codeproj.leetcode._string;
  */
 public class LeetCode344 {
     public static void main(String[] args) {
+        //todo 双指针
         char[] s = {'h', 'e', 'l', 'l', 'o'};
         new Solution().reverseString(s);
         System.out.print(s);
