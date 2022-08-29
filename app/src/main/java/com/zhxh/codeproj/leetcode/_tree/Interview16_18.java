@@ -29,7 +29,7 @@ package com.zhxh.codeproj.leetcode._tree;
  */
 class Interview16_18 {
     public static void main(String[] args) {
-
+        System.out.println(new Solution().patternMatching("abba", "dogcatcatdog"));
     }
 
     static class Solution {
@@ -94,5 +94,4 @@ class Interview16_18 {
             return false;
         }
     }
-
 }

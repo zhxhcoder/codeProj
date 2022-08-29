@@ -7,12 +7,11 @@ public class QuickSortTest {
     public static void main(String[] args) {
         int[] arr = {1, 3, -2, 5, 4, -3, 2, 6, -1, 1};
         System.out.println(Arrays.toString(arr));
-        System.out.println(arr.length);
         quickSort(arr);
         System.out.println(Arrays.toString(arr));
     }
 
-    /**
+    /*
      * 快速排序，使得整数数组 arr 有序
      */
     public static void quickSort(int[] arr) {
@@ -22,7 +21,7 @@ public class QuickSortTest {
         quickSort(arr, 0, arr.length - 1);
     }
 
-    /**
+    /*
      * 快速排序，使得整数数组 arr 的 [L, R] 部分有序
      */
     public static void quickSort(int[] arr, int L, int R) {
@@ -35,7 +34,7 @@ public class QuickSortTest {
         }
     }
 
-    /**
+    /*
      * 分区的过程，整数数组 arr 的[L, R]部分上，使得：
      * 大于 arr[R] 的元素位于[L, R]部分的右边，但这部分数据不一定有序
      * 小于 arr[R] 的元素位于[L, R]部分的左边，但这部分数据不一定有序

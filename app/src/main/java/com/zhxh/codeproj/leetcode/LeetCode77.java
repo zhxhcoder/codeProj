@@ -30,16 +30,17 @@ public class LeetCode77 {
     }
 
     static class Solution {
-        List<List<Integer>> output = new LinkedList();
+        List<List<Integer>> output = new LinkedList<>();
         int n;
         int k;
 
         public void backtrack(int first, LinkedList<Integer> curr) {
             // 如果组合完成
-            if (curr.size() == k)
-                output.add(new LinkedList(curr));
+            if (curr.size() == k){
+                output.add(new LinkedList<>(curr));
+            }
 
-            for (int i = first; i < n + 1; ++i) {
+            for (int i = first; i <= n; ++i) {
                 // 将 i 添加到当前组合中
                 curr.add(i);
                 // 使用下一个整数来完成组合
@@ -92,9 +93,6 @@ public class LeetCode77 {
     方法二：非递归（字典序法）实现组合型枚举
      */
     static class Solution3 {
-        List<Integer> temp = new ArrayList<Integer>();
-        List<List<Integer>> ans = new ArrayList<List<Integer>>();
-
         public List<List<Integer>> combine(int n, int k) {
             List<Integer> temp = new ArrayList<Integer>();
             List<List<Integer>> ans = new ArrayList<List<Integer>>();

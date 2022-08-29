@@ -16,6 +16,22 @@ public class ListNode {
         next = null;
     }
 
+    public static ListNode reverseList(ListNode head) {
+        ListNode newHead = null;
+
+        // 不断取出和向后移动头节点
+        // 并将头节点连接到新头节点后面
+        while (head != null) {
+            // 单独取出下一个节点
+            ListNode next = head.next;
+            // 将头节点连接到新头节点后面
+            head.next = newHead;
+            newHead = head;
+            // 向后移动头节点
+            head = next;
+        }
+        return newHead;
+    }
 
     //以下为静态方法
     public static void printNode(ListNode head) {
@@ -27,6 +43,20 @@ public class ListNode {
         }
     }
 
+    public static ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+        if (l1 == null) return l2;
+        if (l2 == null) return l1;
+
+        ListNode head;
+        if (l1.val <= l2.val) {
+            head = l1;
+            head.next = mergeTwoLists(l1.next, l2);
+        } else {
+            head = l2;
+            head.next = mergeTwoLists(l1, l2.next);
+        }
+        return head;
+    }
 
     public static ListNode buildNode(int[] values) {
         if (values.length == 0) {

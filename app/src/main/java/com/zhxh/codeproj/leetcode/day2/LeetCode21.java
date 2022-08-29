@@ -26,10 +26,8 @@ l1 和 l2 均按 非递减顺序 排列
  */
 public class LeetCode21 {
     public static void main(String[] args) {
-        ListNode.buildNode(new int[]{1, 2, 3, 4, 5});
-
         ListNode.printNode(new Solution().mergeTwoLists(ListNode.buildNode(new int[]{1, 2, 4}), ListNode.buildNode(new int[]{1, 3, 4})));
-        ListNode.printNode(new Solution().mergeTwoLists2(ListNode.buildNode(new int[]{1, 2, 4}), ListNode.buildNode(new int[]{1, 3, 4})));
+        ListNode.printNode(new Solution2().mergeTwoLists(ListNode.buildNode(new int[]{1, 2, 4}), ListNode.buildNode(new int[]{1, 3, 4})));
     }
 
     /*
@@ -51,28 +49,29 @@ public class LeetCode21 {
                 }
                 prev = prev.next;
             }
-
             //此时 l1 和 l2 中的一个可以是非空的，因此将非空列表连接到合并列表的末尾。
             prev.next = l1 == null ? l2 : l1;
-
             return prehead.next;
         }
+    }
 
-        /*
-        递归
-         */
-        public ListNode mergeTwoLists2(ListNode l1, ListNode l2) {
+    /*
+    递归
+     */
+    static class Solution2 {
+        public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
             if (l1 == null) {
                 return l2;
             } else if (l2 == null) {
                 return l1;
             } else if (l1.val < l2.val) {
-                l1.next = mergeTwoLists2(l1.next, l2);
+                l1.next = mergeTwoLists(l1.next, l2);
                 return l1;
             } else {
-                l2.next = mergeTwoLists2(l1, l2.next);
+                l2.next = mergeTwoLists(l1, l2.next);
                 return l2;
             }
         }
     }
+
 }
