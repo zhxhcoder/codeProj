@@ -2,10 +2,10 @@ package com.zhxh.codeproj.multithread;
 
 public class KeywordStop {
     public static void main(String[] args) throws InterruptedException {
-        KeywordStopThread thread = new KeywordStopThread("a");
-        new Thread(thread).start();
+        KeywordStopThread mThread = new KeywordStopThread("a");
+        new Thread(mThread).start();
         Thread.sleep(3000);
-        thread.isExit = true;
+        mThread.isExit = true;
     }
 }
 
