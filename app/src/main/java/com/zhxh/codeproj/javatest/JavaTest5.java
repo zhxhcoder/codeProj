@@ -11,6 +11,12 @@ public class JavaTest5 {
          */
         System.out.println('a' - 'z');// -25
 
+
+        char u8Test = '我';
+        System.out.println(Integer.toHexString(u8Test));
+
+
+
         /*
         Java String 可以有多长？
 
@@ -19,7 +25,7 @@ public class JavaTest5 {
         运行期：Integer.MAX_VALUE = 2147483647 = 2^31-1  由于java中字符是16位存储的，因此大概需要4GB内存
         */
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < Integer.MAX_VALUE; i++) {
+        for (int i = 0; i < Integer.MAX_VALUE / 10; i++) {
             sb.append('0');
         }
         System.out.println(sb.toString().length());
@@ -35,7 +41,6 @@ public class JavaTest5 {
         只能使用外部作用域的final变量
         lambda只能声明单个方法的接口
          */
-
 
 
     }
