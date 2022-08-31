@@ -33,6 +33,7 @@ public class LeetCode542 {
     public static void main(String[] args) {
         System.out.println(Arrays.deepToString(new Solution().updateMatrix(new int[][]{{0, 0, 0}, {0, 1, 0}, {1, 1, 1}})));
         System.out.println(Arrays.deepToString(new Solution2().updateMatrix(new int[][]{{0, 0, 0}, {0, 1, 0}, {1, 1, 1}})));
+        System.out.println(Arrays.deepToString(new Solution3().updateMatrix(new int[][]{{0, 0, 0}, {0, 1, 0}, {1, 1, 1}})));
     }
 
     /*
@@ -137,6 +138,48 @@ public class LeetCode542 {
                 }
             }
             return dist;
+        }
+    }
+
+    static class Solution3 {
+        public int[][] updateMatrix(int[][] matrix) {
+            Queue<int[]> queue = new LinkedList<>();
+            int[] directions = {-1, 0, 1, 0, -1};
+
+            for (int row = 0; row < matrix.length; row++) {
+                for (int col = 0; col < matrix[0].length; col++) {
+                    if (matrix[row][col] == 0) {
+                        queue.offer(new int[]{row, col});
+                    } else {
+                        //标记非零元素为负，和遍历后设定的正数距离加以区分
+                        matrix[row][col] = -1;
+                    }
+                }
+            }
+
+            int step = 1;
+            while (!queue.isEmpty()) {
+                //对当前队列中所有零元素遍历，所有元素向四周走一步
+                int size = queue.size();
+                for (int i = 0; i < size; i++) {
+                    //获取队列中的元素位置
+                    int[] cur = queue.poll();
+                    //向四个方向依次走一步
+                    for (int j = 0; j < directions.length - 1; j++) {
+                        int x = cur[0] + directions[j];
+                        int y = cur[1] + directions[j + 1];
+                        //如果超出矩阵范围，或者遇见零元素及设置过距离step的元素则跳过，只对未遍历到的-1操作
+                        if (x < 0 || x >= matrix.length || y < 0 || y >= matrix[0].length || matrix[x][y] >= 0) {
+                            continue;
+                        }
+                        matrix[x][y] = step;
+                        queue.offer(new int[]{x, y});
+                    }
+                }
+                //下次遍历到的-1元素相比前一次距离step加1
+                step++;
+            }
+            return matrix;
         }
     }
 }
