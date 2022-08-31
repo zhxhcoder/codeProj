@@ -60,9 +60,9 @@ public class LeetCode542 {
             while (!queue.isEmpty()) {
                 int[] cell = queue.poll();
                 int i = cell[0], j = cell[1];
-                for (int d = 0; d < 4; ++d) {
-                    int ni = i + dirs[d][0];
-                    int nj = j + dirs[d][1];
+                for (int k = 0; k < dirs.length; k++) {
+                    int ni = i + dirs[k][0];
+                    int nj = j + dirs[k][1];
                     if (ni >= 0 && ni < m && nj >= 0 && nj < n && !seen[ni][nj]) {
                         dist[ni][nj] = dist[i][j] + 1;
                         queue.offer(new int[]{ni, nj});
