@@ -36,7 +36,7 @@ denominator != 0
  */
 public class LeetCode166 {
     public static void main(String[] args) {
-        System.out.println(new Solution().fractionToDecimal(4, 333));
+        System.out.println(new Solution().fractionToDecimal(4, -333));
     }
 
     /*
@@ -51,10 +51,12 @@ public class LeetCode166 {
             }
 
             StringBuilder sb = new StringBuilder();
+            // false^false-->false
+            // true^true-->false
+            // true^false-->true
             if (numeratorLong < 0 ^ denominatorLong < 0) {
                 sb.append('-');
             }
-
             // 整数部分
             numeratorLong = Math.abs(numeratorLong);
             denominatorLong = Math.abs(denominatorLong);
