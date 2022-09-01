@@ -111,4 +111,31 @@ public class LeetCode138 {
             this.random = null;
         }
     }
+
+    /*
+     使用hash存储原结点和克隆结点的映射关系，通过映射关系处理克隆结点的random指针
+     */
+    static class Solution3 {
+        public Node copyRandomList(Node head) {
+            if (head == null) {
+                return head;
+            }
+            // map方法，空间复杂度O(n)
+            Node node = head;
+            // 使用hash表存储旧结点和新结点的映射
+            Map<Node, Node> map = new HashMap<>();
+            while (node != null) {
+                Node clone = new Node(node.val);
+                map.put(node, clone);
+                node = node.next;
+            }
+            node = head;
+            while (node != null) {
+                map.get(node).next = map.get(node.next);
+                map.get(node).random = map.get(node.random);
+                node = node.next;
+            }
+            return map.get(head);
+        }
+    }
 }
