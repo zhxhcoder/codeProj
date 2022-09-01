@@ -56,32 +56,6 @@ public class LeetCode134 {
         public int canCompleteCircuit(int[] gas, int[] cost) {
             int n = gas.length;
             int i = 0;
-            while (i < n) {
-                int sumOfGas = 0, sumOfCost = 0;
-                int cnt = 0;
-                while (cnt < n) {
-                    int j = (i + cnt) % n;
-                    sumOfGas += gas[j];
-                    sumOfCost += cost[j];
-                    if (sumOfCost > sumOfGas) {
-                        break;
-                    }
-                    cnt++;
-                }
-                if (cnt == n) {
-                    return i;
-                } else {
-                    i = i + cnt + 1;
-                }
-            }
-            return -1;
-        }
-    }
-
-    static class Solution2 {
-        public int canCompleteCircuit(int[] gas, int[] cost) {
-            int n = gas.length;
-            int i = 0;
 
             // 从头到尾遍历每个加油站，并且检查以该加油站为起点，能否行驶一周
             while (i < n) {
@@ -109,26 +83,52 @@ public class LeetCode134 {
         }
     }
 
-    static class Solution3 {
+    static class Solution2 {
         /*
          * 一次遍历
-         * 如果某点ans能一直走到数组结尾，保留从数组结尾到数组第一个节点时剩余汽油数cur。
+         * 如果某点ans能一直走到数组结尾，保留从数组结尾到数组第一个节点时剩余汽油数spare。
          * 并保留从数组第一个点走到该点时剩余汽油数res。
-         * 比较两个数的大小，如果cur + res >= 0，说明可以从数组第一个节点走到ans。即可以绕环路行驶一周
+         * 比较两个数的大小，如果spare + res >= 0，说明可以从数组第一个节点走到ans。即可以绕环路行驶一周
          */
         public int canCompleteCircuit(int[] gas, int[] cost) {
             int n = gas.length;
-            int cur = 0, res = 0, ans = 0;
+            int spare = 0, res = 0, ans = 0;
 
             for (int i = 0; i < n; i++) {
-                cur += gas[i] - cost[i];
-                if (cur < 0) {
+                spare += gas[i] - cost[i];
+                if (spare < 0) {
                     ans = i + 1;
-                    res += cur;
-                    cur = 0;
+                    res += spare;
+                    spare = 0;
                 }
             }
-            return cur + res >= 0 ? ans : -1;
+            return spare + res >= 0 ? ans : -1;
         }
     }
+
+    /*
+    亏空最严重的一个点必须放在最后一步走，等着前面剩余的救助
+    解只能存在于，从累计亏损最大的加油站的下一个站出发
+     */
+    static class Solution3 {
+        public int canCompleteCircuit(int[] gas, int[] cost) {
+            int len = gas.length;
+            int spare = 0;//结余油量
+            int minSpare = Integer.MAX_VALUE;//累计亏损油量最大值
+            int minIndex = 0;
+
+            for (int i = 0; i < len; i++) {
+                spare += gas[i] - cost[i];
+                if (spare < minSpare) {
+                    minSpare = spare;
+                    minIndex = i;
+                }
+            }
+            return spare < 0 ? -1 : (minIndex + 1) % len;
+        }
+    }
+    /*
+    暴力解法，并逐步优化
+    https://leetcode.cn/problems/gas-station/solution/xiang-xi-tong-su-de-si-lu-fen-xi-duo-jie-fa-by--30/
+     */
 }
