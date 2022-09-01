@@ -67,15 +67,6 @@ public class LeetCode179 {
     }
 
     static class Solution2 {
-        private class LargerNumberComparator implements Comparator<String> {
-            @Override
-            public int compare(String a, String b) {
-                String order1 = a + b;
-                String order2 = b + a;
-                return order2.compareTo(order1);
-            }
-        }
-
         public String largestNumber(int[] nums) {
             // 获取输入整数作为字符串。
             String[] asStrs = new String[nums.length];
@@ -83,18 +74,25 @@ public class LeetCode179 {
                 asStrs[i] = String.valueOf(nums[i]);
             }
             // 根据自定义比较器对字符串进行排序。
-            Arrays.sort(asStrs, new LargerNumberComparator());
+            Arrays.sort(asStrs, new Comparator<String>() {
+                @Override
+                public int compare(String a, String b) {
+                    String order1 = a + b;
+                    String order2 = b + a;
+                    return order2.compareTo(order1);
+                }
+            });
 
             // 如果排序后最大的数为0，则整个数为零。
             if (asStrs[0].equals("0")) {
                 return "0";
             }
             // 从排序数组中构建最大数。
-            String largestNumberStr = new String();
+            StringBuilder largestNumberStr = new StringBuilder("");
             for (String numAsStr : asStrs) {
-                largestNumberStr += numAsStr;
+                largestNumberStr.append(numAsStr);
             }
-            return largestNumberStr;
+            return largestNumberStr.toString();
         }
     }
 }
