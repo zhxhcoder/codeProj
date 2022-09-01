@@ -30,6 +30,7 @@ board[i][j] 为 'X' 或 'O'
  */
 public class LeetCode130 {
     public static void main(String[] args) {
+        //todo bfs广度优先遍历和dfs深度优先遍历
         char[][] board1 = new char[][]{{'X', 'X', 'X', 'X'}, {'X', 'O', 'O', 'X'}, {'X', 'X', 'O', 'X'}, {'X', 'O', 'X', 'X'}};
         new Solution().solve(board1);
         System.out.println(Arrays.deepToString(board1));
@@ -67,6 +68,7 @@ public class LeetCode130 {
                 dfs(board, 0, i);
                 dfs(board, m - 1, i);
             }
+            // 从四周到中间找同气的子并标记完之后
             for (int i = 0; i < m; i++) {
                 for (int j = 0; j < n; j++) {
                     if (board[i][j] == 'A') {
@@ -82,7 +84,9 @@ public class LeetCode130 {
             if (x < 0 || x >= m || y < 0 || y >= n || board[x][y] != 'O') {
                 return;
             }
+            //临时标记
             board[x][y] = 'A';
+            //从边缘到四周
             dfs(board, x + 1, y);
             dfs(board, x - 1, y);
             dfs(board, x, y + 1);
@@ -127,6 +131,7 @@ public class LeetCode130 {
             while (!queue.isEmpty()) {
                 int[] cell = queue.poll();
                 int x = cell[0], y = cell[1];
+                // 4个方向
                 for (int i = 0; i < 4; i++) {
                     int mx = x + dx[i], my = y + dy[i];
                     if (mx < 0 || my < 0 || mx >= n || my >= m || board[mx][my] != 'O') {
