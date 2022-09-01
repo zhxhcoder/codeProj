@@ -41,26 +41,34 @@ public class LeetCode130 {
 
     /*
     方法一：深度优先搜索
+    任何边界上的0都不会被变为字母X。我们可以想到，所有的不被包围的O都直接或间接与边界上的O相连。我们可以利用这个性质判断O是否在边界上。
+    具体来说：
+    - 对于每个边界上的O，我们以它为起点，标记所有与它直接或间接相连的字母O；
+    - 最后我们遍历这个矩阵，对于每个字母：
+        - 如果改字母被标记过，则该字母为没有被字母X包围的字母O，我们将其还原为字母O；
+        - 如果改字母没有被标记过，则该字母为被字母X包围的字母O，我们将其修改为字母X。
      */
     static class Solution {
-        int n, m;
+        int m, n;
 
         public void solve(char[][] board) {
-            n = board.length;
-            if (n == 0) {
+            m = board.length;
+            if (m == 0) {
                 return;
             }
-            m = board[0].length;
-            for (int i = 0; i < n; i++) {
+            n = board[0].length;
+            // 左右两列
+            for (int i = 0; i < m; i++) {
                 dfs(board, i, 0);
-                dfs(board, i, m - 1);
+                dfs(board, i, n - 1);
             }
-            for (int i = 1; i < m - 1; i++) {
+            // 上下两行
+            for (int i = 1; i < n - 1; i++) {
                 dfs(board, 0, i);
-                dfs(board, n - 1, i);
+                dfs(board, m - 1, i);
             }
-            for (int i = 0; i < n; i++) {
-                for (int j = 0; j < m; j++) {
+            for (int i = 0; i < m; i++) {
+                for (int j = 0; j < n; j++) {
                     if (board[i][j] == 'A') {
                         board[i][j] = 'O';
                     } else if (board[i][j] == 'O') {
@@ -71,7 +79,7 @@ public class LeetCode130 {
         }
 
         public void dfs(char[][] board, int x, int y) {
-            if (x < 0 || x >= n || y < 0 || y >= m || board[x][y] != 'O') {
+            if (x < 0 || x >= m || y < 0 || y >= n || board[x][y] != 'O') {
                 return;
             }
             board[x][y] = 'A';
