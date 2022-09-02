@@ -5,9 +5,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 /*
-给定一个包含 [0, n] 中 n 个数的数组 nums ，找出 [0, n] 这个范围内没有出现在数组中的那个数。
+给定一个包含 [0, n] 中 n 个数的数组 nums ，找出 [0, n] 这个范围内没有出现在数组中的那个数。
 
- 
+
 
 示例 1：
 
@@ -29,7 +29,7 @@ import java.util.Set;
 输入：nums = [0]
 输出：1
 解释：n = 1，因为有 1 个数字，所以所有的数字都在范围 [0,1] 内。1 是丢失的数字，因为它没有出现在 nums 中。
- 
+
 
 提示：
 
@@ -37,7 +37,7 @@ n == nums.length
 1 <= n <= 104
 0 <= nums[i] <= n
 nums 中的所有数字都 独一无二
- 
+
  */
 public class LeetCode268 {
     public static void main(String[] args) {

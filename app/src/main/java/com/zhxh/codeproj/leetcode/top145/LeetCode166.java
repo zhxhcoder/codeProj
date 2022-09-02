@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /*
-给定两个整数，分别表示分数的分子 numerator 和分母 denominator，以 字符串形式返回小数 。
+给定两个整数，分别表示分数的分子 numerator 和分母 denominator，以 字符串形式返回小数 。
 
 如果小数部分为循环小数，则将循环的部分括在括号内。
 
@@ -12,7 +12,7 @@ import java.util.Map;
 
 对于所有给定的输入，保证 答案字符串的长度小于 104 。
 
- 
+
 
 示例 1：
 
@@ -26,11 +26,11 @@ import java.util.Map;
 
 输入：numerator = 4, denominator = 333
 输出："0.(012)"
- 
+
 
 提示：
 
--231 <= numerator, denominator <= 231 - 1
+-231 <= numerator, denominator <= 231 - 1
 denominator != 0
 
  */

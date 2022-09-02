@@ -5,9 +5,9 @@ import java.util.Arrays;
 import java.util.List;
 
 /*
-给定整数 n ，返回 所有小于非负整数 n 的质数的数量 。
+给定整数 n ，返回 所有小于非负整数 n 的质数的数量 。
 
- 
+
 
 示例 1：
 
@@ -22,7 +22,7 @@ import java.util.List;
 
 输入：n = 1
 输出：0
- 
+
 
 提示：
 

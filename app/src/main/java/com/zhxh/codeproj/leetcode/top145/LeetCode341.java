@@ -19,19 +19,19 @@ while iterator.hasNext()
 return res
 如果 res 与预期的扁平化列表匹配，那么你的代码将会被判为正确。
 
- 
+
 
 示例 1：
 
 输入：nestedList = [[1,1],2,[1,1]]
 输出：[1,1,2,1,1]
-解释：通过重复调用 next 直到 hasNext 返回 false，next 返回的元素的顺序应该是: [1,1,2,1,1]。
+解释：通过重复调用 next 直到 hasNext 返回 false，next 返回的元素的顺序应该是: [1,1,2,1,1]。
 示例 2：
 
 输入：nestedList = [1,[4,[6]]]
 输出：[1,4,6]
-解释：通过重复调用 next 直到 hasNext 返回 false，next 返回的元素的顺序应该是: [1,4,6]。
- 
+解释：通过重复调用 next 直到 hasNext 返回 false，next 返回的元素的顺序应该是: [1,4,6]。
+
 
 提示：
 

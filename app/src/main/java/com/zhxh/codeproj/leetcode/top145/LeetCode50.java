@@ -1,9 +1,9 @@
 package com.zhxh.codeproj.leetcode.top145;
 
 /*
-实现 pow(x, n) ，即计算 x 的整数 n 次幂函数（即，xn ）。
+实现 pow(x, n) ，即计算 x 的整数 n 次幂函数（即，xn ）。
 
- 
+
 
 示例 1：
 
@@ -18,7 +18,7 @@ package com.zhxh.codeproj.leetcode.top145;
 输入：x = 2.00000, n = -2
 输出：0.25000
 解释：2-2 = 1/22 = 1/4 = 0.25
- 
+
 
 提示：
 

@@ -3,9 +3,9 @@ package com.zhxh.codeproj.leetcode.top145;
 import java.util.*;
 
 /*
-给你一个整数数组 nums ，按要求返回一个新数组 counts 。数组 counts 有该性质： counts[i] 的值是  nums[i] 右侧小于 nums[i] 的元素的数量。
+给你一个整数数组 nums ，按要求返回一个新数组 counts 。数组 counts 有该性质： counts[i] 的值是  nums[i] 右侧小于 nums[i] 的元素的数量。
 
- 
+
 
 示例 1：
 
@@ -24,7 +24,7 @@ import java.util.*;
 
 输入：nums = [-1,-1]
 输出：[0,0]
- 
+
 
 提示：
 

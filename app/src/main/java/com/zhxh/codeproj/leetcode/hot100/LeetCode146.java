@@ -38,6 +38,7 @@ public class LeetCode146 {
     设计类
      */
     public static void main(String[] args) {
+        //todo 设计类
 
     }
 

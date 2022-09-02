@@ -3,9 +3,9 @@ package com.zhxh.codeproj.leetcode.top145;
 /*
 给定一个整数 n ，返回 n! 结果中尾随零的数量。
 
-提示 n! = n * (n - 1) * (n - 2) * ... * 3 * 2 * 1
+提示 n! = n * (n - 1) * (n - 2) * ... * 3 * 2 * 1
 
- 
+
 
 示例 1：
 
@@ -21,12 +21,12 @@ package com.zhxh.codeproj.leetcode.top145;
 
 输入：n = 0
 输出：0
- 
+
 
 提示：
 
 0 <= n <= 104
- 
+
 
 进阶：你可以设计并实现对数时间复杂度的算法来解决此问题吗？
 
