@@ -48,13 +48,18 @@ public class LeetCode295 {
 
     /*
     方法一：优先队列
+    用两个优先队列，分别记录大于中位数的数和小于中位数的数。
+    当累计添加的数的数量为奇数时，queMin中的数的数量比queMax多一个，此时中位数为queMin的队头。
+    当累计添加的数的数量为偶数时，两个优先队列中的数的数量相同，此时中位数为它们的队头的平均值。
      */
     static class MedianFinder {
-        PriorityQueue<Integer> queMin;
-        PriorityQueue<Integer> queMax;
+        PriorityQueue<Integer> queMin;//大顶堆
+        PriorityQueue<Integer> queMax;//小顶堆
 
         public MedianFinder() {
+            //降序排列
             queMin = new PriorityQueue<Integer>((a, b) -> (b - a));
+            //默认升序排列
             queMax = new PriorityQueue<Integer>((a, b) -> (a - b));
         }
 
