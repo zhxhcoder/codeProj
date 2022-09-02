@@ -32,9 +32,9 @@ s 和 t 仅包含小写字母
  */
 public class LeetCode242 {
     public static void main(String[] args) {
-        System.out.println(new Solution().isAnagram("anagram", "nagaram"));
-        System.out.println(new Solution2().isAnagram("anagram", "nagaram"));
-        System.out.println(new Solution3().isAnagram("anagram", "nagaram"));
+        System.out.println(new Solution().isAnagram("aacc", "ccac"));
+        System.out.println(new Solution2().isAnagram("aacc", "ccac"));
+        System.out.println(new Solution3().isAnagram("aacc", "ccac"));
     }
 
     /*
