@@ -1,7 +1,6 @@
 package com.zhxh.codeproj.leetcode.top145;
 
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 /*
 给定一个 m x n 整数矩阵 matrix ，找出其中 最长递增路径 的长度。
@@ -40,6 +39,7 @@ public class LeetCode329 {
     public static void main(String[] args) {
         System.out.println(new Solution().longestIncreasingPath(new int[][]{{9, 9, 4}, {6, 6, 8}, {2, 1, 1}}));
         System.out.println(new Solution2().longestIncreasingPath(new int[][]{{9, 9, 4}, {6, 6, 8}, {2, 1, 1}}));
+        System.out.println(new Solution3().longestIncreasingPath(new int[][]{{9, 9, 4}, {6, 6, 8}, {2, 1, 1}}));
     }
 
     /*
@@ -131,6 +131,69 @@ public class LeetCode329 {
                 }
             }
             return ans;
+        }
+    }
+
+    /*
+    动态规划
+     */
+    static class Solution3 {
+        public int longestIncreasingPath(int[][] matrix) {
+        /*
+        方法1:动态规划
+        1.状态定义:dp[i][j]为以matrix[i][j]为起点的最大严格递增路径长度
+        2.状态转移:由于matrix[i][j]为起点,因此dp[i][j]可以由其上下左右四个方向计算得到
+            取dp[i][j]=Math.max(dp[i][j],dp[r][c]+1),即四个节点为起点的最长路径+1作为dp[i][j]
+            为什么dp[r][c]一定就是计算过的?
+            因为可以通过遍历顺序来保证比matrix[i][j]大的节点都已经计算过
+            而比matrix[i][j]小的节点的dp值对于dp[i][j]来说没用,因此可以放到后面计算
+        3.初始化:最短的递增路径长度为1,将dp[i][j]全部初始化为1
+        4.遍历顺序:首先将matrix的每一个格子都按照"值"降序排序,然后按照这个降序的值遍历
+            这样就可以保证步骤2中用到的比matrix[i][j]的值大的都是经过计算的有效dp值
+        5.返回形式:返回dp[i][j]遍历过程中的最大值
+        */
+            // 阴间案例(也可以不用)
+            if (matrix == null || matrix.length == 0) {
+                return 0;
+            }
+            int m = matrix.length, n = matrix[0].length;
+            // 保存最长递增路径
+            int res = 1;
+            // 状态定义
+            int[][] dp = new int[m][n];
+            // 初始化
+            for (int i = 0; i < m; i++) {
+                Arrays.fill(dp[i], 1);
+            }
+            // 用list集合存储按值降序格子的值和坐标
+            List<int[]> list = new ArrayList<>();
+            for (int i = 0; i < m; i++) {
+                for (int j = 0; j < n; j++) {
+                    list.add(new int[]{matrix[i][j], i, j});
+                }
+            }
+            Collections.sort(list, (a, b) -> b[0] - a[0]);
+            // list.sort((a, b) -> b[0] - a[0]);
+            // matrix[i][j]的4个方向
+            int[][] dirs = new int[][]{{-1, 0}, {1, 0}, {0, 1}, {0, -1}};
+            // 按照值降序遍历每个节点
+            for (int[] ele : list) {
+                int i = ele[1], j = ele[2], curVal = ele[0];
+                // 遍历matrix[i][j]的每个方向
+                for (int[] dir : dirs) {
+                    // 计算出4个方向的坐标
+                    int nextI = i + dir[0];
+                    int nextJ = j + dir[1];
+                    // 进行状态转移(注意符合条件的方向才能转移:格子在区域内并且该方向递增)
+                    if (nextI >= 0 && nextI < m && nextJ >= 0 && nextJ < n &&
+                            matrix[nextI][nextJ] > curVal) {
+                        dp[i][j] = Math.max(dp[i][j], dp[nextI][nextJ] + 1);
+                    }
+                }
+                // 维护每个节点的最长递增路径的最大值
+                res = Math.max(res, dp[i][j]);
+            }
+            return res;
         }
     }
 }
