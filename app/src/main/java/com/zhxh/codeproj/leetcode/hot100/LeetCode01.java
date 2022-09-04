@@ -28,7 +28,6 @@ public class LeetCode01 {
         System.out.println(Arrays.toString(new Solution2().twoSum(new int[]{7, 2, 12, 8, 15}, 14)));
         System.out.println(Arrays.toString(new Solution3().twoSum(new int[]{7, 2, 12, 8, 15}, 14)));
         System.out.println(Arrays.toString(new Solution4().twoSum(new int[]{7, 2, 12, 8, 15}, 14)));
-        System.out.println(Arrays.toString(new Solution5().twoSum(new int[]{7, 2, 12, 8, 15}, 14)));
     }
 
     /*
@@ -90,20 +89,6 @@ public class LeetCode01 {
                 int left = target - nums[i];
                 if (map.containsKey(left)) {
                     return new int[]{map.get(left), i};
-                }
-                map.put(nums[i], i);
-            }
-            throw new IllegalArgumentException("No two sum solution");
-        }
-    }
-
-    static class Solution5 {
-        public int[] twoSum(int[] nums, int target) {
-            Map<Integer, Integer> map = new HashMap<>();
-            for (int i = 0; i < nums.length; i++) {
-                int key = target - nums[i];
-                if (map.containsKey(key)) {
-                    return new int[]{i, map.get(key)};
                 }
                 map.put(nums[i], i);
             }

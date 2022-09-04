@@ -29,9 +29,10 @@ s由英文字母、数字、符号和空格组成
  */
 public class LeetCode03 {
     public static void main(String[] args) {
-        String s = "abcccabkabcd";
-        System.out.println(new Solution().lengthOfLongestSubstring(s));
-        System.out.println(new Solution().lengthOfLongestSubstring2(s));
+        //todo 滑动窗口
+        System.out.println(new Solution().lengthOfLongestSubstring("abcccabkabcd"));
+        System.out.println(new Solution2().lengthOfLongestSubstring("abcccabkabcd"));
+        System.out.println(new Solution3().lengthOfLongestSubstring("abcccabkabcd"));
     }
 
     /*
@@ -62,8 +63,10 @@ public class LeetCode03 {
             }
             return ans;
         }
+    }
 
-        public int lengthOfLongestSubstring2(String s) {
+    static class Solution2 {
+        public int lengthOfLongestSubstring(String s) {
             int n = s.length(), ans = 0;
             //创建map窗口，i为左区间 j为右区间 ，右边界移动
             Map<Character, Integer> map = new HashMap<>();
@@ -81,11 +84,13 @@ public class LeetCode03 {
             }
             return ans;
         }
+    }
 
-        /*
-        根据set长度来计算
-         */
-        public int lengthOfLongestSubstring3(String s) {
+    /*
+    根据set长度来计算
+      */
+    static class Solution3 {
+        public int lengthOfLongestSubstring(String s) {
             int n = s.length(), ans = 0;
             //创建map窗口，i为左区间 j为右区间 ，右边界移动
             Map<Character, Integer> map = new HashMap<>();
