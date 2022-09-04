@@ -6,6 +6,7 @@ import java.util.Iterator;
 import java.util.Map;
 
 /*
+  1. 两数之和
   给定一个整数数组 nums和一个目标值 target，请你在该数组中找出和为目标值的那两个整数，并返回他们的数组下标。
 
   你可以假设每种输入只会对应一个答案。但是，数组中同一个元素不能使用两遍。
@@ -23,14 +24,18 @@ import java.util.Map;
 
 public class LeetCode01 {
     public static void main(String[] args) {
-        Solution solution = new Solution();
-        int[] nums = {7, 2, 12, 8, 15};
-        int target = 14;
-        System.out.print(Arrays.toString(solution.twoSum(nums, target)));
+        System.out.println(Arrays.toString(new Solution().twoSum(new int[]{7, 2, 12, 8, 15}, 14)));
+        System.out.println(Arrays.toString(new Solution2().twoSum(new int[]{7, 2, 12, 8, 15}, 14)));
+        System.out.println(Arrays.toString(new Solution3().twoSum(new int[]{7, 2, 12, 8, 15}, 14)));
+        System.out.println(Arrays.toString(new Solution4().twoSum(new int[]{7, 2, 12, 8, 15}, 14)));
+        System.out.println(Arrays.toString(new Solution5().twoSum(new int[]{7, 2, 12, 8, 15}, 14)));
     }
 
+    /*
+    暴力解法
+     */
     static class Solution {
-        public int[] twoSum1(int[] nums, int target) {
+        public int[] twoSum(int[] nums, int target) {
             for (int i = 0; i < nums.length; i++) {
                 for (int j = i + 1; j < nums.length; j++) {
                     if (nums[j] == target - nums[i]) {
@@ -40,8 +45,10 @@ public class LeetCode01 {
             }
             throw new IllegalArgumentException("No two sum solution");
         }
+    }
 
-        public int[] twoSumHash(int[] nums, int target) {
+    static class Solution2 {
+        public int[] twoSum(int[] nums, int target) {
             Map<Integer, Integer> map = new HashMap<>();
             for (int i = 0; i < nums.length; i++) {
                 map.put(nums[i], i);
@@ -58,8 +65,10 @@ public class LeetCode01 {
             }
             throw new IllegalArgumentException("No two sum solution");
         }
+    }
 
-        public int[] twoSum2(int[] nums, int target) {
+    static class Solution3 {
+        public int[] twoSum(int[] nums, int target) {
             Map<Integer, Integer> map = new HashMap<>();
             for (int i = 0; i < nums.length; i++) {
                 map.put(nums[i], i);
@@ -72,8 +81,10 @@ public class LeetCode01 {
             }
             throw new IllegalArgumentException("No two sum solution");
         }
+    }
 
-        public int[] twoSum3(int[] nums, int target) {
+    static class Solution4 {
+        public int[] twoSum(int[] nums, int target) {
             Map<Integer, Integer> map = new HashMap<>();
             for (int i = 0; i < nums.length; i++) {
                 int left = target - nums[i];
@@ -84,7 +95,9 @@ public class LeetCode01 {
             }
             throw new IllegalArgumentException("No two sum solution");
         }
+    }
 
+    static class Solution5 {
         public int[] twoSum(int[] nums, int target) {
             Map<Integer, Integer> map = new HashMap<>();
             for (int i = 0; i < nums.length; i++) {
