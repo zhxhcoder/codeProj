@@ -47,6 +47,8 @@ public class LeetCode11 {
     }
 
     /*
+    https://leetcode.cn/problems/container-with-most-water/solution/on-shuang-zhi-zhen-jie-fa-li-jie-zheng-que-xing-tu/
+
     双指针
     关键词：左右两边
     模式识别：需要移动左右两头的问题，可以考虑双指针
