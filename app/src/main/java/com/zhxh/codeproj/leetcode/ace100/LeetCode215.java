@@ -1,4 +1,4 @@
-package com.zhxh.codeproj.leetcode.hot100;
+package com.zhxh.codeproj.leetcode.ace100;
 
 import java.util.PriorityQueue;
 import java.util.Random;
