@@ -1,4 +1,4 @@
-package com.zhxh.codeproj.leetcode.hot100;
+package com.zhxh.codeproj.leetcode.ace100.twopointer;
 
 /*
 11. 盛最多水的容器
