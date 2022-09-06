@@ -1,4 +1,4 @@
-package com.zhxh.codeproj.leetcode.ace100.topk;
+package com.zhxh.codeproj.leetcode.ace100.topK;
 
 import java.util.Arrays;
 import java.util.PriorityQueue;
