@@ -152,6 +152,7 @@ public class LeetCode05 {
 
     /*
     方法一：动态规划
+    对于长度为2的子串，只要它的两个字母相同，它就是一个回文串
      */
     static class Solution4 {
         public String longestPalindrome(String s) {

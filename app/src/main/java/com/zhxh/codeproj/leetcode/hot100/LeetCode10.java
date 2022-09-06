@@ -44,10 +44,10 @@ public class LeetCode10 {
         String p = "a***abaaa*.*";
 
         System.out.println(new Solution().isMatch(s, p));
-        System.out.println(new Solution().isMatch1(s, p));
-        System.out.println(new Solution().isMatch2(s, p));
-        System.out.println(new Solution().isMatch3(s, p));
-        System.out.println(new Solution().isMatch4(s, p));
+        System.out.println(new Solution2().isMatch(s, p));
+        System.out.println(new Solution3().isMatch(s, p));
+        System.out.println(new Solution4().isMatch(s, p));
+        System.out.println(new Solution5().isMatch(s, p));
     }
 
     static class Solution {
@@ -84,39 +84,18 @@ public class LeetCode10 {
             }
             return s.charAt(i - 1) == p.charAt(j - 1);
         }
+    }
 
 
-        /*
-        动态规划
-         */
-        public boolean isMatch1(String text, String pattern) {
-            boolean[][] dp = new boolean[text.length() + 1][pattern.length() + 1];
-            dp[text.length()][pattern.length()] = true;
+    /*
+    动态规划 不支持多个连续*的情况
 
-            for (int i = text.length(); i >= 0; i--) {
-                for (int j = pattern.length() - 1; j >= 0; j--) {
-                    boolean first_match = (i < text.length() &&
-                            (pattern.charAt(j) == text.charAt(i) ||
-                                    pattern.charAt(j) == '.'));
-                    if (j + 1 < pattern.length() && pattern.charAt(j + 1) == '*') {
-                        dp[i][j] = dp[i][j + 2] || first_match && dp[i + 1][j];
-                    } else {
-                        dp[i][j] = first_match && dp[i + 1][j + 1];
-                    }
-                }
-            }
-            return dp[0][0];
-        }
-
-
-        /*
-        动态规划 不支持多个连续*的情况
-
-        String s = "aa*abaaaccd";
-        String p = "a***abaaa*.*";
-        报错为 false
-         */
-        public boolean isMatch2(String s, String p) {
+    String s = "aa*abaaaccd";
+    String p = "a***abaaa*.*";
+    报错为 false
+     */
+    static class Solution2 {
+        public boolean isMatch(String s, String p) {
             //此处为length+1的目的是放入一个额外的为空的字符情况，以便于判断当*时，添加的字符情况
             boolean table[][] = new boolean[s.length() + 1][p.length() + 1];
             table[0][0] = true;
@@ -163,40 +142,39 @@ public class LeetCode10 {
             //返回table表的最右下方元素，即为整个字符串的匹配结果
             return table[s.length()][p.length()];
         }
+    }
 
-        /*
-        详细注释篇
-         */
-        public boolean isMatch3(String s, String p) {
-        /*
-        dp五部曲:
-        设主串s的长度为m,设模式串p的长度为n;其中s只有小写字母,p有字母.和*
-        1.状态定义:dp[i][j]为考虑s[0,i-1]与p[0,j-1]是否能匹配上,能匹配上就为true
-        2.状态转移:若要求dp[i][j]就必须考虑到s[i-1]与p[j-1]
-            2.1 当p[j-1]不是'*'时
-                2.1.1 若s[i-1]==p[j-1]时,即p[j-1]为'a'-'z'且与s[i-1]相等,看dp[i-1][j-1]
-                2.1.2 p[j-1] == '.'时,直接将'.'变成s[i-1],看dp[i-1][j-1]
-                注意:这里的'.'是匹配一个字符,而不是一连串,如"a.b"->"axb"
-            2.2 当p[j-1]是'*'时,主要看p[j-2]做判断
-                2.2.1 p[j-2]为'a'-'z'并且p[j-2]==s[i-1],那么此时s继续往前看,p暂时不动
-                    即:看dp[i-1][j]
-                2.2.2 p[j-2]为'.',那么".*"可以变为"....."可以匹配s[i-1]前面的任何字符(万能串)
-                    因此,直接看dp[i-1][j](或者直接返回true)
-                2.2.3 剩下的就是p[j-2]为'a'-'z'且p[j-2]!=s[i-1],那么此时p的"x*"作废,看dp[i][j-2]
-            这里:2.1.1与2.2.2可以看成一种情形:即s与p均前移一位
-                2.2.1与2.2.2可以看成一种情形:即p不动s前移一位
-        3.初始化:
-            3.1 空的s
-                3.1.1 空的p,空的s可以匹配空的p,因此dp[0][0]=true
-                3.1.2 非空的p,空的s可能可以匹配非空的p,例如"a*",因此需要经过转移计算
-            3.2 空的p
-                3.2.1 空的s,同3.1.1
-                3.2.2 非空的s,空的p不可能匹配非空的s,因此dp[i][0]=false,i∈[1,m]
-            3.3 非空的s与非空的p:需要经过转移计算
-            其中:3.1.1与3.2.2可以合并为dp[i][0]=i==0
-        4.遍历顺序:显然是正序遍历
-        5.返回形式:返回dp[m][n]就是考虑s[0,m-1]与p[0,n-1]是否能匹配上
-        */
+    /*
+    dp五部曲:
+    设主串s的长度为m,设模式串p的长度为n;其中s只有小写字母,p有字母.和*
+    1.状态定义:dp[i][j]为考虑s[0,i-1]与p[0,j-1]是否能匹配上,能匹配上就为true
+    2.状态转移:若要求dp[i][j]就必须考虑到s[i-1]与p[j-1]
+        2.1 当p[j-1]不是'*'时
+            2.1.1 若s[i-1]==p[j-1]时,即p[j-1]为'a'-'z'且与s[i-1]相等,看dp[i-1][j-1]
+            2.1.2 p[j-1] == '.'时,直接将'.'变成s[i-1],看dp[i-1][j-1]
+            注意:这里的'.'是匹配一个字符,而不是一连串,如"a.b"->"axb"
+        2.2 当p[j-1]是'*'时,主要看p[j-2]做判断
+            2.2.1 p[j-2]为'a'-'z'并且p[j-2]==s[i-1],那么此时s继续往前看,p暂时不动
+                即:看dp[i-1][j]
+            2.2.2 p[j-2]为'.',那么".*"可以变为"....."可以匹配s[i-1]前面的任何字符(万能串)
+                因此,直接看dp[i-1][j](或者直接返回true)
+            2.2.3 剩下的就是p[j-2]为'a'-'z'且p[j-2]!=s[i-1],那么此时p的"x*"作废,看dp[i][j-2]
+        这里:2.1.1与2.2.2可以看成一种情形:即s与p均前移一位
+            2.2.1与2.2.2可以看成一种情形:即p不动s前移一位
+    3.初始化:
+        3.1 空的s
+            3.1.1 空的p,空的s可以匹配空的p,因此dp[0][0]=true
+            3.1.2 非空的p,空的s可能可以匹配非空的p,例如"a*",因此需要经过转移计算
+        3.2 空的p
+            3.2.1 空的s,同3.1.1
+            3.2.2 非空的s,空的p不可能匹配非空的s,因此dp[i][0]=false,i∈[1,m]
+        3.3 非空的s与非空的p:需要经过转移计算
+        其中:3.1.1与3.2.2可以合并为dp[i][0]=i==0
+    4.遍历顺序:显然是正序遍历
+    5.返回形式:返回dp[m][n]就是考虑s[0,m-1]与p[0,n-1]是否能匹配上
+    */
+    static class Solution3 {
+        public boolean isMatch(String s, String p) {
             int m = s.length(), n = p.length();
             boolean[][] dp = new boolean[m + 1][n + 1];
             // 初始化dp[i][0]
@@ -238,26 +216,51 @@ public class LeetCode10 {
             // 所求即为考虑s[0,m-1]与p[0,n-1]是否能匹配上
             return dp[m][n];
         }
+    }
 
-        /*
-        递归方法
-         */
-        public boolean isMatch4(String s, String p) {
+    /*
+    递归方法
+    */
+    static class Solution4 {
+        public boolean isMatch(String s, String p) {
             if (p.length() == 0)
                 return s.length() == 0;
 
             if (p.length() > 1 && p.charAt(1) == '*') {
-                if (isMatch4(s, p.substring(2)))//匹配0次
+                if (isMatch(s, p.substring(2)))//匹配0次
                     return true;
-                return matchFirst(s, p) && isMatch4(s.substring(1), p);
+                return matchFirst(s, p) && isMatch(s.substring(1), p);
             } else {
-                return matchFirst(s, p) && isMatch4(s.substring(1), p.substring(1));
+                return matchFirst(s, p) && isMatch(s.substring(1), p.substring(1));
             }
         }
 
         private boolean matchFirst(String s, String p) {
             return s.length() > 0 && p.length() > 0 && (s.charAt(0) == p.charAt(0) || p.charAt(0) == '.');
         }
+    }
 
+    /*
+     动态规划
+     */
+    static class Solution5 {
+        public boolean isMatch(String text, String pattern) {
+            boolean[][] dp = new boolean[text.length() + 1][pattern.length() + 1];
+            dp[text.length()][pattern.length()] = true;
+
+            for (int i = text.length(); i >= 0; i--) {
+                for (int j = pattern.length() - 1; j >= 0; j--) {
+                    boolean first_match = (i < text.length() &&
+                            (pattern.charAt(j) == text.charAt(i) ||
+                                    pattern.charAt(j) == '.'));
+                    if (j + 1 < pattern.length() && pattern.charAt(j + 1) == '*') {
+                        dp[i][j] = dp[i][j + 2] || first_match && dp[i + 1][j];
+                    } else {
+                        dp[i][j] = first_match && dp[i + 1][j + 1];
+                    }
+                }
+            }
+            return dp[0][0];
+        }
     }
 }
