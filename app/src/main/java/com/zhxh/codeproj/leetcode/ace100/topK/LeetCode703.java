@@ -43,6 +43,7 @@ public class LeetCode703 {
         //todo topK问题
         System.out.println(new KthLargest(3, new int[]{4, 5, 8, 2}).add(9));
         System.out.println(new KthLargest2(3, new int[]{4, 5, 8, 2}).add(9));
+        System.out.println(new KthLargest3(3, new int[]{4, 5, 8, 2}).add(9));
     }
 
     /*

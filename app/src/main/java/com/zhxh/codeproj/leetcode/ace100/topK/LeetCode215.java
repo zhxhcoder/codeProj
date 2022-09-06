@@ -119,7 +119,6 @@ class LeetCode215 {
     基于快速排序的选择方法
      */
     static class Solution3 {
-
         Random random = new Random();
 
         public int findKthLargest(int[] nums, int k) {
@@ -161,5 +160,4 @@ class LeetCode215 {
             a[j] = temp;
         }
     }
-
 }
