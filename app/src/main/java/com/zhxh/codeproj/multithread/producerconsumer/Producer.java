@@ -1,39 +1,13 @@
-/**
- * The MIT License
- * Copyright (c) 2014-2016 Ilkka Seppälä
- * <p>
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- * <p>
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- * <p>
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- */
 package com.zhxh.codeproj.multithread.producerconsumer;
 
 import java.util.Random;
 
-/**
- * Class responsible for producing unit of work that can be expressed as {@link Item} and submitted
- * to queue
+/*
+ 负责产生可以表示为{@link Item}并提交到队列的工作单元 的类
  */
 public class Producer {
-
     private final ItemQueue queue;
-
     private final String name;
-
     private int itemId;
 
     public Producer(String name, ItemQueue queue) {
@@ -41,11 +15,10 @@ public class Producer {
         this.queue = queue;
     }
 
-    /**
-     * Put item in the queue
+    /*
+     将项目放入队列
      */
     public void produce() throws InterruptedException {
-
         Item item = new Item(name, itemId++);
         queue.put(item);
         Random random = new Random();

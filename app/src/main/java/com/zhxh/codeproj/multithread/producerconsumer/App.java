@@ -1,56 +1,26 @@
-/**
- * The MIT License
- * Copyright (c) 2014-2016
- * <p>
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- * <p>
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- * <p>
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- */
 package com.zhxh.codeproj.multithread.producerconsumer;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
-/**
- * Producer Consumer Design pattern is a classic concurrency or threading pattern which reduces coupling between
- * Producer and Consumer by separating Identification of work with Execution of Work.
- * <p>
- * In producer consumer design pattern a shared queue is used to control the flow and this separation allows you to code
- * producer and consumer separately. It also addresses the issue of different timing require to produce item or
- * consuming item. by using producer consumer pattern both Producer and Consumer Thread can work with different speed.
- *
+/*
+ 生产者消费者设计模式是一种经典的并发或线程模式，它减少了之间的耦合
+ 生产者和消费者通过将工作识别与工作执行分开。
+
+ 在生产者消费者设计模式中，共享队列用于控制流程，这种分离允许您编写代码
+ 生产者和消费者分开。 它还解决了不同时间需要生产项目或
+ 消费项目。 通过使用生产者消费者模式，生产者和消费者线程可以以不同的速度工作。
+
  */
 public class App {
-
-    /**
-     * Program entry point
-     *
-     * @param args
-     *          command line args
-     */
     public static void main(String[] args) {
-
+        //信息队列
         ItemQueue queue = new ItemQueue();
 
         ExecutorService executorService = Executors.newFixedThreadPool(5);
         for (int i = 0; i < 2; i++) {
-
-            final Producer producer = new Producer("Producer_" + i, queue);
+            final Producer producer = new Producer("生产者-" + i, queue);
             executorService.submit(() -> {
                 while (true) {
                     producer.produce();
@@ -59,7 +29,7 @@ public class App {
         }
 
         for (int i = 0; i < 3; i++) {
-            final Consumer consumer = new Consumer("Consumer_" + i, queue);
+            final Consumer consumer = new Consumer("消费者-" + i, queue);
             executorService.submit(() -> {
                 while (true) {
                     consumer.consume();
@@ -68,11 +38,12 @@ public class App {
         }
 
         executorService.shutdown();
+
         try {
             executorService.awaitTermination(10, TimeUnit.SECONDS);
             executorService.shutdownNow();
         } catch (InterruptedException e) {
-            System.out.println("Error waiting for ExecutorService shutdown");
+            System.out.println("错误，等待 ExecutorService 关闭");
         }
     }
 }

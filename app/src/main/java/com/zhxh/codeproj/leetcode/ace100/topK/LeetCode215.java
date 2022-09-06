@@ -128,6 +128,7 @@ class LeetCode215 {
             return quickSelect(nums, 0, nums.length - 1, nums.length - k);
         }
 
+        //返回的是 快速排序后倒数第k个值
         public int quickSelect(int[] a, int l, int r, int index) {
             int q = randomPartition(a, l, r);
             if (q == index) {
@@ -143,6 +144,9 @@ class LeetCode215 {
             return partition(a, l, r);
         }
 
+        /*
+        分组
+         */
         public int partition(int[] a, int l, int r) {
             int x = a[r], i = l - 1;
             for (int j = l; j < r; ++j) {
