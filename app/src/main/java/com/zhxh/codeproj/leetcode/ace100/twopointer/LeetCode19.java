@@ -1,4 +1,4 @@
-package com.zhxh.codeproj.leetcode.hot100;
+package com.zhxh.codeproj.leetcode.ace100.twopointer;
 
 import com.zhxh.codeproj.leetcode.__base.ListNode;
 
