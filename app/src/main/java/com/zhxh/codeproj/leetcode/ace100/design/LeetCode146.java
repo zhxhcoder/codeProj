@@ -180,6 +180,7 @@ public class LeetCode146 {
         private void addToHead(DLinkedNode node) {
             node.prev = head;
             node.next = head.next;
+            //取代了head
             head.next.prev = node;
             head.next = node;
         }
