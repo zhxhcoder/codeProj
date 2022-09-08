@@ -74,6 +74,7 @@ public class LeetCode380 {
 
         /*
         变长数组的删除
+        不直接 remove(index) 是为了满足O(1) 时间插入、删除和获取随机元素
          */
         public boolean remove(int val) {
             if (!map.containsKey(val)) {
