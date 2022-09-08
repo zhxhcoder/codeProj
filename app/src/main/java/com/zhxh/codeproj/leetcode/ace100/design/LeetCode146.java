@@ -1,4 +1,4 @@
-package com.zhxh.codeproj.leetcode.hot100;
+package com.zhxh.codeproj.leetcode.ace100.design;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -86,7 +86,7 @@ public class LeetCode146 {
         }
 
         @Override
-        protected boolean removeEldestEntry(Map.Entry<Integer, Integer> eldest) {
+        protected boolean removeEldestEntry(Entry<Integer, Integer> eldest) {
             return size() > capacity;
         }
     }
