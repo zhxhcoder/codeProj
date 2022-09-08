@@ -1,4 +1,4 @@
-package com.zhxh.codeproj.leetcode.top145;
+package com.zhxh.codeproj.leetcode.ace100.greedy;
 
 /*
 334. 递增的三元子序列

@@ -44,6 +44,7 @@ push, pop, top, and getMin最多被调用 3 * 104 次
 
 public class LeetCode155 {
     public static void main(String[] args) {
+        //todo 设计类
         MinStack minStack = new MinStack();
         minStack.push(-2);
         minStack.push(0);
