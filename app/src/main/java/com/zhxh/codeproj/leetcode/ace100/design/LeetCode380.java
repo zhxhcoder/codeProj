@@ -72,15 +72,18 @@ public class LeetCode380 {
             return true;
         }
 
+        /*
+        变长数组的删除
+         */
         public boolean remove(int val) {
             if (!map.containsKey(val)) {
                 return false;
             }
             int index = map.get(val);
             int last = nums.get(nums.size() - 1);
-            //把最后的值放在，要删除的位置
+            //将变长数组的最后一个元素last 移动到下标index 处
             nums.set(index, last);
-            //更新索引
+            //在哈希表中将 last 的下标更新为 index
             map.put(last, index);
             //删除
             nums.remove(nums.size() - 1);
