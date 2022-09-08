@@ -53,35 +53,38 @@ public class LeetCode380 {
      */
     static class RandomizedSet {
         List<Integer> nums;
-        Map<Integer, Integer> indices;
+        Map<Integer, Integer> map;
         Random random;
 
         public RandomizedSet() {
             nums = new ArrayList<Integer>();
-            indices = new HashMap<Integer, Integer>();
+            map = new HashMap<Integer, Integer>();
             random = new Random();
         }
 
         public boolean insert(int val) {
-            if (indices.containsKey(val)) {
+            if (map.containsKey(val)) {
                 return false;
             }
             int index = nums.size();
             nums.add(val);
-            indices.put(val, index);
+            map.put(val, index);
             return true;
         }
 
         public boolean remove(int val) {
-            if (!indices.containsKey(val)) {
+            if (!map.containsKey(val)) {
                 return false;
             }
-            int index = indices.get(val);
+            int index = map.get(val);
             int last = nums.get(nums.size() - 1);
+            //把最后的值放在，要删除的位置
             nums.set(index, last);
-            indices.put(last, index);
+            //更新索引
+            map.put(last, index);
+            //删除
             nums.remove(nums.size() - 1);
-            indices.remove(val);
+            map.remove(val);
             return true;
         }
 
