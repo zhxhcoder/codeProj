@@ -7,7 +7,7 @@ package com.zhxh.codeproj.designpattern.adapter;
  * 这个定义还好，说适配器的功能就是把一个接口转成另一个接口。
  * 如题目，手机充电器一般都是5V左右吧，咱天朝的家用交流电压220V，所以手机充电需要一个适配器（降压器）
  */
-public class Client {
+public class App {
     public static void main(String[] args) {
         /**
          * 给手机充电

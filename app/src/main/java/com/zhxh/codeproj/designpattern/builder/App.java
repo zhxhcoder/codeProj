@@ -16,10 +16,15 @@ package com.zhxh.codeproj.designpattern.builder;
  * 建造者模式与工厂模式类似，他们都是建造者模式，适用的场景也很相似。
  * 一般来说，如果产品的建造很复杂，那么请用工厂模式；如果产品的建造更复杂，那么请用建造者模式。
  */
-public class Client {
+public class App {
     public static void main(String[] args) {
         Director director = new Director();
         Product product = director.getAProduct();
-        product.doSomething();
+        product.showProduct();
+
+
+        Director director2 = new Director();
+        Product product2 = director2.getBProduct();
+        product2.showProduct();
     }
 }

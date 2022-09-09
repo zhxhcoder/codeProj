@@ -1,4 +1,4 @@
-package com.zhxh.codeproj.designpattern.bridge;
+package com.zhxh.codeproj.designpattern.bridge2;
 
 /**
  * Created by zhxh on 2019/4/14

@@ -1,13 +1,20 @@
 package com.zhxh.codeproj.designpattern.builder;
 
 /**
- * Created by zhxh on 2019/4/9
+ * Created by zhxh on 2020-01-31.
+ * 导演类
  */
 public class Director {
-    private Builder builder = new ConcreteProdut();
+
+    private Builder builder = new ConcreteBuilder();
 
     public Product getAProduct() {
-        builder.setPart();
-        return builder.buildProduct();
+        builder.setPart("奥迪汽车", "Q5");
+        return builder.getProduct();
+    }
+
+    public Product getBProduct() {
+        builder.setPart("宝马汽车", "X7");
+        return builder.getProduct();
     }
 }
