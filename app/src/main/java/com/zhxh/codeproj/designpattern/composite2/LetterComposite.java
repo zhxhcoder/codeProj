@@ -20,25 +20,39 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.zhxh.codeproj.designpattern.composite;
+package com.zhxh.codeproj.designpattern.composite2;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Sentence
+ * Composite interface.
  */
-public class Sentence extends LetterComposite {
-    /**
-     * Constructor
-     */
-    public Sentence(List<Word> words) {
-        for (Word w : words) {
-            this.add(w);
-        }
+public abstract class LetterComposite {
+    private List<LetterComposite> children = new ArrayList<>();
+
+    public void add(LetterComposite letter) {
+        children.add(letter);
     }
 
-    @Override
+    public int count() {
+        return children.size();
+    }
+
+    protected void printThisBefore() {
+    }
+
     protected void printThisAfter() {
-        System.out.print(".");
+    }
+
+    /**
+     * Print
+     */
+    public void print() {
+        printThisBefore();
+        for (LetterComposite letter : children) {
+            letter.print();
+        }
+        printThisAfter();
     }
 }

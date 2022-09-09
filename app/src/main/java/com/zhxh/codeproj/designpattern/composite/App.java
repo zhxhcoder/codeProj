@@ -1,49 +1,41 @@
-/**
- * The MIT License
- * Copyright (c) 2014-2016
- * <p>
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- * <p>
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- * <p>
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- */
 package com.zhxh.codeproj.designpattern.composite;
 
-/**
- * The Composite pattern is a partitioning design pattern. The Composite pattern describes that a
- * group of objects is to be treated in the same way as a single instance of an object. The intent
- * of a composite is to "compose" objects into tree structures to represent part-whole hierarchies.
- * Implementing the Composite pattern lets clients treat individual objects and compositions
- * uniformly.
+import com.zhxh.codeproj.Log;
+
+/*
+ * 组合模式（Composite Pattern），又叫部分整体模式，是用于把一组相似的对象当作一个单一的对象。
+ * 组合模式依据树形结构来组合对象，用来表示部分以及整体层次。
+ * 这种类型的设计模式属于结构型模式，它创建了对象组的树形结构。
  * <p>
- * In this example we have sentences composed of words composed of letters. All of the objects can
- * be treated through the same interface ({@link LetterComposite}).
+ * 主要解决：
+ * 它在我们树型结构的问题中，模糊了简单元素和复杂元素的概念，
+ * 客户程序可以像处理简单元素一样来处理复杂元素，从而使得客户程序与复杂元素的内部结构解耦。
  */
 public class App {
-    /**
-     * Program entry point
-     *
-     * @param args command line args
-     */
     public static void main(String[] args) {
-        System.out.println("Message from the orcs: ");
-        LetterComposite orcMessage = new Messenger().messageFromOrcs();
-        orcMessage.print();
-        System.out.println("\nMessage from the elves: ");
-        LetterComposite elfMessage = new Messenger().messageFromElves();
-        elfMessage.print();
+
+        // 2. 使用 Employee 类来创建和打印员工的层次结构。
+        final Employee ceo = new Employee("John", "CEO", 30000);
+
+        Employee headSales = new Employee("Robert", "Head sales", 20000);
+
+        Employee headMarketing = new Employee("Michel", "Head Marketing", 20000);
+
+        Employee clerk1 = new Employee("Laura", "Marketing", 10000);
+        Employee clerk2 = new Employee("Bob", "Marketing", 10000);
+
+        Employee salesExecutive1 = new Employee("Richard", "Sales", 10000);
+        Employee salesExecutive2 = new Employee("Rob", "Sales", 10000);
+
+        ceo.add(headSales);
+        ceo.add(headMarketing);
+
+        headSales.add(salesExecutive1);
+        headSales.add(salesExecutive2);
+
+        headMarketing.add(clerk1);
+        headMarketing.add(clerk2);
+
+        Log.e("---", ceo.toString());
     }
 }

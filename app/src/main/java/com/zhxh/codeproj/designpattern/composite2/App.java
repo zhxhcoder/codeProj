@@ -20,39 +20,29 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.zhxh.codeproj.designpattern.composite;
-
-import java.util.ArrayList;
-import java.util.List;
+package com.zhxh.codeproj.designpattern.composite2;
 
 /**
- * Composite interface.
+ * 组合模式（Composite Pattern），又叫部分整体模式，是用于把一组相似的对象当作一个单一的对象。
+ * 组合模式依据树形结构来组合对象，用来表示部分以及整体层次。
+ * 这种类型的设计模式属于结构型模式，它创建了对象组的树形结构。
+ * <p>
+ * 主要解决：
+ * 它在我们树型结构的问题中，模糊了简单元素和复杂元素的概念，
+ * 客户程序可以像处理简单元素一样来处理复杂元素，从而使得客户程序与复杂元素的内部结构解耦。
  */
-public abstract class LetterComposite {
-    private List<LetterComposite> children = new ArrayList<>();
-
-    public void add(LetterComposite letter) {
-        children.add(letter);
-    }
-
-    public int count() {
-        return children.size();
-    }
-
-    protected void printThisBefore() {
-    }
-
-    protected void printThisAfter() {
-    }
-
+public class App {
     /**
-     * Print
+     * Program entry point
+     *
+     * @param args command line args
      */
-    public void print() {
-        printThisBefore();
-        for (LetterComposite letter : children) {
-            letter.print();
-        }
-        printThisAfter();
+    public static void main(String[] args) {
+        System.out.println("来自兽人的信息: ");
+        LetterComposite orcMessage = new Messenger().messageFromOrcs();
+        orcMessage.print();
+        System.out.println("\n来自精灵的信息: ");
+        LetterComposite elfMessage = new Messenger().messageFromElves();
+        elfMessage.print();
     }
 }

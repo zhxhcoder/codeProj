@@ -20,25 +20,25 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.zhxh.codeproj.designpattern.composite;
+package com.zhxh.codeproj.designpattern.composite2;
 
 import java.util.List;
 
 /**
- * Word
+ * Sentence
  */
-public class Word extends LetterComposite {
+public class Sentence extends LetterComposite {
     /**
      * Constructor
      */
-    public Word(List<Letter> letters) {
-        for (Letter l : letters) {
-            this.add(l);
+    public Sentence(List<Word> words) {
+        for (Word w : words) {
+            this.add(w);
         }
     }
 
     @Override
-    protected void printThisBefore() {
-        System.out.print(" ");
+    protected void printThisAfter() {
+        System.out.print(".");
     }
 }
