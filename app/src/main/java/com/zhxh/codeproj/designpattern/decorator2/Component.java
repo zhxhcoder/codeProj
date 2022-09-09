@@ -1,4 +1,4 @@
-package com.zhxh.codeproj.designpattern.decorator;
+package com.zhxh.codeproj.designpattern.decorator2;
 
 /**
  * Created by zhxh on 2019/4/13
