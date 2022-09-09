@@ -5,6 +5,6 @@ package com.zhxh.codeproj.designpattern.builder;
  */
 public class Product {
     public void doSomething() {
-
+        System.out.println("Product-doSomething");
     }
 }
