@@ -1,6 +1,6 @@
 package com.zhxh.codeproj.designpattern.adapter;
 
-import android.util.Log;
+import com.zhxh.codeproj.Log;
 
 /**
  * Created by jingbin on 2016/10/30.
