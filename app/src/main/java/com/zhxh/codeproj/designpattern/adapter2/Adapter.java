@@ -1,4 +1,4 @@
-package com.zhxh.codeproj.designpattern.adapter;
+package com.zhxh.codeproj.designpattern.adapter2;
 
 /**
  * Created by zhxh on 2019/4/9
