@@ -1,4 +1,4 @@
-package com.zhxh.codeproj.designpattern.facade;
+package com.zhxh.codeproj.designpattern.facade2;
 
 /**
  * Created by zhxh on 2019/4/14
