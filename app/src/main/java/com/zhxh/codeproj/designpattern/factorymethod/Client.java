@@ -1,4 +1,4 @@
-package com.zhxh.codeproj.designpattern.factory.method;
+package com.zhxh.codeproj.designpattern.factorymethod;
 
 /**
  * Created by zhxh on 2019/4/7

@@ -1,8 +1,9 @@
 package com.zhxh.codeproj.designpattern.flyweight;
 
-import android.util.Log;
+import com.zhxh.codeproj.Log;
 
 /**
+ * Created by zhxh on 2020-02-01.
  * 2. 创建实现接口的实体类。
  */
 public class Circle implements Shape {

@@ -1,10 +1,11 @@
 package com.zhxh.codeproj.designpattern.flyweight;
 
-import android.util.Log;
+import com.zhxh.codeproj.Log;
 
 import java.util.HashMap;
 
 /**
+ * Created by zhxh on 2020-02-01.
  * 3. 创建一个工厂，生成基于给定信息的实体类的对象。
  */
 public class ShapeFactory {
