@@ -15,6 +15,6 @@ public class ConsoleLogger extends AbstractLogger {
 
     @Override
     protected void write(String message) {
-        Log.e("---", "Standard Console::Logger  " + message);
+        Log.e("---", "Console::Logger  " + message);
     }
 }

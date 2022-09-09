@@ -1,9 +1,10 @@
 package com.zhxh.codeproj.designpattern.command;
 
 /**
- * Created by zhxh on 2019/4/15
+ * Created by zhxh on 2016/10/31.
  */
-public abstract class Command {
-    //每个类都必须有个执行命令的方法
-    public abstract void execute();
+
+public interface Command {
+
+    public void execute();
 }

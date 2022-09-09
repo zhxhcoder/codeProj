@@ -18,9 +18,9 @@ import com.zhxh.codeproj.designpattern.chainofresponsibility.impl.FileLogger;
 public class App {
     public static void main(String[] args) {
         final AbstractLogger logger = getChainOfLoggers();
-        logger.logMessage(AbstractLogger.INFO, "this is an information.");
-        logger.logMessage(AbstractLogger.DEBUG, "this is a debug level information.");
-        logger.logMessage(AbstractLogger.ERROR, "this is a error level information.");
+        logger.logMessage(AbstractLogger.INFO, "INFO级别信息");
+        logger.logMessage(AbstractLogger.DEBUG, "DEBUG级别信息");
+        logger.logMessage(AbstractLogger.ERROR, "ERROR级别信息");
     }
 
     public static AbstractLogger getChainOfLoggers() {
