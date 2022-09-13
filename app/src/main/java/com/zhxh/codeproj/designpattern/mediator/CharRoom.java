@@ -1,6 +1,6 @@
 package com.zhxh.codeproj.designpattern.mediator;
 
-import android.util.Log;
+import com.zhxh.codeproj.Log;
 
 import java.util.Date;
 

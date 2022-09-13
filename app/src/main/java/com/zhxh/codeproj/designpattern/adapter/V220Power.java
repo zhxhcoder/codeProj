@@ -3,7 +3,7 @@ package com.zhxh.codeproj.designpattern.adapter;
 import com.zhxh.codeproj.Log;
 
 /**
- * Created by jingbin on 2016/10/30.
+ * Created by zhxh on 2016/10/30.
  * 我们拥有的家用电是220v
  */
 
