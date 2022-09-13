@@ -15,7 +15,6 @@ public class Circle extends Shape {
 
     @Override
     public void draw() {
-        Log.e("---", "Inside Circle::draw() method.");
+        Log.e("---", "Circle::draw()");
     }
-
 }

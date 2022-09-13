@@ -15,8 +15,6 @@ public class Square extends Shape {
 
     @Override
     public void draw() {
-        Log.e("---", "Inside Square::draw() method.");
+        Log.e("---", "Square::draw()");
     }
-
-
 }

@@ -15,8 +15,6 @@ public class Rectangle extends Shape {
 
     @Override
     public void draw() {
-        Log.e("---", "Inside Rectangle::draw() method.");
+        Log.e("---", "Rectangle::draw()");
     }
-
-
 }

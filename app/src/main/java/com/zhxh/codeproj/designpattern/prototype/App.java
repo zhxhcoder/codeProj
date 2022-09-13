@@ -22,7 +22,6 @@ public class App {
         Shape shapeCache1 = ShapeCache.getShape("1");
         Log.e("Prototype", "Shape: " + shapeCache1.type);
 
-
         Shape shapeCache2 = ShapeCache.getShape("2");
         Log.e("Prototype", "Shape: " + shapeCache2.type);
 
