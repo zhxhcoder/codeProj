@@ -5,7 +5,7 @@ package com.zhxh.codeproj.designpattern.factorymethod;
  */
 public class ConcreteProduct2 extends Product {
     @Override
-    public void method2() {
-        System.out.println("ConcreteProduct2-->method2");
+    public void absMethod() {
+        System.out.println("ConcreteProduct2-->absMethod");
     }
 }
