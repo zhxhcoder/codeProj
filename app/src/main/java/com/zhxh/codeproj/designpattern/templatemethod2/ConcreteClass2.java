@@ -1,4 +1,4 @@
-package com.zhxh.codeproj.designpattern.template;
+package com.zhxh.codeproj.designpattern.templatemethod2;
 
 /**
  * Created by zhxh on 2019/4/7
