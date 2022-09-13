@@ -1,6 +1,5 @@
-package com.zhxh.codeproj.designpattern.factory.gcff;
+package com.zhxh.codeproj.designpattern.factory.abs;
 
-import com.zhxh.codeproj.designpattern.factory.jdgc.RoujiaMo;
 
 /**
  * Created by zhxh on 2016/10/24.
@@ -13,6 +12,9 @@ import com.zhxh.codeproj.designpattern.factory.jdgc.RoujiaMo;
  * 对照定义：
  * 1、定义了创建对象的一个接口：public abstract RouJiaMo sellRoujiaMo(String type);
  * 2、由子类决定实例化的类，可以看到我们的馍是子类生成的。
+ * <p>
+ * <p>
+ * RoujiaMo使用的是本 抽象工厂内的类
  */
 
 public abstract class RoujiaMoStore {

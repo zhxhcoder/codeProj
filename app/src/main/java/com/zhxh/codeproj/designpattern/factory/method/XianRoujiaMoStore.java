@@ -1,23 +1,24 @@
-package com.zhxh.codeproj.designpattern.factory.cxgc;
+package com.zhxh.codeproj.designpattern.factory.method;
 
+import com.zhxh.codeproj.designpattern.factory.simple.RoujiaMo;
 
 /**
  * Created by zhxh on 2016/10/24.
  * 西安肉夹馍店   让分店自己去卖自己口味的肉夹馍
  */
 
-public class XianRoujiaMoTeSeStore extends RoujiaMoStore {
+public class XianRoujiaMoStore extends RoujiaMoStore {
 
-    private XianSimpleRoujiaMoTeSeFactory factory;
+    private XianSimpleRoujiaMoFactory factory;
 
-    public XianRoujiaMoTeSeStore(XianSimpleRoujiaMoTeSeFactory factory) {
+    public XianRoujiaMoStore(XianSimpleRoujiaMoFactory factory) {
         this.factory = factory;
     }
 
     public RoujiaMo sellRoujiaMo(String type) {
 
         RoujiaMo roujiaMo = factory.creatRoujiaMo(type);
-        roujiaMo.prepare(new XianRoujiaMoYLFoctory());
+        roujiaMo.prepare();
         roujiaMo.fire();
         roujiaMo.pack();
         return roujiaMo;

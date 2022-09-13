@@ -1,4 +1,4 @@
-package com.zhxh.codeproj.designpattern.factory.jdgc;
+package com.zhxh.codeproj.designpattern.factory.simple;
 
 /**
  * Created by zhxh on 2016/10/22.

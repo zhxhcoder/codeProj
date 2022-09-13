@@ -1,11 +1,11 @@
 package com.zhxh.codeproj.designpattern.factory;
 
-import com.zhxh.codeproj.designpattern.factory.cxgc.XianRoujiaMoTeSeStore;
-import com.zhxh.codeproj.designpattern.factory.cxgc.XianSimpleRoujiaMoTeSeFactory;
-import com.zhxh.codeproj.designpattern.factory.gcff.XianRoujiaMoStore;
-import com.zhxh.codeproj.designpattern.factory.gcff.XianSimpleRoujiaMoFactory;
-import com.zhxh.codeproj.designpattern.factory.jdgc.RoujiaMoStore;
-import com.zhxh.codeproj.designpattern.factory.jdgc.SimpleRoujiaMoFactory;
+import com.zhxh.codeproj.designpattern.factory.abs.XianRoujiaMoTeSeStore;
+import com.zhxh.codeproj.designpattern.factory.abs.XianSimpleRoujiaMoTeSeFactory;
+import com.zhxh.codeproj.designpattern.factory.method.XianRoujiaMoStore;
+import com.zhxh.codeproj.designpattern.factory.method.XianSimpleRoujiaMoFactory;
+import com.zhxh.codeproj.designpattern.factory.simple.RoujiaMoStore;
+import com.zhxh.codeproj.designpattern.factory.simple.SimpleRoujiaMoFactory;
 
 /*
  * 今天继续设计模式之旅，给大家带来工厂模式，简单列一下这个模式的家族：

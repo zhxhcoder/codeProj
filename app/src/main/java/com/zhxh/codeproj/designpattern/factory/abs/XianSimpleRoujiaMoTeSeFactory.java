@@ -1,6 +1,4 @@
-package com.zhxh.codeproj.designpattern.factory.gcff;
-
-import com.zhxh.codeproj.designpattern.factory.jdgc.RoujiaMo;
+package com.zhxh.codeproj.designpattern.factory.abs;
 
 /**
  * Created by zhxh on 2016/10/23.
@@ -8,7 +6,7 @@ import com.zhxh.codeproj.designpattern.factory.jdgc.RoujiaMo;
  * 用来西安店生产自己店里的肉夹馍
  */
 
-public class XianSimpleRoujiaMoFactory {
+public class XianSimpleRoujiaMoTeSeFactory {
 
     public RoujiaMo creatRoujiaMo(String type) {
         RoujiaMo roujiaMo = null;
@@ -17,10 +15,10 @@ public class XianSimpleRoujiaMoFactory {
                 roujiaMo = new XianSuanRoujiMo();
                 break;
             case "La":
-                roujiaMo = new XianKuRoujiMo();
+//                roujiaMo = new XianKuRoujiMo();
                 break;
             case "Tian":
-                roujiaMo = new XianlaRoujiMo();
+//                roujiaMo = new XianlaRoujiMo();
                 break;
             default:// 默认为酸肉夹馍
                 roujiaMo = new XianSuanRoujiMo();

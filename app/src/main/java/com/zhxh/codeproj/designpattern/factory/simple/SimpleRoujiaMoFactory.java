@@ -1,27 +1,26 @@
-package com.zhxh.codeproj.designpattern.factory.cxgc;
+package com.zhxh.codeproj.designpattern.factory.simple;
 
 /**
  * Created by zhxh on 2016/10/23.
- * 西安 简单工厂模式:
- * 用来西安店生产自己店里的肉夹馍
+ * 简单工厂模式
  */
 
-public class XianSimpleRoujiaMoTeSeFactory {
+public class SimpleRoujiaMoFactory {
 
     public RoujiaMo creatRoujiaMo(String type) {
         RoujiaMo roujiaMo = null;
         switch (type) {
             case "Suan":
-                roujiaMo = new XianSuanRoujiMo();
+                roujiaMo = new ZSuanRoujiaMo();
                 break;
             case "La":
-//                roujiaMo = new XianKuRoujiMo();
+                roujiaMo = new ZLaRoujiaMo();
                 break;
             case "Tian":
-//                roujiaMo = new XianlaRoujiMo();
+                roujiaMo = new ZTianRoujiaMo();
                 break;
             default:// 默认为酸肉夹馍
-                roujiaMo = new XianSuanRoujiMo();
+                roujiaMo = new ZSuanRoujiaMo();
                 break;
         }
         return roujiaMo;

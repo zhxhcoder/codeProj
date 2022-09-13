@@ -1,5 +1,6 @@
-package com.zhxh.codeproj.designpattern.factory.cxgc;
+package com.zhxh.codeproj.designpattern.factory.method;
 
+import com.zhxh.codeproj.designpattern.factory.simple.RoujiaMo;
 
 /**
  * Created by zhxh on 2016/10/25.

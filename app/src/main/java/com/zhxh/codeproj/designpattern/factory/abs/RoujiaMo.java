@@ -1,4 +1,4 @@
-package com.zhxh.codeproj.designpattern.factory.jdgc;
+package com.zhxh.codeproj.designpattern.factory.abs;
 
 import com.zhxh.codeproj.Log;
 
@@ -13,8 +13,11 @@ public abstract class RoujiaMo {
     /**
      * 准备工作
      */
-    public void prepare() {
-        Log.e("---RoujiaMo:", name + ": 揉面-剁肉-完成准备工作");
+    public void prepare(RoujiaMoYLFactory roujiaMoYLFactory) {
+        Meet meet = roujiaMoYLFactory.creatMeet();
+        YuanLiao yuanLiao = roujiaMoYLFactory.creatYuanLiao();
+
+        Log.e("---RoujiaMo:", "使用官方的原料 ---" + name + ": 揉面-剁肉-完成准备工作 yuanLiao:" + meet + "yuanLiao:" + yuanLiao);
     }
 
     /**
