@@ -13,12 +13,13 @@ public class App {
     public static void main(String[] args) {
         // 饿汉式[可用]
         SingletonHungry instance = SingletonHungry.getInstance();
+        SingletonHungry instance2 = SingletonHungry.getSingletonHungry();
 
         // 懒汉式[双重校验锁 推荐用]
-        SingletonLazy singletonLazyOne = SingletonLazy.getInstance();
-        SingletonLazy singletonLazyTwo = SingletonLazy.getSingletonLazyTwo();
-        SingletonLazy singletonLazyThree = SingletonLazy.getSingletonLazyThree();
-        SingletonLazy singletonLazyFour = SingletonLazy.getSingletonLazyFour();
+        SingletonLazy singletonLazy = SingletonLazy.getInstance();
+        SingletonLazy singletonLazy2 = SingletonLazy.getSingletonLazyTwo();
+        SingletonLazy singletonLazy3 = SingletonLazy.getSingletonLazyThree();
+        SingletonLazy singletonLazy4 = SingletonLazy.getSingletonLazyFour();
 
         //内部类[推荐用]
         SingletonIn singletonIn = SingletonIn.getSingletonIn();

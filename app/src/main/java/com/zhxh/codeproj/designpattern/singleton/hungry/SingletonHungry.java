@@ -25,8 +25,6 @@ public class SingletonHungry {
         return singletonHungry;
     }
 
-//     SingletonHungry instance= SingletonHungry.getInstance();
-
     /**
      * 2. 单例模式的饿汉式变换写法[可用]
      * 基本没区别
@@ -43,6 +41,4 @@ public class SingletonHungry {
         }
         return singletonHungryTwo;
     }
-    //     SingletonHungry instance= SingletonHungry.getSingletonHungry();
-
 }
