@@ -6,11 +6,11 @@ package com.zhxh.codeproj.designpattern.template;
 public class ConcreteClass2 extends AbstractClass {
     @Override
     protected void doSomething() {
-        //todo something
+        System.out.println("ConcreteClass2-->doSomething");
     }
 
     @Override
     protected void doAnything() {
-        //todo something
+        System.out.println("ConcreteClass2-->doAnything");
     }
 }

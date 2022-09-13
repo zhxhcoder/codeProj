@@ -4,15 +4,15 @@ package com.zhxh.codeproj.designpattern.template;
  * Created by zhxh on 2019/4/7
  */
 public abstract class AbstractClass {
-    //base method
+    //基本方法
     protected abstract void doSomething();
 
-    //base method
+    //基本方法
     protected abstract void doAnything();
 
-    //template method
+    //模板方法
     public void templateMethod() {
-        //invoke method, do somethings
+        //调用方法，做一些事情
         this.doAnything();
         this.doSomething();
     }
