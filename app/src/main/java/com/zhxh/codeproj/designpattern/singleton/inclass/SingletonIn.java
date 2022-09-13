@@ -14,15 +14,14 @@ package com.zhxh.codeproj.designpattern.singleton.inclass;
  */
 
 public class SingletonIn {
-
     private SingletonIn() {
     }
 
-    private static class SingletonInHodler {
+    private static class SingletonInHolder {
         private static SingletonIn singletonIn = new SingletonIn();
     }
 
     public static SingletonIn getSingletonIn() {
-        return SingletonInHodler.singletonIn;
+        return SingletonInHolder.singletonIn;
     }
 }

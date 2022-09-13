@@ -1,4 +1,4 @@
-package com.zhxh.codeproj.designpattern.singleton.ehan;
+package com.zhxh.codeproj.designpattern.singleton.hungry;
 
 /**
  * Created by zhxh on 2016/10/27.
@@ -12,38 +12,37 @@ package com.zhxh.codeproj.designpattern.singleton.ehan;
  * 也会加载，会造成内存的浪费(但是这个浪费可以忽略，所以这种方式也是推荐使用的)。
  */
 
-public class SingletonEHan {
+public class SingletonHungry {
 
-    private SingletonEHan() {}
+    private SingletonHungry() {}
 
     /**
      * 1.单例模式的饿汉式[可用]
      */
-    private static SingletonEHan singletonEHan = new SingletonEHan();
+    private static SingletonHungry singletonHungry = new SingletonHungry();
 
-    public static SingletonEHan getInstance() {
-        return singletonEHan;
+    public static SingletonHungry getInstance() {
+        return singletonHungry;
     }
 
-//     SingletonEHan instance= SingletonEHan.getInstance();
+//     SingletonHungry instance= SingletonHungry.getInstance();
 
     /**
      * 2. 单例模式的饿汉式变换写法[可用]
      * 基本没区别
      */
-    private static SingletonEHan singletonEHanTwo = null;
+    private static SingletonHungry singletonHungryTwo = null;
 
     static {
-        singletonEHanTwo = new SingletonEHan();
+        singletonHungryTwo = new SingletonHungry();
     }
 
-    public static SingletonEHan getSingletonEHan() {
-        if (singletonEHanTwo == null) {
-            singletonEHanTwo = new SingletonEHan();
+    public static SingletonHungry getSingletonHungry() {
+        if (singletonHungryTwo == null) {
+            singletonHungryTwo = new SingletonHungry();
         }
-        return singletonEHanTwo;
+        return singletonHungryTwo;
     }
-    //     SingletonEHan instance= SingletonEHan.getSingletonEHan();
-
+    //     SingletonHungry instance= SingletonHungry.getSingletonHungry();
 
 }
