@@ -12,5 +12,9 @@ M和V的依赖关系。
  */
 public class App {
     public static void main(String[] args) {
+        User user1 = new User("aa");
+        User user2 = new User("bb");
+        CharRoom.showMessage(user1, "11");
+        CharRoom.showMessage(user2, "22");
     }
 }
