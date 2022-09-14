@@ -6,6 +6,6 @@ package com.zhxh.codeproj.designpattern.strategy2;
 public class ConcreteStrategy1 implements Strategy {
     @Override
     public void doSomething() {
-        System.out.println("strategy one");
+        System.out.println("ConcreteStrategy1-->doSomething()");
     }
 }
