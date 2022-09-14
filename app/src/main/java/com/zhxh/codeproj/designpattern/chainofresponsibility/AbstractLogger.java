@@ -5,7 +5,6 @@ package com.zhxh.codeproj.designpattern.chainofresponsibility;
  * 1. 创建抽象的记录器类。
  */
 public abstract class AbstractLogger {
-
     public static int INFO = 1;
     public static int DEBUG = 2;
     public static int ERROR = 3;
