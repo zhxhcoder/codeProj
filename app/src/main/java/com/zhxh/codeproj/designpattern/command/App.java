@@ -10,8 +10,6 @@ package com.zhxh.codeproj.designpattern.command;
  * 要求做到每个按钮对应的功能供用户个性化，对于新买入家电要有非常强的扩展性。
  */
 public class App {
-
-
     public static void main(String[] args) {
         ControlPanel controlPanel = new ControlPanel();
         setCommands(controlPanel);
@@ -19,7 +17,6 @@ public class App {
         for (int i = 1; i <= 8; i++) {
             controlPanel.keyPressed(i);
         }
-
     }
 
     private static void setCommands(ControlPanel controlPanel) {

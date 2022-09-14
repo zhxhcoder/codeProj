@@ -17,5 +17,4 @@ public class Light {
         Log.e("Light:", "---关闭灯");
     }
 
-
 }
