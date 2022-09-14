@@ -5,6 +5,6 @@ package com.zhxh.codeproj.designpattern.facade2;
  */
 public class ClassA {
     public void doSomethingA() {
-
+        System.out.println("ClassA-->doSomethingA()");
     }
 }
