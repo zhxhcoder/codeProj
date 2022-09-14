@@ -11,6 +11,5 @@ public class Client {
         //第二次装饰
         component = new ConcreteDecorator2(component);
         component.operate();
-
     }
 }

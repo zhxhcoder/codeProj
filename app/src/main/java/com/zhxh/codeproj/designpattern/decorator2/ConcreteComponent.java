@@ -6,6 +6,6 @@ package com.zhxh.codeproj.designpattern.decorator2;
 public class ConcreteComponent extends Component {
     @Override
     public void operate() {
-        System.out.println("do something");
+        System.out.println("ConcreteComponent-->operate()");
     }
 }

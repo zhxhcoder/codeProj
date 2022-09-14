@@ -10,7 +10,7 @@ public class ConcreteDecorator1 extends Decorator {
 
     //special method
     private void method1() {
-        System.out.println("method1 decorator");
+        System.out.println("ConcreteDecorator1-->method1()");
     }
 
     @Override
