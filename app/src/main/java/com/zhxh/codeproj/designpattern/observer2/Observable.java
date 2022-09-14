@@ -1,21 +1,21 @@
 package com.zhxh.codeproj.designpattern.observer2;
 
-import java.util.Vector;
+import java.util.Deque;
+import java.util.LinkedList;
 
 /**
  * Created by zhxh on 2019/4/9
  */
 public abstract class Observable {
+    //监听队列
+    private Deque<Observer> observers = new LinkedList<>();
 
-    //define array for observer
-    private Vector<Observer> observers = new Vector<>();
-
-    //add a observer
+    //添加监听者
     public void addObserver(Observer o) {
         this.observers.add(o);
     }
 
-    //remove a observer
+    //删除监听者
     public void removeObserver(Observer o) {
         this.observers.remove(o);
     }
