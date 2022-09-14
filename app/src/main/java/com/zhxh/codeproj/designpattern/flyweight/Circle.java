@@ -7,7 +7,6 @@ import com.zhxh.codeproj.Log;
  * 2. 创建实现接口的实体类。
  */
 public class Circle implements Shape {
-
     private String color;
     private int x;
     private int y;
