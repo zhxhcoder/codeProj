@@ -26,5 +26,4 @@ public class Context {
     public void handle2() {
         this.currentState.handle2();
     }
-
 }

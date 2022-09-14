@@ -12,7 +12,6 @@ class ConcreteState2 extends State {
 
     @Override
     public void handle2() {
-
         System.out.println("state2 do");
     }
 }
