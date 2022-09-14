@@ -6,6 +6,6 @@ package com.zhxh.codeproj.designpattern.proxy2;
 public class RealSubject implements Subject {
     @Override
     public void request() {
-        //todo something
+        System.out.println("RealSubject-->request()");
     }
 }

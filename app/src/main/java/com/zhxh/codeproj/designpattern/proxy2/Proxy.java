@@ -12,8 +12,8 @@ public class Proxy implements Subject {
         this.subject = new Proxy();
     }
 
-    public Proxy(Object... objects) {
-
+    public Proxy(Subject... objects) {
+        this.subject = objects[0];
     }
 
     @Override
@@ -24,10 +24,10 @@ public class Proxy implements Subject {
     }
 
     private void before() {
-        //todo something
+        System.out.println("Proxy-->before()");
     }
 
     private void after() {
-        //todo something
+        System.out.println("Proxy-->after()");
     }
 }
