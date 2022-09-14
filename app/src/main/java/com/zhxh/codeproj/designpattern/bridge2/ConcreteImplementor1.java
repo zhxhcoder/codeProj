@@ -6,12 +6,11 @@ package com.zhxh.codeproj.designpattern.bridge2;
 public class ConcreteImplementor1 implements Implementor {
     @Override
     public void doSomething() {
-        System.out.println("do some 1");
+        System.out.println("ConcreteImplementor1-->doSomething");
     }
 
     @Override
     public void doAnything() {
-        System.out.println("do any 2");
-
+        System.out.println("ConcreteImplementor1-->doAnything");
     }
 }
