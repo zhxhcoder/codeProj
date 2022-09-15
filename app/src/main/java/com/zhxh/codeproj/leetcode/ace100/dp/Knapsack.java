@@ -7,8 +7,8 @@ package com.zhxh.codeproj.leetcode.ace100.dp;
 public class Knapsack {
     public static void main(String[] args) {
         System.out.println(new Solution().knapsack(
-                new int[]{10, 20, 30},
-                new int[]{60, 100, 120}, 50));
+                new int[]{5, 10, 15},
+                new int[]{60, 100, 120}, 25));
     }
 
     static class Solution {
@@ -33,13 +33,11 @@ public class Knapsack {
                     }
                 }
             }
-
             //存储最大值
             int maxV = dp[N][W];
-
+            //输出日志
             System.out.println("最大值:\t" + maxV);
             System.out.println("所选物品: ");
-
             while (N != 0) {
                 if (dp[N][W] != dp[N - 1][W]) {
                     System.out.println("\t物品 " + N + " with wt = " + wt[N - 1] + " and Value = " + val[N - 1]);
