@@ -7,13 +7,14 @@ package com.zhxh.codeproj.leetcode.ace100.dp;
 public class Knapsack {
     public static void main(String[] args) {
         System.out.println(new Solution().knapsack(
-                new int[]{5, 10, 15},
-                new int[]{60, 100, 120}, 25));
+                new int[]{2, 4, 6},
+                new int[]{60, 100, 120}, 9));
     }
 
     static class Solution {
         public int knapsack(int[] wt, int[] val, int W) {
             int N = wt.length;
+            //dp[i][j]表示：对于前i个物品，当前背包的容量为j，这种情况下可以装的最大价值是dp[i][j]
             int[][] dp = new int[N + 1][W + 1];
             //初始化，其实默认为0
             for (int i = 0; i <= N; i++) {
@@ -25,11 +26,13 @@ public class Knapsack {
             for (int i = 1; i <= N; i++) {
                 //最大载重
                 for (int j = 0; j <= W; j++) {
-                    //上一行的值赋给下一行
-                    dp[i][j] = dp[i - 1][j];
+                    int diff = j - wt[i - 1];
                     //在“上一个结果价值”和“把当前第i个物品装入背包里所得到价值”二者里选价值较大的
-                    if (j >= wt[i - 1]) {
-                        dp[i][j] = Math.max(dp[i][j], dp[i - 1][j - wt[i - 1]] + val[i - 1]);
+                    if (diff >= 0) {//因为从1个物品开始遍历
+                        dp[i][j] = Math.max(dp[i - 1][j], dp[i - 1][diff] + val[i - 1]);
+                    } else {
+                        //上一行的值赋给下一行
+                        dp[i][j] = dp[i - 1][j];
                     }
                 }
             }
