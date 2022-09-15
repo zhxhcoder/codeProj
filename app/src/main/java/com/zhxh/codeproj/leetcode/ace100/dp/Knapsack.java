@@ -29,9 +29,10 @@ public class Knapsack {
                     int diff = j - wt[i - 1];
                     //在“上一个结果价值”和“把当前第i个物品装入背包里所得到价值”二者里选价值较大的
                     if (diff >= 0) {//因为从1个物品开始遍历
+                        //差额+加上
                         dp[i][j] = Math.max(dp[i - 1][j], dp[i - 1][diff] + val[i - 1]);
                     } else {
-                        //上一行的值赋给下一行
+                        //不足以多个物品，上一行的值赋给下一行
                         dp[i][j] = dp[i - 1][j];
                     }
                 }

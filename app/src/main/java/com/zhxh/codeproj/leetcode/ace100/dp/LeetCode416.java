@@ -26,6 +26,7 @@ class LeetCode416 {
     public static void main(String[] args) {
         System.out.println(new Solution().canPartition(new int[]{1, 3, 5, 11, 5}));
         System.out.println(new Solution2().canPartition(new int[]{1, 3, 5, 11, 5}));
+        System.out.println(new Solution3().canPartition(new int[]{1, 3, 5, 11, 5}));
     }
 
     /*
@@ -48,7 +49,7 @@ class LeetCode416 {
     static class Solution {
         public boolean canPartition(int[] nums) {
             int len = nums.length;
-            if (len == 0) {
+            if (len < 2) {
                 return false;
             }
 
@@ -91,6 +92,9 @@ class LeetCode416 {
         }
     }
 
+    /*
+    背包问题
+     */
     static class Solution2 {
         public boolean canPartition(int[] nums) {
             int sum = 0;
@@ -129,34 +133,40 @@ class LeetCode416 {
                     }
                 }
             }
-
             return dp[target][len];
         }
     }
 
     /*
-    暴力法测试
-    1，先求出数组之和
+    官方解答
      */
     static class Solution3 {
         public boolean canPartition(int[] nums) {
             int n = nums.length;
-            int sum = 0;
-            for (int a : nums) {
-                sum += a;
+            if (n < 2) {
+                return false;
             }
-            //奇数不合要求
+            int sum = 0, maxNum = 0;
+            for (int num : nums) {
+                sum += num;
+                maxNum = Math.max(maxNum, num);
+            }
             if (sum % 2 != 0) {
                 return false;
             }
-            //排序
-            Arrays.sort(nums);
-            //找出数组中，k个值相加为sum/2
-            for (int k = 1; k <= n / 2; k++) {
-
-
+            int target = sum / 2;
+            if (maxNum > target) {
+                return false;
             }
-            return false;
+            boolean[] dp = new boolean[target + 1];
+            dp[0] = true;
+            for (int i = 0; i < n; i++) {
+                int num = nums[i];
+                for (int j = target; j >= num; --j) {
+                    dp[j] |= dp[j - num];
+                }
+            }
+            return dp[target];
         }
     }
 }
