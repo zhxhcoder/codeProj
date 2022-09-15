@@ -27,6 +27,7 @@ class LeetCode416 {
         System.out.println(new Solution().canPartition(new int[]{1, 3, 5, 11, 5}));
         System.out.println(new Solution2().canPartition(new int[]{1, 3, 5, 11, 5}));
         System.out.println(new Solution3().canPartition(new int[]{1, 3, 5, 11, 5}));
+        System.out.println(new Solution4().canPartition(new int[]{1, 3, 5, 11, 5}));
     }
 
     /*
@@ -45,7 +46,18 @@ class LeetCode416 {
        “动态规划”的方法可以认为是为我们提供了一个思考问题的方向，我们不是直接面对问题求解，而是去找原始问题（或者说和原始问题相关的问题）的最开始的样子，通过“状态转移方程”（这里没法再解释了，可以结合下文理解）记录下每一步求解的结果，直到最终问题解决。
        而直接面对问题求解，就是我们熟悉的“递归”方法，由于有大量重复子问题，我们就需要加缓存，这叫“记忆化递归”，这里就不给参考代码了，感兴趣的朋友可以自己写一下，比较一下它们两种思考方式的不同之处和优缺点。
        做这道题需要做这样一个等价转换：是否可以从这个数组中挑选出一些正整数，使得这些数的和等于整个数组元素的和的一半。前提条件是：数组的和一定得是偶数，即数组的和一定得被 22 整除，这一点是特判。
-     */
+           设置状态：dp[i][j] 表示下标[0,i]这个区间里的所有整数，
+           在它们当中是否能够选出一些数，使得这些数之和恰好为整数j。
+
+           状态转移方程：当前值选与不选
+           1，不选择 nums[i]: dp[i][j]=dp[i-1][j];
+           2, 选择 nums[i]:
+               nums[i] == j ,dp[i][j] = true
+               nums[i] < j , dp[i][j] = dp[i-1][j-nums[i]];
+
+           初始化： dp[i][j]= false
+           输出：dp[len-1][sum/2]
+         */
     static class Solution {
         public boolean canPartition(int[] nums) {
             int len = nums.length;
@@ -80,7 +92,7 @@ class LeetCode416 {
                         dp[i][j] = dp[i - 1][j] || dp[i - 1][diff];
                     } else if (diff == 0) {
                         dp[i][j] = true;
-                    } else {
+                    } else {//不选择 nums[i]
                         // 直接从上一行先把结果抄下来
                         dp[i][j] = dp[i - 1][j];
                     }
@@ -136,9 +148,62 @@ class LeetCode416 {
     }
 
     /*
-    官方解答
+    官方解答-动态规划
+
+    设置状态：dp[i][j] 表示下标[0,i]这个区间里的所有整数，
+    在它们当中是否能够选出一些数，使得这些数之和恰好为整数j。
+
+    状态转移方程：当前值选与不选
+    1，不选择 nums[i]: dp[i][j]=dp[i-1][j];
+    2, 选择 nums[i]:
+        nums[i] == j ,dp[i][j] = true
+        nums[i] < j , dp[i][j] = dp[i-1][j-nums[i]];
+
+    初始化： dp[i][j]= false
+    输出：dp[len-1][sum/2]
+
      */
     static class Solution3 {
+        public boolean canPartition(int[] nums) {
+            int n = nums.length;
+            if (n < 2) {
+                return false;
+            }
+            int sum = 0, maxNum = 0;
+            for (int num : nums) {
+                sum += num;
+                maxNum = Math.max(maxNum, num);
+            }
+            if (sum % 2 != 0) {
+                return false;
+            }
+            int target = sum / 2;
+            if (maxNum > target) {
+                return false;
+            }
+            boolean[][] dp = new boolean[n][target + 1];
+            for (int i = 0; i < n; i++) {
+                dp[i][0] = true;
+            }
+            dp[0][nums[0]] = true;
+            for (int i = 1; i < n; i++) {
+                int num = nums[i];
+                for (int j = 1; j <= target; j++) {
+                    if (j >= num) {
+                        dp[i][j] = dp[i - 1][j] | dp[i - 1][j - num];
+                    } else {
+                        dp[i][j] = dp[i - 1][j];
+                    }
+                }
+            }
+            return dp[n - 1][target];
+        }
+    }
+
+    /*
+    官方解答-动态规划-优化
+     */
+    static class Solution4 {
         public boolean canPartition(int[] nums) {
             int n = nums.length;
             if (n < 2) {

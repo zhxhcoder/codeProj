@@ -29,5 +29,13 @@ public class JavaTest9 {
         c = a >>> 2;     /* 15 = 0000 1111 */
         System.out.println("a >>> 2 = " + c);
 
+
+        boolean aa = true;
+        boolean bb = false;
+
+        boolean cc = aa | bb;
+
+        System.out.println("aa | bb = " + cc);
+
     }
 }
