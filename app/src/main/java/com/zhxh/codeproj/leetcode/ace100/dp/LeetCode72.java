@@ -181,6 +181,16 @@ public class LeetCode72 {
         String bStr = in.nextLine();
         int aLen = aStr.length();
         int bLen = bStr.length();
+
+        从左下角填表
+
+        E
+        S
+        R
+        O
+        H
+          R  O  S
+
      */
     static class Solution4 {
         public int minDistance(String word1, String word2) {
@@ -190,12 +200,16 @@ public class LeetCode72 {
             for (int i = 0; i < aLen + 1; i++) dp[i][0] = i;
             for (int i = 0; i < bLen + 1; i++) dp[0][i] = i;
             for (int i = 1; i < aLen + 1; i++)
-                for (int j = 1; j < bLen + 1; j++)
+                for (int j = 1; j < bLen + 1; j++) {
+                    int left = dp[i - 1][j];
+                    int down = dp[i][j - 1];
+                    int left_down = dp[i - 1][j - 1];
                     if (word1.charAt(i - 1) == word2.charAt(j - 1)) {
-                        dp[i][j] = dp[i - 1][j - 1];
+                        dp[i][j] = left_down;
                     } else {
-                        dp[i][j] = Math.min(dp[i - 1][j - 1], Math.min(dp[i - 1][j], dp[i][j - 1])) + 1;
+                        dp[i][j] = Math.min(left_down, Math.min(left, down)) + 1;
                     }
+                }
             return dp[aLen][bLen];
         }
     }
