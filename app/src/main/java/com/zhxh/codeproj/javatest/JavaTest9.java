@@ -30,12 +30,16 @@ public class JavaTest9 {
         System.out.println("a >>> 2 = " + c);
 
 
-        boolean aa = true;
+        boolean aa = false;
         boolean bb = false;
 
+        //按位数或
         boolean cc = aa | bb;
+        //按位数与
+        boolean cc2 = aa & bb;
 
         System.out.println("aa | bb = " + cc);
+        System.out.println("aa & bb = " + cc2);
 
     }
 }

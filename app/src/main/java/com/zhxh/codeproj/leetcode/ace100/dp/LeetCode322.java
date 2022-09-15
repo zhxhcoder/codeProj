@@ -97,13 +97,18 @@ class LeetCode322 {
     static class Solution3 {
         public int coinChange(int[] coins, int amount) {
             int max = amount + 1;
+            //最多的硬币情况是全部是1元，共有amount个硬币，共有amount+1个状态，amount+1个金额
             int[] dp = new int[amount + 1];
+            //必须将所有的dp赋最大值，因为要找最小值
             Arrays.fill(dp, max);
+            //自底向上，金额为0，最小硬币数为0
             dp[0] = 0;
             for (int i = 1; i <= amount; i++) {
                 for (int j = 0; j < coins.length; j++) {
-                    if (coins[j] <= i) {
-                        dp[i] = Math.min(dp[i], dp[i - coins[j]] + 1);
+                    int diff = i - coins[j];
+                    if (diff >= 0) {
+                        //金额为11的最小硬币数 和 金额为(11-一个面值)的最小硬币数+1 比较最小值
+                        dp[i] = Math.min(dp[i], dp[diff] + 1);
                     }
                 }
             }
