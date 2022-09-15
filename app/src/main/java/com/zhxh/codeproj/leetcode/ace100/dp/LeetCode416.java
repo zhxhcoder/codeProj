@@ -72,19 +72,17 @@ class LeetCode416 {
             if (nums[0] <= target) {
                 dp[0][nums[0]] = true;
             }
-
             // 再填表格后面几行
             for (int i = 1; i < len; i++) {
                 for (int j = 0; j <= target; j++) {
-                    // 直接从上一行先把结果抄下来，然后再修正
-                    dp[i][j] = dp[i - 1][j];
-
-                    if (nums[i] == j) {
+                    int diff = j - nums[i];
+                    if (diff > 0) {
+                        dp[i][j] = dp[i - 1][j] || dp[i - 1][diff];
+                    } else if (diff == 0) {
                         dp[i][j] = true;
-                        continue;
-                    }
-                    if (nums[i] < j) {
-                        dp[i][j] = dp[i - 1][j] || dp[i - 1][j - nums[i]];
+                    } else {
+                        // 直接从上一行先把结果抄下来
+                        dp[i][j] = dp[i - 1][j];
                     }
                 }
             }
