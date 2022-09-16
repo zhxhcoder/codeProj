@@ -106,11 +106,11 @@ public class LeetCode347 {
                 values.add(new int[]{num, count});
             }
             int[] ret = new int[k];
-            qsort(values, 0, values.size() - 1, ret, 0, k);
+            quickSort(values, 0, values.size() - 1, ret, 0, k);
             return ret;
         }
 
-        public void qsort(List<int[]> values, int start, int end, int[] ret, int retIndex, int k) {
+        public void quickSort(List<int[]> values, int start, int end, int[] ret, int retIndex, int k) {
             int picked = (int) (Math.random() * (end - start + 1)) + start;
             Collections.swap(values, picked, start);
 
@@ -125,13 +125,13 @@ public class LeetCode347 {
             Collections.swap(values, start, index);
 
             if (k <= index - start) {
-                qsort(values, start, index - 1, ret, retIndex, k);
+                quickSort(values, start, index - 1, ret, retIndex, k);
             } else {
                 for (int i = start; i <= index; i++) {
                     ret[retIndex++] = values.get(i)[0];
                 }
                 if (k > index - start + 1) {
-                    qsort(values, index + 1, end, ret, retIndex, k - (index - start + 1));
+                    quickSort(values, index + 1, end, ret, retIndex, k - (index - start + 1));
                 }
             }
         }

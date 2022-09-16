@@ -124,6 +124,7 @@ public class LeetCode05 {
             int begin = 0;
             //dp[i][j] 表示s[i..j]是否是回文串
             boolean[][] dp = new boolean[len][len];
+            //长度为1时一定是回文串
             for (int i = 0; i < len; i++) {
                 dp[i][i] = true;
             }
