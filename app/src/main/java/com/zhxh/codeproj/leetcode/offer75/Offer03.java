@@ -59,22 +59,25 @@ public class Offer03 {
 
     /*
     方法3： 前两种方法都未用到所有数字都在0-n-1的范围内，这个信息
-        这个信息可以理解为，这是一个链表，寻找里面的环
-
+    用不可能出现的作标记
      */
     static class Solution3 {
         public int findRepeatNumber(int[] nums) {
             //同时n大于nums数组中任何数
             int n = nums.length;
             for (int i = 0; i < n; i++) {
-                int k = nums[i];
-                if (k < 0) {
-                    k += n;
+                int val;
+                if (nums[i] < 0) {//-n标记过，就先还原
+                    val = nums[i] + n;
+                } else {
+                    val = nums[i];
                 }
-                if (nums[k] < 0) {
-                    return k;
+                //已经出现过了
+                if (nums[val] < 0) {
+                    return val;
                 }
-                nums[k] -= n;
+                //标记为负数
+                nums[val] -= n;
             }
             throw new IllegalArgumentException();
         }
