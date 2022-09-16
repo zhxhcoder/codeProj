@@ -34,6 +34,7 @@ public class Offer04 {
         System.out.println(new Solution().findNumberIn2DArray(new int[][]{{1, 4, 7, 11, 15}, {2, 5, 8, 12, 19}, {3, 6, 9, 16, 22}, {10, 13, 14, 17, 24}, {18, 21, 23, 26, 30}}, 5));
         System.out.println(new Solution2().findNumberIn2DArray(new int[][]{{1, 4, 7, 11, 15}, {2, 5, 8, 12, 19}, {3, 6, 9, 16, 22}, {10, 13, 14, 17, 24}, {18, 21, 23, 26, 30}}, 5));
         System.out.println(new Solution3().findNumberIn2DArray(new int[][]{{1, 4, 7, 11, 15}, {2, 5, 8, 12, 19}, {3, 6, 9, 16, 22}, {10, 13, 14, 17, 24}, {18, 21, 23, 26, 30}}, 5));
+        System.out.println(new Solution4().findNumberIn2DArray(new int[][]{{1, 4, 7, 11, 15}, {2, 5, 8, 12, 19}, {3, 6, 9, 16, 22}, {10, 13, 14, 17, 24}, {18, 21, 23, 26, 30}}, 5));
     }
 
     /*
@@ -101,6 +102,37 @@ public class Offer04 {
                 }
             }
             return false;
+        }
+    }
+
+    /*
+    自己手写的二分查找-超时
+     */
+    static class Solution4 {
+        public boolean findNumberIn2DArray(int[][] matrix, int target) {
+            for (int[] arr : matrix) {
+                int index = binarySearch(arr, target);
+                if (index >= 0) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public int binarySearch(int[] arr, int target) {
+            int begin = 0, end = arr.length - 1;
+            int mid;
+            while (begin <= end) {
+                mid = begin + (end - begin) / 2;
+                if (target == arr[mid]) {
+                    return mid;
+                } else if (arr[mid] > target) {
+                    end = mid - 1;
+                } else {
+                    begin = mid + 1;
+                }
+            }
+            return -1;
         }
     }
 }
