@@ -38,10 +38,10 @@ word1 和 word2 由小写英文字母组成
  */
 public class LeetCode72 {
     public static void main(String[] args) {
-        System.out.println(new Solution().minDistance("orddse", "xx"));
-        System.out.println(new Solution2().minDistance("orddse", "xx"));
-        System.out.println(new Solution3().minDistance("orddse", "xx"));
-        System.out.println(new Solution4().minDistance("orddse", "xx"));
+        System.out.println(new Solution().minDistance("horse", "ros"));
+        System.out.println(new Solution2().minDistance("horse", "ros"));
+        System.out.println(new Solution3().minDistance("horse", "ros"));
+        System.out.println(new Solution4().minDistance("horse", "ros"));
     }
 
     /*
