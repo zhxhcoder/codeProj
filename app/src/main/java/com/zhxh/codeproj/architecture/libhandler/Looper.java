@@ -4,7 +4,6 @@ package com.zhxh.codeproj.architecture.libhandler;
  * Created by zhxh on 2019/3/16
  */
 public class Looper {
-
     public MessageQueue mQueue;
     //线程间数据隔离
     static ThreadLocal<Looper> sThreadLocal = new ThreadLocal<>();
