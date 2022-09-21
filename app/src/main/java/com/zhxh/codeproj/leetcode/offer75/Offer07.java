@@ -83,6 +83,10 @@ public class Offer07 {
 
     /*
     方法二：迭代
+    前序遍历，从根节点root开始，只要有左子节点，就一直会往左下方走，直到最左下角。
+    而中序遍历，是从最下角往上，如果碰到节点有右子节点，则会转向
+    因此，代码中的if块是用前序数组一直构建左子树，如果碰到了 inorder[inorderIndex],表示到了左下角，
+    这时，就需要往上走并处理右子树，也就是while代码块
      */
     static class Solution2 {
         public TreeNode buildTree(int[] preorder, int[] inorder) {
