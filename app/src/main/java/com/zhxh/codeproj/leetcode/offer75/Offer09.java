@@ -2,6 +2,7 @@ package com.zhxh.codeproj.leetcode.offer75;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
+import java.util.Stack;
 
 /*
 剑指 Offer 09. 用两个栈实现队列
@@ -31,6 +32,11 @@ public class Offer09 {
         obj.appendTail(1);
         obj.appendTail(2);
         obj.deleteHead();
+
+        CQueue2 obj2 = new CQueue2();
+        obj2.appendTail(1);
+        obj2.appendTail(2);
+        obj2.deleteHead();
     }
 
     /*
@@ -63,6 +69,32 @@ public class Offer09 {
                 }
             }
             return outStack.pop();
+        }
+    }
+
+    static class CQueue2 {
+        //两个栈，一个出栈，一个入栈
+        private Stack<Integer> inStack;
+        private Stack<Integer> outStack;
+
+        public CQueue2() {
+            inStack = new Stack<>();
+            outStack = new Stack<>();
+        }
+
+        public void appendTail(int value) {
+            inStack.push(value);
+        }
+
+        public int deleteHead() {
+            if (!outStack.isEmpty()) {
+                return outStack.pop();
+            } else {
+                while (!inStack.isEmpty()) {
+                    outStack.push(inStack.pop());
+                }
+                return outStack.isEmpty() ? -1 : outStack.pop();
+            }
         }
     }
 }
