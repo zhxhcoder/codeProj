@@ -1,31 +1,20 @@
 package com.zhxh.codeproj.sortcode;
 
+import java.util.Arrays;
+
 public class QuickSort {
-
     public static void main(String[] args) {
-        int i;
         int a[] = {1, 3, -2, 5, 4, -3, 2, 6, -1, 1};
-
-        System.out.printf("排序前:");
-        for (i = 0; i < a.length; i++)
-            System.out.printf("%d ", a[i]);
-        System.out.printf("\n");
-
+        System.out.println("排序前:" + Arrays.toString(a));
         quickSort(a, 0, a.length - 1);
-
-        System.out.printf("排序后:");
-        for (i = 0; i < a.length; i++)
-            System.out.printf("%d ", a[i]);
-        System.out.printf("\n");
+        System.out.println("排序后:" + Arrays.toString(a));
     }
-
     /*
      * 快速排序
-     *
      * 参数说明:
-     *     a -- 待排序的数组
-     *     l -- 数组的左边界(例如，从起始位置开始排序，则l=0)
-     *     r -- 数组的右边界(例如，排序截至到数组末尾，则r=a.length-1)
+     * a -- 待排序的数组
+     * l -- 数组的左边界(例如，从起始位置开始排序，则l=0)
+     * r -- 数组的右边界(例如，排序截至到数组末尾，则r=a.length-1)
      */
     public static void quickSort(int[] a, int l, int r) {
         if (l < r) {
