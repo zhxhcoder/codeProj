@@ -27,6 +27,7 @@ public class QuickSort {
         quickSort(a, 0, a.length - 1);
         System.out.println("排序后:" + Arrays.toString(a));
     }
+
     /*
      * 快速排序
      * 参数说明:
@@ -44,10 +45,12 @@ public class QuickSort {
             while (i < j) {
                 while (i < j && a[j] > x)
                     j--; // 从右向左找第一个小于x的数
+                //判断必须存在
                 if (i < j)
                     a[i++] = a[j];
                 while (i < j && a[i] < x)
                     i++; // 从左向右找第一个大于x的数
+                //判断必须存在
                 if (i < j)
                     a[j--] = a[i];
             }
