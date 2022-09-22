@@ -19,10 +19,14 @@ import java.util.Arrays;
 它需要遍历的次数就是二叉树的深度，而根据完全二叉树的定义，它的深度至少是lg(N+1)。因此，快速排序的遍历次数最少是lg(N+1)次。
 为什么最多是N次? 这个应该非常简单，还是将快速排序看作一棵二叉树，它的深度最大是N。因此，快读排序的遍历次数最多是N次
 
+原始数据
+被操作数据
+已排序数据
+
  */
 public class QuickSort {
     public static void main(String[] args) {
-        int[] a = {1, 3, -2, 5, 4, -3, 2, 6, -1, 1};
+        int[] a = {1, 3, -2, 5, 4, -3, 2, 6, -1, 7, 1};
         System.out.println("排序前:" + Arrays.toString(a));
         quickSort(a, 0, a.length - 1);
         System.out.println("排序后:" + Arrays.toString(a));
