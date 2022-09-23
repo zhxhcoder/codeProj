@@ -1,6 +1,8 @@
 package com.zhxh.codeproj.multithread.join;
 
-
+/*
+coded by zhxh
+ */
 class JoinDemo implements Runnable {
 
     @Override

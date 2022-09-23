@@ -1,6 +1,7 @@
 package com.zhxh.codeproj.multithread.deadlock;
 
 /*
+coded by zhxh
 死锁例子
 
 Java线程死锁问题往往和一个被称之为哲学家就餐的问题相关联。

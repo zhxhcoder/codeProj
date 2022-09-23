@@ -2,6 +2,7 @@ package com.zhxh.codeproj.multithread.join;
 
 
 /*
+coded by zhxh
 join() 　　join()方法会使当前线程等待调用join()方法的线程结束后才能继续执行，例如：
  */
 public class JoinTest {

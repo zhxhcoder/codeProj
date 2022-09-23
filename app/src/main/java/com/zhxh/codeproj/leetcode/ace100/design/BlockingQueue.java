@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 /*
+coded by zhxh
 用Java实现阻塞队列
 
 在enqueue和dequeue方法内部，只有队列的大小等于上限（limit）或者下限（0）时，才调用notifyAll方法。
