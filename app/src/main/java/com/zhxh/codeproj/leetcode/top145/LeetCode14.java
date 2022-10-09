@@ -29,8 +29,8 @@ strs[i] 仅由小写英文字母组成
 
 public class LeetCode14 {
     public static void main(String[] args) {
-        System.out.print(new Solution().longestCommonPrefix(new String[]{"flowsad", "flosad", "flisad"}));
-        System.out.print(new Solution2().longestCommonPrefix(new String[]{"flowsad", "flosad", "flisad"}));
+        System.out.println(new Solution().longestCommonPrefix(new String[]{"flowsad", "flosad", "flisad"}));
+        System.out.println(new Solution2().longestCommonPrefix(new String[]{"flowsad", "flosad", "flisad"}));
     }
 
     /*

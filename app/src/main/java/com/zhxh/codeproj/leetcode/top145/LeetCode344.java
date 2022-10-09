@@ -24,7 +24,7 @@ public class LeetCode344 {
         //todo 双指针
         char[] s = {'h', 'e', 'l', 'l', 'o'};
         new Solution().reverseString(s);
-        System.out.print(s);
+        System.out.println(s);
     }
 
     //反向双指针

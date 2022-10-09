@@ -24,7 +24,7 @@ package com.zhxh.codeproj.leetcode.hot100;
  */
 public class LeetCode461 {
     public static void main(String[] args) {
-        System.out.print(new Solution().hammingDistance(1, 4));
+        System.out.println(new Solution().hammingDistance(1, 4));
     }
 
     static class Solution {
