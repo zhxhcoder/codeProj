@@ -1,4 +1,4 @@
-package com.zhxh.codeproj;
+package com.zhxh.codeproj.leetcode.ace100.design;
 
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -7,11 +7,10 @@ import java.util.List;
 /*
 不用系统函数，实现contains函数
  */
-public class Test {
+public class StringContains {
     public static void main(String[] args) {
         System.out.println(solve("abc", new String[]{"abc", "abc", "abc", "bc", "c", "abcd", "dabc"}));
     }
-
 
     private static List<String> solve(String a, String[] list) {
         List<String> res = new LinkedList<String>();
@@ -27,15 +26,11 @@ public class Test {
         if (a == null || a.isEmpty() || str == null || str.isEmpty()) {
             return false;
         }
-
         if (str.length() < a.length()) {
             return false;
         }
-
         char[] strArr = str.toCharArray();
         char[] aArr = str.toCharArray();
-
-
         for (int i = 0; i < strArr.length; i++) {
             //去掉首个元素
             char[] newstrArr = new char[strArr.length - i];
@@ -54,7 +49,6 @@ public class Test {
         }
         return false;
     }
-
 
     private static boolean preContains(char[] strArr, char[] aArr) {
         if (aArr == null || strArr == null) {
