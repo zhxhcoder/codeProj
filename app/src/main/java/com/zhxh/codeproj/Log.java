@@ -20,7 +20,6 @@ public class Log {
         System.out.println(tag + dot + msg);
     }
 
-
     public static void e(String msg) {
         System.out.println(msg);
     }
